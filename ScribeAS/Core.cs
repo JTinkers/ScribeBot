@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Scribe.Interface;
+using System.IO;
 using MoonSharp.Interpreter;
+using Scribe.Interface;
+using System.Diagnostics;
 
 namespace Scribe
 {
@@ -22,7 +24,17 @@ namespace Scribe
         {
             InterfaceThread = new Thread(() =>
             {
+                Application.EnableVisualStyles();
+
                 MainWindow = new Window();
+
+                GetScriptPaths().ToList().ForEach(x => MainWindow.ScriptListBox.Items.Add(Path.GetFileName(x)));
+
+                MainWindow.ScriptRun.Click += (o, e) =>
+                {
+                    Scripter.ExecuteFile($@"{Application.StartupPath}\Data\Scripts\{MainWindow.ScriptListBox.SelectedItem}", MainWindow.AsyncCheckbox.Checked);
+                };
+
                 MainWindow.ShowDialog();
             });
             InterfaceThread.Name = "Interface Thread";
@@ -33,7 +45,7 @@ namespace Scribe
         {
             MainWindow?.Invoke(new Action(() =>
             {
-                MainWindow.Output.AppendText(value);
+                MainWindow.ConsoleOutput.AppendText(value);
             }));
         }
 
@@ -41,8 +53,13 @@ namespace Scribe
         {
             MainWindow?.Invoke(new Action(() =>
             {
-                MainWindow.Output.AppendText(value + "\n");
+                MainWindow.ConsoleOutput.AppendText(value + "\n");
             }));
+        }
+
+        public static string[] GetScriptPaths()
+        {
+            return Directory.GetFiles( $@"{Application.StartupPath}\Data\Scripts\" ).Where(x => Path.GetExtension( x ) == ".lua").ToArray();
         }
     }
 }
