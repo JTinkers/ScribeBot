@@ -28,12 +28,28 @@ namespace Scribe
 
                 MainWindow = new Window();
 
-                GetScriptPaths().ToList().ForEach(x => MainWindow.ScriptListBox.Items.Add(Path.GetFileName(x)));
+                MainWindow.ConsoleSend.Click += (o, e) =>
+                {
+                    Scripter.ExecuteString(MainWindow.ConsoleInput.Text);
+                    MainWindow.ConsoleInput.Text = "";
+                };
+
+                MainWindow.ConsoleInput.KeyPress += (o, e) =>
+                {
+                    if (e.KeyChar == (char)Keys.Enter)
+                    {
+                        MainWindow.ConsoleSend.PerformClick();
+                        e.Handled = true;
+                    }
+                };
 
                 MainWindow.ScriptRun.Click += (o, e) =>
                 {
-                    Scripter.ExecuteFile($@"{Application.StartupPath}\Data\Scripts\{MainWindow.ScriptListBox.SelectedItem}", MainWindow.AsyncCheckbox.Checked);
+                    if( MainWindow.ScriptListBox.SelectedItem != null )
+                        Scripter.ExecuteFile($@"{Application.StartupPath}\Data\Scripts\{MainWindow.ScriptListBox.SelectedItem}", MainWindow.AsyncCheckbox.Checked);
                 };
+
+                GetScriptPaths().ToList().ForEach(x => MainWindow.ScriptListBox.Items.Add(Path.GetFileName(x)));
 
                 MainWindow.ShowDialog();
             });
@@ -59,7 +75,7 @@ namespace Scribe
 
         public static string[] GetScriptPaths()
         {
-            return Directory.GetFiles( $@"{Application.StartupPath}\Data\Scripts\" ).Where(x => Path.GetExtension( x ) == ".lua").ToArray();
+            return Directory.GetFiles($@"{Application.StartupPath}\Data\Scripts\").Where(x => Path.GetExtension(x) == ".lua").ToArray();
         }
     }
 }

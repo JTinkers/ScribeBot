@@ -10,29 +10,42 @@ namespace Scribe
 {
     static class Scripter
     {
-        public static void ExecuteFile(String path, bool asynchronous = true)
+        private static Script currentScript;
+
+        public static void ExecuteFile(string path, bool asynchronous = true)
         {
             UserData.RegisterAssembly();
-
             Script.DefaultOptions.DebugPrint = value => Core.WriteLine(value);
 
-            Script script = new Script();
-            script.Globals["Core"] = new Wrappers.Core();
+            currentScript = new Script();
+            currentScript.Globals["Core"] = new Wrappers.Core();
 
             if (asynchronous)
             {
-                script.DoFileAsync(path);
+                currentScript.DoFileAsync(path);
             }
             else
             {
                 try
                 {
-                    script.DoFile(path);
+                    currentScript.DoFile(path);
                 }
                 catch (SyntaxErrorException e)
                 {
                     Core.WriteLine($"[{Path.GetFileName(path)}] ERROR: {e.Message}");
                 }
+            }
+        }
+
+        public static void ExecuteString(string code)
+        {
+            try
+            {
+                currentScript?.DoString(code); //Cannot enter the same MoonSharp processor from two different threads : 5 and 3
+            }
+            catch (SyntaxErrorException e)
+            {
+                Core.WriteLine($"[Console] ERROR: {e.Message}");
             }
         }
     }

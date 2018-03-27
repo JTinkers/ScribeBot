@@ -196,20 +196,22 @@ namespace Scribe.Interface
 
         private System.Windows.Forms.GroupBox consolePanel;
         private System.Windows.Forms.TableLayoutPanel layoutPanel;
-        private System.Windows.Forms.TextBox consoleInput;
         private System.Windows.Forms.TabControl optionsPanel;
         private System.Windows.Forms.TabPage scriptsPage;
         private System.Windows.Forms.TabPage settingsPage;
-        private System.Windows.Forms.Button consoleSend;
         private System.Windows.Forms.ListBox scriptListBox;
         private TextBox consoleOutput;
         private Button scriptRun;
         private CheckBox asyncCheckbox;
         private ToolTip asyncTooltip;
+        private TextBox consoleInput;
+        private Button consoleSend;
 
         public ListBox ScriptListBox { get => scriptListBox; set => scriptListBox = value; }
         public TextBox ConsoleOutput { get => consoleOutput; set => consoleOutput = value; }
         public Button ScriptRun { get => scriptRun; set => scriptRun = value; }
         public CheckBox AsyncCheckbox { get => asyncCheckbox; set => asyncCheckbox = value; }
+        public TextBox ConsoleInput { get => consoleInput; set => consoleInput = value; }
+        public Button ConsoleSend { get => consoleSend; set => consoleSend = value; }
     }
 }
