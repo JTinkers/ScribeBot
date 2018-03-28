@@ -10,25 +10,37 @@ namespace Scribe
 {
     static class Scripter
     {
-        private static Script currentScript;
+        private static Script currentScript = new Script();
 
-        public static void ExecuteFile(string path, bool asynchronous = true)
+        public static Script CurrentScript { get => currentScript; set => currentScript = value; }
+
+        static Scripter()
         {
             UserData.RegisterAssembly();
             Script.DefaultOptions.DebugPrint = value => Core.WriteLine(value);
 
-            currentScript = new Script();
-            currentScript.Globals["Core"] = new Wrappers.Core();
+            CurrentScript.Globals["Core"] = typeof(Wrappers.Core);
+            CurrentScript.Globals["Input"] = typeof(Wrappers.Input);
 
+            //Enums
+            UserData.RegisterType<Native.VirtualKeyCode>();
+            CurrentScript.Globals["VirtualKeyCode"] = UserData.CreateStatic<Native.VirtualKeyCode>();
+
+            //LuaFunc extensions
+            CurrentScript.DoString(Wrappers.LuaExtensions.Wait);
+        }
+
+        public static void ExecuteFile(string path, bool asynchronous = true)
+        {
             if (asynchronous)
             {
-                currentScript.DoFileAsync(path);
+                CurrentScript.DoFileAsync(path);
             }
             else
             {
                 try
                 {
-                    currentScript.DoFile(path);
+                    CurrentScript.DoFile(path);
                 }
                 catch (SyntaxErrorException e)
                 {
@@ -41,7 +53,7 @@ namespace Scribe
         {
             try
             {
-                currentScript?.DoString(code); //Cannot enter the same MoonSharp processor from two different threads : 5 and 3
+                CurrentScript?.DoString(code); //Cannot enter the same MoonSharp processor from two different threads : 5 and 3
             }
             catch (SyntaxErrorException e)
             {
