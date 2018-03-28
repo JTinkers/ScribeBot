@@ -17,8 +17,11 @@ namespace Scribe
         static Scripter()
         {
             UserData.RegisterAssembly();
-            Script.DefaultOptions.DebugPrint = value => Core.WriteLine(value);
 
+            //Options
+            CurrentScript.Options.DebugPrint = value => Core.WriteLine(value);
+
+            //Wrappers/Classes
             CurrentScript.Globals["Core"] = typeof(Wrappers.Core);
             CurrentScript.Globals["Input"] = typeof(Wrappers.Input);
 

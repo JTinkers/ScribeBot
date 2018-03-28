@@ -15,6 +15,10 @@ namespace Scribe.Native
 
         [DllImport("user32.dll")]
         public static extern bool SetForegroundWindow(IntPtr windowHandle);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static public extern bool SetCursorPos(int x, int y);
     }
 
     [StructLayout(LayoutKind.Sequential)]

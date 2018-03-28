@@ -1,6 +1,0 @@
-Core.WriteLine(os.clock())
-Core.WriteLine("Executing wait")
-wait( 2000 )
-Core.WriteLine("Wait elapsed")
-Core.SetFocusWindow("notepad")
-Core.WriteLine(os.clock())

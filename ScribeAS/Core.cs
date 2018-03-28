@@ -14,6 +14,10 @@ namespace Scribe
 {
     static class Core
     {
+        private static string version = "0.1beta";
+
+        public static string Version { get => version; set => version = value; }
+
         private static Thread interfaceThread;
         private static Window mainWindow;
 
@@ -57,6 +61,14 @@ namespace Scribe
             InterfaceThread.Start();
         }
 
+        public static void Close()
+        {
+            MainWindow?.Invoke(new Action(() =>
+            {
+                MainWindow.Close();
+            }));
+        }
+
         public static void Write(String value)
         {
             MainWindow?.Invoke(new Action(() =>
@@ -76,6 +88,11 @@ namespace Scribe
         public static string[] GetScriptPaths()
         {
             return Directory.GetFiles($@"{Application.StartupPath}\Data\Scripts\").Where(x => Path.GetExtension(x) == ".lua").ToArray();
+        }
+
+        static public string[] GetWindowTitles()
+        {
+            return Process.GetProcesses().Where(x => !String.IsNullOrEmpty(x.MainWindowTitle)).Select(x => x.MainWindowTitle).ToArray();
         }
     }
 }

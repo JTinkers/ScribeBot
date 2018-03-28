@@ -18,34 +18,13 @@ namespace Scribe.Native
                 Native.SetForegroundWindow(p[0].MainWindowHandle);
         }
 
+        public static void SetCursorPos(int x, int y)
+        {
+            Native.SetCursorPos(x, y);
+        }
+
+        //KeyDown, KeyUp needed
         public static void SendKeyPress(VirtualKeyCode key)
-        {
-            SendKeyDown(key);
-            SendKeyPress(key);
-        }
-
-        public static void SendKeyUp( VirtualKeyCode key )
-        {
-            Input[] inputs = new Input[]
-            {
-                new Input
-                {
-                    Type = 1,
-                    Data = new InputUnion
-                    {
-                        KeyboardInput = new KeyboardInputData
-                        {
-                            VirtualKey = key,
-                            Flags = KeyEventFlags.KEYUP
-                        }
-                    }
-                }
-            };
-
-            Native.SendInput((uint)inputs.Length, inputs, Input.Size);
-        }
-
-        public static void SendKeyDown( VirtualKeyCode key )
         {
             Input[] inputs = new Input[]
             {

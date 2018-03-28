@@ -65,10 +65,11 @@
     <Compile Include="Wrappers\Core.cs" />
     <Compile Include="Wrappers\Input.cs" />
     <Compile Include="Wrappers\LuaExtensions.cs" />
+    <Compile Include="Wrappers\Screen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Data\Scripts\t1.lua">
+    <None Include="Data\Scripts\test.lua">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
