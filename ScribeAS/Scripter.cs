@@ -24,6 +24,7 @@ namespace Scribe
             //Wrappers/Classes
             CurrentScript.Globals["Core"] = typeof(Wrappers.Core);
             CurrentScript.Globals["Input"] = typeof(Wrappers.Input);
+            CurrentScript.Globals["Interface"] = typeof(Wrappers.Interface);
 
             //Enums
             UserData.RegisterType<Native.VirtualKeyCode>();

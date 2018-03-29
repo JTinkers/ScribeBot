@@ -10,8 +10,8 @@ namespace Scribe.Wrappers
     {
         public static string Wait =
         @"
-            function wait(t)
-                local callTime = os.clock() + (t/1000)
+            function wait(time)
+                local callTime = os.clock() + (time/1000)
                 repeat until os.clock() > callTime
             end
         ";

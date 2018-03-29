@@ -17,8 +17,37 @@ namespace Scribe.Native
         public static extern bool SetForegroundWindow(IntPtr windowHandle);
 
         [DllImport("user32.dll")]
+        public static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        public static extern int GetWindowText(IntPtr windowHandle, StringBuilder text, int count);
+
+        [DllImport("user32.dll")]
+        public static extern bool GetWindowRect(IntPtr windowHandle, out WindowRect rectangle);
+
+        [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        static public extern bool SetCursorPos(int x, int y);
+        public static extern bool SetCursorPos(int x, int y);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetCursorPos(out NativePoint point);
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct NativePoint
+    {
+        public int X;
+        public int Y;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct WindowRect
+    {
+        public int Left;
+        public int Top;
+        public int Right;
+        public int Bottom;
     }
 
     [StructLayout(LayoutKind.Sequential)]

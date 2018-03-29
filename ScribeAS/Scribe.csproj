@@ -51,6 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core.cs" />
+    <Compile Include="Interface\Prompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\Prompt.Designer.cs">
+      <DependentUpon>Prompt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interface\Window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,8 +68,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripter.cs" />
+    <Compile Include="Wrappers\Classes\Color.cs" />
+    <Compile Include="Wrappers\Classes\Point.cs" />
     <Compile Include="Wrappers\Core.cs" />
     <Compile Include="Wrappers\Input.cs" />
+    <Compile Include="Wrappers\Interface.cs" />
     <Compile Include="Wrappers\LuaExtensions.cs" />
     <Compile Include="Wrappers\Screen.cs" />
   </ItemGroup>
@@ -75,6 +84,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Interface\Prompt.resx">
+      <DependentUpon>Prompt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Interface\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
     </EmbeddedResource>
