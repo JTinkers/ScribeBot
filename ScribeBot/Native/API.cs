@@ -16,7 +16,7 @@ namespace ScribeBot.Native
         /// <summary>
         /// Get window handle that matches given title.
         /// </summary>
-        /// <param name="title"></param>
+        /// <param name="title">The title of window to get a handle of.</param>
         /// <returns></returns>
         public static IntPtr GetWindowHandleByTitle(string title)
         {
@@ -33,7 +33,7 @@ namespace ScribeBot.Native
         /// <summary>
         /// Bring a window of given title to the front and switch input focus to it.
         /// </summary>
-        /// <param name="title"></param>
+        /// <param name="title">The title of window to set focus to.</param>
         public static void SetFocusWindow(string title)
         {
             IntPtr windowHandle = GetWindowHandleByTitle(title);
@@ -45,7 +45,7 @@ namespace ScribeBot.Native
         /// <summary>
         /// Get window title of a currently focused window.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Title of window currently in focus.</returns>
         public static string GetFocusWindow()
         {
             StringBuilder title = new StringBuilder();
@@ -58,8 +58,8 @@ namespace ScribeBot.Native
         /// <summary>
         /// Get position of a window of given title.
         /// </summary>
-        /// <param name="title"></param>
-        /// <returns></returns>
+        /// <param name="title">Title of window to get position of.</param>
+        /// <returns>Position of window of a specified title.</returns>
         public static Point GetWindowPos(string title)
         {
             WindowRect rect;
@@ -82,7 +82,7 @@ namespace ScribeBot.Native
         /// <summary>
         /// Get position of the cursor.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Position of the cursor.</returns>
         public static Point GetCursorPos()
         {
             NativePoint point;
@@ -95,7 +95,7 @@ namespace ScribeBot.Native
         /// <summary>
         /// Emulate a key press.
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="key">VirtualKeyCode of a key to emulate.</param>
         public static void SendKeyPress(VirtualKeyCode key)
         {
             Input[] inputs = new Input[]
@@ -119,7 +119,7 @@ namespace ScribeBot.Native
         /// <summary>
         /// Emulate a mouse key press.
         /// </summary>
-        /// <param name="button"></param>
+        /// <param name="button">Number of mousebutton to emulate.</param>
         public static void SendMousePress(int button)
         {
             Point cPos = GetCursorPos();

@@ -48,8 +48,8 @@ namespace ScribeBot
         /// <summary>
         /// Execute a Lua file. Keep in mind that setting asynchronous to true might cause debugger to be unable to pass syntax errors properly.
         /// </summary>
-        /// <param name="path"></param>
-        /// <param name="asynchronous"></param>
+        /// <param name="path">Path of file to execute.</param>
+        /// <param name="asynchronous">Defines whether file should be executed on a thread different to ScribeBot itself.</param>
         public static void ExecuteFile(string path, bool asynchronous = true)
         {
             if (asynchronous)
@@ -72,7 +72,7 @@ namespace ScribeBot
         /// <summary>
         /// Execute a string of Lua code on the currently running script. If script is no longer running - the code will still be able to access variables, functions etc.
         /// </summary>
-        /// <param name="code"></param>
+        /// <param name="code">A string of code to execute.</param>
         public static void ExecuteString(string code)
         {
             try

@@ -17,8 +17,8 @@ namespace ScribeBot.Wrappers
         /// <summary>
         /// Display a popup with the message and an entry box. Data entered into the entry box will be passed back to Lua environment upon submission.
         /// </summary>
-        /// <param name="message"></param>
-        /// <returns></returns>
+        /// <param name="message">A message to display on popup window.</param>
+        /// <returns>A string value inserted into textbox.</returns>
         public static string ShowPrompt( string message )
         {
             Prompt prompt = new Prompt();

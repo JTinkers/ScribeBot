@@ -90,7 +90,7 @@ namespace ScribeBot
         /// <summary>
         /// Write a string of text.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">String to write</param>
         public static void Write(String value)
         {
             MainWindow?.Invoke(new Action(() =>
@@ -102,7 +102,7 @@ namespace ScribeBot
         /// <summary>
         /// Write a string of text and append it with a linebreak.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">String to write</param>
         public static void WriteLine(String value)
         {
             MainWindow?.Invoke(new Action(() =>
@@ -114,7 +114,7 @@ namespace ScribeBot
         /// <summary>
         /// Get a path list of script files contained inside Data\Scripts\ folder.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A path list of script files contained inside Data\Scripts\ folder.</returns>
         public static string[] GetScriptPaths()
         {
             return Directory.GetFiles($@"{Application.StartupPath}\Data\Scripts\").Where(x => Path.GetExtension(x) == ".lua").ToArray();
