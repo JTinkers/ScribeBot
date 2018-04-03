@@ -18,14 +18,13 @@ namespace Scribe
     static class Core
     {
         private static string version = "0.1beta";
+        private static Thread interfaceThread;
+        private static Window mainWindow;
 
         /// <summary>
         /// Current version of Scribe.
         /// </summary>
         public static string Version { get => version; private set => version = value; }
-
-        private static Thread interfaceThread;
-        private static Window mainWindow;
 
         /// <summary>
         /// Thread on which WinForms class instances are ran.
