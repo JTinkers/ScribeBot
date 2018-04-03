@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Scribe.Native
 {
+    /// <summary>
+    /// Class containing native functionality derived via DllImport.
+    /// </summary>
     class Native
     {
         [DllImport("user32.dll")]
@@ -32,6 +35,9 @@ namespace Scribe.Native
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetCursorPos(out NativePoint point);
+
+        [DllImport("user32.dll")]
+        public static extern void mouse_event(int flags, int x, int y, int buttons, int extraInfo);
     }
 
     [StructLayout(LayoutKind.Sequential)]

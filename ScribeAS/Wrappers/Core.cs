@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MoonSharp.Interpreter;
-using Scribe.Wrappers.Classes;
+using Scribe.Wrappers.Types;
 
 namespace Scribe.Wrappers
 {
+    /// <summary>
+    /// Wrapper containing all core functionality exposed to Lua environment.
+    /// </summary>
     [MoonSharpUserData]
     static class Core
     {
@@ -18,7 +21,7 @@ namespace Scribe.Wrappers
         public static void SetFocusWindow(string title) => Native.API.SetFocusWindow(title);
         public static void Close() => Scribe.Core.Close();
         public static string GetFocusWindow() => Native.API.GetFocusWindow();
-        public static string[] GetWindowTitles() => Scribe.Core.GetWindowTitles();
+        //public static string[] GetWindowTitles() => Scribe.Core.GetWindowTitles(); //Repalce with Native.API
         public static Point GetWindowPos(string title) => Native.API.GetWindowPos(title);
     }
 }

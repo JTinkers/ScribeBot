@@ -31,6 +31,7 @@ namespace Scribe.Interface
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.consolePanel = new System.Windows.Forms.GroupBox();
             this.consoleSend = new System.Windows.Forms.Button();
             this.consoleInput = new System.Windows.Forms.TextBox();
@@ -141,6 +142,7 @@ namespace Scribe.Interface
             this.asyncCheckbox.Size = new System.Drawing.Size(93, 17);
             this.asyncCheckbox.TabIndex = 2;
             this.asyncCheckbox.Text = "Asynchronous";
+            this.asyncTooltip.SetToolTip(this.asyncCheckbox, resources.GetString("asyncCheckbox.ToolTip"));
             this.asyncCheckbox.UseVisualStyleBackColor = true;
             // 
             // scriptRun
@@ -171,6 +173,16 @@ namespace Scribe.Interface
             this.settingsPage.TabIndex = 1;
             this.settingsPage.Text = "Settings";
             this.settingsPage.UseVisualStyleBackColor = true;
+            // 
+            // asyncTooltip
+            // 
+            this.asyncTooltip.AutoPopDelay = 5000;
+            this.asyncTooltip.InitialDelay = 200;
+            this.asyncTooltip.ReshowDelay = 100;
+            this.asyncTooltip.ShowAlways = true;
+            this.asyncTooltip.ToolTipTitle = "Notice";
+            this.asyncTooltip.UseAnimation = false;
+            this.asyncTooltip.UseFading = false;
             // 
             // Window
             // 

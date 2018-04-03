@@ -16,10 +16,5 @@ namespace Scribe.Interface
         {
             InitializeComponent();
         }
-
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
     }
 }

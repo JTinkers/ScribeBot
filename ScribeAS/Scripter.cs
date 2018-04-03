@@ -8,14 +8,25 @@ using MoonSharp.Interpreter;
 
 namespace Scribe
 {
+    /// <summary>
+    /// Class creating and maintaining environment for Lua scripts.
+    /// </summary>
     static class Scripter
     {
         private static Script currentScript = new Script();
 
+        /// <summary>
+        /// Class instance containing MoonSharp scripting session.
+        /// </summary>
         public static Script CurrentScript { get => currentScript; set => currentScript = value; }
 
+        /// <summary>
+        /// Static constructor initializing and sharing all vital functionality with Lua environment.
+        /// </summary>
         static Scripter()
         {
+            Script.WarmUp();
+
             UserData.RegisterAssembly();
 
             //Options
@@ -34,6 +45,11 @@ namespace Scribe
             CurrentScript.DoString(Wrappers.LuaExtensions.Wait);
         }
 
+        /// <summary>
+        /// Execute a Lua file. Keep in mind that setting asynchronous to true might cause debugger to be unable to pass syntax errors properly.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="asynchronous"></param>
         public static void ExecuteFile(string path, bool asynchronous = true)
         {
             if (asynchronous)
@@ -53,6 +69,10 @@ namespace Scribe
             }
         }
 
+        /// <summary>
+        /// Execute a string of Lua code on the currently running script. If script is no longer running - the code will still be able to access variables, functions etc.
+        /// </summary>
+        /// <param name="code"></param>
         public static void ExecuteString(string code)
         {
             try

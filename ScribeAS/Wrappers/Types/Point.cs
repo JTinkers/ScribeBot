@@ -5,8 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using MoonSharp.Interpreter;
 
-namespace Scribe.Wrappers.Classes
+namespace Scribe.Wrappers.Types
 {
+    /// <summary>
+    /// Proxy structure for System.Drawing.Point
+    /// </summary>
     [MoonSharpUserData]
     public struct Point
     {

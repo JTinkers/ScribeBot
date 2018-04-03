@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Scribe.Wrappers
 {
+    /// <summary>
+    /// Wrapper containing functionality related to screen.
+    /// </summary>
     [MoonSharpUserData]
     static class Screen
     {

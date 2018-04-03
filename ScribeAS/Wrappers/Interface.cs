@@ -8,9 +8,17 @@ using Scribe.Interface;
 
 namespace Scribe.Wrappers
 {
+    /// <summary>
+    /// Class containing functions that allow for creation and usage of WinForms interfaces exposed to Lua environment.
+    /// </summary>
     [MoonSharpUserData]
     static class Interface
     {
+        /// <summary>
+        /// Display a popup with the message and an entry box. Data entered into the entry box will be passed back to Lua environment upon submission.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public static string ShowPrompt( string message )
         {
             Prompt prompt = new Prompt();

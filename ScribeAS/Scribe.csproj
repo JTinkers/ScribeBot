@@ -68,8 +68,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripter.cs" />
-    <Compile Include="Wrappers\Classes\Color.cs" />
-    <Compile Include="Wrappers\Classes\Point.cs" />
+    <Compile Include="Wrappers\Types\Color.cs" />
+    <Compile Include="Wrappers\Types\Point.cs" />
     <Compile Include="Wrappers\Core.cs" />
     <Compile Include="Wrappers\Input.cs" />
     <Compile Include="Wrappers\Interface.cs" />
@@ -78,6 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Data\Scripts\print_mouse_pos.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Data\Scripts\test.lua">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
