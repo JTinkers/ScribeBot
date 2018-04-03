@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3F6E70D7-10B8-485E-87D5-749E4E24C8F9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Scribe</RootNamespace>
-    <AssemblyName>Scribe</AssemblyName>
+    <RootNamespace>ScribeBot</RootNamespace>
+    <AssemblyName>ScribeBot</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

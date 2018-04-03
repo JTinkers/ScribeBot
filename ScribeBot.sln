@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scribe", "ScribeAS\Scribe.csproj", "{3F6E70D7-10B8-485E-87D5-749E4E24C8F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScribeBot", "ScribeBot\ScribeBot.csproj", "{3F6E70D7-10B8-485E-87D5-749E4E24C8F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MoonSharp.Interpreter;
 
-namespace Scribe.Wrappers.Types
+namespace ScribeBot.Wrappers.Types
 {
     /// <summary>
     /// Proxy structure for System.Drawing.Color

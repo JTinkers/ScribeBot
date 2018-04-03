@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Scribe.Interface
+namespace ScribeBot.Interface
 {
-    public partial class Window : Form
+    public partial class Prompt : Form
     {
-        public Window()
+        public Prompt()
         {
             InitializeComponent();
         }

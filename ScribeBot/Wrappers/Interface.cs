@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MoonSharp.Interpreter;
-using Scribe.Interface;
+using ScribeBot.Interface;
 
-namespace Scribe.Wrappers
+namespace ScribeBot.Wrappers
 {
     /// <summary>
     /// Class containing functions that allow for creation and usage of WinForms interfaces exposed to Lua environment.

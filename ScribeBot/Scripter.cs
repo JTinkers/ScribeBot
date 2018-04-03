@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using MoonSharp.Interpreter;
 
-namespace Scribe
+namespace ScribeBot
 {
     /// <summary>
     /// Class creating and maintaining environment for Lua scripts.

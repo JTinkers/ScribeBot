@@ -1,17 +1,18 @@
-﻿using MoonSharp.Interpreter;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MoonSharp.Interpreter;
 
-namespace Scribe.Wrappers
+namespace ScribeBot.Wrappers.Types
 {
     /// <summary>
-    /// Wrapper containing functionality related to screen.
+    /// Proxy structure for System.Drawing.Point
     /// </summary>
     [MoonSharpUserData]
-    static class Screen
+    public struct Point
     {
+        public int X, Y;
     }
 }

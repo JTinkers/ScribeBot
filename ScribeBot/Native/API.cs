@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Scribe.Wrappers.Types;
+using ScribeBot.Wrappers.Types;
 
-namespace Scribe.Native
+namespace ScribeBot.Native
 {
     /// <summary>
     /// Wrapper class created to simplify usage of native functionality derived via DllImport.

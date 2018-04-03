@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Scribe.Interface
+namespace ScribeBot.Interface
 {
     partial class Window
     {
@@ -193,7 +193,7 @@ namespace Scribe.Interface
             this.MaximizeBox = false;
             this.Name = "Window";
             this.Padding = new System.Windows.Forms.Padding(5);
-            this.Text = "Scribe";
+            this.Text = "ScribeBot";
             this.consolePanel.ResumeLayout(false);
             this.consolePanel.PerformLayout();
             this.layoutPanel.ResumeLayout(false);

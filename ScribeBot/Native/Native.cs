@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scribe.Native
+namespace ScribeBot.Native
 {
     /// <summary>
     /// Class containing native functionality derived via DllImport.

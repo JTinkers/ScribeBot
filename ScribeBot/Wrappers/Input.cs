@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MoonSharp.Interpreter;
-using Scribe.Wrappers.Types;
+using ScribeBot.Wrappers.Types;
 
-namespace Scribe.Wrappers
+namespace ScribeBot.Wrappers
 {
     /// <summary>
     /// Wrapper containing all input functionality exposed to Lua environment.

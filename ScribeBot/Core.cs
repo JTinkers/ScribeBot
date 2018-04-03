@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using MoonSharp.Interpreter;
-using Scribe.Interface;
+using ScribeBot.Interface;
 using System.Diagnostics;
 
-namespace Scribe
+namespace ScribeBot
 {
     /// <summary>
     /// Class containing core functionality.
@@ -22,7 +22,7 @@ namespace Scribe
         private static Window mainWindow;
 
         /// <summary>
-        /// Current version of Scribe.
+        /// Current version of ScribeBot.
         /// </summary>
         public static string Version { get => version; private set => version = value; }
 

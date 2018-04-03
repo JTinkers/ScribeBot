@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scribe.Wrappers
+namespace ScribeBot.Wrappers
 {
     /// <summary>
     /// Class containing all functions that can and should be implemented from Lua environment itself.

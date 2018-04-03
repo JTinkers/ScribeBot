@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Scribe.Interface
+namespace ScribeBot.Interface
 {
     partial class Prompt
     {
@@ -74,7 +74,7 @@ namespace Scribe.Interface
             this.MinimizeBox = false;
             this.Name = "Prompt";
             this.Padding = new System.Windows.Forms.Padding(5);
-            this.Text = "Scribe - Prompt";
+            this.Text = "ScribeBot - Prompt";
             this.ResumeLayout(false);
             this.PerformLayout();
 
