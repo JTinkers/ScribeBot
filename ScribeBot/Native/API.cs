@@ -31,15 +31,15 @@ namespace ScribeBot.Native
         }
 
         /// <summary>
-        /// Bring a window of given title to the front and switch input focus to it.
+        /// Set window into focus.
         /// </summary>
         /// <param name="title">The title of window to set focus to.</param>
         public static void SetFocusWindow(string title)
         {
-            IntPtr windowHandle = GetWindowHandleByTitle(title);
+            IntPtr handle = GetWindowHandleByTitle(title);
 
-            if (windowHandle != IntPtr.Zero)
-                Native.SetForegroundWindow(windowHandle);
+            if (handle != IntPtr.Zero)
+                Native.SetForegroundWindow(handle);
         }
 
         /// <summary>
@@ -53,6 +53,62 @@ namespace ScribeBot.Native
             Native.GetWindowText(Native.GetForegroundWindow(), title, 256);
 
             return title.ToString();
+        }
+
+        /// <summary>
+        /// Check whether window is visible.
+        /// </summary>
+        /// <param name="title">The title of window to check.</param>
+        /// <returns>Whether it's visible or not</returns>
+        public static bool IsWindowVisible(string title)
+        {
+            IntPtr handle = GetWindowHandleByTitle(title);
+
+            return Native.IsWindowVisible(handle);
+        }
+
+        /// <summary>
+        /// Set size of window of a specified title.
+        /// </summary>
+        /// <param name="title">Title of window to set size of.</param>
+        /// <param name="width">The width of window.</param>
+        /// <param name="height">The height of window.</param>
+        public static void SetWindowSize(string title, int width, int height)
+        {
+            IntPtr handle = GetWindowHandleByTitle(title);
+
+            Native.GetWindowRect(handle, out WindowRect rect);
+
+            Native.MoveWindow(GetWindowHandleByTitle(title), rect.Left, rect.Top, width, height, true);
+        }
+
+        /// <summary>
+        /// Get size of window of a specified title.
+        /// </summary>
+        /// <param name="title">Title of window to get size of.</param>
+        /// <returns>The size of window.</returns>
+        public static Size GetWindowSize(string title)
+        {
+            IntPtr handle = GetWindowHandleByTitle(title);
+
+            Native.GetWindowRect(handle, out WindowRect rect);
+
+            return new Size() { Width = rect.Right - rect.Left, Height = rect.Bottom - rect.Top };
+        }
+
+        /// <summary>
+        /// Set window position.
+        /// </summary>
+        /// <param name="title">Title of windowo to set position of.</param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        public static void SetWindowPos(string title, int x, int y)
+        {
+            IntPtr handle = GetWindowHandleByTitle(title);
+
+            Native.GetWindowRect(handle, out WindowRect rect);
+
+            Native.MoveWindow(GetWindowHandleByTitle(title), x, y, rect.Right - rect.Left, rect.Bottom - rect.Top, true);
         }
 
         /// <summary>
@@ -85,9 +141,7 @@ namespace ScribeBot.Native
         /// <returns>Position of the cursor.</returns>
         public static Point GetCursorPos()
         {
-            NativePoint point;
-
-            Native.GetCursorPos(out point);
+            Native.GetCursorPos(out NativePoint point);
 
             return new Point() { X = point.X, Y = point.Y };
         }

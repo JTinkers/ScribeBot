@@ -14,6 +14,9 @@ namespace ScribeBot.Native
     class Native
     {
         [DllImport("user32.dll")]
+        public static extern bool MoveWindow(IntPtr handle, int x, int y, int width, int height, bool redraw);
+
+        [DllImport("user32.dll")]
         public static extern uint SendInput(uint count, [MarshalAs(UnmanagedType.LPArray), In] Input[] inputs, int size);
 
         [DllImport("user32.dll")]
@@ -27,6 +30,10 @@ namespace ScribeBot.Native
 
         [DllImport("user32.dll")]
         public static extern bool GetWindowRect(IntPtr windowHandle, out WindowRect rectangle);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool IsWindowVisible(IntPtr hWnd);
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
