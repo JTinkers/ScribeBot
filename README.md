@@ -1,5 +1,6 @@
 # ScribeBot
 ScribeBot is a scriptable automation system.
+
 With a little knowledge of Lua, you can automate mundane tasks, create macros or even create a game bot.
 
 ## Usage
@@ -10,6 +11,7 @@ With a little knowledge of Lua, you can automate mundane tasks, create macros or
 
 ## Writting for ScribeBot
 The program is currently a work in progress and might get updated with new features over time.
+
 It currently consists of several functions listed below (functions will be renamed to fit Lua conventions in the future).
 
 ## Functions (A more comprehensive list coming soon)
