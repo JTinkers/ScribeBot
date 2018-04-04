@@ -76,6 +76,7 @@
     <Compile Include="Wrappers\Interface.cs" />
     <Compile Include="Wrappers\LuaExtensions.cs" />
     <Compile Include="Wrappers\Screen.cs" />
+    <Compile Include="Wrappers\Types\Size.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

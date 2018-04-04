@@ -16,6 +16,7 @@ namespace ScribeBot.Wrappers
     {
         public static void SendKeyPress(Native.VirtualKeyCode key) => Native.API.SendKeyPress(key);
         public static void SendMousePress(int button) => Native.API.SendMousePress(button);
+
         public static void SetCursorPos(int x, int y) => Native.API.SetCursorPos(x, y);
         public static Point GetCursorPos() => Native.API.GetCursorPos();
     }

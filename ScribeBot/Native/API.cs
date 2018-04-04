@@ -18,7 +18,7 @@ namespace ScribeBot.Native
         /// </summary>
         /// <param name="title">The title of window to get a handle of.</param>
         /// <returns></returns>
-        public static IntPtr GetWindowHandleByTitle(string title)
+        private static IntPtr GetWindowHandleByTitle(string title)
         {
             IEnumerable<Process> processes = Process.GetProcesses().Where(x => !String.IsNullOrEmpty(x.MainWindowTitle));
 
