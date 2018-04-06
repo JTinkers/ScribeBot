@@ -33,9 +33,9 @@ namespace ScribeBot
             CurrentScript.Options.DebugPrint = value => Core.WriteLine(value);
 
             //Wrappers/Classes
-            CurrentScript.Globals["Core"] = typeof(Wrappers.Core);
-            CurrentScript.Globals["Input"] = typeof(Wrappers.Input);
-            CurrentScript.Globals["Interface"] = typeof(Wrappers.Interface);
+            CurrentScript.Globals["core"] = typeof(Wrappers.Core);
+            CurrentScript.Globals["input"] = typeof(Wrappers.Input);
+            CurrentScript.Globals["interface"] = typeof(Wrappers.Interface);
 
             //Enums
             UserData.RegisterType<Native.VirtualKeyCode>();
@@ -43,6 +43,7 @@ namespace ScribeBot
 
             //LuaFunc extensions
             CurrentScript.DoString(Wrappers.LuaExtensions.Wait);
+            CurrentScript.DoString(Wrappers.LuaExtensions.PrintTable);
         }
 
         /// <summary>
@@ -77,7 +78,8 @@ namespace ScribeBot
         {
             try
             {
-                CurrentScript?.DoString(code); //Cannot enter the same MoonSharp processor from two different threads : 5 and 3
+                Core.WriteLine($"> {code}");
+                CurrentScript?.DoString(code);
             }
             catch (SyntaxErrorException e)
             {

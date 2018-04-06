@@ -30,6 +30,16 @@ namespace ScribeBot.Native
             return IntPtr.Zero;
         }
 
+        public static string[] GetWindowTitles()
+        {
+            IEnumerable<Process> processes = Process.GetProcesses().Where(x => !String.IsNullOrEmpty(x.MainWindowTitle));
+
+            if (processes.Any())
+                return processes.Select(x => x.MainWindowTitle).ToArray();
+
+            return new string[0];
+        }
+
         /// <summary>
         /// Set window into focus.
         /// </summary>

@@ -31,11 +31,10 @@ namespace ScribeBot.Interface
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.consolePanel = new System.Windows.Forms.GroupBox();
             this.consoleSend = new System.Windows.Forms.Button();
             this.consoleInput = new System.Windows.Forms.TextBox();
-            this.consoleOutput = new System.Windows.Forms.TextBox();
+            this.consoleOutput = new System.Windows.Forms.RichTextBox();
             this.layoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.optionsPanel = new System.Windows.Forms.TabControl();
             this.scriptsPage = new System.Windows.Forms.TabPage();
@@ -44,17 +43,19 @@ namespace ScribeBot.Interface
             this.scriptListBox = new System.Windows.Forms.ListBox();
             this.settingsPage = new System.Windows.Forms.TabPage();
             this.asyncTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.consoleContainer = new System.Windows.Forms.Panel();
             this.consolePanel.SuspendLayout();
             this.layoutPanel.SuspendLayout();
             this.optionsPanel.SuspendLayout();
             this.scriptsPage.SuspendLayout();
+            this.consoleContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // consolePanel
             // 
+            this.consolePanel.Controls.Add(this.consoleContainer);
             this.consolePanel.Controls.Add(this.consoleSend);
             this.consolePanel.Controls.Add(this.consoleInput);
-            this.consolePanel.Controls.Add(this.consoleOutput);
             this.consolePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.consolePanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.consolePanel.Location = new System.Drawing.Point(3, 3);
@@ -84,14 +85,15 @@ namespace ScribeBot.Interface
             // consoleOutput
             // 
             this.consoleOutput.BackColor = System.Drawing.SystemColors.Window;
-            this.consoleOutput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.consoleOutput.Location = new System.Drawing.Point(8, 21);
-            this.consoleOutput.Multiline = true;
+            this.consoleOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.consoleOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.consoleOutput.Location = new System.Drawing.Point(0, 0);
             this.consoleOutput.Name = "consoleOutput";
             this.consoleOutput.ReadOnly = true;
-            this.consoleOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.consoleOutput.Size = new System.Drawing.Size(264, 289);
+            this.consoleOutput.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.consoleOutput.Size = new System.Drawing.Size(263, 287);
             this.consoleOutput.TabIndex = 0;
+            this.consoleOutput.Text = "";
             // 
             // layoutPanel
             // 
@@ -142,7 +144,8 @@ namespace ScribeBot.Interface
             this.asyncCheckbox.Size = new System.Drawing.Size(93, 17);
             this.asyncCheckbox.TabIndex = 2;
             this.asyncCheckbox.Text = "Asynchronous";
-            this.asyncTooltip.SetToolTip(this.asyncCheckbox, resources.GetString("asyncCheckbox.ToolTip"));
+            this.asyncTooltip.SetToolTip(this.asyncCheckbox, "Execute script on a separate thread to prevent user interface from freezing durin" +
+        "g script\'s routine.\r\nKeep in mind that this might disable syntax debugger.");
             this.asyncCheckbox.UseVisualStyleBackColor = true;
             // 
             // scriptRun
@@ -184,6 +187,15 @@ namespace ScribeBot.Interface
             this.asyncTooltip.UseAnimation = false;
             this.asyncTooltip.UseFading = false;
             // 
+            // consoleContainer
+            // 
+            this.consoleContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.consoleContainer.Controls.Add(this.consoleOutput);
+            this.consoleContainer.Location = new System.Drawing.Point(8, 21);
+            this.consoleContainer.Name = "consoleContainer";
+            this.consoleContainer.Size = new System.Drawing.Size(265, 289);
+            this.consoleContainer.TabIndex = 3;
+            // 
             // Window
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -200,6 +212,7 @@ namespace ScribeBot.Interface
             this.optionsPanel.ResumeLayout(false);
             this.scriptsPage.ResumeLayout(false);
             this.scriptsPage.PerformLayout();
+            this.consoleContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -212,15 +225,16 @@ namespace ScribeBot.Interface
         private System.Windows.Forms.TabPage scriptsPage;
         private System.Windows.Forms.TabPage settingsPage;
         private System.Windows.Forms.ListBox scriptListBox;
-        private TextBox consoleOutput;
+        private RichTextBox consoleOutput;
         private Button scriptRun;
         private CheckBox asyncCheckbox;
         private ToolTip asyncTooltip;
         private TextBox consoleInput;
         private Button consoleSend;
+        private Panel consoleContainer;
 
         public ListBox ScriptListBox { get => scriptListBox; set => scriptListBox = value; }
-        public TextBox ConsoleOutput { get => consoleOutput; set => consoleOutput = value; }
+        public RichTextBox ConsoleOutput { get => consoleOutput; set => consoleOutput = value; }
         public Button ScriptRun { get => scriptRun; set => scriptRun = value; }
         public CheckBox AsyncCheckbox { get => asyncCheckbox; set => asyncCheckbox = value; }
         public TextBox ConsoleInput { get => consoleInput; set => consoleInput = value; }

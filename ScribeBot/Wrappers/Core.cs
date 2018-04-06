@@ -31,6 +31,6 @@ namespace ScribeBot.Wrappers
         public static bool IsWindowVisible(string title) => Native.API.IsWindowVisible(title);
 
         public static void Close() => ScribeBot.Core.Close();
-        //public static string[] GetWindowTitles() => ScribeBot.Core.GetWindowTitles(); //Repalce with Native.API
+        public static string[] GetWindowTitles() => Native.API.GetWindowTitles(); //Repalce with Native.API
     }
 }

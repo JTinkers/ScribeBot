@@ -21,5 +21,16 @@ namespace ScribeBot.Wrappers
                 repeat until os.clock() > callTime
             end
         ";
+
+        public static string PrintTable =
+        @"
+            function table.print(t)
+                print( '{\n' )
+                for key, value in pairs(t) do
+                    print(string.format('\t[%s] = %s\n', key, value))
+                end
+                print( '}' )
+            end
+        ";
     }
 }

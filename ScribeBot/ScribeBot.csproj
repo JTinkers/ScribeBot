@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Interface\Prompt.cs">
       <SubType>Form</SubType>
     </Compile>
