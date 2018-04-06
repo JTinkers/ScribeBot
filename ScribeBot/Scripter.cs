@@ -6,6 +6,7 @@ using System.IO;
 using System.Threading;
 using MoonSharp.Interpreter;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace ScribeBot
 {
@@ -31,7 +32,7 @@ namespace ScribeBot
             UserData.RegisterAssembly();
 
             //Options
-            CurrentScript.Options.DebugPrint = value => Core.WriteLine(value);
+            CurrentScript.Options.DebugPrint = value => Core.Write(Core.Colors["LightBlue"], value + "\n");
             CurrentScript.Options.CheckThreadAccess = false;
 
             //Wrappers/Classes
@@ -55,7 +56,7 @@ namespace ScribeBot
         /// <param name="asynchronous">Defines whether file should be executed on a thread different to ScribeBot itself.</param>
         public static void ExecuteFile(string path, bool asynchronous = true)
         {
-            Core.WriteLine($"> Running {Path.GetFileName(path)}");
+            Core.WriteLine(Core.Colors["Yellow"], $"> Running {Path.GetFileName(path)}");
 
             try
             {
@@ -66,7 +67,7 @@ namespace ScribeBot
             }
             catch (Exception e)
             {
-                Core.WriteLine($"[{Path.GetFileName(path)}] ERROR: {e.Message}");
+                Core.WriteLine(Core.Colors["Red"], $"[{Path.GetFileName(path)}] ERROR: {e.Message}");
             }
         }
 
@@ -77,7 +78,7 @@ namespace ScribeBot
         /// <param name="asynchronous">Defines whether code should be executed on a thread different to ScribeBot itself.</param>
         public static void ExecuteString(string code, bool asynchronous = false)
         {
-            Core.WriteLine($"> {code}");
+            Core.WriteLine(Core.Colors["Blue"], $"> {code}");
 
             try
             {
@@ -88,7 +89,7 @@ namespace ScribeBot
             }
             catch (Exception e)
             {
-                Core.WriteLine($"[Console] ERROR: {e.Message}");
+                Core.WriteLine(Core.Colors["Red"], $"[Console] ERROR: {e.Message}");
             }
         }
     }

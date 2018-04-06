@@ -70,7 +70,7 @@ namespace ScribeBot.Interface
             this.consolePanel.Location = new System.Drawing.Point(3, 3);
             this.consolePanel.Name = "consolePanel";
             this.consolePanel.Padding = new System.Windows.Forms.Padding(5);
-            this.consolePanel.Size = new System.Drawing.Size(391, 346);
+            this.consolePanel.Size = new System.Drawing.Size(486, 556);
             this.consolePanel.TabIndex = 0;
             this.consolePanel.TabStop = false;
             this.consolePanel.Text = "Console";
@@ -83,7 +83,7 @@ namespace ScribeBot.Interface
             this.consoleContainer.Location = new System.Drawing.Point(10, 23);
             this.consoleContainer.Margin = new System.Windows.Forms.Padding(5);
             this.consoleContainer.Name = "consoleContainer";
-            this.consoleContainer.Size = new System.Drawing.Size(371, 285);
+            this.consoleContainer.Size = new System.Drawing.Size(466, 496);
             this.consoleContainer.TabIndex = 3;
             // 
             // panel1
@@ -94,7 +94,7 @@ namespace ScribeBot.Interface
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(369, 20);
+            this.panel1.Size = new System.Drawing.Size(464, 20);
             this.panel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -112,7 +112,7 @@ namespace ScribeBot.Interface
             this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(369, 20);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(464, 20);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // asyncStringCheck
@@ -126,9 +126,10 @@ namespace ScribeBot.Interface
             this.asyncStringCheck.Location = new System.Drawing.Point(5, 0);
             this.asyncStringCheck.Margin = new System.Windows.Forms.Padding(0);
             this.asyncStringCheck.Name = "asyncStringCheck";
-            this.asyncStringCheck.Size = new System.Drawing.Size(89, 20);
+            this.asyncStringCheck.Size = new System.Drawing.Size(113, 20);
             this.asyncStringCheck.TabIndex = 0;
             this.asyncStringCheck.Text = "Async";
+            this.noticeTooltip.SetToolTip(this.asyncStringCheck, "Execute string on a separate thread to prevent user interface from freezing during the execution.\r\nKeep in mind that this might disable syntax debugger.");
             this.asyncStringCheck.UseVisualStyleBackColor = true;
             // 
             // consoleOutput
@@ -142,13 +143,13 @@ namespace ScribeBot.Interface
             this.consoleOutput.Name = "consoleOutput";
             this.consoleOutput.ReadOnly = true;
             this.consoleOutput.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.consoleOutput.Size = new System.Drawing.Size(369, 263);
+            this.consoleOutput.Size = new System.Drawing.Size(464, 474);
             this.consoleOutput.TabIndex = 0;
             this.consoleOutput.Text = "";
             // 
             // consoleRun
             // 
-            this.consoleRun.Location = new System.Drawing.Point(313, 316);
+            this.consoleRun.Location = new System.Drawing.Point(408, 527);
             this.consoleRun.Name = "consoleRun";
             this.consoleRun.Size = new System.Drawing.Size(70, 20);
             this.consoleRun.TabIndex = 2;
@@ -158,24 +159,24 @@ namespace ScribeBot.Interface
             // 
             // consoleInput
             // 
-            this.consoleInput.Location = new System.Drawing.Point(8, 316);
+            this.consoleInput.Location = new System.Drawing.Point(8, 527);
             this.consoleInput.Name = "consoleInput";
-            this.consoleInput.Size = new System.Drawing.Size(299, 20);
+            this.consoleInput.Size = new System.Drawing.Size(394, 20);
             this.consoleInput.TabIndex = 1;
             // 
             // layoutPanel
             // 
             this.layoutPanel.ColumnCount = 2;
-            this.layoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.04393F));
-            this.layoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.95607F));
+            this.layoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.layoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.layoutPanel.Controls.Add(this.consolePanel, 0, 0);
             this.layoutPanel.Controls.Add(this.optionsPanel, 1, 0);
             this.layoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutPanel.Location = new System.Drawing.Point(5, 5);
+            this.layoutPanel.Location = new System.Drawing.Point(0, 0);
             this.layoutPanel.Name = "layoutPanel";
             this.layoutPanel.RowCount = 1;
-            this.layoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.layoutPanel.Size = new System.Drawing.Size(674, 352);
+            this.layoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.layoutPanel.Size = new System.Drawing.Size(784, 562);
             this.layoutPanel.TabIndex = 1;
             // 
             // optionsPanel
@@ -183,11 +184,11 @@ namespace ScribeBot.Interface
             this.optionsPanel.Controls.Add(this.scriptsPage);
             this.optionsPanel.Controls.Add(this.settingsPage);
             this.optionsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.optionsPanel.Location = new System.Drawing.Point(402, 5);
+            this.optionsPanel.Location = new System.Drawing.Point(497, 5);
             this.optionsPanel.Margin = new System.Windows.Forms.Padding(5);
             this.optionsPanel.Name = "optionsPanel";
             this.optionsPanel.SelectedIndex = 0;
-            this.optionsPanel.Size = new System.Drawing.Size(267, 342);
+            this.optionsPanel.Size = new System.Drawing.Size(282, 552);
             this.optionsPanel.TabIndex = 1;
             // 
             // scriptsPage
@@ -198,7 +199,7 @@ namespace ScribeBot.Interface
             this.scriptsPage.Location = new System.Drawing.Point(4, 22);
             this.scriptsPage.Name = "scriptsPage";
             this.scriptsPage.Padding = new System.Windows.Forms.Padding(5);
-            this.scriptsPage.Size = new System.Drawing.Size(259, 316);
+            this.scriptsPage.Size = new System.Drawing.Size(274, 526);
             this.scriptsPage.TabIndex = 0;
             this.scriptsPage.Text = "Scripts";
             this.scriptsPage.UseVisualStyleBackColor = true;
@@ -210,12 +211,12 @@ namespace ScribeBot.Interface
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.scriptRun, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.scriptStop, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 285);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 495);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(239, 21);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(254, 21);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // scriptRun
@@ -224,7 +225,7 @@ namespace ScribeBot.Interface
             this.scriptRun.Location = new System.Drawing.Point(0, 0);
             this.scriptRun.Margin = new System.Windows.Forms.Padding(0);
             this.scriptRun.Name = "scriptRun";
-            this.scriptRun.Size = new System.Drawing.Size(119, 21);
+            this.scriptRun.Size = new System.Drawing.Size(127, 21);
             this.scriptRun.TabIndex = 1;
             this.scriptRun.Text = "Run";
             this.scriptRun.UseVisualStyleBackColor = true;
@@ -232,10 +233,10 @@ namespace ScribeBot.Interface
             // scriptStop
             // 
             this.scriptStop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scriptStop.Location = new System.Drawing.Point(119, 0);
+            this.scriptStop.Location = new System.Drawing.Point(127, 0);
             this.scriptStop.Margin = new System.Windows.Forms.Padding(0);
             this.scriptStop.Name = "scriptStop";
-            this.scriptStop.Size = new System.Drawing.Size(120, 21);
+            this.scriptStop.Size = new System.Drawing.Size(127, 21);
             this.scriptStop.TabIndex = 2;
             this.scriptStop.Text = "Stop";
             this.noticeTooltip.SetToolTip(this.scriptStop, "This will force currently running script to stop");
@@ -247,7 +248,7 @@ namespace ScribeBot.Interface
             this.asyncCheckbox.Checked = true;
             this.asyncCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.asyncCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.asyncCheckbox.Location = new System.Drawing.Point(10, 259);
+            this.asyncCheckbox.Location = new System.Drawing.Point(10, 473);
             this.asyncCheckbox.Margin = new System.Windows.Forms.Padding(5);
             this.asyncCheckbox.Name = "asyncCheckbox";
             this.asyncCheckbox.Size = new System.Drawing.Size(52, 17);
@@ -263,7 +264,7 @@ namespace ScribeBot.Interface
             this.scriptListBox.Location = new System.Drawing.Point(10, 10);
             this.scriptListBox.Margin = new System.Windows.Forms.Padding(5);
             this.scriptListBox.Name = "scriptListBox";
-            this.scriptListBox.Size = new System.Drawing.Size(239, 238);
+            this.scriptListBox.Size = new System.Drawing.Size(254, 446);
             this.scriptListBox.TabIndex = 0;
             // 
             // settingsPage
@@ -271,7 +272,7 @@ namespace ScribeBot.Interface
             this.settingsPage.Location = new System.Drawing.Point(4, 22);
             this.settingsPage.Name = "settingsPage";
             this.settingsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.settingsPage.Size = new System.Drawing.Size(259, 316);
+            this.settingsPage.Size = new System.Drawing.Size(274, 526);
             this.settingsPage.TabIndex = 1;
             this.settingsPage.Text = "Settings";
             this.settingsPage.UseVisualStyleBackColor = true;
@@ -289,12 +290,12 @@ namespace ScribeBot.Interface
             // Window
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(684, 362);
+            this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.layoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Window";
-            this.Padding = new System.Windows.Forms.Padding(5);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ScribeBot";
             this.consolePanel.ResumeLayout(false);
             this.consolePanel.PerformLayout();

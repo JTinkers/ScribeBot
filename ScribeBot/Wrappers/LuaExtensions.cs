@@ -28,9 +28,9 @@ namespace ScribeBot.Wrappers
         public static string PrintTable =
         @"
             function table.print(t)
-                print( '{\n' )
+                print( '{' )
                 for key, value in pairs(t) do
-                    print(string.format('\t[%s] = %s\n', tostring(key), tostring(value)))
+                    print(string.format('\t[%s] = %s', tostring(key), tostring(value)))
                 end
                 print( '}' )
             end
