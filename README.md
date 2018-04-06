@@ -1,7 +1,11 @@
 # ScribeBot
+![](https://i.imgur.com/nPWbUCM.png) 
+
 ScribeBot is a scriptable automation system.
 
 With a little knowledge of Lua, you can automate mundane tasks, create macros or even create a game bot.
+
+![https://i.imgur.com/bZckWI6.png](https://i.imgur.com/bZckWI6.png)
 
 ## Usage
 - Run ScribeBot.exe
@@ -16,25 +20,32 @@ It currently consists of several functions listed below (functions will be renam
 
 ## Functions (A more comprehensive list coming soon)
 
-- Core.Version
-- Core.Write(text)
-- Core.WriteLine(text)
-- Core.SetFocusWindow(windowTitle)
-- Core.GetFocusWindow()
-- Core.SetWindowSize(windowTitle, width, height)
-- Core.GetWindowSize(windowTitle)
-- Core.SetWindowPos(windowTitle, x, y)
-- Core.GetWindowPos(windowTitle)
-- Core.IsWindowVisible(windowTitle)
-- Core.Close()
+- core.version
+- core.write(text)
+- core.writeLine(text)
+- core.setFocusWindow(windowTitle)
+- core.getFocusWindow()
+- core.setWindowSize(windowTitle, width, height)
+- core.getWindowSize(windowTitle)
+- core.setWindowPos(windowTitle, x, y)
+- core.getWindowPos(windowTitle)
+- core.isWindowVisible(windowTitle)
+- core.getWindowTitles()
+- core.close()
 
-- Input.SendKeyPress(key)
-- Input.SendMousePress(nButton)
-- Input.SetCursorPos(x, y)
-- Input.GetCursorPos()
+- input.sendKeyPress(key)
+- input.sendMousePress(nButton)
+- input.setCursorPos(x, y)
+- input.getCursorPos()
 
-- Interface.ShowPrompt(message)
+- interface.showPrompt(message)
+
+## Lua-ext Functions (A list of functions implemented into Lua itself)
+
+- wait(time)
+- table.print(t)
 
 ## Known bugs/odd behaviour
 - If you don't check the 'Asynchronous' option, the script will run on the same thread as the interface - rendering it unusable until the script is done.
 - If you check the 'Asynchronous' option, syntax errors might not be properly passed to the console (which isn't big of a deal, just get yourself a proper editor with a linter)
+
