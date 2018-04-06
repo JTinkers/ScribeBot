@@ -37,10 +37,10 @@ namespace ScribeBot.Interface
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.consoleInput = new System.Windows.Forms.TextBox();
             this.consoleRun = new System.Windows.Forms.Button();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.asyncStringCheck = new System.Windows.Forms.CheckBox();
             this.consoleContainer = new System.Windows.Forms.Panel();
             this.consoleOutput = new System.Windows.Forms.RichTextBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.asyncStringCheck = new System.Windows.Forms.CheckBox();
             this.layoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.optionsPanel = new System.Windows.Forms.TabControl();
             this.scriptsPage = new System.Windows.Forms.TabPage();
@@ -57,8 +57,8 @@ namespace ScribeBot.Interface
             this.noticeTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.consolePanel.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.consoleContainer.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.layoutPanel.SuspendLayout();
             this.optionsPanel.SuspendLayout();
             this.scriptsPage.SuspendLayout();
@@ -116,6 +116,32 @@ namespace ScribeBot.Interface
             this.noticeTooltip.SetToolTip(this.consoleRun, "Executing a string while other script is running will stop the script.");
             this.consoleRun.UseVisualStyleBackColor = true;
             // 
+            // consoleContainer
+            // 
+            this.consoleContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.consoleContainer.Controls.Add(this.consoleOutput);
+            this.consoleContainer.Controls.Add(this.tableLayoutPanel2);
+            this.consoleContainer.Location = new System.Drawing.Point(10, 24);
+            this.consoleContainer.Margin = new System.Windows.Forms.Padding(5);
+            this.consoleContainer.Name = "consoleContainer";
+            this.consoleContainer.Size = new System.Drawing.Size(465, 485);
+            this.consoleContainer.TabIndex = 3;
+            // 
+            // consoleOutput
+            // 
+            this.consoleOutput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(82)))));
+            this.consoleOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.consoleOutput.Dock = System.Windows.Forms.DockStyle.Top;
+            this.consoleOutput.ForeColor = System.Drawing.Color.White;
+            this.consoleOutput.Location = new System.Drawing.Point(0, 0);
+            this.consoleOutput.Margin = new System.Windows.Forms.Padding(0);
+            this.consoleOutput.Name = "consoleOutput";
+            this.consoleOutput.ReadOnly = true;
+            this.consoleOutput.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.consoleOutput.Size = new System.Drawing.Size(463, 456);
+            this.consoleOutput.TabIndex = 0;
+            this.consoleOutput.Text = "";
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.AutoSize = true;
@@ -151,32 +177,6 @@ namespace ScribeBot.Interface
             this.noticeTooltip.SetToolTip(this.asyncStringCheck, "Execute string on a separate thread to prevent user interface from freezing durin" +
         "g the execution.\r\nKeep in mind that this might disable syntax debugger.");
             this.asyncStringCheck.UseVisualStyleBackColor = true;
-            // 
-            // consoleContainer
-            // 
-            this.consoleContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.consoleContainer.Controls.Add(this.consoleOutput);
-            this.consoleContainer.Controls.Add(this.tableLayoutPanel2);
-            this.consoleContainer.Location = new System.Drawing.Point(10, 24);
-            this.consoleContainer.Margin = new System.Windows.Forms.Padding(5);
-            this.consoleContainer.Name = "consoleContainer";
-            this.consoleContainer.Size = new System.Drawing.Size(465, 485);
-            this.consoleContainer.TabIndex = 3;
-            // 
-            // consoleOutput
-            // 
-            this.consoleOutput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(82)))));
-            this.consoleOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.consoleOutput.Dock = System.Windows.Forms.DockStyle.Top;
-            this.consoleOutput.ForeColor = System.Drawing.Color.White;
-            this.consoleOutput.Location = new System.Drawing.Point(0, 0);
-            this.consoleOutput.Margin = new System.Windows.Forms.Padding(0);
-            this.consoleOutput.Name = "consoleOutput";
-            this.consoleOutput.ReadOnly = true;
-            this.consoleOutput.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.consoleOutput.Size = new System.Drawing.Size(463, 456);
-            this.consoleOutput.TabIndex = 0;
-            this.consoleOutput.Text = "";
             // 
             // layoutPanel
             // 
@@ -375,10 +375,10 @@ namespace ScribeBot.Interface
             this.consolePanel.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.consoleContainer.ResumeLayout(false);
             this.consoleContainer.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.layoutPanel.ResumeLayout(false);
             this.optionsPanel.ResumeLayout(false);
             this.scriptsPage.ResumeLayout(false);
