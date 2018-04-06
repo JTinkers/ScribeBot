@@ -9,6 +9,8 @@ using System.IO;
 using MoonSharp.Interpreter;
 using ScribeBot.Interface;
 using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Text;
 
 namespace ScribeBot
 {
@@ -20,6 +22,7 @@ namespace ScribeBot
         private static string version = "0.1beta";
         private static Thread interfaceThread;
         private static Window mainWindow;
+        private static PrivateFontCollection fonts;
 
         /// <summary>
         /// Current version of ScribeBot.
@@ -35,6 +38,7 @@ namespace ScribeBot
         /// The main frame for user interface.
         /// </summary>
         public static Window MainWindow { get => mainWindow; private set => mainWindow = value; }
+        public static PrivateFontCollection Fonts { get => fonts; set => fonts = value; }
 
         /// <summary>
         /// Creates user interface. TO-DO: Make it also load up config containing version info.
@@ -47,9 +51,14 @@ namespace ScribeBot
 
                 MainWindow = new Window();
 
-                MainWindow.ConsoleSend.Click += (o, e) =>
+                fonts = new PrivateFontCollection();
+                fonts.AddFontFile($@"{Application.StartupPath}\Data\Fonts\OfficeCodePro-Medium.ttf");
+
+                MainWindow.ConsoleOutput.Font = new Font(fonts.Families[0], 10f );
+
+                MainWindow.ConsoleRun.Click += (o, e) =>
                 {
-                    Scripter.ExecuteString(MainWindow.ConsoleInput.Text);
+                    Scripter.ExecuteString(MainWindow.ConsoleInput.Text, MainWindow.AsyncStringCheck.Checked);
                     MainWindow.ConsoleInput.Text = "";
                 };
 
@@ -57,7 +66,7 @@ namespace ScribeBot
                 {
                     if (e.KeyChar == (char)Keys.Enter)
                     {
-                        MainWindow.ConsoleSend.PerformClick();
+                        MainWindow.ConsoleRun.PerformClick();
                         e.Handled = true;
                     }
                 };
@@ -66,6 +75,16 @@ namespace ScribeBot
                 {
                     if( MainWindow.ScriptListBox.SelectedItem != null )
                         Scripter.ExecuteFile($@"{Application.StartupPath}\Data\Scripts\{MainWindow.ScriptListBox.SelectedItem}", MainWindow.AsyncCheckbox.Checked);
+                };
+
+                MainWindow.ScriptStop.Click += (o, e) =>
+                {
+                    Scripter.CurrentScript.DoStringAsync("lua_pcall( L, 0, LUA_MULTRET, 0 )");
+                };
+
+                MainWindow.ConsoleOutput.TextChanged += (o, e) =>
+                {
+                    MainWindow.ConsoleOutput.ScrollToCaret();
                 };
 
                 GetScriptPaths().ToList().ForEach(x => MainWindow.ScriptListBox.Items.Add(Path.GetFileName(x)));

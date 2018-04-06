@@ -22,12 +22,15 @@ namespace ScribeBot.Wrappers
             end
         ";
 
+        /// <summary>
+        /// String containing code for 'table.print(t)' function; Print table in a 'key = value' manner.
+        /// </summary>
         public static string PrintTable =
         @"
             function table.print(t)
                 print( '{\n' )
                 for key, value in pairs(t) do
-                    print(string.format('\t[%s] = %s\n', key, value))
+                    print(string.format('\t[%s] = %s\n', tostring(key), tostring(value)))
                 end
                 print( '}' )
             end

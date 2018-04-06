@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using System.Threading;
 using MoonSharp.Interpreter;
+using System.Diagnostics;
 
 namespace ScribeBot
 {
@@ -31,6 +32,7 @@ namespace ScribeBot
 
             //Options
             CurrentScript.Options.DebugPrint = value => Core.WriteLine(value);
+            CurrentScript.Options.CheckThreadAccess = false;
 
             //Wrappers/Classes
             CurrentScript.Globals["core"] = typeof(Wrappers.Core);
@@ -53,35 +55,38 @@ namespace ScribeBot
         /// <param name="asynchronous">Defines whether file should be executed on a thread different to ScribeBot itself.</param>
         public static void ExecuteFile(string path, bool asynchronous = true)
         {
-            if (asynchronous)
+            Core.WriteLine($"> Running {Path.GetFileName(path)}");
+
+            try
             {
-                CurrentScript.DoFileAsync(path);
-            }
-            else
-            {
-                try
-                {
+                if (asynchronous)
+                    CurrentScript.DoFileAsync(path);
+                else
                     CurrentScript.DoFile(path);
-                }
-                catch (SyntaxErrorException e)
-                {
-                    Core.WriteLine($"[{Path.GetFileName(path)}] ERROR: {e.Message}");
-                }
+            }
+            catch (Exception e)
+            {
+                Core.WriteLine($"[{Path.GetFileName(path)}] ERROR: {e.Message}");
             }
         }
 
         /// <summary>
-        /// Execute a string of Lua code on the currently running script. If script is no longer running - the code will still be able to access variables, functions etc.
+        /// Execute a string of code. Keep in mind that setting asynchronous to true might cause debugger to be unable to pass syntax errors properly.
         /// </summary>
-        /// <param name="code">A string of code to execute.</param>
-        public static void ExecuteString(string code)
+        /// <param name="code">String to execute.</param>
+        /// <param name="asynchronous">Defines whether code should be executed on a thread different to ScribeBot itself.</param>
+        public static void ExecuteString(string code, bool asynchronous = false)
         {
+            Core.WriteLine($"> {code}");
+
             try
             {
-                Core.WriteLine($"> {code}");
-                CurrentScript?.DoString(code);
+                if (asynchronous)
+                    CurrentScript.DoStringAsync(code);
+                else
+                    CurrentScript.DoString(code);
             }
-            catch (SyntaxErrorException e)
+            catch (Exception e)
             {
                 Core.WriteLine($"[Console] ERROR: {e.Message}");
             }

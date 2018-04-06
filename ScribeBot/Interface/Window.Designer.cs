@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace ScribeBot.Interface
 {
@@ -32,74 +33,141 @@ namespace ScribeBot.Interface
         {
             this.components = new System.ComponentModel.Container();
             this.consolePanel = new System.Windows.Forms.GroupBox();
-            this.consoleSend = new System.Windows.Forms.Button();
-            this.consoleInput = new System.Windows.Forms.TextBox();
+            this.consoleContainer = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.asyncStringCheck = new System.Windows.Forms.CheckBox();
             this.consoleOutput = new System.Windows.Forms.RichTextBox();
+            this.consoleRun = new System.Windows.Forms.Button();
+            this.consoleInput = new System.Windows.Forms.TextBox();
             this.layoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.optionsPanel = new System.Windows.Forms.TabControl();
             this.scriptsPage = new System.Windows.Forms.TabPage();
-            this.asyncCheckbox = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.scriptRun = new System.Windows.Forms.Button();
+            this.scriptStop = new System.Windows.Forms.Button();
+            this.asyncCheckbox = new System.Windows.Forms.CheckBox();
             this.scriptListBox = new System.Windows.Forms.ListBox();
             this.settingsPage = new System.Windows.Forms.TabPage();
-            this.asyncTooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.consoleContainer = new System.Windows.Forms.Panel();
+            this.noticeTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.consolePanel.SuspendLayout();
+            this.consoleContainer.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.layoutPanel.SuspendLayout();
             this.optionsPanel.SuspendLayout();
             this.scriptsPage.SuspendLayout();
-            this.consoleContainer.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // consolePanel
             // 
             this.consolePanel.Controls.Add(this.consoleContainer);
-            this.consolePanel.Controls.Add(this.consoleSend);
+            this.consolePanel.Controls.Add(this.consoleRun);
             this.consolePanel.Controls.Add(this.consoleInput);
             this.consolePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.consolePanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.consolePanel.Location = new System.Drawing.Point(3, 3);
             this.consolePanel.Name = "consolePanel";
             this.consolePanel.Padding = new System.Windows.Forms.Padding(5);
-            this.consolePanel.Size = new System.Drawing.Size(281, 346);
+            this.consolePanel.Size = new System.Drawing.Size(391, 346);
             this.consolePanel.TabIndex = 0;
             this.consolePanel.TabStop = false;
             this.consolePanel.Text = "Console";
             // 
-            // consoleSend
+            // consoleContainer
             // 
-            this.consoleSend.Location = new System.Drawing.Point(202, 316);
-            this.consoleSend.Name = "consoleSend";
-            this.consoleSend.Size = new System.Drawing.Size(70, 20);
-            this.consoleSend.TabIndex = 2;
-            this.consoleSend.Text = "Send";
-            this.consoleSend.UseVisualStyleBackColor = true;
+            this.consoleContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.consoleContainer.Controls.Add(this.panel1);
+            this.consoleContainer.Controls.Add(this.consoleOutput);
+            this.consoleContainer.Location = new System.Drawing.Point(10, 23);
+            this.consoleContainer.Margin = new System.Windows.Forms.Padding(5);
+            this.consoleContainer.Name = "consoleContainer";
+            this.consoleContainer.Size = new System.Drawing.Size(371, 285);
+            this.consoleContainer.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(98)))), ((int)(((byte)(117)))));
+            this.panel1.Controls.Add(this.tableLayoutPanel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(369, 20);
+            this.panel1.TabIndex = 1;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Controls.Add(this.asyncStringCheck, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(369, 20);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // asyncStringCheck
+            // 
+            this.asyncStringCheck.AutoSize = true;
+            this.asyncStringCheck.Checked = true;
+            this.asyncStringCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.asyncStringCheck.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.asyncStringCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.asyncStringCheck.ForeColor = System.Drawing.SystemColors.Info;
+            this.asyncStringCheck.Location = new System.Drawing.Point(5, 0);
+            this.asyncStringCheck.Margin = new System.Windows.Forms.Padding(0);
+            this.asyncStringCheck.Name = "asyncStringCheck";
+            this.asyncStringCheck.Size = new System.Drawing.Size(89, 20);
+            this.asyncStringCheck.TabIndex = 0;
+            this.asyncStringCheck.Text = "Async";
+            this.asyncStringCheck.UseVisualStyleBackColor = true;
+            // 
+            // consoleOutput
+            // 
+            this.consoleOutput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(82)))));
+            this.consoleOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.consoleOutput.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.consoleOutput.ForeColor = System.Drawing.Color.White;
+            this.consoleOutput.Location = new System.Drawing.Point(0, 20);
+            this.consoleOutput.Margin = new System.Windows.Forms.Padding(0);
+            this.consoleOutput.Name = "consoleOutput";
+            this.consoleOutput.ReadOnly = true;
+            this.consoleOutput.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.consoleOutput.Size = new System.Drawing.Size(369, 263);
+            this.consoleOutput.TabIndex = 0;
+            this.consoleOutput.Text = "";
+            // 
+            // consoleRun
+            // 
+            this.consoleRun.Location = new System.Drawing.Point(313, 316);
+            this.consoleRun.Name = "consoleRun";
+            this.consoleRun.Size = new System.Drawing.Size(70, 20);
+            this.consoleRun.TabIndex = 2;
+            this.consoleRun.Text = "Execute";
+            this.noticeTooltip.SetToolTip(this.consoleRun, "Executing a string while other script is running will stop the script.");
+            this.consoleRun.UseVisualStyleBackColor = true;
             // 
             // consoleInput
             // 
             this.consoleInput.Location = new System.Drawing.Point(8, 316);
             this.consoleInput.Name = "consoleInput";
-            this.consoleInput.Size = new System.Drawing.Size(188, 20);
+            this.consoleInput.Size = new System.Drawing.Size(299, 20);
             this.consoleInput.TabIndex = 1;
-            // 
-            // consoleOutput
-            // 
-            this.consoleOutput.BackColor = System.Drawing.SystemColors.Window;
-            this.consoleOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.consoleOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.consoleOutput.Location = new System.Drawing.Point(0, 0);
-            this.consoleOutput.Name = "consoleOutput";
-            this.consoleOutput.ReadOnly = true;
-            this.consoleOutput.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.consoleOutput.Size = new System.Drawing.Size(263, 287);
-            this.consoleOutput.TabIndex = 0;
-            this.consoleOutput.Text = "";
             // 
             // layoutPanel
             // 
             this.layoutPanel.ColumnCount = 2;
-            this.layoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.layoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.04393F));
+            this.layoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.95607F));
             this.layoutPanel.Controls.Add(this.consolePanel, 0, 0);
             this.layoutPanel.Controls.Add(this.optionsPanel, 1, 0);
             this.layoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -107,7 +175,7 @@ namespace ScribeBot.Interface
             this.layoutPanel.Name = "layoutPanel";
             this.layoutPanel.RowCount = 1;
             this.layoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.layoutPanel.Size = new System.Drawing.Size(574, 352);
+            this.layoutPanel.Size = new System.Drawing.Size(674, 352);
             this.layoutPanel.TabIndex = 1;
             // 
             // optionsPanel
@@ -115,48 +183,79 @@ namespace ScribeBot.Interface
             this.optionsPanel.Controls.Add(this.scriptsPage);
             this.optionsPanel.Controls.Add(this.settingsPage);
             this.optionsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.optionsPanel.Location = new System.Drawing.Point(292, 5);
+            this.optionsPanel.Location = new System.Drawing.Point(402, 5);
             this.optionsPanel.Margin = new System.Windows.Forms.Padding(5);
             this.optionsPanel.Name = "optionsPanel";
             this.optionsPanel.SelectedIndex = 0;
-            this.optionsPanel.Size = new System.Drawing.Size(277, 342);
+            this.optionsPanel.Size = new System.Drawing.Size(267, 342);
             this.optionsPanel.TabIndex = 1;
             // 
             // scriptsPage
             // 
+            this.scriptsPage.Controls.Add(this.tableLayoutPanel1);
             this.scriptsPage.Controls.Add(this.asyncCheckbox);
-            this.scriptsPage.Controls.Add(this.scriptRun);
             this.scriptsPage.Controls.Add(this.scriptListBox);
             this.scriptsPage.Location = new System.Drawing.Point(4, 22);
             this.scriptsPage.Name = "scriptsPage";
             this.scriptsPage.Padding = new System.Windows.Forms.Padding(5);
-            this.scriptsPage.Size = new System.Drawing.Size(269, 316);
+            this.scriptsPage.Size = new System.Drawing.Size(259, 316);
             this.scriptsPage.TabIndex = 0;
             this.scriptsPage.Text = "Scripts";
             this.scriptsPage.UseVisualStyleBackColor = true;
             // 
-            // asyncCheckbox
+            // tableLayoutPanel1
             // 
-            this.asyncCheckbox.AutoSize = true;
-            this.asyncCheckbox.Location = new System.Drawing.Point(10, 259);
-            this.asyncCheckbox.Margin = new System.Windows.Forms.Padding(5);
-            this.asyncCheckbox.Name = "asyncCheckbox";
-            this.asyncCheckbox.Size = new System.Drawing.Size(93, 17);
-            this.asyncCheckbox.TabIndex = 2;
-            this.asyncCheckbox.Text = "Asynchronous";
-            this.asyncTooltip.SetToolTip(this.asyncCheckbox, "Execute script on a separate thread to prevent user interface from freezing durin" +
-        "g script\'s routine.\r\nKeep in mind that this might disable syntax debugger.");
-            this.asyncCheckbox.UseVisualStyleBackColor = true;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.scriptRun, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.scriptStop, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 285);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(239, 21);
+            this.tableLayoutPanel1.TabIndex = 3;
             // 
             // scriptRun
             // 
-            this.scriptRun.Location = new System.Drawing.Point(10, 286);
-            this.scriptRun.Margin = new System.Windows.Forms.Padding(5);
+            this.scriptRun.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scriptRun.Location = new System.Drawing.Point(0, 0);
+            this.scriptRun.Margin = new System.Windows.Forms.Padding(0);
             this.scriptRun.Name = "scriptRun";
-            this.scriptRun.Size = new System.Drawing.Size(249, 20);
+            this.scriptRun.Size = new System.Drawing.Size(119, 21);
             this.scriptRun.TabIndex = 1;
             this.scriptRun.Text = "Run";
             this.scriptRun.UseVisualStyleBackColor = true;
+            // 
+            // scriptStop
+            // 
+            this.scriptStop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scriptStop.Location = new System.Drawing.Point(119, 0);
+            this.scriptStop.Margin = new System.Windows.Forms.Padding(0);
+            this.scriptStop.Name = "scriptStop";
+            this.scriptStop.Size = new System.Drawing.Size(120, 21);
+            this.scriptStop.TabIndex = 2;
+            this.scriptStop.Text = "Stop";
+            this.noticeTooltip.SetToolTip(this.scriptStop, "This will force currently running script to stop");
+            this.scriptStop.UseVisualStyleBackColor = true;
+            // 
+            // asyncCheckbox
+            // 
+            this.asyncCheckbox.AutoSize = true;
+            this.asyncCheckbox.Checked = true;
+            this.asyncCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.asyncCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.asyncCheckbox.Location = new System.Drawing.Point(10, 259);
+            this.asyncCheckbox.Margin = new System.Windows.Forms.Padding(5);
+            this.asyncCheckbox.Name = "asyncCheckbox";
+            this.asyncCheckbox.Size = new System.Drawing.Size(52, 17);
+            this.asyncCheckbox.TabIndex = 2;
+            this.asyncCheckbox.Text = "Async";
+            this.noticeTooltip.SetToolTip(this.asyncCheckbox, "Execute script on a separate thread to prevent user interface from freezing durin" +
+        "g script\'s routine.\r\nKeep in mind that this might disable syntax debugger.");
+            this.asyncCheckbox.UseVisualStyleBackColor = true;
             // 
             // scriptListBox
             // 
@@ -164,7 +263,7 @@ namespace ScribeBot.Interface
             this.scriptListBox.Location = new System.Drawing.Point(10, 10);
             this.scriptListBox.Margin = new System.Windows.Forms.Padding(5);
             this.scriptListBox.Name = "scriptListBox";
-            this.scriptListBox.Size = new System.Drawing.Size(249, 238);
+            this.scriptListBox.Size = new System.Drawing.Size(239, 238);
             this.scriptListBox.TabIndex = 0;
             // 
             // settingsPage
@@ -172,34 +271,25 @@ namespace ScribeBot.Interface
             this.settingsPage.Location = new System.Drawing.Point(4, 22);
             this.settingsPage.Name = "settingsPage";
             this.settingsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.settingsPage.Size = new System.Drawing.Size(269, 316);
+            this.settingsPage.Size = new System.Drawing.Size(259, 316);
             this.settingsPage.TabIndex = 1;
             this.settingsPage.Text = "Settings";
             this.settingsPage.UseVisualStyleBackColor = true;
             // 
-            // asyncTooltip
+            // noticeTooltip
             // 
-            this.asyncTooltip.AutoPopDelay = 5000;
-            this.asyncTooltip.InitialDelay = 200;
-            this.asyncTooltip.ReshowDelay = 100;
-            this.asyncTooltip.ShowAlways = true;
-            this.asyncTooltip.ToolTipTitle = "Notice";
-            this.asyncTooltip.UseAnimation = false;
-            this.asyncTooltip.UseFading = false;
-            // 
-            // consoleContainer
-            // 
-            this.consoleContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.consoleContainer.Controls.Add(this.consoleOutput);
-            this.consoleContainer.Location = new System.Drawing.Point(8, 21);
-            this.consoleContainer.Name = "consoleContainer";
-            this.consoleContainer.Size = new System.Drawing.Size(265, 289);
-            this.consoleContainer.TabIndex = 3;
+            this.noticeTooltip.AutoPopDelay = 5000;
+            this.noticeTooltip.InitialDelay = 200;
+            this.noticeTooltip.ReshowDelay = 100;
+            this.noticeTooltip.ShowAlways = true;
+            this.noticeTooltip.ToolTipTitle = "Notice";
+            this.noticeTooltip.UseAnimation = false;
+            this.noticeTooltip.UseFading = false;
             // 
             // Window
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(584, 362);
+            this.ClientSize = new System.Drawing.Size(684, 362);
             this.Controls.Add(this.layoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -208,11 +298,15 @@ namespace ScribeBot.Interface
             this.Text = "ScribeBot";
             this.consolePanel.ResumeLayout(false);
             this.consolePanel.PerformLayout();
+            this.consoleContainer.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.layoutPanel.ResumeLayout(false);
             this.optionsPanel.ResumeLayout(false);
             this.scriptsPage.ResumeLayout(false);
             this.scriptsPage.PerformLayout();
-            this.consoleContainer.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -228,16 +322,23 @@ namespace ScribeBot.Interface
         private RichTextBox consoleOutput;
         private Button scriptRun;
         private CheckBox asyncCheckbox;
-        private ToolTip asyncTooltip;
+        private ToolTip noticeTooltip;
         private TextBox consoleInput;
-        private Button consoleSend;
+        private Button consoleRun;
         private Panel consoleContainer;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Button scriptStop;
+        private Panel panel1;
+        private TableLayoutPanel tableLayoutPanel2;
+        private CheckBox asyncStringCheck;
 
         public ListBox ScriptListBox { get => scriptListBox; set => scriptListBox = value; }
         public RichTextBox ConsoleOutput { get => consoleOutput; set => consoleOutput = value; }
         public Button ScriptRun { get => scriptRun; set => scriptRun = value; }
         public CheckBox AsyncCheckbox { get => asyncCheckbox; set => asyncCheckbox = value; }
         public TextBox ConsoleInput { get => consoleInput; set => consoleInput = value; }
-        public Button ConsoleSend { get => consoleSend; set => consoleSend = value; }
+        public Button ConsoleRun { get => consoleRun; set => consoleRun = value; }
+        public Button ScriptStop { get => scriptStop; set => scriptStop = value; }
+        public CheckBox AsyncStringCheck { get => asyncStringCheck; set => asyncStringCheck = value; }
     }
 }
