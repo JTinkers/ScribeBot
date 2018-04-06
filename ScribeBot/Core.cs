@@ -24,6 +24,8 @@ namespace ScribeBot
         private static Window mainWindow;
         private static PrivateFontCollection fonts;
         private static Dictionary<string, Color> colors = new Dictionary<string, Color>();
+        private static StringBuilder log = new StringBuilder();
+        private static StreamWriter logStream = new StreamWriter($@"{Application.StartupPath}\Data\Logs\{DateTime.Today.Day}_{DateTime.Today.Month}_{DateTime.Today.Year}.txt", true );
 
         /// <summary>
         /// Current version of ScribeBot.
@@ -49,6 +51,16 @@ namespace ScribeBot
         /// Container for all custom colors used by the program.
         /// </summary>
         public static Dictionary<string, Color> Colors { get => colors; set => colors = value; }
+
+        /// <summary>
+        /// Stream to a date-signed log file.
+        /// </summary>
+        public static StreamWriter LogStream { get => logStream; set => logStream = value; }
+
+        /// <summary>
+        /// Contains console output as a log.
+        /// </summary>
+        public static StringBuilder Log { get => log; set => log = value; }
 
         /// <summary>
         /// Creates user interface. TO-DO: Make it also load up config containing version info.
@@ -102,6 +114,11 @@ namespace ScribeBot
                     MainWindow.ConsoleOutput.ScrollToCaret();
                 };
 
+                MainWindow.FormClosing += (o, e) =>
+                {
+                    DumpLog();
+                };
+
                 GetScriptPaths().ToList().ForEach(x => MainWindow.ScriptListBox.Items.Add(Path.GetFileName(x)));
 
                 MainWindow.ShowDialog();
@@ -122,6 +139,18 @@ namespace ScribeBot
         }
 
         /// <summary>
+        /// Dumps stored log into log file.
+        /// </summary>
+        private static void DumpLog()
+        {
+            if (MainWindow.LogCheckBox.Checked)
+            {
+                Log.ToString().Split('\n').ToList().ForEach(x => LogStream.WriteLineAsync(x));
+                LogStream.Flush();
+            }
+        }
+
+        /// <summary>
         /// Write a string of text.
         /// </summary>
         /// <param name="value">String to write</param>
@@ -131,6 +160,8 @@ namespace ScribeBot
             {
                 MainWindow.ConsoleOutput.AppendText(value);
             }));
+
+            Log.Append(value);
         }
 
         /// <summary>
@@ -143,6 +174,14 @@ namespace ScribeBot
             {
                 MainWindow.ConsoleOutput.AppendText(args);
             }));
+
+            StringBuilder text = new StringBuilder();
+            for (int i = 0; i < args.Length; i += 2)
+            {
+                text.Append((String)args[i + 1]);
+            }
+
+            Log.Append(text);
         }
 
         /// <summary>
@@ -153,8 +192,10 @@ namespace ScribeBot
         {
             MainWindow?.Invoke(new Action(() =>
             {
-                MainWindow.ConsoleOutput.AppendText(value + "\n");
+                MainWindow.ConsoleOutput.AppendText(value + Environment.NewLine);
             }));
+
+            Log.Append(value + Environment.NewLine);
         }
 
         /// <summary>
@@ -165,9 +206,19 @@ namespace ScribeBot
         {
             MainWindow?.Invoke(new Action(() =>
             {
-                MainWindow.ConsoleOutput.AppendText( args );
-                MainWindow.ConsoleOutput.AppendText( "\n" );
+                MainWindow.ConsoleOutput.AppendText(args);
+                MainWindow.ConsoleOutput.AppendText(Environment.NewLine);
+
             }));
+
+            StringBuilder text = new StringBuilder();
+            for (int i = 0; i < args.Length; i += 2)
+            {
+                text.Append((String)args[i + 1]);
+            }
+            text.Append("\n");
+
+            Log.Append(text);
         }
 
         /// <summary>

@@ -32,7 +32,7 @@ namespace ScribeBot
             UserData.RegisterAssembly();
 
             //Options
-            CurrentScript.Options.DebugPrint = value => Core.Write(Core.Colors["LightBlue"], value + "\n");
+            CurrentScript.Options.DebugPrint = value => Core.Write(Core.Colors["LightBlue"], value + Environment.NewLine);
             CurrentScript.Options.CheckThreadAccess = false;
 
             //Wrappers/Classes

@@ -1,6 +1,0 @@
-﻿wait(1000)
-input.setCursorPos(2336, 467)
-wait(1000)
-input.sendMousePress( 0 )
-wait(1000)
-input.sendMousePress( 1 )
