@@ -39,6 +39,7 @@ namespace ScribeBot
             CurrentScript.Globals["core"] = typeof(Wrappers.Core);
             CurrentScript.Globals["input"] = typeof(Wrappers.Input);
             CurrentScript.Globals["interface"] = typeof(Wrappers.Interface);
+            CurrentScript.Globals["screen"] = typeof(Wrappers.Screen);
 
             //Enums
             UserData.RegisterType<Native.VirtualKeyCode>();

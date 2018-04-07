@@ -131,6 +131,7 @@ namespace ScribeBot.Interface
             // 
             this.consoleOutput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(82)))));
             this.consoleOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.consoleOutput.DetectUrls = false;
             this.consoleOutput.Dock = System.Windows.Forms.DockStyle.Top;
             this.consoleOutput.ForeColor = System.Drawing.Color.White;
             this.consoleOutput.Location = new System.Drawing.Point(0, 0);
