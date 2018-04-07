@@ -11,6 +11,8 @@ using ScribeBot.Interface;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
+using System.Net;
+using Newtonsoft.Json.Linq;
 
 namespace ScribeBot
 {
@@ -20,12 +22,15 @@ namespace ScribeBot
     static class Core
     {
         private static string version = "0.1beta";
+        private static string workshopAddress = "https://api.github.com/repos/jonekcode/ScribeBot-Workshop/contents/Scripts";
+        private static Dictionary<string, string> workshopScripts = new Dictionary<string, string>();
         private static Thread interfaceThread;
         private static Window mainWindow;
         private static PrivateFontCollection fonts;
         private static Dictionary<string, Color> colors = new Dictionary<string, Color>();
         private static StringBuilder log = new StringBuilder();
         private static StreamWriter logStream = new StreamWriter($@"{Application.StartupPath}\Data\Logs\{DateTime.Today.Day}_{DateTime.Today.Month}_{DateTime.Today.Year}.txt", true );
+        private static WebClient netClient = new WebClient();
 
         /// <summary>
         /// Current version of ScribeBot.
@@ -63,6 +68,21 @@ namespace ScribeBot
         public static StringBuilder Log { get => log; set => log = value; }
 
         /// <summary>
+        /// String array containing names of scripts available for download from ScribeBot-Workshop.
+        /// </summary>
+        public static Dictionary<string, string> WorkshopScripts { get => workshopScripts; set => workshopScripts = value; }
+
+        /// <summary>
+        /// String containing address to the ScribeBot-Workshop script repository.
+        /// </summary>
+        public static string WorkshopAddress { get => workshopAddress; set => workshopAddress = value; }
+
+        /// <summary>
+        /// WebClient used for simple HTTP Requests. Mainly workshop fetching/downloading.
+        /// </summary>
+        public static WebClient NetClient { get => netClient; set => netClient = value; }
+
+        /// <summary>
         /// Creates user interface. TO-DO: Make it also load up config containing version info.
         /// </summary>
         public static void Initialize()
@@ -81,7 +101,7 @@ namespace ScribeBot
 
                 MainWindow = new Window();
 
-                MainWindow.ConsoleOutput.Font = new Font(fonts.Families[0], 10f );
+                MainWindow.ConsoleOutput.Font = new Font(fonts.Families[0], 10f);
 
                 MainWindow.ConsoleRun.Click += (o, e) =>
                 {
@@ -100,7 +120,7 @@ namespace ScribeBot
 
                 MainWindow.ScriptRun.Click += (o, e) =>
                 {
-                    if( MainWindow.ScriptListBox.SelectedItem != null )
+                    if (MainWindow.ScriptListBox.SelectedItem != null)
                         Scripter.ExecuteFile($@"{Application.StartupPath}\Data\Scripts\{MainWindow.ScriptListBox.SelectedItem}", MainWindow.AsyncCheckbox.Checked);
                 };
 
@@ -114,6 +134,63 @@ namespace ScribeBot
                     MainWindow.ConsoleOutput.ScrollToCaret();
                 };
 
+                MainWindow.ConsoleClearButton.Click += (o, e) =>
+                {
+                    MainWindow.ConsoleOutput.Clear();
+                };
+
+                MainWindow.WorkshopFetchButton.Click += (o, e) =>
+                {
+                    MainWindow.WorkshopFetchButton.Enabled = false;
+                    MainWindow.WorkshopDownloadButton.Enabled = false;
+                    MainWindow.WorkshopFetchButton.Text = "Fetching..";
+
+                    Task.Run(() =>
+                    {
+                        FetchWorkshopScripts();
+
+                        if (WorkshopScripts.Count > 0)
+                        {
+                            MainWindow.Invoke(new Action(() =>
+                            {
+                                MainWindow.WorkshopScriptList.Items.Clear();
+
+                                foreach (KeyValuePair<string, string> script in WorkshopScripts)
+                                {
+                                    MainWindow.WorkshopScriptList.Items.Add(script.Key);
+                                }
+
+                                MainWindow.WorkshopFetchButton.Enabled = true;
+                                MainWindow.WorkshopDownloadButton.Enabled = true;
+                                MainWindow.WorkshopFetchButton.Text = "Fetch";
+                            }));
+                        }
+                    });
+                };
+
+                MainWindow.WorkshopDownloadButton.Click += (o, e) =>
+                {
+                    Task.Run(() =>
+                    {
+                        MainWindow.Invoke(new Action(() =>
+                        {
+                            MainWindow.WorkshopFetchButton.Enabled = false;
+                            MainWindow.WorkshopDownloadButton.Enabled = false;
+                            MainWindow.WorkshopDownloadButton.Text = "Downloading..";
+
+                            if (MainWindow.WorkshopScriptList.SelectedItem != null)
+                                DownloadWorkshopScript(WorkshopScripts.Where(x => x.Key == MainWindow.WorkshopScriptList.SelectedItem.ToString()).Select(x => x.Value).First().ToString());
+
+                            MainWindow.WorkshopFetchButton.Enabled = true;
+                            MainWindow.WorkshopDownloadButton.Enabled = true;
+                            MainWindow.WorkshopDownloadButton.Text = "Download";
+
+                            MainWindow.ScriptListBox.Items.Clear();
+                            GetScriptPaths().ToList().ForEach(x => MainWindow.ScriptListBox.Items.Add(Path.GetFileName(x)));
+                        }));
+                    });
+                };
+
                 MainWindow.FormClosing += (o, e) =>
                 {
                     DumpLog();
@@ -122,8 +199,10 @@ namespace ScribeBot
                 GetScriptPaths().ToList().ForEach(x => MainWindow.ScriptListBox.Items.Add(Path.GetFileName(x)));
 
                 MainWindow.ShowDialog();
-            });
-            InterfaceThread.Name = "Interface Thread";
+            })
+            {
+                Name = "Interface Thread"
+            };
             InterfaceThread.Start();
         }
 
@@ -148,6 +227,31 @@ namespace ScribeBot
                 Log.ToString().Split('\n').ToList().ForEach(x => LogStream.WriteLineAsync(x));
                 LogStream.Flush();
             }
+        }
+
+        /// <summary>
+        /// Fetch workshop scripts.
+        /// </summary>
+        /// 
+        private static void FetchWorkshopScripts()
+        {
+            NetClient.Headers["User-Agent"] = "ScribeBot - Workshop Content Fetching";
+
+            string encoded = NetClient.DownloadString(WorkshopAddress);
+
+            JArray parsed = JArray.Parse(encoded);
+
+            parsed.Children().ToList().ForEach(i => WorkshopScripts[(string)i["name"]] = (string)i["download_url"]);
+        }
+
+        //TODO: Make Workshop class
+        /// <summary>
+        /// Download a script from workshop.
+        /// </summary>
+        private static void DownloadWorkshopScript(string url)
+        {
+            NetClient.Headers["User-Agent"] = "ScribeBot - Workshop Content Downloading";
+            NetClient.DownloadFile(url, $@"Data\Scripts\{Path.GetFileName(url)}");
         }
 
         /// <summary>

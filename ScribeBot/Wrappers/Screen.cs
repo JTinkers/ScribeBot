@@ -23,19 +23,12 @@ namespace ScribeBot.Wrappers
         /// <param name="path">Save path.</param>
         public static void Capture(string path)
         {
-            if (String.IsNullOrEmpty(path))
-                path = $@"{DateTime.Today.Day}_{DateTime.Today.Month}-{DateTime.Now.Hour}_{DateTime.Now.Minute}_{DateTime.Now.Second}.png";
-
             int w, h;
-            w = 0;
-            h = 0;
 
             Forms.Screen[] screens = Forms.Screen.AllScreens;
-            screens.ToList().ForEach(s => 
-            {
-                w += s.Bounds.Width;
-                h = Math.Max( h, s.Bounds.Height );
-            } );
+
+            w = screens.ToList().Sum(i => i.Bounds.Width);
+            h = screens.ToList().Max(i => i.Bounds.Height);
 
             Bitmap screen = new Bitmap( w, h, PixelFormat.Format32bppArgb );
             Graphics gfx = Graphics.FromImage(screen);
@@ -44,6 +37,9 @@ namespace ScribeBot.Wrappers
 
             try
             {
+                if (String.IsNullOrEmpty(path))
+                    path = $@"{DateTime.Today.Day}_{DateTime.Today.Month}-{DateTime.Now.Hour}_{DateTime.Now.Minute}_{DateTime.Now.Second}.png";
+
                 screen.Save($@"Data/User/{path}", ImageFormat.Png);
             }
             catch(Exception e)
@@ -53,6 +49,18 @@ namespace ScribeBot.Wrappers
 
             gfx.Dispose();
             screen.Dispose();
+        }
+
+        public static Types.Size GetSize()
+        {
+            int w, h;
+
+            Forms.Screen[] screens = Forms.Screen.AllScreens;
+
+            w = screens.ToList().Sum(x => x.Bounds.Width);
+            h = screens.ToList().Max(i => i.Bounds.Height);
+
+            return new Types.Size() { Width = w, Height = h };
         }
     }
 }

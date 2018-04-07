@@ -41,19 +41,23 @@ namespace ScribeBot.Interface
             this.consoleOutput = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.asyncStringCheck = new System.Windows.Forms.CheckBox();
+            this.consoleClearButton = new System.Windows.Forms.Button();
             this.layoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.optionsPanel = new System.Windows.Forms.TabControl();
             this.scriptsPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.asyncCheckbox = new System.Windows.Forms.CheckBox();
             this.logCheckBox = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.scriptListBox = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.scriptRun = new System.Windows.Forms.Button();
             this.scriptStop = new System.Windows.Forms.Button();
-            this.settingsPage = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.workshopScriptList = new System.Windows.Forms.ListBox();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.workshopDownloadButton = new System.Windows.Forms.Button();
+            this.workshopFetchButton = new System.Windows.Forms.Button();
             this.noticeTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.consolePanel.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -63,8 +67,10 @@ namespace ScribeBot.Interface
             this.optionsPanel.SuspendLayout();
             this.scriptsPage.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // consolePanel
@@ -89,28 +95,30 @@ namespace ScribeBot.Interface
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel3.Controls.Add(this.consoleInput, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.consoleRun, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(11, 520);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(11, 525);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(463, 26);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(465, 21);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // consoleInput
             // 
             this.consoleInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.consoleInput.Location = new System.Drawing.Point(3, 3);
+            this.consoleInput.Location = new System.Drawing.Point(0, 0);
+            this.consoleInput.Margin = new System.Windows.Forms.Padding(0);
             this.consoleInput.Name = "consoleInput";
-            this.consoleInput.Size = new System.Drawing.Size(327, 20);
+            this.consoleInput.Size = new System.Drawing.Size(335, 20);
             this.consoleInput.TabIndex = 1;
             // 
             // consoleRun
             // 
             this.consoleRun.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.consoleRun.Location = new System.Drawing.Point(336, 3);
+            this.consoleRun.Location = new System.Drawing.Point(335, 0);
+            this.consoleRun.Margin = new System.Windows.Forms.Padding(0);
             this.consoleRun.Name = "consoleRun";
-            this.consoleRun.Size = new System.Drawing.Size(124, 20);
+            this.consoleRun.Size = new System.Drawing.Size(130, 21);
             this.consoleRun.TabIndex = 2;
             this.consoleRun.Text = "Execute";
             this.noticeTooltip.SetToolTip(this.consoleRun, "Executing a string while other script is running will stop the script.");
@@ -124,7 +132,7 @@ namespace ScribeBot.Interface
             this.consoleContainer.Location = new System.Drawing.Point(10, 24);
             this.consoleContainer.Margin = new System.Windows.Forms.Padding(5);
             this.consoleContainer.Name = "consoleContainer";
-            this.consoleContainer.Size = new System.Drawing.Size(465, 485);
+            this.consoleContainer.Size = new System.Drawing.Size(466, 485);
             this.consoleContainer.TabIndex = 3;
             // 
             // consoleOutput
@@ -139,7 +147,7 @@ namespace ScribeBot.Interface
             this.consoleOutput.Name = "consoleOutput";
             this.consoleOutput.ReadOnly = true;
             this.consoleOutput.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.consoleOutput.Size = new System.Drawing.Size(463, 456);
+            this.consoleOutput.Size = new System.Drawing.Size(464, 450);
             this.consoleOutput.TabIndex = 0;
             this.consoleOutput.Text = "";
             // 
@@ -153,13 +161,14 @@ namespace ScribeBot.Interface
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.Controls.Add(this.asyncStringCheck, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.consoleClearButton, 3, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 456);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 450);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(463, 27);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(464, 33);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // asyncStringCheck
@@ -167,17 +176,32 @@ namespace ScribeBot.Interface
             this.asyncStringCheck.AutoSize = true;
             this.asyncStringCheck.Checked = true;
             this.asyncStringCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.asyncStringCheck.Dock = System.Windows.Forms.DockStyle.Fill;
             this.asyncStringCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.asyncStringCheck.ForeColor = System.Drawing.SystemColors.Info;
+            this.asyncStringCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(230)))), ((int)(((byte)(233)))));
             this.asyncStringCheck.Location = new System.Drawing.Point(5, 5);
             this.asyncStringCheck.Margin = new System.Windows.Forms.Padding(5);
             this.asyncStringCheck.Name = "asyncStringCheck";
-            this.asyncStringCheck.Size = new System.Drawing.Size(52, 17);
+            this.asyncStringCheck.Size = new System.Drawing.Size(106, 23);
             this.asyncStringCheck.TabIndex = 0;
             this.asyncStringCheck.Text = "Async";
             this.noticeTooltip.SetToolTip(this.asyncStringCheck, "Execute string on a separate thread to prevent user interface from freezing durin" +
         "g the execution.\r\nKeep in mind that this might disable syntax debugger.");
             this.asyncStringCheck.UseVisualStyleBackColor = true;
+            // 
+            // consoleClearButton
+            // 
+            this.consoleClearButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.consoleClearButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(230)))), ((int)(((byte)(233)))));
+            this.consoleClearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.consoleClearButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(230)))), ((int)(((byte)(233)))));
+            this.consoleClearButton.Location = new System.Drawing.Point(353, 5);
+            this.consoleClearButton.Margin = new System.Windows.Forms.Padding(5);
+            this.consoleClearButton.Name = "consoleClearButton";
+            this.consoleClearButton.Size = new System.Drawing.Size(106, 23);
+            this.consoleClearButton.TabIndex = 1;
+            this.consoleClearButton.Text = "Clear";
+            this.consoleClearButton.UseVisualStyleBackColor = true;
             // 
             // layoutPanel
             // 
@@ -197,7 +221,6 @@ namespace ScribeBot.Interface
             // optionsPanel
             // 
             this.optionsPanel.Controls.Add(this.scriptsPage);
-            this.optionsPanel.Controls.Add(this.settingsPage);
             this.optionsPanel.Controls.Add(this.tabPage1);
             this.optionsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.optionsPanel.Location = new System.Drawing.Point(497, 5);
@@ -209,8 +232,8 @@ namespace ScribeBot.Interface
             // 
             // scriptsPage
             // 
+            this.scriptsPage.Controls.Add(this.scriptListBox);
             this.scriptsPage.Controls.Add(this.tableLayoutPanel5);
-            this.scriptsPage.Controls.Add(this.tableLayoutPanel4);
             this.scriptsPage.Controls.Add(this.tableLayoutPanel1);
             this.scriptsPage.Location = new System.Drawing.Point(4, 22);
             this.scriptsPage.Margin = new System.Windows.Forms.Padding(0);
@@ -269,26 +292,11 @@ namespace ScribeBot.Interface
             this.noticeTooltip.SetToolTip(this.logCheckBox, "Whether or not program should dump log into a date-signed file.");
             this.logCheckBox.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.AutoSize = true;
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.scriptListBox, 0, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(10, 10);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(5);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.23207F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(254, 446);
-            this.tableLayoutPanel4.TabIndex = 5;
-            // 
             // scriptListBox
             // 
-            this.scriptListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scriptListBox.FormattingEnabled = true;
-            this.scriptListBox.Location = new System.Drawing.Point(0, 0);
-            this.scriptListBox.Margin = new System.Windows.Forms.Padding(0);
+            this.scriptListBox.Location = new System.Drawing.Point(10, 10);
+            this.scriptListBox.Margin = new System.Windows.Forms.Padding(5);
             this.scriptListBox.Name = "scriptListBox";
             this.scriptListBox.Size = new System.Drawing.Size(254, 446);
             this.scriptListBox.TabIndex = 0;
@@ -331,25 +339,82 @@ namespace ScribeBot.Interface
             this.noticeTooltip.SetToolTip(this.scriptStop, "This will force currently running script to stop");
             this.scriptStop.UseVisualStyleBackColor = true;
             // 
-            // settingsPage
-            // 
-            this.settingsPage.Location = new System.Drawing.Point(4, 22);
-            this.settingsPage.Name = "settingsPage";
-            this.settingsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.settingsPage.Size = new System.Drawing.Size(274, 526);
-            this.settingsPage.TabIndex = 1;
-            this.settingsPage.Text = "Settings";
-            this.settingsPage.UseVisualStyleBackColor = true;
-            // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.tableLayoutPanel6);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(5);
             this.tabPage1.Size = new System.Drawing.Size(274, 526);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Info";
+            this.tabPage1.TabIndex = 1;
+            this.tabPage1.Text = "Browser";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.AutoSize = true;
+            this.tableLayoutPanel6.ColumnCount = 1;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.Controls.Add(this.workshopScriptList, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 1);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(5, 5);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(5);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.Padding = new System.Windows.Forms.Padding(5);
+            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(264, 516);
+            this.tableLayoutPanel6.TabIndex = 0;
+            // 
+            // workshopScriptList
+            // 
+            this.workshopScriptList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.workshopScriptList.FormattingEnabled = true;
+            this.workshopScriptList.Location = new System.Drawing.Point(5, 5);
+            this.workshopScriptList.Margin = new System.Windows.Forms.Padding(0);
+            this.workshopScriptList.Name = "workshopScriptList";
+            this.workshopScriptList.Size = new System.Drawing.Size(254, 485);
+            this.workshopScriptList.TabIndex = 0;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.workshopDownloadButton, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.workshopFetchButton, 0, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(5, 490);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(254, 21);
+            this.tableLayoutPanel7.TabIndex = 1;
+            // 
+            // workshopDownloadButton
+            // 
+            this.workshopDownloadButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.workshopDownloadButton.Location = new System.Drawing.Point(127, 0);
+            this.workshopDownloadButton.Margin = new System.Windows.Forms.Padding(0);
+            this.workshopDownloadButton.Name = "workshopDownloadButton";
+            this.workshopDownloadButton.Size = new System.Drawing.Size(127, 21);
+            this.workshopDownloadButton.TabIndex = 1;
+            this.workshopDownloadButton.Text = "Download";
+            this.workshopDownloadButton.UseVisualStyleBackColor = true;
+            // 
+            // workshopFetchButton
+            // 
+            this.workshopFetchButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.workshopFetchButton.Location = new System.Drawing.Point(0, 0);
+            this.workshopFetchButton.Margin = new System.Windows.Forms.Padding(0);
+            this.workshopFetchButton.Name = "workshopFetchButton";
+            this.workshopFetchButton.Size = new System.Drawing.Size(127, 21);
+            this.workshopFetchButton.TabIndex = 2;
+            this.workshopFetchButton.Text = "Fetch";
+            this.workshopFetchButton.UseVisualStyleBackColor = true;
             // 
             // noticeTooltip
             // 
@@ -383,11 +448,13 @@ namespace ScribeBot.Interface
             this.layoutPanel.ResumeLayout(false);
             this.optionsPanel.ResumeLayout(false);
             this.scriptsPage.ResumeLayout(false);
-            this.scriptsPage.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -398,7 +465,6 @@ namespace ScribeBot.Interface
         private System.Windows.Forms.TableLayoutPanel layoutPanel;
         private System.Windows.Forms.TabControl optionsPanel;
         private System.Windows.Forms.TabPage scriptsPage;
-        private System.Windows.Forms.TabPage settingsPage;
         private System.Windows.Forms.ListBox scriptListBox;
         private RichTextBox consoleOutput;
         private Button scriptRun;
@@ -411,11 +477,16 @@ namespace ScribeBot.Interface
         private Button scriptStop;
         private TableLayoutPanel tableLayoutPanel2;
         private CheckBox asyncStringCheck;
-        private TableLayoutPanel tableLayoutPanel4;
         private TableLayoutPanel tableLayoutPanel3;
         private TableLayoutPanel tableLayoutPanel5;
         private CheckBox logCheckBox;
+        private Button consoleClearButton;
         private TabPage tabPage1;
+        private TableLayoutPanel tableLayoutPanel6;
+        private ListBox workshopScriptList;
+        private Button workshopDownloadButton;
+        private TableLayoutPanel tableLayoutPanel7;
+        private Button workshopFetchButton;
 
         public ListBox ScriptListBox { get => scriptListBox; set => scriptListBox = value; }
         public RichTextBox ConsoleOutput { get => consoleOutput; set => consoleOutput = value; }
@@ -426,5 +497,9 @@ namespace ScribeBot.Interface
         public Button ScriptStop { get => scriptStop; set => scriptStop = value; }
         public CheckBox AsyncStringCheck { get => asyncStringCheck; set => asyncStringCheck = value; }
         public CheckBox LogCheckBox { get => logCheckBox; set => logCheckBox = value; }
+        public Button ConsoleClearButton { get => consoleClearButton; set => consoleClearButton = value; }
+        public Button WorkshopDownloadButton { get => workshopDownloadButton; set => workshopDownloadButton = value; }
+        public ListBox WorkshopScriptList { get => workshopScriptList; set => workshopScriptList = value; }
+        public Button WorkshopFetchButton { get => workshopFetchButton; set => workshopFetchButton = value; }
     }
 }

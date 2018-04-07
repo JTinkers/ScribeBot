@@ -17,8 +17,8 @@ namespace ScribeBot.Wrappers
     {
         public static string Version => ScribeBot.Core.Version;
 
-        public static void Write(string text) => ScribeBot.Core.Write(text);
-        public static void WriteLine(string line) => ScribeBot.Core.WriteLine(line);
+        public static void Write(object text) => ScribeBot.Core.Write(text);
+        public static void WriteLine(object line) => ScribeBot.Core.WriteLine(line);
 
         public static void SetFocusWindow(string title) => Native.API.SetFocusWindow(title);
         public static string GetFocusWindow() => Native.API.GetFocusWindow();
@@ -32,6 +32,6 @@ namespace ScribeBot.Wrappers
         public static bool IsWindowVisible(string title) => Native.API.IsWindowVisible(title);
 
         public static void Close() => ScribeBot.Core.Close();
-        public static string[] GetWindowTitles() => Native.API.GetWindowTitles(); //Repalce with Native.API
+        public static string[] GetWindowTitles() => Native.API.GetWindowTitles();
     }
 }
