@@ -44,7 +44,7 @@ namespace ScribeBot.Wrappers
             }
             catch(Exception e)
             {
-                Scripter.ExecuteString($"error('Invalid path for screen.capture()! [Data/User/{path}]')");
+                Scripter.ExecuteCode($"error('Invalid path for screen.capture()! [Data/User/{path}]')");
             }
 
             gfx.Dispose();

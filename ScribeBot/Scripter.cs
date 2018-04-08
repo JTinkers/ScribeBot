@@ -13,7 +13,7 @@ namespace ScribeBot
     /// <summary>
     /// Class creating and maintaining environment for Lua scripts.
     /// </summary>
-    static class Scripter
+    public static class Scripter
     {
         private static Script currentScript = new Script();
 
@@ -32,7 +32,7 @@ namespace ScribeBot
             UserData.RegisterAssembly();
 
             //Options
-            CurrentScript.Options.DebugPrint = value => Core.Write(Core.Colors["LightBlue"], value + Environment.NewLine);
+            CurrentScript.Options.DebugPrint = value => Core.Write(Core.Colors["Purple"], value + Environment.NewLine);
             CurrentScript.Options.CheckThreadAccess = false;
 
             //Wrappers/Classes
@@ -51,35 +51,15 @@ namespace ScribeBot
         }
 
         /// <summary>
-        /// Execute a Lua file. Keep in mind that setting asynchronous to true might cause debugger to be unable to pass syntax errors properly.
-        /// </summary>
-        /// <param name="path">Path of file to execute.</param>
-        /// <param name="asynchronous">Defines whether file should be executed on a thread different to ScribeBot itself.</param>
-        public static void ExecuteFile(string path, bool asynchronous = true)
-        {
-            Core.WriteLine(Core.Colors["Yellow"], $"> Running {Path.GetFileName(path)}");
-
-            try
-            {
-                if (asynchronous)
-                    CurrentScript.DoFileAsync(path);
-                else
-                    CurrentScript.DoFile(path);
-            }
-            catch (Exception e)
-            {
-                Core.WriteLine(Core.Colors["Red"], $"[{Path.GetFileName(path)}] ERROR: {e.Message}");
-            }
-        }
-
-        /// <summary>
         /// Execute a string of code. Keep in mind that setting asynchronous to true might cause debugger to be unable to pass syntax errors properly.
         /// </summary>
         /// <param name="code">String to execute.</param>
         /// <param name="asynchronous">Defines whether code should be executed on a thread different to ScribeBot itself.</param>
-        public static void ExecuteString(string code, bool asynchronous = false)
+        /// <param name="silent">Defines whether console shouldn't output the code. Only set to true when code is short.</param>
+        public static void ExecuteCode(string code, bool asynchronous = true, bool silent = true)
         {
-            Core.WriteLine(Core.Colors["Blue"], $"> {code}");
+            if( !silent )
+                Core.WriteLine(Core.Colors["Green"], $"> {code}");
 
             try
             {
@@ -90,7 +70,7 @@ namespace ScribeBot
             }
             catch (Exception e)
             {
-                Core.WriteLine(Core.Colors["Red"], $"[Console] ERROR: {e.Message}");
+                Core.WriteLine(Core.Colors["Red"], $"ERROR: {e.Message}");
             }
         }
     }

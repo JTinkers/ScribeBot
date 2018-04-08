@@ -32,7 +32,7 @@ namespace ScribeBot.Interface
         {
             this.promptMessage = new System.Windows.Forms.Label();
             this.promptEntryBox = new System.Windows.Forms.TextBox();
-            this.PromptSubmit = new System.Windows.Forms.Button();
+            this.promptSubmit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // promptMessage
@@ -54,19 +54,19 @@ namespace ScribeBot.Interface
             // 
             // PromptSubmit
             // 
-            this.PromptSubmit.Location = new System.Drawing.Point(8, 53);
-            this.PromptSubmit.Name = "PromptSubmit";
-            this.PromptSubmit.Size = new System.Drawing.Size(197, 20);
-            this.PromptSubmit.TabIndex = 2;
-            this.PromptSubmit.Text = "Submit";
-            this.PromptSubmit.UseVisualStyleBackColor = true;
+            this.promptSubmit.Location = new System.Drawing.Point(8, 53);
+            this.promptSubmit.Name = "promptSubmit";
+            this.promptSubmit.Size = new System.Drawing.Size(197, 20);
+            this.promptSubmit.TabIndex = 2;
+            this.promptSubmit.Text = "Submit";
+            this.promptSubmit.UseVisualStyleBackColor = true;
             // 
             // Prompt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(214, 87);
-            this.Controls.Add(this.PromptSubmit);
+            this.Controls.Add(this.promptSubmit);
             this.Controls.Add(this.promptEntryBox);
             this.Controls.Add(this.promptMessage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
