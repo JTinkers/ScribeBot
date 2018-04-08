@@ -3,9 +3,13 @@
 
 ScribeBot is a scriptable automation system.
 
-With a little knowledge of Lua, you can automate mundane tasks, create macros or even create a game bot.
+With a little knowledge of Lua, you can automate mundane tasks, create macros or even create a second bot.
 
 ![https://i.imgur.com/bZckWI6.png](https://i.imgur.com/bZckWI6.png)
+
+## Disclaimer
+** This program uses unmanaged code (see: https://msdn.microsoft.com/en-us/library/ms973872.aspx#manunman_topic6) and provides low-level functionality that if used improperly could affect system's security and reliability. It is of utmost importance that you are well aware of this fact before you start using it, especially with scripts that come from untrustful sources. 
+The author will not be held responsible for any damages done. **
 
 ## Usage
 - Run ScribeBot.exe
