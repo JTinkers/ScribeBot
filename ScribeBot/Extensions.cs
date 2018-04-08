@@ -23,7 +23,7 @@ namespace ScribeBot
             for (int i = 0; i < args.Length; i+=2)
             {
                 textBox.AppendText((String)args[i+1]);
-                textBox.Select(textBox.TextLength - args[i+1].ToString().Length, args[i + 1].ToString().Length);
+                textBox.Select(textBox.TextLength - args[i+1].ToString().Length + 1, args[i + 1].ToString().Length);
                 textBox.SelectionColor = (Color)args[i];
             }
         }

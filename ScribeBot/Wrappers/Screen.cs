@@ -51,6 +51,10 @@ namespace ScribeBot.Wrappers
             screen.Dispose();
         }
 
+        /// <summary>
+        /// Get total size of all your screens combied.
+        /// </summary>
+        /// <returns>Total size of screens.</returns>
         public static Types.Size GetSize()
         {
             int w, h;
