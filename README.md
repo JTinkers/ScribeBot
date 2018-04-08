@@ -35,6 +35,15 @@ This program uses unmanaged code (see: https://msdn.microsoft.com/en-us/library/
 - Check (or don't) the 'Asynchronous' option.
 - Hit 'Run'.
 
+## Writting for ScribeBot
+There temporarily is no package editor, to create one follow steps below:
+- Copy the "Test Package.sbpack" located in Data\Packages.
+- Paste it into the same directory and rename to whatever you want it to be named.
+- Open it with ZIP (ZIP2, ZIP7 or WinRar).
+- Edit info.json and change "EntryPoint" to whatever you want your lua file to be called.
+- Rename the lua file to the same thing.
+- Open Lua file and start writting your script!
+
 ## Known bugs/odd behaviour
 - If you don't check the 'Asynchronous' option, the script will run on the same thread as the interface - rendering it unusable until the script is done.
 - If you check the 'Asynchronous' option, syntax errors might not be properly passed to the console (which isn't big of a deal, just get yourself a proper editor with a linter).
