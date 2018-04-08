@@ -16,7 +16,7 @@ With a little knowledge of Lua, you can automate mundane tasks, create macros or
 
 ## Planned Features
 - Re-enable workshop (once I host it on my website, because github api calls have a limited rate).
-- Incorporate Selenium to allow creation of web-based automatisations.
+- Incorporate Selenium to allow creation of web-based automations.
 - Built-in manual that enlists all types, classes and methods exposed to lua environment.
 - Gamepad support.
 - Autoupdater.
