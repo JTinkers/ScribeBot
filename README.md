@@ -37,6 +37,7 @@ This program uses unmanaged code (see: https://msdn.microsoft.com/en-us/library/
 
 ## Writting for ScribeBot
 **THIS ONLY APPLIES TO RELEASE 0.3b, IF YOU DON'T WANT TO GO THROUGH THIS, DOWNLOAD 0.2b**
+
 There temporarily is no package editor, to create one follow steps below:
 - Copy the "Test Package.sbpack" located in Data\Packages.
 - Paste it into the same directory and rename to whatever you want it to be named.
