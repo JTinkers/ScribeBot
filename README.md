@@ -15,7 +15,7 @@ With a little knowledge of Lua, you can automate mundane tasks, create macros or
 - Built-in logging system.
 
 ## Planned Features
-- Re-enable workshop (once I host it on my website, because github api calls have a limited rate).
+- Move workshop to my own website (since github has a noticable delay and it's rate limited)
 - Incorporate Selenium to allow creation of web-based automations.
 - Built-in manual that enlists all types, classes and methods exposed to lua environment.
 - Gamepad support.
@@ -31,6 +31,7 @@ This program uses unmanaged code (see: https://msdn.microsoft.com/en-us/library/
 
 ## Usage
 - Run ScribeBot.exe.
+- Browse workshop for packages, hit download under package you want to get.
 - Select from a list of packages (stored in /Data/Package).
 - Check (or don't) the 'Asynchronous' option.
 - Hit 'Run'.
