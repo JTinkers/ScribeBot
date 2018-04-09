@@ -82,14 +82,65 @@ namespace ScribeBot.Interface
         private void workshopFetchButton_Click(object sender, EventArgs e)
         {
             WorkshopFetchButton.Text = "Fetching..";
+            WorkshopFetchButton.Enabled = false;
 
             Task.Run(() =>
             {
-                Workshop.GetPackageList();
+                Dictionary<string, string> packages = Workshop.GetPackageList();
 
                 Invoke(new Action(() =>
                 {
                     WorkshopFetchButton.Text = "Fetch";
+                    WorkshopFetchButton.Enabled = true;
+
+                    foreach (KeyValuePair<string, string> package in packages)
+                    {
+                        PackageInfoMinimal p = new PackageInfoMinimal();
+                        p.NameLabel.Text = package.Key;
+
+                        p.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left;
+
+                        BrowserPackageList.Controls.Add(p);
+                        
+                        p.DownloadButton.Click += (o, ce) =>
+                        {
+                            p.DownloadButton.Text = "Downloading..";
+                            p.DownloadButton.Enabled = false;
+
+                            WorkshopFetchButton.Enabled = false;
+                            
+                            Workshop.DownloadPackage(package.Value, package.Key);
+
+                            p.DownloadButton.Text = "Download";
+                            p.DownloadButton.Enabled = true;
+
+                            WorkshopFetchButton.Text = "Fetch";
+                            WorkshopFetchButton.Enabled = true;
+
+                            Package[] installedPackages = Workshop.GetInstalled();
+
+                            InstalledPackagesList.Controls.Clear();
+
+                            installedPackages.ToList().ForEach(x =>
+                            {
+                                Dictionary<string, string> packageInfo = x.GetInfo();
+
+                                PackageInfo i = new PackageInfo();
+                                i.NameLabel.Text = packageInfo["Name"];
+                                i.AuthorLabel.Text = packageInfo["Authors"];
+                                i.DescLabel.Text = packageInfo["Description"];
+
+                                i.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left;
+
+                                InstalledPackagesList.Controls.Add(i);
+
+                                i.RunButton.Click += (ob, ed) =>
+                                {
+                                    x.Run(AsyncCheckbox.Checked, true);
+                                };
+                            });
+                        };
+                    }
                 }));
             });
         }

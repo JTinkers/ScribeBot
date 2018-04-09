@@ -41,22 +41,19 @@ namespace ScribeBot
         /// Fetch workshop scripts.
         /// </summary>
         /// <returns>List of downloadable packages.</returns>
-        public static Dictionary<string, Dictionary<string, string>> GetPackageList()
+        public static Dictionary<string, string> GetPackageList()
         {
-            NetClient.Headers["User-Agent"] = "ScribeBot - Workshop - List Packages";
+            Core.WriteLine(Core.Colors["Purple"], "Fetching workshop list.", Core.Colors["Red"], "\nWARNING: Using this function too often might get you temporarily IP banned from Github API!");
 
-            Dictionary<string, Dictionary<string, string>> list = new Dictionary<string, Dictionary<string, string>>();
+            NetClient.Headers["User-Agent"] = "ScribeBot - Workshop Content Fetching";
 
-            JToken[] packages = JArray.Parse(NetClient.DownloadString(Core.WorkshopAddress)).Children().ToArray();
+            JArray parsed = JArray.Parse(NetClient.DownloadString(Core.WorkshopAddress));
 
-            foreach (JToken package in packages)
-            {
-                NetClient.Headers["User-Agent"] = "ScribeBot - Workshop - Package Info";
+            Dictionary<string, string> list = new Dictionary<string, string>();
 
-                JToken contentList = JToken.Parse(NetClient.DownloadString((string)package["git_url"]));
+            parsed.Children().Where(x => !x["name"].ToString().Equals( "README.md" )).ToList().ForEach(x => list[Path.GetFileNameWithoutExtension( (string)x["name"] )] = (string)x["download_url"]);
 
-                Core.WriteLine(contentList["tree"].Children().Where( x => x["path"].Equals("info.json") ).Select( x => x["url"] ).First().ToString());
-            }
+            Core.WriteLine(Core.Colors["Purple"], "Workshop list fetched. Happy downloading!");
 
             return list;
         }
@@ -64,10 +61,20 @@ namespace ScribeBot
         /// <summary>
         /// Download a script from workshop.
         /// </summary>
-        private static void DownloadPackage(string url)
+        public static void DownloadPackage(string url, string name = "package")
         {
+            Core.WriteLine(Core.Colors["Purple"], $@"Downloading workshop package: {name}");
+
+            if (File.Exists($@"Data\Packages\{name}.sbpack"))
+            {
+                Core.WriteLine("A package of this name already exists!");
+                return;
+            }
+
             NetClient.Headers["User-Agent"] = "ScribeBot - Workshop - Download Package";
-            NetClient.DownloadFile(url, $@"Data\Packages\{Path.GetFileName(url)}");
+            NetClient.DownloadFile(url, $@"Data\Packages\{name}.sbpack");
+
+            Core.WriteLine(Core.Colors["Purple"], $@"Downloaded workshop package: {name}");
         }
     }
 }

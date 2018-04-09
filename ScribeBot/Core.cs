@@ -22,7 +22,7 @@ namespace ScribeBot
     public static class Core
     {
         private static string version = "0.1beta";
-        private static string workshopAddress = "https://api.github.com/repos/jonekcode/ScribeBot-Workshop/contents/Packages";
+        private static string workshopAddress = $@"https://api.github.com/repos/jonekcode/ScribeBot-Workshop/contents/";
         private static Thread interfaceThread;
         private static Window mainWindow;
         private static PrivateFontCollection fonts;

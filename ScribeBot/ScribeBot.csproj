@@ -92,6 +92,12 @@
   <ItemGroup>
     <Compile Include="Core.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Interface\PackageInfoMinimal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Interface\PackageInfoMinimal.Designer.cs">
+      <DependentUpon>PackageInfoMinimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interface\PackageInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -160,12 +166,12 @@
     <None Include="Data\Fonts\OfficeCodePro-RegularItalic.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Data\Packages\Test Pack.sbpack">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Interface\PackageInfoMinimal.resx">
+      <DependentUpon>PackageInfoMinimal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Interface\PackageInfo.resx">
       <DependentUpon>PackageInfo.cs</DependentUpon>
     </EmbeddedResource>

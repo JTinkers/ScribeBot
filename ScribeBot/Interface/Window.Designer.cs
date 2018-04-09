@@ -56,8 +56,8 @@ namespace ScribeBot.Interface
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.workshopFetchButton = new System.Windows.Forms.Button();
-            this.browsePackagePanel = new System.Windows.Forms.Panel();
-            this.browsePackageList = new System.Windows.Forms.TableLayoutPanel();
+            this.browserPackagePanel = new System.Windows.Forms.Panel();
+            this.browserPackageList = new System.Windows.Forms.TableLayoutPanel();
             this.noticeTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.consolePanel.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -72,7 +72,7 @@ namespace ScribeBot.Interface
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            this.browsePackagePanel.SuspendLayout();
+            this.browserPackagePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // consolePanel
@@ -361,7 +361,7 @@ namespace ScribeBot.Interface
             this.tabPage1.Padding = new System.Windows.Forms.Padding(5);
             this.tabPage1.Size = new System.Drawing.Size(274, 526);
             this.tabPage1.TabIndex = 1;
-            this.tabPage1.Text = "Browser";
+            this.tabPage1.Text = "Workshop";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel6
@@ -370,7 +370,7 @@ namespace ScribeBot.Interface
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(this.browsePackagePanel, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.browserPackagePanel, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(5, 5);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(5);
@@ -398,7 +398,6 @@ namespace ScribeBot.Interface
             // workshopFetchButton
             // 
             this.workshopFetchButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.workshopFetchButton.Enabled = false;
             this.workshopFetchButton.Location = new System.Drawing.Point(0, 0);
             this.workshopFetchButton.Margin = new System.Windows.Forms.Padding(0);
             this.workshopFetchButton.Name = "workshopFetchButton";
@@ -408,34 +407,34 @@ namespace ScribeBot.Interface
             this.workshopFetchButton.UseVisualStyleBackColor = true;
             this.workshopFetchButton.Click += new System.EventHandler(this.workshopFetchButton_Click);
             // 
-            // browsePackagePanel
+            // browserPackagePanel
             // 
-            this.browsePackagePanel.BackColor = System.Drawing.SystemColors.Control;
-            this.browsePackagePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.browsePackagePanel.Controls.Add(this.browsePackageList);
-            this.browsePackagePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.browsePackagePanel.Location = new System.Drawing.Point(5, 5);
-            this.browsePackagePanel.Margin = new System.Windows.Forms.Padding(5);
-            this.browsePackagePanel.Name = "browsePackagePanel";
-            this.browsePackagePanel.Size = new System.Drawing.Size(254, 475);
-            this.browsePackagePanel.TabIndex = 2;
+            this.browserPackagePanel.BackColor = System.Drawing.SystemColors.Control;
+            this.browserPackagePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.browserPackagePanel.Controls.Add(this.browserPackageList);
+            this.browserPackagePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.browserPackagePanel.Location = new System.Drawing.Point(5, 5);
+            this.browserPackagePanel.Margin = new System.Windows.Forms.Padding(5);
+            this.browserPackagePanel.Name = "browserPackagePanel";
+            this.browserPackagePanel.Size = new System.Drawing.Size(254, 475);
+            this.browserPackagePanel.TabIndex = 2;
             // 
-            // browsePackageList
+            // browserPackageList
             // 
-            this.browsePackageList.AutoScroll = true;
-            this.browsePackageList.AutoSize = true;
-            this.browsePackageList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.browsePackageList.BackColor = System.Drawing.Color.Transparent;
-            this.browsePackageList.ColumnCount = 1;
-            this.browsePackageList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.browsePackageList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.browsePackageList.Location = new System.Drawing.Point(0, 0);
-            this.browsePackageList.Margin = new System.Windows.Forms.Padding(0);
-            this.browsePackageList.Name = "browsePackageList";
-            this.browsePackageList.RowCount = 1;
-            this.browsePackageList.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.browsePackageList.Size = new System.Drawing.Size(252, 473);
-            this.browsePackageList.TabIndex = 1;
+            this.browserPackageList.AutoScroll = true;
+            this.browserPackageList.AutoSize = true;
+            this.browserPackageList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.browserPackageList.BackColor = System.Drawing.Color.Transparent;
+            this.browserPackageList.ColumnCount = 1;
+            this.browserPackageList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.browserPackageList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.browserPackageList.Location = new System.Drawing.Point(0, 0);
+            this.browserPackageList.Margin = new System.Windows.Forms.Padding(0);
+            this.browserPackageList.Name = "browserPackageList";
+            this.browserPackageList.RowCount = 1;
+            this.browserPackageList.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.browserPackageList.Size = new System.Drawing.Size(252, 473);
+            this.browserPackageList.TabIndex = 1;
             // 
             // noticeTooltip
             // 
@@ -479,8 +478,8 @@ namespace ScribeBot.Interface
             this.tabPage1.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
-            this.browsePackagePanel.ResumeLayout(false);
-            this.browsePackagePanel.PerformLayout();
+            this.browserPackagePanel.ResumeLayout(false);
+            this.browserPackagePanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -511,8 +510,8 @@ namespace ScribeBot.Interface
         private Button workshopFetchButton;
         private Panel installedPackagesPanel;
         private TableLayoutPanel installedPackagesList;
-        private Panel browsePackagePanel;
-        private TableLayoutPanel browsePackageList;
+        private Panel browserPackagePanel;
+        private TableLayoutPanel browserPackageList;
 
         public RichTextBox ConsoleOutput { get => consoleOutput; set => consoleOutput = value; }
         public CheckBox AsyncCheckbox { get => asyncCheckbox; set => asyncCheckbox = value; }
@@ -524,5 +523,6 @@ namespace ScribeBot.Interface
         public Button ConsoleClearButton { get => consoleClearButton; set => consoleClearButton = value; }
         public Button WorkshopFetchButton { get => workshopFetchButton; set => workshopFetchButton = value; }
         public TableLayoutPanel InstalledPackagesList { get => installedPackagesList; set => installedPackagesList = value; }
+        public TableLayoutPanel BrowserPackageList { get => browserPackageList; set => browserPackageList = value; }
     }
 }
