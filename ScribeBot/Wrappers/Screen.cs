@@ -42,7 +42,7 @@ namespace ScribeBot.Wrappers
 
                 screen.Save($@"Data/User/{path}", ImageFormat.Png);
             }
-            catch(Exception e)
+            catch
             {
                 Scripter.ExecuteCode($"error('Invalid path for screen.capture()! [Data/User/{path}]')");
             }
