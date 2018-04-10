@@ -16,9 +16,6 @@ namespace ScribeBot
         /// Main entry point for the program.
         /// </summary>
         /// <param name="args">Startup args</param>
-        static void Main(string[] args)
-        {
-            Core.Initialize();
-        }
+        static void Main(string[] args) => Core.Initialize();
     }
 }

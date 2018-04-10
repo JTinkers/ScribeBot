@@ -45,13 +45,14 @@ namespace ScribeBot
         {
             Core.WriteLine(Core.Colors["Purple"], "Fetching workshop list.", Core.Colors["Red"], "\nWARNING: Using this function too often might get you temporarily IP banned from Github API!");
 
+            Dictionary<string, string> list = new Dictionary<string, string>();
+
             NetClient.Headers["User-Agent"] = "ScribeBot - Workshop Content Fetching";
 
             JArray parsed = JArray.Parse(NetClient.DownloadString(Core.WorkshopAddress));
 
-            Dictionary<string, string> list = new Dictionary<string, string>();
-
-            parsed.Children().Where(x => !x["name"].ToString().Equals( "README.md" )).ToList().ForEach(x => list[Path.GetFileNameWithoutExtension( (string)x["name"] )] = (string)x["download_url"]);
+            parsed.Children().Where(x => !x["name"].ToString().Equals("README.md"));
+            parsed.ToList().ForEach(x => list[Path.GetFileNameWithoutExtension((string)x["name"])] = (string)x["download_url"]);
 
             Core.WriteLine(Core.Colors["Purple"], "Workshop list fetched. Happy downloading!");
 
@@ -67,7 +68,7 @@ namespace ScribeBot
 
             if (File.Exists($@"Data\Packages\{name}.sbpack"))
             {
-                Core.WriteLine("A package of this name already exists!");
+                Core.WriteLine(Core.Colors["Red"], "A package of this name already exists!");
                 return;
             }
 
