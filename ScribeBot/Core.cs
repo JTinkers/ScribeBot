@@ -22,7 +22,6 @@ namespace ScribeBot
     public static class Core
     {
         private static string version = "0.1beta";
-        private static string workshopAddress = $@"https://api.github.com/repos/jonekcode/ScribeBot-Workshop/contents/";
         private static Thread interfaceThread;
         private static Window mainWindow;
         private static PrivateFontCollection fonts;
@@ -64,11 +63,6 @@ namespace ScribeBot
         /// Contains console output as a log.
         /// </summary>
         public static StringBuilder Log { get => log; set => log = value; }
-
-        /// <summary>
-        /// String containing address to the ScribeBot-Workshop script repository.
-        /// </summary>
-        public static string WorkshopAddress { get => workshopAddress; set => workshopAddress = value; }
 
         /// <summary>
         /// Initializes object-based enumerations, loads fonts, opens user interface etc. basically anything that has to be done once the program starts.

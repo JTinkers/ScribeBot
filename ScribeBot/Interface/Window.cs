@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -143,6 +144,47 @@ namespace ScribeBot.Interface
                     }
                 }));
             });
+        }
+
+        private void packageSelectFolder_Click(object sender, EventArgs e)
+        {
+            //We need separate thread for this, one with STA state
+            //This will be a crude but effective workaround
+            Thread fileDialogThread = new Thread(() =>
+            {
+                PackageFolderSelectDialog.ShowDialog();
+
+                Thread.CurrentThread.Abort();
+            });
+
+            fileDialogThread.TrySetApartmentState(ApartmentState.STA);
+            fileDialogThread.Start();
+            fileDialogThread.Join();
+
+            if( !String.IsNullOrEmpty( PackageFolderSelectDialog.SelectedPath ) )
+            {
+                PackageCreateFolder.Enabled = true;
+            }
+        }
+
+        private void packageCreateFolder_Click(object sender, EventArgs e)
+        {
+            List<TextBox> fields = new List<TextBox>() { PackageName, PackageAuthors, PackageDescription, PackageEntryPoint };
+
+            if (fields.All(x => !String.IsNullOrEmpty(x.Text)))
+            {
+                Dictionary<string, string> info = new Dictionary<string, string>()
+                {
+                    ["Name"] = PackageName.Text,
+                    ["Authors"] = PackageAuthors.Text,
+                    ["Description"] = PackageDescription.Text,
+                    ["EntryPoint"] = PackageEntryPoint.Text
+                };
+
+                Workshop.CreatePackage(PackageFolderSelectDialog.SelectedPath, info);
+            }
+            else
+                Core.WriteLine(Core.Colors["Red"], "Fill all fields before creating a package!");
         }
     }
 }

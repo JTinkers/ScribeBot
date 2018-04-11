@@ -43,12 +43,21 @@ namespace ScribeBot
             packageName = packageName.ToLower();
 
             //Open a filestream
-            ZipArchive archive = ZipFile.Open($@"Data\Packages\{packageName}.sbpack", ZipArchiveMode.Create);
+            try
+            {
+                ZipArchive archive = ZipFile.Open($@"Data\Packages\{packageName}.sbpack", ZipArchiveMode.Create);
 
-            //Create entries for every file
-            filePaths.ToList().ForEach(x => archive.CreateEntryFromFile(x, Path.GetFileName(x)));
+                //Create entries for every file
+                filePaths.ToList().ForEach(x => archive.CreateEntryFromFile(x, Path.GetFileName(x)));
 
-            archive.Dispose();
+                archive.Dispose();
+
+                Core.WriteLine(Core.Colors["Green"], $@"Package {packageName}.sbpack created!");
+            }
+            catch( Exception e )
+            {
+                Core.WriteLine(Core.Colors["Red"], e.Message);
+            }
 
             return new Package($@"Data\Packages\{packageName}.sbpack"); ;
         }

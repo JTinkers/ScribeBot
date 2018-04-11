@@ -17,7 +17,13 @@ namespace ScribeBot
     /// </summary>
     public static class Workshop
     {
+        private static string workshopAddress = $@"https://api.github.com/repos/jonekcode/ScribeBot-Workshop/contents/";
         private static WebClient netClient = new WebClient();
+
+        /// <summary>
+        /// String containing address to the ScribeBot-Workshop script repository.
+        /// </summary>
+        public static string WorkshopAddress { get => workshopAddress; set => workshopAddress = value; }
 
         /// <summary>
         /// WebClient used for simple HTTP Requests. Mainly workshop fetching/downloading.
@@ -49,12 +55,10 @@ namespace ScribeBot
 
             NetClient.Headers["User-Agent"] = "ScribeBot - Workshop Content Fetching";
 
-            JArray parsed = JArray.Parse(NetClient.DownloadString(Core.WorkshopAddress));
+            List<JToken> tokens = JArray.Parse(NetClient.DownloadString(WorkshopAddress)).Children().Where(x => !x["name"].ToString().Equals("README.md")).ToList();
+            tokens.ToList().ForEach(x => list[Path.GetFileNameWithoutExtension((string)x["name"])] = (string)x["download_url"]);
 
-            parsed.Children().Where(x => !x["name"].ToString().Equals("README.md"));
-            parsed.ToList().ForEach(x => list[Path.GetFileNameWithoutExtension((string)x["name"])] = (string)x["download_url"]);
-
-            Core.WriteLine(Core.Colors["Purple"], "Workshop list fetched. Happy downloading!");
+            Core.WriteLine(Core.Colors["Green"], "Workshop list fetched. Happy downloading!");
 
             return list;
         }
@@ -76,6 +80,25 @@ namespace ScribeBot
             NetClient.DownloadFile(url, $@"Data\Packages\{name}.sbpack");
 
             Core.WriteLine(Core.Colors["Purple"], $@"Downloaded workshop package: {name}");
+        }
+
+        /// <summary>
+        /// Create a .sbpack package from a supplied folder.
+        /// </summary>
+        /// <param name="folderPath">Path to folder to turn into package.</param>
+        /// <param name="info">Unformatted table containing data that later will be turned to info.json.</param>
+        public static void CreatePackage(string folderPath, Dictionary<string, string> info)
+        {
+            //Create info.json
+            string json = JsonConvert.SerializeObject(info, Formatting.Indented);
+            File.WriteAllText($@"{folderPath}\info.json", json);
+
+            //Create .sbpack
+            List<string> filePaths = new List<string>();
+
+            Directory.GetFiles(folderPath).ToList().ForEach(x => filePaths.Add(x));
+
+            Package.Create(Path.GetFileName( folderPath ), filePaths.ToArray());
         }
     }
 }

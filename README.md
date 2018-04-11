@@ -1,3 +1,4 @@
+#**README updated with upload of Release-0.3b**
 # ScribeBot
 ![](https://i.imgur.com/nPWbUCM.png) 
 
