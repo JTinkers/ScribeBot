@@ -11,26 +11,17 @@ namespace ScribeBot.Wrappers
     /// </summary>
     static class LuaExtensions
     {
-        /// <summary>
-        /// String containing code for 'wait(time)' function; Wait until 'time' milliseconds have passed.
-        /// </summary>
-        public static string Wait =
+        public static string Code =
         @"
             function wait(time)
                 local callTime = os.clock() + (time/1000)
                 repeat until os.clock() > callTime
             end
-        ";
 
-        /// <summary>
-        /// String containing code for 'table.print(t)' function; Print table in a 'key = value' manner.
-        /// </summary>
-        public static string PrintTable =
-        @"
             function table.print(t)
                 print( '{' )
                 for key, value in pairs(t) do
-                    print(string.format('\t[%s] = %s', tostring(key), tostring(value)))
+                    print(string.format('\t%-20s= %s', tostring(key), tostring(value)))
                 end
                 print( '}' )
             end
