@@ -45,6 +45,10 @@ namespace ScribeBot.Native
 
         [DllImport("user32.dll")]
         public static extern void mouse_event(int flags, int x, int y, int buttons, int extraInfo);
+
+        [DllImport("gdi32.dll", EntryPoint = "BitBlt", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool BitBlt(IntPtr hdc, int dx, int dy, int w, int h, IntPtr hdcSrc, int sx, int sy, int dw);
     }
 
     [StructLayout(LayoutKind.Sequential)]

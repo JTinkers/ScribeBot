@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ScribeBot.Wrappers.Types;
 
+using D = System.Drawing;
+
 namespace ScribeBot.Native
 {
     /// <summary>
@@ -28,6 +30,18 @@ namespace ScribeBot.Native
                 return processes.First().MainWindowHandle;
 
             return IntPtr.Zero;
+        }
+
+        public static D.Color[] GetPixelColor( int x, int y, int w = 1, int h = 1 )
+        {
+            D.Bitmap container = new D.Bitmap(w, h);
+
+            D.Graphics containerGraphics = D.Graphics.FromImage(container);
+            D.Graphics sourceGraphics = D.Graphics.FromHwnd(IntPtr.Zero);
+
+
+
+            containerGraphics.Dispose();
         }
 
         public static string[] GetWindowTitles()
