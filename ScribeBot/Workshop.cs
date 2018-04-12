@@ -55,7 +55,8 @@ namespace ScribeBot
 
             NetClient.Headers["User-Agent"] = "ScribeBot - Workshop Content Fetching";
 
-            List<JToken> tokens = JArray.Parse(NetClient.DownloadString(WorkshopAddress)).Children().Where(x => !x["name"].ToString().Equals("README.md")).ToList();
+            IEnumerable<JToken> tokens = JArray.Parse(NetClient.DownloadString(WorkshopAddress)).Children();
+            tokens = tokens.Where(x => !x["name"].ToString().Equals("README.md")).ToList();
             tokens.ToList().ForEach(x => list[Path.GetFileNameWithoutExtension((string)x["name"])] = (string)x["download_url"]);
 
             Core.WriteLine(Core.Colors["Green"], "Workshop list fetched. Happy downloading!");
