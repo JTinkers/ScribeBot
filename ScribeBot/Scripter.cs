@@ -44,9 +44,6 @@ namespace ScribeBot
             //Enums
             UserData.RegisterType<Native.VirtualKeyCode>();
             CurrentScript.Globals["VirtualKeyCode"] = UserData.CreateStatic<Native.VirtualKeyCode>();
-
-            //LuaFunc extensions
-            CurrentScript.DoString(Wrappers.LuaExtensions.Code);
         }
 
         /// <summary>

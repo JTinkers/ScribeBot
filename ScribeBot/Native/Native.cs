@@ -48,7 +48,7 @@ namespace ScribeBot.Native
 
         [DllImport("gdi32.dll", EntryPoint = "BitBlt", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        static extern bool BitBlt(IntPtr hdc, int dx, int dy, int w, int h, IntPtr hdcSrc, int sx, int sy, int dw);
+        public static extern bool BitBlt(IntPtr hdc, int dx, int dy, int w, int h, IntPtr hdcSrc, int sx, int sy, int dw);
     }
 
     [StructLayout(LayoutKind.Sequential)]

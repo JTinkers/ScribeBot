@@ -17,18 +17,9 @@ namespace ScribeBot.Wrappers
     {
         public static string Version => ScribeBot.Core.Version;
 
-        public static void Write(object text) => ScribeBot.Core.Write(text);
-
-        public static void WriteLine(object line) => ScribeBot.Core.WriteLine(line);
-
         public static void Write(string text) => ScribeBot.Core.Write(text);
 
         public static void WriteLine(string line) => ScribeBot.Core.WriteLine(line);
-
-        //Not a perfect solution
-        public static void Write(char text) => ScribeBot.Core.Write(text.ToString());
-
-        public static void WriteLine(char line) => ScribeBot.Core.WriteLine(line.ToString());
 
         public static void SetFocusWindow(string title) => Native.API.SetFocusWindow(title);
 

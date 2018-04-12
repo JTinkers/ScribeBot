@@ -53,6 +53,7 @@ namespace ScribeBot.Interface
         private void consoleRun_Click(object sender, EventArgs e)
         {
             Scripter.ExecuteCode(ConsoleInput.Text, AsyncStringCheck.Checked, false);
+
             ConsoleInput.Text = "";
         }
 

@@ -176,7 +176,7 @@ namespace ScribeBot
             StringBuilder text = new StringBuilder();
             for (int i = 0; i < args.Length; i += 2)
             {
-                text.Append((String)args[i + 1]);
+                text.Append(args[i + 1].ToString());
             }
             text.Append("\n");
 

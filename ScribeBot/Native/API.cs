@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ScribeBot.Wrappers.Types;
-
-using D = System.Drawing;
+using Drawing = System.Drawing;
 
 namespace ScribeBot.Native
 {
@@ -32,16 +32,33 @@ namespace ScribeBot.Native
             return IntPtr.Zero;
         }
 
-        public static D.Color[] GetPixelColor( int x, int y, int w = 1, int h = 1 )
+        /// <summary>
+        /// Get color of a pixel on specified position.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns>Pixel color.</returns>
+        public static Drawing.Color GetPixel( int x, int y )
         {
-            D.Bitmap container = new D.Bitmap(w, h);
+            Bitmap container = new Bitmap(1, 1);
 
-            D.Graphics containerGraphics = D.Graphics.FromImage(container);
-            D.Graphics sourceGraphics = D.Graphics.FromHwnd(IntPtr.Zero);
+            Graphics dst = Graphics.FromImage(container);
+            Graphics src = Graphics.FromHwnd(IntPtr.Zero);
 
+            Native.BitBlt(dst.GetHdc(), 0, 0, 1, 1, src.GetHdc(), x, y, (int)CopyPixelOperation.SourceCopy);
 
+            dst.ReleaseHdc();
+            src.ReleaseHdc();
 
-            containerGraphics.Dispose();
+            dst.Dispose();
+            src.Dispose();
+
+            Drawing.Color color = container.GetPixel(0, 0);
+
+            container.LockBits(new Rectangle(0, 0, 1, 1), Drawing.Imaging.ImageLockMode.ReadOnly, Drawing.Imaging.PixelFormat.Format32bppArgb);
+            container.Dispose();
+
+            return color;
         }
 
         public static string[] GetWindowTitles()
@@ -111,13 +128,13 @@ namespace ScribeBot.Native
         /// </summary>
         /// <param name="title">Title of window to get size of.</param>
         /// <returns>The size of window.</returns>
-        public static Size GetWindowSize(string title)
+        public static Wrappers.Types.Size GetWindowSize(string title)
         {
             IntPtr handle = GetWindowHandleByTitle(title);
 
             Native.GetWindowRect(handle, out WindowRect rect);
 
-            return new Size() { Width = rect.Right - rect.Left, Height = rect.Bottom - rect.Top };
+            return new Wrappers.Types.Size() { Width = rect.Right - rect.Left, Height = rect.Bottom - rect.Top };
         }
 
         /// <summary>
@@ -140,13 +157,13 @@ namespace ScribeBot.Native
         /// </summary>
         /// <param name="title">Title of window to get position of.</param>
         /// <returns>Position of window of a specified title.</returns>
-        public static Point GetWindowPos(string title)
+        public static Wrappers.Types.Point GetWindowPos(string title)
         {
             WindowRect rect;
 
             Native.GetWindowRect(GetWindowHandleByTitle(title), out rect);
 
-            return new Point() { X = rect.Left, Y = rect.Top };
+            return new Wrappers.Types.Point() { X = rect.Left, Y = rect.Top };
         }
 
         /// <summary>
@@ -163,11 +180,11 @@ namespace ScribeBot.Native
         /// Get position of the cursor.
         /// </summary>
         /// <returns>Position of the cursor.</returns>
-        public static Point GetCursorPos()
+        public static Wrappers.Types.Point GetCursorPos()
         {
             Native.GetCursorPos(out NativePoint point);
 
-            return new Point() { X = point.X, Y = point.Y };
+            return new Wrappers.Types.Point() { X = point.X, Y = point.Y };
         }
 
         /// <summary>
@@ -200,7 +217,7 @@ namespace ScribeBot.Native
         /// <param name="button">Number of mousebutton to emulate.</param>
         public static void SendMousePress(int button)
         {
-            Point cPos = GetCursorPos();
+            Wrappers.Types.Point cPos = GetCursorPos();
 
             switch (button)
             {

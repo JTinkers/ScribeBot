@@ -6,7 +6,6 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Forms = System.Windows.Forms;
 
 namespace ScribeBot.Wrappers
@@ -17,6 +16,13 @@ namespace ScribeBot.Wrappers
     [MoonSharpUserData]
     static class Screen
     {
+        public static Types.Color GetPixel(int x, int y)
+        {
+            Color px = Native.API.GetPixel(x, y);
+
+            return new Types.Color() { R = px.R, G = px.G, B = px.B };
+        }
+
         /// <summary>
         /// Take a screenshot and save it to a given path.
         /// </summary>
@@ -57,14 +63,9 @@ namespace ScribeBot.Wrappers
         /// <returns>Total size of screens.</returns>
         public static Types.Size GetSize()
         {
-            int w, h;
-
             Forms.Screen[] screens = Forms.Screen.AllScreens;
 
-            w = screens.ToList().Sum(x => x.Bounds.Width);
-            h = screens.ToList().Max(i => i.Bounds.Height);
-
-            return new Types.Size() { Width = w, Height = h };
+            return new Types.Size() { Width = screens.ToList().Sum(x => x.Bounds.Width), Height = screens.ToList().Max(i => i.Bounds.Height) };
         }
     }
 }

@@ -11,7 +11,7 @@ namespace ScribeBot.Wrappers.Types
     /// Proxy structure
     /// </summary>
     [MoonSharpUserData]
-    public struct Point
+    struct Point
     {
         public int X, Y;
 
