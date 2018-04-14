@@ -9,6 +9,7 @@ using System.Diagnostics;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+//TO-DO: Remake this entire class
 namespace ScribeBot
 {
     /// <summary>
@@ -42,15 +43,11 @@ namespace ScribeBot
         {
             packageName = packageName.ToLower();
 
-            //Open a filestream
             try
             {
                 ZipArchive archive = ZipFile.Open($@"Data\Packages\{packageName}.sbpack", ZipArchiveMode.Create);
 
-                //Create entries for every file
                 filePaths.ToList().ForEach(x => archive.CreateEntryFromFile(x, Path.GetFileName(x)));
-
-                archive.Dispose();
 
                 Core.WriteLine(Core.Colors["Green"], $@"Package {packageName}.sbpack created!");
             }
@@ -68,11 +65,9 @@ namespace ScribeBot
         /// <returns>Package name, authors, description etc.</returns>
         public Dictionary<string, string> GetInfo()
         {
-            StreamReader reader = new StreamReader( ZipFile.OpenRead( ArchivePath ).GetEntry( "info.json" ).Open() );
+            StreamReader reader = new StreamReader(ZipFile.OpenRead(ArchivePath).GetEntry("info.json").Open());
 
-            string fileData = reader.ReadToEnd();
-
-            return JsonConvert.DeserializeObject<Dictionary<string, string>>(fileData);
+            return JsonConvert.DeserializeObject<Dictionary<string, string>>(reader.ReadToEnd());
         }
 
         /// <summary>
@@ -86,9 +81,13 @@ namespace ScribeBot
 
             StreamReader reader = new StreamReader(ZipFile.OpenRead(ArchivePath).GetEntry(info["EntryPoint"]).Open());
 
-            string fileData = reader.ReadToEnd();
-
-            Scripter.ExecuteCode(fileData, asynchronous, silent);
+            Scripter.ExecuteCode(reader.ReadToEnd(), asynchronous, silent);
         }
+
+        /// <summary>
+        /// Get files inside a package.
+        /// </summary>
+        /// <returns>Entries as a ZipArchiveEntry array.</returns>
+        public ZipArchiveEntry[] GetEntries() => ZipFile.OpenRead(ArchivePath).Entries.ToArray();
     }
 }

@@ -88,6 +88,14 @@ namespace ScribeBot
                 Name = "Interface Thread"
             };
             InterfaceThread.Start();
+
+            //TEST
+            Application.EnableVisualStyles();
+
+            Editor editor = new Editor(new Package($@"Data\Packages\Test Pack.sbpack"));
+
+            editor.ShowDialog();
+            //TEST
         }
 
         /// <summary>

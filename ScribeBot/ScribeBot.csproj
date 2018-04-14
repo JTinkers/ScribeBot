@@ -93,6 +93,12 @@
   <ItemGroup>
     <Compile Include="Core.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Interface\Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\Editor.Designer.cs">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interface\PackageInfoMinimal.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -169,6 +175,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Interface\Editor.resx">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Interface\PackageInfoMinimal.resx">
       <DependentUpon>PackageInfoMinimal.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +217,12 @@
     <Content Include="Newtonsoft.Json-LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Execute_16x.png" />
+    <None Include="Resources\Script_16x.png" />
+    <None Include="Resources\Package_16x.png" />
+    <None Include="Resources\Close_16x.png" />
+    <None Include="Resources\Export_16x.png" />
+    <None Include="Resources\Import_16x.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
