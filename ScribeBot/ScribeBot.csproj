@@ -217,14 +217,14 @@
     <Content Include="Newtonsoft.Json-LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\SaveAll_16x.png" />
-    <None Include="Resources\Save_16x.png" />
-    <None Include="Resources\Execute_16x.png" />
-    <None Include="Resources\Script_16x.png" />
-    <None Include="Resources\Package_16x.png" />
-    <None Include="Resources\Close_16x.png" />
-    <None Include="Resources\Export_16x.png" />
-    <None Include="Resources\Import_16x.png" />
+    <EmbeddedResource Include="Resources\SaveAll_16x.png" />
+    <EmbeddedResource Include="Resources\Save_16x.png" />
+    <EmbeddedResource Include="Resources\Execute_16x.png" />
+    <EmbeddedResource Include="Resources\Script_16x.png" />
+    <EmbeddedResource Include="Resources\Package_16x.png" />
+    <EmbeddedResource Include="Resources\Close_16x.png" />
+    <EmbeddedResource Include="Resources\Export_16x.png" />
+    <EmbeddedResource Include="Resources\Import_16x.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

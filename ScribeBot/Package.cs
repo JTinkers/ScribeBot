@@ -65,9 +65,56 @@ namespace ScribeBot
         /// <returns>Package name, authors, description etc.</returns>
         public Dictionary<string, string> GetInfo()
         {
-            StreamReader reader = new StreamReader(ZipFile.OpenRead(ArchivePath).GetEntry("info.json").Open());
+            ZipArchive archive = ZipFile.OpenRead(ArchivePath);
 
-            return JsonConvert.DeserializeObject<Dictionary<string, string>>(reader.ReadToEnd());
+            StreamReader reader = new StreamReader(archive.GetEntry("info.json").Open());
+
+            string contents = reader.ReadToEnd();
+
+            //Neccessary force-disposal and close to preven IO exceptions.
+            reader.Dispose();
+            archive.Dispose();
+
+            return JsonConvert.DeserializeObject<Dictionary<string, string>>(contents);
+        }
+        
+        /// <summary>
+        /// Read contents of a specific file entry inside a package.
+        /// </summary>
+        /// <param name="fileName">Name of entry to get contents of.</param>
+        /// <returns>Contents as a string.</returns>
+        public string ReadFileContents(string fileName)
+        {
+            ZipArchive archive = ZipFile.OpenRead(ArchivePath);
+
+            StreamReader reader = new StreamReader(archive.GetEntry(fileName).Open());
+
+            string contents = reader.ReadToEnd();
+
+            reader.Dispose();
+            archive.Dispose();
+
+            return contents;
+        }
+
+        /// <summary>
+        /// Write content to a specific file entry inside a package.
+        /// </summary>
+        /// <param name="fileName">Name of entry to set contents of.</param>
+        /// <param name="contents">Contents to write.</param>
+        public void WriteFileContents(string fileName, string contents)
+        {
+            ZipArchive archive = ZipFile.Open(ArchivePath, ZipArchiveMode.Update);
+
+            archive.GetEntry(fileName).Delete();
+            archive.CreateEntry(fileName);
+
+            StreamWriter writer = new StreamWriter(archive.GetEntry(fileName).Open());
+
+            writer.Write(contents);
+
+            writer.Dispose();
+            archive.Dispose();
         }
 
         /// <summary>
@@ -75,27 +122,26 @@ namespace ScribeBot
         /// </summary>
         /// <param name="asynchronous">Whether it should be executed asynchronously or not.</param>
         /// <param name="silent">Defines whether console shouldn't output the executed code.</param>
-        public void Run( bool asynchronous = true, bool silent = true )
+        public void Run(bool asynchronous = true, bool silent = true)
         {
             Dictionary<string, string> info = GetInfo();
 
-            StreamReader reader = new StreamReader(ZipFile.OpenRead(ArchivePath).GetEntry(info["EntryPoint"]).Open());
-
-            Scripter.ExecuteCode(reader.ReadToEnd(), asynchronous, silent);
+            Scripter.ExecuteCode(ReadFileContents(info["EntryPoint"]), asynchronous, silent);
         }
 
         /// <summary>
         /// Get files inside a package.
         /// </summary>
         /// <returns>Entries as a ZipArchiveEntry array.</returns>
-        public ZipArchiveEntry[] GetFiles() => ZipFile.OpenRead(ArchivePath).Entries.ToArray();
+        public ZipArchiveEntry[] GetFiles()
+        {
+            ZipArchive archive = ZipFile.OpenRead(ArchivePath);
 
-        /// <summary>
-        /// Get file stream for writing and reading.
-        /// </summary>
-        /// <param name="fileName">Name of file to open stream for.</param>
-        /// <param name="mode">Mode in which to open stream</param>
-        /// <returns></returns>
-        public Stream GetFileStream(string fileName, ZipArchiveMode mode = ZipArchiveMode.Read) => ZipFile.Open(ArchivePath, mode).GetEntry(fileName).Open();
+            ZipArchiveEntry[] entries = archive.Entries.ToArray();
+
+            archive.Dispose();
+
+            return entries;
+        }
     }
 }

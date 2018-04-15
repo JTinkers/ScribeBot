@@ -64,6 +64,10 @@ namespace ScribeBot
         /// Contains console output as a log.
         /// </summary>
         public static StringBuilder Log { get => log; set => log = value; }
+
+        /// <summary>
+        /// Built-in package editor.
+        /// </summary>
         public static PackageEditor Editor { get => editor; set => editor = value; }
 
         /// <summary>
