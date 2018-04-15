@@ -1,54 +1,65 @@
-#**README updated with upload of Release-0.3b**
+#**README last updated with upload of Release-0.5b**
 # ScribeBot
 ![](https://i.imgur.com/nPWbUCM.png) 
 
-ScribeBot is a scriptable automation system.
+ScribeBot is a highly scriptable automation system.
 
-With a little knowledge of Lua, you can automate mundane tasks, create macros or even create a second bot.
+With a little knowledge of Lua, you can automate mundane tasks, create macros or even create a bot.
 
-![https://i.imgur.com/BMsHIQR.png](https://i.imgur.com/BMsHIQR.png)
+![https://i.imgur.com/2fD3srP.png](https://i.imgur.com/2fD3srP.png)
 
-## The Key Features
-- Lua interpreter hooked to numerous APIs, interfaces and libraries that allow you to create robust automation systems.
-- A decent (it's not that good) interface.
-- Packaging system that creates and reads ScribeBot Package Files (.sbpack) which contain all the neccessary stuff related to a script (such as name, description, author etc).
-- Workshop that allows you to download and run community-made packages with just one click.
-- Built-in logging system.
+## Key Features
+- Lua interpreter plugged to numerous APIs and libraries - create robust systems without expert knowledge.
+- Simple and easy interface - it's not beautiful, but it works.
+- Packaging system - keep scripts and info about them bundled togheter.
+- Workshop - find and download community-made scripts with just one click.
+- Built-in package editor - edit packages without having to unzip them.
+- Logging system - find out what broke when you were away.
 
 ## Planned Features
-- Move workshop to my own website (since github has a noticable delay and it's rate limited)
-- Incorporate Selenium to allow creation of web-based automations.
-- Built-in manual that enlists all types, classes and methods exposed to lua environment.
-- Gamepad support.
-- Autoupdater.
-- Ability to construct GUIs using Lua (besides input.showPrompt function that is already in)
-- Simple Hotkey binding for macros.
-- Package creator/editor.
+- (-)Workshop hosting that allows for more API calls.
+- (-)Autoupdater.
+- (-)Lua Manual (list of functions, types etc).
+- (-)Merge script execution into a maintained loop, allowing for usage of hotkeys, routines and cross-dependency from outside of the bundle.
+- (-)Add Selenium wrapper for web-based automations.
 
 ## Important Notice
-This program uses unmanaged code (see: https://msdn.microsoft.com/en-us/library/ms973872.aspx#manunman_topic6) and provides low-level functionality that if used improperly (intentionally or not) could affect system's security and reliability. 
+This program uses unmanaged code (see: https://msdn.microsoft.com/en-us/library/ms973872.aspx#manunman_topic6) and provides low-level functionality that if used improperly (intentionally or not) could affect system's security and reliability.
+It's possible to write a malicious script - it's **highly advised** to open packages with package editor and read code before executing it, especially if it comes from untrusted sources.
 
-**Only download scripts from trusted sources and check the code before you run it.**
+## Function List
+- core.Version
+- core.Write(text)
+- core.WriteLine(text)
+- core.SetFocusWindow(title)
+- core.GetFocusWindow()
+- core.SetWindowSize(title, w, h)
+- core.GetWindowSize()
+- core.SetWindowPos(title, x, y)
+- core.GetWindowPos()
+- core.IsWindowVisible(title)
+- core.Close()
+- core.GetWindowTitles()
+- input.SendKeyPress(virtualKeyCode)
+- input.SendKeyPress(text, delay)
+- input.SendKeyPress(char)
+- input.SendMousePress(number)
+- input.SetCursorPos(x, y)
+- input.GetCursorPos()
+- screen.getPixel(x, y)
+- screen.capture(savePath)
+- screen.getSize()
+- interface showPrompt(message)
 
-## Usage
-- Run ScribeBot.exe.
-- Browse workshop for packages, hit download under package you want to get.
-- Select from a list of packages (stored in /Data/Package).
-- Check (or don't) the 'Asynchronous' option.
-- Hit 'Run'.
+Some functions that were implemented by Lua interpreter itself can be found here: http://www.moonsharp.org/additions.html
 
-## Writting for ScribeBot
-**THIS ONLY APPLIES TO RELEASE 0.3b, IF YOU DON'T WANT TO GO THROUGH THIS, DOWNLOAD 0.2b**
+## Planned Functions
+- input.isKeyDown(virtualKeyCoode)
+- input.isKeyDown(char)
+- input.isMouseDown(number)
+- input.isKeyDown() -- but for gamepad
+- audio.*
+- web.*
+- xml.*
 
-There temporarily is no package editor, to create one follow steps below:
-- Copy the "Test Package.sbpack" located in Data\Packages.
-- Paste it into the same directory and rename to whatever you want it to be named.
-- Open it with ZIP (ZIP2, ZIP7 or WinRar).
-- Edit info.json and change "EntryPoint" to whatever you want your lua file to be called.
-- Rename the lua file to the same thing.
-- Open Lua file and start writting your script!
-
-## Known bugs/odd behaviour
-- If you don't check the 'Asynchronous' option, the script will run on the same thread as the interface - rendering it unusable until the script is done.
-- If you check the 'Asynchronous' option, syntax errors might not be properly passed to the console (which isn't big of a deal, just get yourself a proper editor with a linter).
-
+**Many more that have yet to be suggested!**
