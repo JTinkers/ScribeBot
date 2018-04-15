@@ -38,7 +38,7 @@ namespace ScribeBot
         {
             List<Package> packages = new List<Package>();
 
-            Directory.GetFiles($@"Data\Packages\", "*.sbpack").ToList().ForEach(x => packages.Add(new Package(x)));
+            Directory.GetFiles($@"Data\Packages\", "*.zip").ToList().ForEach(x => packages.Add(new Package(x)));
 
             return packages.ToArray();
         }
@@ -71,30 +71,28 @@ namespace ScribeBot
         {
             Core.WriteLine(Core.Colors["Purple"], $@"Downloading workshop package: {name}");
 
-            if (File.Exists($@"Data\Packages\{name}.sbpack"))
+            if (File.Exists($@"Data\Packages\{name}.zip"))
             {
                 Core.WriteLine(Core.Colors["Red"], "A package of this name already exists!");
                 return;
             }
 
             NetClient.Headers["User-Agent"] = "ScribeBot - Workshop - Download Package";
-            NetClient.DownloadFile(url, $@"Data\Packages\{name}.sbpack");
+            NetClient.DownloadFile(url, $@"Data\Packages\{name}.zip");
 
             Core.WriteLine(Core.Colors["Purple"], $@"Downloaded workshop package: {name}");
         }
 
         /// <summary>
-        /// Create a .sbpack package from a supplied folder.
+        /// Create a .zip package from a supplied folder.
         /// </summary>
         /// <param name="folderPath">Path to folder to turn into package.</param>
         /// <param name="info">Unformatted table containing data that later will be turned to info.json.</param>
         public static void CreatePackage(string folderPath, Dictionary<string, string> info)
         {
-            //Create info.json
             string json = JsonConvert.SerializeObject(info, Formatting.Indented);
             File.WriteAllText($@"{folderPath}\info.json", json);
 
-            //Create .sbpack
             List<string> filePaths = new List<string>();
 
             Directory.GetFiles(folderPath).ToList().ForEach(x => filePaths.Add(x));

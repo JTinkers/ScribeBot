@@ -93,11 +93,11 @@
   <ItemGroup>
     <Compile Include="Core.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="Interface\Editor.cs">
+    <Compile Include="Interface\PackageEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interface\Editor.Designer.cs">
-      <DependentUpon>Editor.cs</DependentUpon>
+    <Compile Include="Interface\PackageEditor.Designer.cs">
+      <DependentUpon>PackageEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface\PackageInfoMinimal.cs">
       <SubType>UserControl</SubType>
@@ -175,8 +175,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Interface\Editor.resx">
-      <DependentUpon>Editor.cs</DependentUpon>
+    <EmbeddedResource Include="Interface\PackageEditor.resx">
+      <DependentUpon>PackageEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interface\PackageInfoMinimal.resx">
       <DependentUpon>PackageInfoMinimal.cs</DependentUpon>
@@ -217,6 +217,8 @@
     <Content Include="Newtonsoft.Json-LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\SaveAll_16x.png" />
+    <None Include="Resources\Save_16x.png" />
     <None Include="Resources\Execute_16x.png" />
     <None Include="Resources\Script_16x.png" />
     <None Include="Resources\Package_16x.png" />

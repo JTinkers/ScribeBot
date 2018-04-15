@@ -33,6 +33,7 @@ namespace ScribeBot.Interface
                 p.NameLabel.Text = packageInfo["Name"];
                 p.AuthorLabel.Text = packageInfo["Authors"];
                 p.DescLabel.Text = packageInfo["Description"];
+                p.Package = x;
 
                 p.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left;
 
@@ -79,12 +80,22 @@ namespace ScribeBot.Interface
         private void Window_FormClosing(object sender, FormClosingEventArgs e)
         {
             Core.DumpLog();
+
+            if (Core.Editor.InvokeRequired)
+            {
+                Core.Editor.BeginInvoke(new Action(() =>
+                {
+                    Core.Editor.Close();
+                }));
+            }
         }
 
         private void workshopFetchButton_Click(object sender, EventArgs e)
         {
             WorkshopFetchButton.Text = "Fetching..";
             WorkshopFetchButton.Enabled = false;
+
+            BrowserPackageList.Controls.Clear();
 
             Task.Run(() =>
             {

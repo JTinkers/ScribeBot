@@ -16,5 +16,10 @@ namespace ScribeBot.Interface
         {
             InitializeComponent();
         }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            Core.Editor.OpenPackage(new Package(Package.ArchivePath));
+        }
     }
 }

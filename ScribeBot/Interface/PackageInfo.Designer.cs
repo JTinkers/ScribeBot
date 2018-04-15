@@ -37,6 +37,7 @@ namespace ScribeBot.Interface
             this.descLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.runButton = new System.Windows.Forms.Button();
+            this.editButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -58,7 +59,7 @@ namespace ScribeBot.Interface
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(202, 97);
             this.tableLayoutPanel1.TabIndex = 0;
@@ -129,9 +130,11 @@ namespace ScribeBot.Interface
             // 
             this.tableLayoutPanel3.AutoSize = true;
             this.tableLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.runButton, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.editButton, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(1, 63);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
@@ -151,10 +154,22 @@ namespace ScribeBot.Interface
             this.runButton.Margin = new System.Windows.Forms.Padding(5);
             this.runButton.MinimumSize = new System.Drawing.Size(0, 20);
             this.runButton.Name = "runButton";
-            this.runButton.Size = new System.Drawing.Size(190, 23);
-            this.runButton.TabIndex = 4;
+            this.runButton.Size = new System.Drawing.Size(90, 23);
+            this.runButton.TabIndex = 6;
             this.runButton.Text = "Run";
             this.runButton.UseVisualStyleBackColor = false;
+            // 
+            // editButton
+            // 
+            this.editButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.editButton.Location = new System.Drawing.Point(105, 5);
+            this.editButton.Margin = new System.Windows.Forms.Padding(5);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(90, 23);
+            this.editButton.TabIndex = 5;
+            this.editButton.Text = "Edit";
+            this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // PackageInfo
             // 
@@ -187,10 +202,13 @@ namespace ScribeBot.Interface
         private System.Windows.Forms.Label descLabel;
         private TableLayoutPanel tableLayoutPanel3;
         private Button runButton;
+        private Button editButton;
+        private Package package;
 
         public Label NameLabel { get => nameLabel; set => nameLabel = value; }
         public Label AuthorLabel { get => authorLabel; set => authorLabel = value; }
         public Label DescLabel { get => descLabel; set => descLabel = value; }
         public Button RunButton { get => runButton; set => runButton = value; }
+        public Package Package { get => package; set => package = value; }
     }
 }

@@ -45,18 +45,18 @@ namespace ScribeBot
 
             try
             {
-                ZipArchive archive = ZipFile.Open($@"Data\Packages\{packageName}.sbpack", ZipArchiveMode.Create);
+                ZipArchive archive = ZipFile.Open($@"Data\Packages\{packageName}.zip", ZipArchiveMode.Create);
 
                 filePaths.ToList().ForEach(x => archive.CreateEntryFromFile(x, Path.GetFileName(x)));
 
-                Core.WriteLine(Core.Colors["Green"], $@"Package {packageName}.sbpack created!");
+                Core.WriteLine(Core.Colors["Green"], $@"Package {packageName}.zip created!");
             }
             catch( Exception e )
             {
                 Core.WriteLine(Core.Colors["Red"], e.Message);
             }
 
-            return new Package($@"Data\Packages\{packageName}.sbpack"); ;
+            return new Package($@"Data\Packages\{packageName}.zip"); ;
         }
 
         /// <summary>
@@ -88,6 +88,14 @@ namespace ScribeBot
         /// Get files inside a package.
         /// </summary>
         /// <returns>Entries as a ZipArchiveEntry array.</returns>
-        public ZipArchiveEntry[] GetEntries() => ZipFile.OpenRead(ArchivePath).Entries.ToArray();
+        public ZipArchiveEntry[] GetFiles() => ZipFile.OpenRead(ArchivePath).Entries.ToArray();
+
+        /// <summary>
+        /// Get file stream for writing and reading.
+        /// </summary>
+        /// <param name="fileName">Name of file to open stream for.</param>
+        /// <param name="mode">Mode in which to open stream</param>
+        /// <returns></returns>
+        public Stream GetFileStream(string fileName, ZipArchiveMode mode = ZipArchiveMode.Read) => ZipFile.Open(ArchivePath, mode).GetEntry(fileName).Open();
     }
 }

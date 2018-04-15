@@ -24,7 +24,8 @@ namespace ScribeBot
         private static string version = "0.1beta";
         private static Thread interfaceThread;
         private static Window mainWindow;
-        private static PrivateFontCollection fonts;
+        private static PackageEditor editor = new PackageEditor();
+        private static PrivateFontCollection fonts = new PrivateFontCollection();
         private static Dictionary<string, Color> colors = new Dictionary<string, Color>();
         private static StringBuilder log = new StringBuilder();
         private static StreamWriter logStream = new StreamWriter($@"{Application.StartupPath}\Data\Logs\{DateTime.Today.Day}_{DateTime.Today.Month}_{DateTime.Today.Year}.txt", true );
@@ -63,6 +64,7 @@ namespace ScribeBot
         /// Contains console output as a log.
         /// </summary>
         public static StringBuilder Log { get => log; set => log = value; }
+        public static PackageEditor Editor { get => editor; set => editor = value; }
 
         /// <summary>
         /// Initializes object-based enumerations, loads fonts, opens user interface etc. basically anything that has to be done once the program starts.
@@ -74,7 +76,6 @@ namespace ScribeBot
             Colors["Green"] = Color.FromArgb(30, 130, 76);
             Colors["Purple"] = Color.FromArgb(145, 61, 136);
 
-            Fonts = new PrivateFontCollection();
             Fonts.AddFontFile($@"{Application.StartupPath}\Data\Fonts\OfficeCodePro-Medium.ttf");
 
             InterfaceThread = new Thread(() =>
@@ -88,14 +89,6 @@ namespace ScribeBot
                 Name = "Interface Thread"
             };
             InterfaceThread.Start();
-
-            //TEST
-            Application.EnableVisualStyles();
-
-            Editor editor = new Editor(new Package($@"Data\Packages\Test Pack.sbpack"));
-
-            editor.ShowDialog();
-            //TEST
         }
 
         /// <summary>
