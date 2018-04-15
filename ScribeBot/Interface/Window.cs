@@ -142,6 +142,7 @@ namespace ScribeBot.Interface
                                 i.NameLabel.Text = packageInfo["Name"];
                                 i.AuthorLabel.Text = packageInfo["Authors"];
                                 i.DescLabel.Text = packageInfo["Description"];
+                                i.Package = x;
 
                                 i.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left;
 

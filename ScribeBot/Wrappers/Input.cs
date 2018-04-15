@@ -35,10 +35,7 @@ namespace ScribeBot.Wrappers
         /// Send a character that'll be interpreted as a single key to emulate.
         /// </summary>
         /// <param name="character">The character to input.</param>
-        public static void SendKeyPress(char character)
-        {
-            SendKeyPress((Native.VirtualKeyCode)character);
-        }
+        public static void SendKeyPress(char character) => SendKeyPress((Native.VirtualKeyCode)character);
 
         /// <summary>
         /// Send mousebutton press.
