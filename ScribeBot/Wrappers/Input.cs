@@ -8,7 +8,6 @@ using ScribeBot.Wrappers.Types;
 
 namespace ScribeBot.Wrappers
 {
-
     /// <summary>
     /// Wrapper containing all input functionality exposed to Lua environment.
     /// </summary>
@@ -19,9 +18,14 @@ namespace ScribeBot.Wrappers
         /// Get whether a key specified by VirtualKeyCode is down or not.
         /// </summary>
         /// <param name="key">Key to check state of.</param>
-        /// <returns>Whether the key is down or not.</returns>
+        /// <returns>Key state.</returns>
         public static bool IsKeyDown(Native.VirtualKeyCode key) => Native.API.IsKeyDown(key);
 
+        /// <summary>
+        /// Get whether a mouse button specified by number is down or not.
+        /// </summary>
+        /// <param name="button">Number of button to check.</param>
+        /// <returns>Button state.</returns>
         public static bool IsMouseDown(int button) => Native.API.IsKeyDown((Native.VirtualKeyCode)((short)Native.VirtualKeyCode.LBUTTON + button));
 
         /// <summary>
@@ -41,6 +45,7 @@ namespace ScribeBot.Wrappers
         /// Send a string of characters that'll be interpreted as separate keys to emulate.
         /// </summary>
         /// <param name="text">String of text to input.</param>
+        /// <param name="delay">Delay between key presses.</param>
         public static void SendKeyPress(string text, int delay = 100) => text.ToList().ForEach(x =>
         {
             SendKeyPress(x);
