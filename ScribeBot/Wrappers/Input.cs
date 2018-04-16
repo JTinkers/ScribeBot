@@ -16,6 +16,22 @@ namespace ScribeBot.Wrappers
     static class Input
     {
         /// <summary>
+        /// Get whether a key specified by VirtualKeyCode is down or not.
+        /// </summary>
+        /// <param name="key">Key to check state of.</param>
+        /// <returns>Whether the key is down or not.</returns>
+        public static bool IsKeyDown(Native.VirtualKeyCode key) => Native.API.IsKeyDown(key);
+
+        public static bool IsMouseDown(int button) => Native.API.IsKeyDown((Native.VirtualKeyCode)((short)Native.VirtualKeyCode.LBUTTON + button));
+
+        /// <summary>
+        /// Get whether a key is down or not.
+        /// </summary>
+        /// <param name="character">Key to check state of.</param>
+        /// <returns>Whether the key is down or not</returns>
+        public static bool IsKeyDown(char character) => Native.API.IsKeyDown((Native.VirtualKeyCode)character);
+
+        /// <summary>
         /// Emulate a single key listed.
         /// </summary>
         /// <param name="key">Enumeration of the specific key.</param>

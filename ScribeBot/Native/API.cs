@@ -188,9 +188,16 @@ namespace ScribeBot.Native
         }
 
         /// <summary>
+        /// Get whether key is down or not.
+        /// </summary>
+        /// <param name="key">VirtualKeyCode of key to emulate.</param>
+        /// <returns>Whether the key is down or not.</returns>
+        public static bool IsKeyDown(VirtualKeyCode key) => Convert.ToBoolean(Native.GetKeyState(key) & 0x8000);
+
+        /// <summary>
         /// Emulate a key press.
         /// </summary>
-        /// <param name="key">VirtualKeyCode of a key to emulate.</param>
+        /// <param name="key">VirtualKeyCode of key to emulate.</param>
         public static void SendKeyPress(VirtualKeyCode key)
         {
             Input[] inputs = new Input[]
