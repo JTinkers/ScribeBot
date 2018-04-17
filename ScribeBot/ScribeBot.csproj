@@ -172,6 +172,9 @@
     <None Include="Data\Fonts\OfficeCodePro-RegularItalic.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Data\Lua Example Scripts\wait.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
