@@ -69,7 +69,7 @@ It's possible to write a malicious script - it's **highly advised** to open pack
 - webDriver.findElementsByXPath(xpath)
 
 - webElement:findElementsById(id)
-- webElement.findElementsByClass(name)
+- webElement:findElementsByClass(name)
 - webElement:findElementsByLinkText(link)
 - webElement:findElementsByPartialLinkText(link)
 - webElement:findElementsByCssSelector(selector)
