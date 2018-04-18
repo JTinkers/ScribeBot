@@ -42,25 +42,42 @@ It's possible to write a malicious script - it's **highly advised** to open pack
 - core.IsWindowVisible(title)
 - core.Close()
 - core.GetWindowTitles()
+
 - input.SendKeyPress(virtualKeyCode)
 - input.SendKeyPress(text, delay)
 - input.SendKeyPress(char)
 - input.SendMousePress(number)
 - input.SetCursorPos(x, y)
 - input.GetCursorPos()
+
 - screen.getPixel(x, y)
 - screen.capture(savePath)
 - screen.getSize()
-- webDriver.create(pathToChromeDriver.exe)
-- webDriver.Title
-- webDriver.Refresh()
-- webDriver.Close()
+
+- webDriver.create(path To ChromeDriver.exe)
+- webDriver.title
+- webDriver.refresh()
+- webDriver.close()
 - webDriver.sendKeyPress(key)
 - webDriver.sendKeyRelease(key)
 - webDriver.sendKeys(keySequence)
 - webDriver.findElementsById(id)
 - webDriver.findElementsByClass(name)
+- webDriver.findElementsByLinkText(link)
+- webDriver.findElementsByPartialLinkText(link)
+- webDriver.findElementsByCssSelector(selector)
+- webDriver.findElementsByXPath(xpath)
+
+- webElement:findElementsById(id)
+- webElement.findElementsByClass(name)
+- webElement:findElementsByLinkText(link)
+- webElement:findElementsByPartialLinkText(link)
+- webElement:findElementsByCssSelector(selector)
+- webElement:findElementsByXPath(xpath)
+- webElement:submit()
+- webElement.text
 - webElement:click()
+
 - interface.showPrompt(message)
 
 Some functions that were implemented by Lua interpreter itself can be found here: http://www.moonsharp.org/additions.html
