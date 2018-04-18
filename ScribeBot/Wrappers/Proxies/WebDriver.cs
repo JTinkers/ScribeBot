@@ -29,7 +29,6 @@ namespace ScribeBot.Wrappers.Proxies
         {
             var instance = new WebDriver();
             var options = new ChromeOptions();
-
             options.AddArgument("--dns-prefetch-disable");
 
             instance.driver = new ChromeDriver(chromeDriverPath, options);
@@ -100,6 +99,62 @@ namespace ScribeBot.Wrappers.Proxies
             var elems = new List<WebElement>();
 
             driver.FindElementsByClassName(name).ToList().ForEach(x => elems.Add(new WebElement(x)));
+
+            return elems.ToArray();
+        }
+
+        /// <summary>
+        /// Find DOM elements on the website.
+        /// </summary>
+        /// <param name="link">Link to search by.</param>
+        /// <returns>An array of web elements.</returns>
+        public WebElement[] FindElementsByLinkText(string link)
+        {
+            var elems = new List<WebElement>();
+
+            driver.FindElements(By.LinkText(link)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+
+            return elems.ToArray();
+        }
+
+        /// <summary>
+        /// Find DOM elements on the website.
+        /// </summary>
+        /// <param name="link">Link to search by.</param>
+        /// <returns>An array of web elements.</returns>
+        public WebElement[] FindElementsByPartialLinkText(string link)
+        {
+            var elems = new List<WebElement>();
+
+            driver.FindElements(By.PartialLinkText(link)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+
+            return elems.ToArray();
+        }
+
+        /// <summary>
+        /// Find DOM elements on the website.
+        /// </summary>
+        /// <param name="selector">Css selector to search by.</param>
+        /// <returns>An array of web elements.</returns>
+        public WebElement[] FindElementsByCssSelector(string selector)
+        {
+            var elems = new List<WebElement>();
+
+            driver.FindElements(By.CssSelector(selector)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+
+            return elems.ToArray();
+        }
+
+        /// <summary>
+        /// Find DOM elements on the website.
+        /// </summary>
+        /// <param name="xpath">XPath string to search by.</param>
+        /// <returns>An array of web elements.</returns>
+        public WebElement[] FindElementsByXPath(string xpath)
+        {
+            var elems = new List<WebElement>();
+
+            driver.FindElements(By.XPath(xpath)).ToList().ForEach(x => elems.Add(new WebElement(x)));
 
             return elems.ToArray();
         }

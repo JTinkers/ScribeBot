@@ -80,7 +80,7 @@ namespace ScribeBot.Interface
             // 
             this.packageRun.Image = global::ScribeBot.Properties.Resources.Execute_16x;
             this.packageRun.Name = "packageRun";
-            this.packageRun.Size = new System.Drawing.Size(152, 22);
+            this.packageRun.Size = new System.Drawing.Size(103, 22);
             this.packageRun.Text = "Run";
             this.packageRun.Click += new System.EventHandler(this.packageRun_Click);
             // 
@@ -88,7 +88,7 @@ namespace ScribeBot.Interface
             // 
             this.closeToolStripMenuItem.Image = global::ScribeBot.Properties.Resources.Close_16x;
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -107,7 +107,7 @@ namespace ScribeBot.Interface
             // 
             this.saveToolStripMenuItem.Image = global::ScribeBot.Properties.Resources.Save_16x;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -115,7 +115,7 @@ namespace ScribeBot.Interface
             // 
             this.saveAllToolStripMenuItem.Image = global::ScribeBot.Properties.Resources.SaveAll_16x;
             this.saveAllToolStripMenuItem.Name = "saveAllToolStripMenuItem";
-            this.saveAllToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAllToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.saveAllToolStripMenuItem.Text = "Save All";
             this.saveAllToolStripMenuItem.Click += new System.EventHandler(this.saveAllToolStripMenuItem_Click);
             // 

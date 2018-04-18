@@ -55,9 +55,6 @@ namespace ScribeBot
         /// <param name="code">String to execute.</param>
         /// <param name="asynchronous">Defines whether code should be executed on a thread different to ScribeBot itself.</param>
         /// <param name="silent">Defines whether console shouldn't output the code. Only set to true when code is.</param>
-
-
-
         public static void ExecuteCode(string code, bool asynchronous = true, bool silent = true)
         {
             if( !silent )

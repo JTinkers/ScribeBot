@@ -61,6 +61,7 @@ namespace ScribeBot.Interface
             code.Text = contents;
             code.AcceptsTab = true;
             code.Font = new Font(Core.Fonts.Families[0], 10f);
+            code.ScrollBars = ScrollBars.Vertical;
             code.TextChanged += (o, ev) =>
             {
                 foreach (TreeNode node in FileTree.Nodes)
