@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ScribeBot.Wrappers.Types
 {
     /// <summary>
-    /// Proxy structure
+    /// Proxy Type
     /// </summary>
     [MoonSharpUserData]
     struct Size

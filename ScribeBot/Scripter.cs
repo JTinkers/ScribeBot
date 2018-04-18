@@ -35,11 +35,14 @@ namespace ScribeBot
             CurrentScript.Options.DebugPrint = value => Core.Write(Core.Colors["Purple"], value + Environment.NewLine);
             CurrentScript.Options.CheckThreadAccess = false;
 
-            //Wrappers/Classes
+            //Wrappers
             CurrentScript.Globals["core"] = typeof(Wrappers.Core);
             CurrentScript.Globals["input"] = typeof(Wrappers.Input);
             CurrentScript.Globals["interface"] = typeof(Wrappers.Interface);
             CurrentScript.Globals["screen"] = typeof(Wrappers.Screen);
+
+            //Proxies?
+            CurrentScript.Globals["webDriver"] = typeof(Wrappers.Proxies.WebDriver);
 
             //Enums
             UserData.RegisterType<Native.VirtualKeyCode>();

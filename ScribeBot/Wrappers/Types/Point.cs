@@ -8,7 +8,7 @@ using MoonSharp.Interpreter;
 namespace ScribeBot.Wrappers.Types
 {
     /// <summary>
-    /// Proxy structure
+    /// Proxy Type
     /// </summary>
     [MoonSharpUserData]
     struct Point
