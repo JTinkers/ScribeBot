@@ -28,6 +28,7 @@ namespace ScribeBot
         static Scripter()
         {
             Script.WarmUp();
+            Script.GlobalOptions.RethrowExceptionNested = true;
 
             UserData.RegisterAssembly();
 
@@ -60,6 +61,8 @@ namespace ScribeBot
             if( !silent )
                 Core.WriteLine(Core.Colors["Green"], $"> {code}");
 
+            //A clumsy way of getting the syntax errors properly shown
+            //Will change this later
             try
             {
                 if (asynchronous)
