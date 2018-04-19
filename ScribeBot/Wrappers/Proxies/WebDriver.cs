@@ -31,7 +31,7 @@ namespace ScribeBot.Wrappers.Proxies
             var options = new ChromeOptions();
             options.AddArgument("--dns-prefetch-disable");
 
-            instance.driver = new ChromeDriver(chromeDriverPath, options);
+            instance.Driver = new ChromeDriver(chromeDriverPath, options);
 
             return instance;
         }
@@ -39,41 +39,43 @@ namespace ScribeBot.Wrappers.Proxies
         /// <summary>
         /// Gets the title of current browser window.
         /// </summary>
-        public string Title => driver.Title;
+        public string Title => Driver.Title;
+
+        public ChromeDriver Driver { get => driver; set => driver = value; }
 
         /// <summary>
         /// Navigate to a specified website.
         /// </summary>
         /// <param name="url">URL of a website, starting with 'http://'</param>
-        public void GoToUrl(string url) => driver.Navigate().GoToUrl(url);
+        public void GoToUrl(string url) => Driver.Navigate().GoToUrl(url);
 
         /// <summary>
         /// Refresh current page.
         /// </summary>
-        public void Refresh() => driver.Navigate().Refresh();
+        public void Refresh() => Driver.Navigate().Refresh();
 
         /// <summary>
         /// Close web driver.
         /// </summary>
-        public void Close() => driver.Quit();
+        public void Close() => Driver.Quit();
 
         /// <summary>
         /// Send key press.
         /// </summary>
         /// <param name="key">Key to emulate.</param>
-        public void SendKeyPress(string key) => driver.Keyboard.PressKey(key);
+        public void SendKeyPress(string key) => Driver.Keyboard.PressKey(key);
 
         /// <summary>
         /// Send key release.
         /// </summary>
         /// <param name="key">Key to emulate.</param>
-        public void SendKeyRelease(string key) => driver.Keyboard.ReleaseKey(key);
+        public void SendKeyRelease(string key) => Driver.Keyboard.ReleaseKey(key);
 
         /// <summary>
         /// Send a sequence of key presses and releases.
         /// </summary>
         /// <param name="keySequence">Sequence of keys to emulate.</param>
-        public void SendKeys(string keySequence) => driver.Keyboard.SendKeys(keySequence);
+        public void SendKeys(string keySequence) => Driver.Keyboard.SendKeys(keySequence);
 
         /// <summary>
         /// Find DOM elements on the website.
@@ -84,7 +86,7 @@ namespace ScribeBot.Wrappers.Proxies
         {
             var elems = new List<WebElement>();
 
-            driver.FindElementsById(id).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            Driver.FindElementsById(id).ToList().ForEach(x => elems.Add(new WebElement(x)));
 
             return elems.ToArray();
         }
@@ -98,7 +100,7 @@ namespace ScribeBot.Wrappers.Proxies
         {
             var elems = new List<WebElement>();
 
-            driver.FindElementsByClassName(name).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            Driver.FindElementsByClassName(name).ToList().ForEach(x => elems.Add(new WebElement(x)));
 
             return elems.ToArray();
         }
@@ -112,7 +114,7 @@ namespace ScribeBot.Wrappers.Proxies
         {
             var elems = new List<WebElement>();
 
-            driver.FindElements(By.LinkText(link)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            Driver.FindElements(By.LinkText(link)).ToList().ForEach(x => elems.Add(new WebElement(x)));
 
             return elems.ToArray();
         }
@@ -126,7 +128,7 @@ namespace ScribeBot.Wrappers.Proxies
         {
             var elems = new List<WebElement>();
 
-            driver.FindElements(By.PartialLinkText(link)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            Driver.FindElements(By.PartialLinkText(link)).ToList().ForEach(x => elems.Add(new WebElement(x)));
 
             return elems.ToArray();
         }
@@ -140,7 +142,7 @@ namespace ScribeBot.Wrappers.Proxies
         {
             var elems = new List<WebElement>();
 
-            driver.FindElements(By.CssSelector(selector)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            Driver.FindElements(By.CssSelector(selector)).ToList().ForEach(x => elems.Add(new WebElement(x)));
 
             return elems.ToArray();
         }
@@ -154,7 +156,7 @@ namespace ScribeBot.Wrappers.Proxies
         {
             var elems = new List<WebElement>();
 
-            driver.FindElements(By.XPath(xpath)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            Driver.FindElements(By.XPath(xpath)).ToList().ForEach(x => elems.Add(new WebElement(x)));
 
             return elems.ToArray();
         }
