@@ -21,7 +21,8 @@ namespace ScribeBot
     /// </summary>
     public static class Core
     {
-        private static string version = "0.1beta";
+        private static string version = "0.6beta";
+        private static double timeStarted = (DateTime.Now.ToUniversalTime() - new DateTime(1970, 1, 1)).TotalSeconds;
         private static Thread interfaceThread;
         private static Window mainWindow;
         private static PackageEditor editor = new PackageEditor();
@@ -34,6 +35,11 @@ namespace ScribeBot
         /// Current version of ScribeBot.
         /// </summary>
         public static string Version { get => version; private set => version = value; }
+
+        /// <summary>
+        /// Timestamp of when ScribeBot was ran.
+        /// </summary>
+        public static double TimeStarted { get => timeStarted; set => timeStarted = value; }
 
         /// <summary>
         /// Thread on which WinForms class instances are ran.
