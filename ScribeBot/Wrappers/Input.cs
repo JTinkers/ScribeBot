@@ -15,20 +15,6 @@ namespace ScribeBot.Wrappers
     static class Input
     {
         /// <summary>
-        /// Get whether a key specified by VirtualKeyCode is down or not.
-        /// </summary>
-        /// <param name="key">Key to check state of.</param>
-        /// <returns>Key state.</returns>
-        public static bool IsKeyDown(Native.VirtualKeyCode key) => Native.API.IsKeyDown(key);
-
-        /// <summary>
-        /// Get whether a mouse button specified by number is down or not.
-        /// </summary>
-        /// <param name="button">Number of button to check.</param>
-        /// <returns>Button state.</returns>
-        public static bool IsMouseDown(int button) => Native.API.IsKeyDown((Native.VirtualKeyCode)((short)Native.VirtualKeyCode.LBUTTON + button));
-
-        /// <summary>
         /// Get whether a key is down or not.
         /// </summary>
         /// <param name="character">Key to check state of.</param>
@@ -36,10 +22,11 @@ namespace ScribeBot.Wrappers
         public static bool IsKeyDown(char character) => Native.API.IsKeyDown((Native.VirtualKeyCode)character);
 
         /// <summary>
-        /// Emulate a single key listed.
+        /// Get whether a mouse button specified by number is down or not.
         /// </summary>
-        /// <param name="key">Enumeration of the specific key.</param>
-        public static void SendKeyPress(Native.VirtualKeyCode key) => Native.API.SendKeyPress(key);
+        /// <param name="button">Number of button to check.</param>
+        /// <returns>Button state.</returns>
+        public static bool IsMouseDown(int button) => Native.API.IsKeyDown((Native.VirtualKeyCode)((short)Native.VirtualKeyCode.LBUTTON + button));
 
         /// <summary>
         /// Send a string of characters that'll be interpreted as separate keys to emulate.
@@ -56,7 +43,7 @@ namespace ScribeBot.Wrappers
         /// Send a character that'll be interpreted as a single key to emulate.
         /// </summary>
         /// <param name="character">The character to input.</param>
-        public static void SendKeyPress(char character) => SendKeyPress((Native.VirtualKeyCode)character);
+        public static void SendKeyPress(char character) => Native.API.SendKeyPress((Native.VirtualKeyCode)character);
 
         /// <summary>
         /// Send mousebutton press.

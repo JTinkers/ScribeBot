@@ -15,12 +15,12 @@ namespace ScribeBot
     /// </summary>
     public static class Scripter
     {
-        private static Script currentScript = new Script();
+        private static Script environment = new Script();
 
         /// <summary>
         /// Class instance containing MoonSharp scripting session.
         /// </summary>
-        public static Script CurrentScript { get => currentScript; set => currentScript = value; }
+        public static Script Environment { get => environment; set => environment = value; }
 
         /// <summary>
         /// Static constructor initializing and sharing all vital functionality with Lua environment.
@@ -32,22 +32,16 @@ namespace ScribeBot
 
             UserData.RegisterAssembly();
 
-            //Options
-            CurrentScript.Options.DebugPrint = value => Core.Write(Core.Colors["Purple"], value + Environment.NewLine);
-            CurrentScript.Options.CheckThreadAccess = false;
+            Environment.Options.DebugPrint = value => Core.Write(Core.Colors["Purple"], value + System.Environment.NewLine);
+            Environment.Options.CheckThreadAccess = false;
 
-            //Wrappers
-            CurrentScript.Globals["core"] = typeof(Wrappers.Core);
-            CurrentScript.Globals["input"] = typeof(Wrappers.Input);
-            CurrentScript.Globals["interface"] = typeof(Wrappers.Interface);
-            CurrentScript.Globals["screen"] = typeof(Wrappers.Screen);
+            Directory.GetFiles($@"Data\Extensions\", "*.lua").ToList().ForEach(x => Environment.DoFile(x));
 
-            //Proxies?
-            CurrentScript.Globals["webDriver"] = typeof(Wrappers.Proxies.WebDriver);
-
-            //Enums
-            UserData.RegisterType<Native.VirtualKeyCode>();
-            CurrentScript.Globals["VirtualKeyCode"] = UserData.CreateStatic<Native.VirtualKeyCode>();
+            Environment.Globals["core"] = typeof(Wrappers.Core);
+            Environment.Globals["input"] = typeof(Wrappers.Input);
+            Environment.Globals["interface"] = typeof(Wrappers.Interface);
+            Environment.Globals["screen"] = typeof(Wrappers.Screen);
+            Environment.Globals["webDriver"] = typeof(Wrappers.Proxies.WebDriver);
         }
 
         /// <summary>
@@ -66,9 +60,9 @@ namespace ScribeBot
             try
             {
                 if (asynchronous)
-                    CurrentScript.DoStringAsync(code);
+                    Environment.DoStringAsync(code);
                 else
-                    CurrentScript.DoString(code);
+                    Environment.DoString(code);
             }
             catch (Exception e)
             {
