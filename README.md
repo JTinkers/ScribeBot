@@ -1,4 +1,4 @@
-# **README last updated with upload of Release-0.61b**
+**README last updated with upload of Release-0.61b**
 # ScribeBot
 ![](https://i.imgur.com/nPWbUCM.png) 
 
@@ -22,10 +22,14 @@ With a little knowledge of Lua, you can automate mundane tasks, create macros or
 - Lua Manual (list of functions, types etc).
 - Merge script execution into a maintained loop, allowing for usage of hotkeys, routines and cross-dependency from outside of the bundle.
 
+## Known bugs and odd-behavior
+- Running scripts asynchronously doesn't pass debugger errors to the console.
+- Running scripts synchronously prevents interface from working.
+
 ## Third-party libraries:
-- Selenium - used for web-based automatisations
-- Nwtonsoft's Json - Used for reading info.json from packages
-- MoonSharp - used as Lua interpterer
+- Selenium - used for web-based automatisations.
+- Newtonsoft's Json - Used for reading info.json from packages.
+- MoonSharp - used as Lua interpterer.
 
 ## Important Notice
 This program uses unmanaged code (see: https://msdn.microsoft.com/en-us/library/ms973872.aspx#manunman_topic6) and provides low-level functionality that if used improperly (intentionally or not) could affect system's security and reliability.
