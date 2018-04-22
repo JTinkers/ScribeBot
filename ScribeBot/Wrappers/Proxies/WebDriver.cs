@@ -41,6 +41,14 @@ namespace ScribeBot.Wrappers.Proxies
         /// </summary>
         public string Title => Driver.Title;
 
+        /// <summary>
+        /// Gets the url of currently open webpage.
+        /// </summary>
+        public string Url => Driver.Url;
+
+        /// <summary>
+        /// Driver instance that proxy is attached to.
+        /// </summary>
         public ChromeDriver Driver { get => driver; set => driver = value; }
 
         /// <summary>
@@ -157,6 +165,20 @@ namespace ScribeBot.Wrappers.Proxies
             var elems = new List<WebElement>();
 
             Driver.FindElements(By.XPath(xpath)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+
+            return elems.ToArray();
+        }
+
+        /// <summary>
+        /// Find DOM elements on the website.
+        /// </summary>
+        /// <param name="name">Name to search by.</param>
+        /// <returns>An array of web elements.</returns>
+        public WebElement[] FindElementsByName(string name)
+        {
+            var elems = new List<WebElement>();
+
+            Driver.FindElements(By.Name(name)).ToList().ForEach(x => elems.Add(new WebElement(x)));
 
             return elems.ToArray();
         }

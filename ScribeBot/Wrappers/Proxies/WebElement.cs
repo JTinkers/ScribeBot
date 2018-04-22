@@ -34,14 +34,45 @@ namespace ScribeBot.Wrappers.Proxies
         public string Text => element.Text;
 
         /// <summary>
+        /// Returns whether or not the element is enabled.
+        /// </summary>
+        public bool Enabled => element.Enabled;
+
+        /// <summary>
+        /// Returns whether or not the element is displayed.
+        /// </summary>
+        public bool Displayed => element.Displayed;
+
+        /// <summary>
+        /// Returns size of the element.
+        /// </summary>
+        public Types.Size Size => new Types.Size() { Width = element.Size.Width, Height = element.Size.Height };
+
+        /// <summary>
+        /// Returns location of the element.
+        /// </summary>
+        public Types.Point Location => new Types.Point() { X = element.Location.X, Y = element.Location.Y };
+
+        /// <summary>
+        /// Send a sequence of keys to the element.
+        /// </summary>
+        /// <param name="text">The sequence to send.</param>
+        public void SendKeys(string text) => element.SendKeys(text);
+
+        /// <summary>
         /// Emulate a click on the element.
         /// </summary>
         public void Click() => element.Click();
 
         /// <summary>
-        /// Submit form that element is a part of.
+        /// Submit form the element is a part of.
         /// </summary>
         public void Submit() => element.Submit();
+
+        /// <summary>
+        /// Clear contents of the element.
+        /// </summary>
+        public void Clear() => element.Clear();
 
         /// <summary>
         /// Find DOM elements on the website.
@@ -123,6 +154,20 @@ namespace ScribeBot.Wrappers.Proxies
             var elems = new List<WebElement>();
 
             element.FindElements(By.XPath(xpath)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+
+            return elems.ToArray();
+        }
+
+        /// <summary>
+        /// Find DOM elements on the website.
+        /// </summary>
+        /// <param name="name">Name to search by.</param>
+        /// <returns>An array of web elements.</returns>
+        public WebElement[] FindElementsByName(string name)
+        {
+            var elems = new List<WebElement>();
+
+            element.FindElements(By.Name(name)).ToList().ForEach(x => elems.Add(new WebElement(x)));
 
             return elems.ToArray();
         }

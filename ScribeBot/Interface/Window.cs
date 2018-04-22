@@ -48,7 +48,7 @@ namespace ScribeBot.Interface
 
         private void scriptStop_Click(object sender, EventArgs e)
         {
-            Scripter.ExecuteCode("lua_pcall( L, 0, LUA_MULTRET, 0 )");
+            Scripter.ExecuteCode("lua_pcall( L, 0, LUA_MULTRET, 0 )", true, true);
         }
 
         private void consoleRun_Click(object sender, EventArgs e)

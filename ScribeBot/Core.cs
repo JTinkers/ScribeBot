@@ -119,7 +119,7 @@ namespace ScribeBot
         {
             if (MainWindow.LogCheckBox.Checked)
             {
-                Log.ToString().Split('\n').ToList().ForEach(x => LogStream.WriteLineAsync(x));
+                Log.ToString().Split('\n').ToList().ForEach(x => LogStream.WriteLine(x));
                 LogStream.Flush();
             }
         }
