@@ -1,4 +1,4 @@
-#**README last updated with upload of Release-0.61b**
+# **README last updated with upload of Release-0.61b**
 # ScribeBot
 ![](https://i.imgur.com/nPWbUCM.png) 
 
@@ -15,7 +15,6 @@ With a little knowledge of Lua, you can automate mundane tasks, create macros or
 - Workshop - find and download community-made scripts with just one click.
 - Built-in package editor - edit packages without having to unzip them.
 - Logging system - find out what broke when you were away.
-- Selenium API - writting web automatisations was never as easy.
 
 ## Planned Features
 - Workshop hosting that allows for more API calls.
@@ -23,14 +22,19 @@ With a little knowledge of Lua, you can automate mundane tasks, create macros or
 - Lua Manual (list of functions, types etc).
 - Merge script execution into a maintained loop, allowing for usage of hotkeys, routines and cross-dependency from outside of the bundle.
 
-## Directory breakdown
-Data
+## Third-party libraries:
+- Selenium - used for web-based automatisations
+- Nwtonsoft's Json - Used for reading info.json from packages
+- MoonSharp - used as Lua interpterer
 
 ## Important Notice
 This program uses unmanaged code (see: https://msdn.microsoft.com/en-us/library/ms973872.aspx#manunman_topic6) and provides low-level functionality that if used improperly (intentionally or not) could affect system's security and reliability.
 It's possible to write a malicious script - it's **highly advised** to open packages with package editor and read code before executing it, especially if it comes from untrusted sources.
 
 ## Functions
+
+Some functions that weren't listed below: http://www.moonsharp.org/additions.html
+
 ```lua
 --get current version of the bot
 --returns: string containing version of a bot (I always forget to update this, but I'll keep it automated later)
@@ -271,5 +275,3 @@ webElement:findElementsByName(name)
 --returns: whatever you've put into value input but converted to a string
 interface.showPrompt(message)
 ```
-
-Some functions that were implemented by Lua interpreter itself can be found here: http://www.moonsharp.org/additions.html
