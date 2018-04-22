@@ -16,6 +16,12 @@ namespace ScribeBot.Wrappers
     [MoonSharpUserData]
     static class Screen
     {
+        /// <summary>
+        /// Get color of a pixel on specified position.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns>Color structure containing RGB values.</returns>
         public static Types.Color GetPixel(int x, int y)
         {
             Color px = Native.API.GetPixel(x, y);
