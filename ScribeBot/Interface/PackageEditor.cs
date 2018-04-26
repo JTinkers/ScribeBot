@@ -81,7 +81,7 @@ namespace ScribeBot.Interface
 
             saveAllToolStripMenuItem_Click(null, null);
 
-            package.Run(true, true);
+            package.Run(true);
         }
 
         private void PackageEditor_FormClosing(object sender, FormClosingEventArgs e)

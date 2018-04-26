@@ -41,19 +41,19 @@ namespace ScribeBot.Interface
 
                 p.RunButton.Click += (o, e) =>
                 {
-                    x.Run(AsyncCheckbox.Checked, true);
+                    x.Run(true);
                 };
             });
         }
 
         private void scriptStop_Click(object sender, EventArgs e)
         {
-            Scripter.ExecuteCode("lua_pcall( L, 0, LUA_MULTRET, 0 )", true, true);
+            Scripter.ForceStop();
         }
 
         private void consoleRun_Click(object sender, EventArgs e)
         {
-            Scripter.ExecuteCode(ConsoleInput.Text, AsyncStringCheck.Checked, false);
+            Scripter.ExecuteCode(ConsoleInput.Text, false);
 
             ConsoleInput.Text = "";
         }
@@ -150,7 +150,7 @@ namespace ScribeBot.Interface
 
                                 i.RunButton.Click += (ob, ed) =>
                                 {
-                                    x.Run(AsyncCheckbox.Checked, true);
+                                    x.Run(true);
                                 };
                             });
                         };

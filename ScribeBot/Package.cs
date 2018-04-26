@@ -120,13 +120,12 @@ namespace ScribeBot
         /// <summary>
         /// Execute a package at specified entry point (defined inside info.json).
         /// </summary>
-        /// <param name="asynchronous">Whether it should be executed asynchronously or not.</param>
         /// <param name="silent">Defines whether console shouldn't output the executed code.</param>
-        public void Run(bool asynchronous = true, bool silent = true)
+        public void Run(bool silent = true)
         {
             Dictionary<string, string> info = GetInfo();
 
-            Scripter.ExecuteCode(ReadFileContents(info["EntryPoint"]), asynchronous, silent);
+            Scripter.ExecuteCode(ReadFileContents(info["EntryPoint"]), silent);
         }
 
         /// <summary>

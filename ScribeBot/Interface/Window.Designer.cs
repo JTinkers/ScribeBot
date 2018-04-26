@@ -40,16 +40,12 @@ namespace ScribeBot.Interface
             this.consoleContainer = new System.Windows.Forms.Panel();
             this.consoleOutput = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.asyncStringCheck = new System.Windows.Forms.CheckBox();
             this.consoleClearButton = new System.Windows.Forms.Button();
             this.layoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.optionsPanel = new System.Windows.Forms.TabControl();
             this.scriptsPage = new System.Windows.Forms.TabPage();
             this.installedPackagesPanel = new System.Windows.Forms.Panel();
             this.installedPackagesList = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.asyncCheckbox = new System.Windows.Forms.CheckBox();
-            this.logCheckBox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.scriptStop = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -82,7 +78,6 @@ namespace ScribeBot.Interface
             this.optionsPanel.SuspendLayout();
             this.scriptsPage.SuspendLayout();
             this.installedPackagesPanel.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -185,7 +180,6 @@ namespace ScribeBot.Interface
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Controls.Add(this.asyncStringCheck, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.consoleClearButton, 3, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 453);
@@ -195,25 +189,6 @@ namespace ScribeBot.Interface
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(460, 33);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // asyncStringCheck
-            // 
-            this.asyncStringCheck.AutoSize = true;
-            this.asyncStringCheck.BackColor = System.Drawing.Color.Transparent;
-            this.asyncStringCheck.Checked = true;
-            this.asyncStringCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.asyncStringCheck.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.asyncStringCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.asyncStringCheck.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.asyncStringCheck.Location = new System.Drawing.Point(5, 5);
-            this.asyncStringCheck.Margin = new System.Windows.Forms.Padding(5);
-            this.asyncStringCheck.Name = "asyncStringCheck";
-            this.asyncStringCheck.Size = new System.Drawing.Size(105, 23);
-            this.asyncStringCheck.TabIndex = 0;
-            this.asyncStringCheck.Text = "Async";
-            this.noticeTooltip.SetToolTip(this.asyncStringCheck, "Execute string on a separate thread to prevent user interface from freezing durin" +
-        "g the execution.\r\nKeep in mind that this might disable syntax debugger.");
-            this.asyncStringCheck.UseVisualStyleBackColor = false;
             // 
             // consoleClearButton
             // 
@@ -260,7 +235,6 @@ namespace ScribeBot.Interface
             // scriptsPage
             // 
             this.scriptsPage.Controls.Add(this.installedPackagesPanel);
-            this.scriptsPage.Controls.Add(this.tableLayoutPanel5);
             this.scriptsPage.Controls.Add(this.tableLayoutPanel1);
             this.scriptsPage.Location = new System.Drawing.Point(4, 22);
             this.scriptsPage.Margin = new System.Windows.Forms.Padding(0);
@@ -279,7 +253,7 @@ namespace ScribeBot.Interface
             this.installedPackagesPanel.Location = new System.Drawing.Point(10, 10);
             this.installedPackagesPanel.Margin = new System.Windows.Forms.Padding(5);
             this.installedPackagesPanel.Name = "installedPackagesPanel";
-            this.installedPackagesPanel.Size = new System.Drawing.Size(254, 444);
+            this.installedPackagesPanel.Size = new System.Drawing.Size(254, 475);
             this.installedPackagesPanel.TabIndex = 7;
             // 
             // installedPackagesList
@@ -296,56 +270,8 @@ namespace ScribeBot.Interface
             this.installedPackagesList.Name = "installedPackagesList";
             this.installedPackagesList.RowCount = 1;
             this.installedPackagesList.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.installedPackagesList.Size = new System.Drawing.Size(252, 442);
+            this.installedPackagesList.Size = new System.Drawing.Size(252, 473);
             this.installedPackagesList.TabIndex = 0;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Controls.Add(this.asyncCheckbox, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.logCheckBox, 1, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(10, 464);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(5);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(254, 21);
-            this.tableLayoutPanel5.TabIndex = 6;
-            // 
-            // asyncCheckbox
-            // 
-            this.asyncCheckbox.AutoSize = true;
-            this.asyncCheckbox.Checked = true;
-            this.asyncCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.asyncCheckbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.asyncCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.asyncCheckbox.Location = new System.Drawing.Point(0, 0);
-            this.asyncCheckbox.Margin = new System.Windows.Forms.Padding(0);
-            this.asyncCheckbox.Name = "asyncCheckbox";
-            this.asyncCheckbox.Size = new System.Drawing.Size(127, 21);
-            this.asyncCheckbox.TabIndex = 2;
-            this.asyncCheckbox.Text = "Async";
-            this.noticeTooltip.SetToolTip(this.asyncCheckbox, "Execute script on a separate thread to prevent user interface from freezing durin" +
-        "g script\'s routine.\r\nKeep in mind that this might disable syntax debugger.");
-            this.asyncCheckbox.UseVisualStyleBackColor = true;
-            // 
-            // logCheckBox
-            // 
-            this.logCheckBox.AutoSize = true;
-            this.logCheckBox.Checked = true;
-            this.logCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.logCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logCheckBox.Location = new System.Drawing.Point(127, 0);
-            this.logCheckBox.Margin = new System.Windows.Forms.Padding(0);
-            this.logCheckBox.Name = "logCheckBox";
-            this.logCheckBox.Size = new System.Drawing.Size(127, 21);
-            this.logCheckBox.TabIndex = 3;
-            this.logCheckBox.Text = "Log";
-            this.noticeTooltip.SetToolTip(this.logCheckBox, "Whether or not program should dump log into a date-signed file.");
-            this.logCheckBox.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -672,14 +598,11 @@ namespace ScribeBot.Interface
             this.consoleContainer.ResumeLayout(false);
             this.consoleContainer.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.layoutPanel.ResumeLayout(false);
             this.optionsPanel.ResumeLayout(false);
             this.scriptsPage.ResumeLayout(false);
             this.installedPackagesPanel.ResumeLayout(false);
             this.installedPackagesPanel.PerformLayout();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -706,16 +629,12 @@ namespace ScribeBot.Interface
         private Button consoleRun;
         private Panel consoleContainer;
         private TableLayoutPanel tableLayoutPanel2;
-        private CheckBox asyncStringCheck;
         private TableLayoutPanel tableLayoutPanel3;
         private Button consoleClearButton;
         private TabControl optionsPanel;
         private TabPage scriptsPage;
         private Panel installedPackagesPanel;
         private TableLayoutPanel installedPackagesList;
-        private TableLayoutPanel tableLayoutPanel5;
-        private CheckBox asyncCheckbox;
-        private CheckBox logCheckBox;
         private TableLayoutPanel tableLayoutPanel1;
         private Button scriptStop;
         private TabPage tabPage1;
@@ -741,12 +660,9 @@ namespace ScribeBot.Interface
         private FolderBrowserDialog packageFolderSelectDialog;
 
         public RichTextBox ConsoleOutput { get => consoleOutput; set => consoleOutput = value; }
-        public CheckBox AsyncCheckbox { get => asyncCheckbox; set => asyncCheckbox = value; }
         public TextBox ConsoleInput { get => consoleInput; set => consoleInput = value; }
         public Button ConsoleRun { get => consoleRun; set => consoleRun = value; }
         public Button ScriptStop { get => scriptStop; set => scriptStop = value; }
-        public CheckBox AsyncStringCheck { get => asyncStringCheck; set => asyncStringCheck = value; }
-        public CheckBox LogCheckBox { get => logCheckBox; set => logCheckBox = value; }
         public Button ConsoleClearButton { get => consoleClearButton; set => consoleClearButton = value; }
         public Button WorkshopFetchButton { get => workshopFetchButton; set => workshopFetchButton = value; }
         public TableLayoutPanel InstalledPackagesList { get => installedPackagesList; set => installedPackagesList = value; }

@@ -7,6 +7,7 @@ using System.Threading;
 using MoonSharp.Interpreter;
 using System.Diagnostics;
 using System.Drawing;
+using System.Threading.Tasks;
 
 namespace ScribeBot
 {
@@ -17,10 +18,17 @@ namespace ScribeBot
     {
         private static Script environment = new Script();
 
+        private static Thread luaThread;
+
         /// <summary>
         /// Class instance containing MoonSharp scripting session.
         /// </summary>
         public static Script Environment { get => environment; set => environment = value; }
+
+        /// <summary>
+        /// Thread scripts are executed on.
+        /// </summary>
+        public static Thread LuaThread { get => luaThread; set => luaThread = value; }
 
         /// <summary>
         /// Static constructor initializing and sharing all vital functionality with Lua environment.
@@ -33,7 +41,7 @@ namespace ScribeBot
             UserData.RegisterAssembly();
 
             Environment.Options.DebugPrint = value => Core.Write(Core.Colors["Purple"], value + System.Environment.NewLine);
-            Environment.Options.CheckThreadAccess = false;
+            Environment.Options.CheckThreadAccess = true;
 
             Directory.GetFiles($@"Data\Extensions\", "*.lua").ToList().ForEach(x => Environment.DoFile(x));
 
@@ -45,29 +53,43 @@ namespace ScribeBot
         }
 
         /// <summary>
-        /// Execute a string of code. Keep in mind that setting asynchronous to true might cause debugger to be unable to pass syntax errors properly.
+        /// Execute a string of code.
         /// </summary>
         /// <param name="code">String to execute.</param>
-        /// <param name="asynchronous">Defines whether code should be executed on a thread different to ScribeBot itself.</param>
-        /// <param name="silent">Defines whether console shouldn't output the code. Only set to true when code is.</param>
-        public static void ExecuteCode(string code, bool asynchronous = true, bool silent = true)
+        /// <param name="silent">Defines whether console should hide code that's being executed.</param>
+        public static void ExecuteCode(string code, bool silent = true)
         {
             if( !silent )
                 Core.WriteLine(Core.Colors["Green"], $"> {code}");
 
-            //A clumsy way of getting the syntax errors properly shown
-            //Will change this later
-            try
+            if (LuaThread != null && LuaThread.IsAlive)
+                LuaThread.Abort();
+
+            LuaThread = new Thread(() =>
             {
-                if (asynchronous)
-                    Environment.DoStringAsync(code);
-                else
-                    Environment.DoString(code);
-            }
-            catch (Exception e)
+                try
+                {
+                    Environment.DoString($"{code}");
+                }
+                catch (SyntaxErrorException exception)
+                {
+                    Core.WriteLine(Core.Colors["Red"], exception.Message);
+                }
+            })
             {
-                Core.WriteLine(Core.Colors["Red"], $"ERROR: {e.Message}");
-            }
+                Name = "Lua Thread",
+                IsBackground = true
+            };
+            LuaThread.Start();
+        }
+
+        /// <summary>
+        /// Stop Lua thread, effectively killing all running scripts.
+        /// </summary>
+        public static void ForceStop()
+        {
+            //Crude, but effective.
+            LuaThread.Abort();
         }
     }
 }
