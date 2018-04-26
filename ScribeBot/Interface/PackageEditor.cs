@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ScribeBot.Wrappers.Types;
 
 //Remake this
 namespace ScribeBot.Interface
@@ -60,14 +60,14 @@ namespace ScribeBot.Interface
             code.Multiline = true;
             code.Text = contents;
             code.AcceptsTab = true;
-            code.Font = new Font(Core.Fonts.Families[0], 10f);
+            code.Font = new System.Drawing.Font(Core.Fonts.Families[0], 10f);
             code.ScrollBars = ScrollBars.Vertical;
             code.TextChanged += (o, ev) =>
             {
                 foreach (TreeNode node in FileTree.Nodes)
                 {
                     if (node.Text == FileTabControl.SelectedTab.Text)
-                        node.ForeColor = Core.Colors["Green"];
+                        node.ForeColor = System.Drawing.Color.FromArgb(0, 215, 0);
                 }
             };
             fileTab.Controls.Add(code);
@@ -106,7 +106,7 @@ namespace ScribeBot.Interface
             foreach (TreeNode node in FileTree.Nodes)
             {
                 if (node.Text == FileTabControl.SelectedTab.Text)
-                    node.ForeColor = Color.Black;
+                    node.ForeColor = System.Drawing.Color.Black;
             }
         }
 
@@ -119,7 +119,7 @@ namespace ScribeBot.Interface
                 foreach (TreeNode node in FileTree.Nodes)
                 {
                     if (node.Text == tab.Text)
-                        node.ForeColor = Color.Black;
+                        node.ForeColor = System.Drawing.Color.Black;
                 }
             }
         }

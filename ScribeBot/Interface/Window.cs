@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ScribeBot.Wrappers.Types;
 
 namespace ScribeBot.Interface
 {
@@ -21,7 +21,7 @@ namespace ScribeBot.Interface
         {
             InitializeComponent();
 
-            ConsoleOutput.Font = new Font(Core.Fonts.Families[0], 10f);
+            ConsoleOutput.Font = new System.Drawing.Font(Core.Fonts.Families[0], 10f);
 
             Package[] installedPackages = Workshop.GetInstalled();
             
@@ -48,12 +48,12 @@ namespace ScribeBot.Interface
 
         private void scriptStop_Click(object sender, EventArgs e)
         {
-            Scripter.ForceStop();
+            Scripter.Stop();
         }
 
         private void consoleRun_Click(object sender, EventArgs e)
         {
-            Scripter.ExecuteCode(ConsoleInput.Text, false);
+            Scripter.Execute(ConsoleInput.Text, false);
 
             ConsoleInput.Text = "";
         }
@@ -79,6 +79,8 @@ namespace ScribeBot.Interface
 
         private void Window_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Scripter.Stop();
+
             Core.DumpLog();
 
             if (Core.Editor.InvokeRequired)
@@ -197,7 +199,23 @@ namespace ScribeBot.Interface
                 Workshop.CreatePackage(PackageFolderSelectDialog.SelectedPath, info);
             }
             else
-                Core.WriteLine(Core.Colors["Red"], "Fill all fields before creating a package!");
+                Core.WriteLine(new Color(177, 31, 41), "Fill all fields before creating a package!");
+        }
+
+        private void suspendResumeButton_Click(object sender, EventArgs e)
+        {
+            if (!Scripter.IsPaused())
+            {
+                suspendResumeButton.Text = "Resume";
+
+                Scripter.Suspend();
+            }
+            else
+            {
+                suspendResumeButton.Text = "Pause";
+
+                Scripter.Resume();
+            }   
         }
     }
 }

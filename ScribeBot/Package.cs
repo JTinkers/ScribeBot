@@ -8,6 +8,7 @@ using System.IO.Compression;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using ScribeBot.Wrappers.Types;
 
 //TO-DO: Remake this entire class
 namespace ScribeBot
@@ -49,11 +50,11 @@ namespace ScribeBot
 
                 filePaths.ToList().ForEach(x => archive.CreateEntryFromFile(x, Path.GetFileName(x)));
 
-                Core.WriteLine(Core.Colors["Green"], $@"Package {packageName}.zip created!");
+                Core.WriteLine(new Color(0, 131, 63), $@"Package {packageName}.zip created!");
             }
             catch( Exception e )
             {
-                Core.WriteLine(Core.Colors["Red"], e.Message);
+                Core.WriteLine(new Color(177, 31, 41), e.Message);
             }
 
             return new Package($@"Data\Packages\{packageName}.zip"); ;
@@ -125,7 +126,7 @@ namespace ScribeBot
         {
             Dictionary<string, string> info = GetInfo();
 
-            Scripter.ExecuteCode(ReadFileContents(info["EntryPoint"]), silent);
+            Scripter.Execute(ReadFileContents(info["EntryPoint"]), silent);
         }
 
         /// <summary>

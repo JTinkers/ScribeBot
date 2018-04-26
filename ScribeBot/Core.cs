@@ -81,11 +81,6 @@ namespace ScribeBot
         /// </summary>
         public static void Initialize()
         {
-            Colors["Red"] = Color.FromArgb(214, 69, 65);
-            Colors["Blue"] = Color.FromArgb(68, 108, 179);
-            Colors["Green"] = Color.FromArgb(30, 130, 76);
-            Colors["Purple"] = Color.FromArgb(145, 61, 136);
-
             Fonts.AddFontFile($@"{Application.StartupPath}\Data\Fonts\OfficeCodePro-Medium.ttf");
 
             InterfaceThread = new Thread(() =>
@@ -172,7 +167,7 @@ namespace ScribeBot
         /// <summary>
         /// Write a multi-color string of text and append it with a linebreak.
         /// </summary>
-        /// <param name="args">Strings prepended by colors ex: Color.Red, "text", Color.Yellow, "text2".</param>
+        /// <param name="args">Strings prepended by colors ex: Color, "text", Color, "text2".</param>
         public static void WriteLine(params object[] args)
         {
             MainWindow?.Invoke(new Action(() =>

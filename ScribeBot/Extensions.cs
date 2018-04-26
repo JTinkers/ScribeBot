@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ScribeBot.Wrappers.Types;
+using Drawing = System.Drawing;
 
 namespace ScribeBot
 {
@@ -30,9 +31,10 @@ namespace ScribeBot
 
             for (int i = 0; i < args.Length; i+=2)
             {
+                Color color = (Color)args[i];
                 textBox.AppendText((String)args[i+1]);
                 textBox.Select(Math.Max(textBox.TextLength - args[i + 1].ToString().Length, 0), args[i + 1].ToString().Length);
-                textBox.SelectionColor = (Color)args[i];
+                textBox.SelectionColor = Drawing.Color.FromArgb(color.R, color.G, color.B);
             }
         }
     }

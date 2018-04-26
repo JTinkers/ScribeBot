@@ -9,6 +9,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ScribeBot.Wrappers.Types;
 
 namespace ScribeBot
 {
@@ -49,7 +50,7 @@ namespace ScribeBot
         /// <returns>List of downloadable packages.</returns>
         public static Dictionary<string, string> GetPackageList()
         {
-            Core.WriteLine(Core.Colors["Purple"], "Fetching workshop list.", Core.Colors["Red"], "\nWARNING: Using this function too often might get you temporarily IP banned from Github API!");
+            Core.WriteLine(new Color(89, 73, 163), "Fetching workshop list.", new Color(177, 31, 41), "\nWARNING: Using this function too often might get you temporarily IP banned from Github API!");
 
             Dictionary<string, string> list = new Dictionary<string, string>();
 
@@ -59,7 +60,7 @@ namespace ScribeBot
             tokens = tokens.Where(x => !x["name"].ToString().Equals("README.md")).ToList();
             tokens.ToList().ForEach(x => list[Path.GetFileNameWithoutExtension((string)x["name"])] = (string)x["download_url"]);
 
-            Core.WriteLine(Core.Colors["Green"], "Workshop list fetched. Happy downloading!");
+            Core.WriteLine(new Color(0, 131, 63), "Workshop list fetched. Happy downloading!");
 
             return list;
         }
@@ -69,18 +70,18 @@ namespace ScribeBot
         /// </summary>
         public static void DownloadPackage(string url, string name = "package")
         {
-            Core.WriteLine(Core.Colors["Purple"], $@"Downloading workshop package: {name}");
+            Core.WriteLine(new Color(89, 73, 163), $@"Downloading workshop package: {name}");
 
             if (File.Exists($@"Data\Packages\{name}.zip"))
             {
-                Core.WriteLine(Core.Colors["Red"], "A package of this name already exists!");
+                Core.WriteLine(new Color(177, 31, 41), "A package of this name already exists!");
                 return;
             }
 
             NetClient.Headers["User-Agent"] = "ScribeBot - Workshop - Download Package";
             NetClient.DownloadFile(url, $@"Data\Packages\{name}.zip");
 
-            Core.WriteLine(Core.Colors["Purple"], $@"Downloaded workshop package: {name}");
+            Core.WriteLine(new Color(89, 73, 163), $@"Downloaded workshop package: {name}");
         }
 
         /// <summary>
