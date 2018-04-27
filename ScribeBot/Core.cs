@@ -105,11 +105,13 @@ namespace ScribeBot
             if (ConsoleInputQueue.Count > 0)
             {
                 try
-                {
-                    string line = ConsoleInputQueue.First();
-                    ConsoleInputQueue.RemoveAt(0);
+                {             
+                    ConsoleInputQueue.ForEach(x =>
+                    {
+                        Scripter.Environment.DoString(x);
+                    });
 
-                    Scripter.Environment.DoString(line);
+                    ConsoleInputQueue.Clear();
                 }
                 catch (SyntaxErrorException exception)
                 {
