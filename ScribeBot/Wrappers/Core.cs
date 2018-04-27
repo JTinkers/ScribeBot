@@ -17,6 +17,8 @@ namespace ScribeBot.Wrappers
     {
         public static string Version => ScribeBot.Core.Version;
 
+        public static void ProcessConsoleInput() => ScribeBot.Core.ProcessConsoleInput();
+
         public static void Write(string text) => ScribeBot.Core.Write(text);
 
         public static void WriteLine(string line) => ScribeBot.Core.WriteLine(line);

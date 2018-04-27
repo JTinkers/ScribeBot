@@ -53,7 +53,7 @@ namespace ScribeBot.Interface
 
         private void consoleRun_Click(object sender, EventArgs e)
         {
-            Scripter.Execute(ConsoleInput.Text, false);
+            Scripter.InjectLine(ConsoleInput.Text);
 
             ConsoleInput.Text = "";
         }
@@ -200,22 +200,6 @@ namespace ScribeBot.Interface
             }
             else
                 Core.WriteLine(new Color(177, 31, 41), "Fill all fields before creating a package!");
-        }
-
-        private void suspendResumeButton_Click(object sender, EventArgs e)
-        {
-            if (!Scripter.IsPaused())
-            {
-                suspendResumeButton.Text = "Resume";
-
-                Scripter.Suspend();
-            }
-            else
-            {
-                suspendResumeButton.Text = "Pause";
-
-                Scripter.Resume();
-            }   
         }
     }
 }

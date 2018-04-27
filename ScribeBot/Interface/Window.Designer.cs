@@ -70,7 +70,6 @@ namespace ScribeBot.Interface
             this.packageDescription = new System.Windows.Forms.TextBox();
             this.noticeTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.packageFolderSelectDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.suspendResumeButton = new System.Windows.Forms.Button();
             this.consolePanel.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.consoleContainer.SuspendLayout();
@@ -276,11 +275,9 @@ namespace ScribeBot.Interface
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.Controls.Add(this.scriptStop, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.suspendResumeButton, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 495);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -295,7 +292,7 @@ namespace ScribeBot.Interface
             this.scriptStop.Location = new System.Drawing.Point(0, 0);
             this.scriptStop.Margin = new System.Windows.Forms.Padding(0);
             this.scriptStop.Name = "scriptStop";
-            this.scriptStop.Size = new System.Drawing.Size(127, 21);
+            this.scriptStop.Size = new System.Drawing.Size(254, 21);
             this.scriptStop.TabIndex = 2;
             this.scriptStop.Text = "Stop";
             this.noticeTooltip.SetToolTip(this.scriptStop, "This will force currently running script to stop");
@@ -582,18 +579,6 @@ namespace ScribeBot.Interface
             this.packageFolderSelectDialog.Description = "Select folder to transform into a package.";
             this.packageFolderSelectDialog.ShowNewFolderButton = false;
             // 
-            // suspendResumeButton
-            // 
-            this.suspendResumeButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.suspendResumeButton.Location = new System.Drawing.Point(127, 0);
-            this.suspendResumeButton.Margin = new System.Windows.Forms.Padding(0);
-            this.suspendResumeButton.Name = "suspendResumeButton";
-            this.suspendResumeButton.Size = new System.Drawing.Size(127, 21);
-            this.suspendResumeButton.TabIndex = 3;
-            this.suspendResumeButton.Text = "Pause";
-            this.suspendResumeButton.UseVisualStyleBackColor = true;
-            this.suspendResumeButton.Click += new System.EventHandler(this.suspendResumeButton_Click);
-            // 
             // Window
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -673,7 +658,6 @@ namespace ScribeBot.Interface
         private Button packageCreateFolder;
         private Button packageSelectFolder;
         private FolderBrowserDialog packageFolderSelectDialog;
-        private Button suspendResumeButton;
 
         public RichTextBox ConsoleOutput { get => consoleOutput; set => consoleOutput = value; }
         public TextBox ConsoleInput { get => consoleInput; set => consoleInput = value; }

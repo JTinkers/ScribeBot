@@ -9,7 +9,6 @@ using System.IO;
 using MoonSharp.Interpreter;
 using ScribeBot.Interface;
 using System.Diagnostics;
-using System.Drawing;
 using System.Drawing.Text;
 using System.Net;
 using Newtonsoft.Json.Linq;
@@ -23,11 +22,11 @@ namespace ScribeBot
     {
         private static string version = "0.6beta";
         private static double timeStarted = (DateTime.Now.ToUniversalTime() - new DateTime(1970, 1, 1)).TotalSeconds;
+        private static List<string> consoleInputQueue = new List<string>();
         private static Thread interfaceThread;
         private static Window mainWindow;
         private static PackageEditor editor = new PackageEditor();
         private static PrivateFontCollection fonts = new PrivateFontCollection();
-        private static Dictionary<string, Color> colors = new Dictionary<string, Color>();
         private static StringBuilder log = new StringBuilder();
         private static StreamWriter logStream = new StreamWriter($@"{Application.StartupPath}\Data\Logs\{DateTime.Today.Day}_{DateTime.Today.Month}_{DateTime.Today.Year}.txt", true );
 
@@ -57,11 +56,6 @@ namespace ScribeBot
         public static PrivateFontCollection Fonts { get => fonts; set => fonts = value; }
 
         /// <summary>
-        /// Container for all custom colors used by the program.
-        /// </summary>
-        public static Dictionary<string, Color> Colors { get => colors; set => colors = value; }
-
-        /// <summary>
         /// Stream to a date-signed log file.
         /// </summary>
         public static StreamWriter LogStream { get => logStream; set => logStream = value; }
@@ -75,6 +69,11 @@ namespace ScribeBot
         /// Built-in package editor.
         /// </summary>
         public static PackageEditor Editor { get => editor; set => editor = value; }
+
+        /// <summary>
+        /// Queue containing strings inputed via console for processing.
+        /// </summary>
+        public static List<string> ConsoleInputQueue { get => consoleInputQueue; set => consoleInputQueue = value; }
 
         /// <summary>
         /// Initializes object-based enumerations, loads fonts, opens user interface etc. basically anything that has to be done once the program starts.
@@ -94,6 +93,33 @@ namespace ScribeBot
                 Name = "Interface Thread"
             };
             InterfaceThread.Start();
+
+            Scripter.Initialize();
+        }
+
+        /// <summary>
+        /// Process lines of code entered via console.
+        /// </summary>
+        public static void ProcessConsoleInput()
+        {
+            if (ConsoleInputQueue.Count > 0)
+            {
+                try
+                {
+                    string line = ConsoleInputQueue.First();
+                    ConsoleInputQueue.RemoveAt(0);
+
+                    Scripter.Environment.DoString(line);
+                }
+                catch (SyntaxErrorException exception)
+                {
+                    WriteLine(new Wrappers.Types.Color(177, 31, 41), $"Syntax Error: {exception.Message}");
+                }
+                catch (ScriptRuntimeException exception)
+                {
+                    WriteLine(new Wrappers.Types.Color(177, 31, 41), $"Runtime Error: {exception.Message}");
+                }
+            }
         }
 
         /// <summary>

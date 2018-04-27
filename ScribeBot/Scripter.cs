@@ -31,6 +31,11 @@ namespace ScribeBot
         public static Thread LuaThread { get => luaThread; set => luaThread = value; }
 
         /// <summary>
+        /// Manual initializer.
+        /// </summary>
+        public static void Initialize() => Core.WriteLine(new Color(205, 205, 205), "-- SCRIPTER INITIALIZED");
+
+        /// <summary>
         /// Static constructor initializing and sharing all vital functionality with Lua environment.
         /// </summary>
         static Scripter()
@@ -41,7 +46,7 @@ namespace ScribeBot
             UserData.RegisterAssembly();
 
             Environment.Options.DebugPrint = value => Core.Write(new Color(0, 131, 63), value + System.Environment.NewLine);
-            Environment.Options.CheckThreadAccess = true;
+            Environment.Options.CheckThreadAccess = false;
 
             Directory.GetFiles($@"Data\Extensions\", "*.lua").ToList().ForEach(x => Environment.DoFile(x));
 
@@ -59,6 +64,8 @@ namespace ScribeBot
         /// <param name="silent">Defines whether console should hide code that's being executed.</param>
         public static void Execute(string code, bool silent = true)
         {
+            Core.ConsoleInputQueue.Clear();
+
             if (!silent)
                 Core.WriteLine(new Color(0, 131, 63), $"> {code}");
 
@@ -88,6 +95,21 @@ namespace ScribeBot
         }
 
         /// <summary>
+        /// Adds a line to queue that can be processed via core.processConsoleInput.
+        /// </summary>
+        /// <param name="code">Code to process.</param>
+        public static void InjectLine(string code)
+        {
+            if (LuaThread == null || !LuaThread.IsAlive)
+            {
+                Environment.DoString(code);
+                return;
+            }
+            
+            Core.ConsoleInputQueue.Add(code);
+        }
+
+        /// <summary>
         /// Stop Lua thread, effectively killing all running scripts.
         /// </summary>
         public static void Stop()
@@ -102,8 +124,7 @@ namespace ScribeBot
         /// </summary>
         public static void Suspend()
         {
-            if (LuaThread != null && LuaThread.IsAlive)
-                Core.WriteLine($"{Thread.CurrentThread.Name} {LuaThread.Name}");
+            //
         }
 
         /// <summary>
@@ -111,8 +132,7 @@ namespace ScribeBot
         /// </summary>
         public static void Resume()
         {
-            if (LuaThread != null && LuaThread.IsAlive)
-                LuaThread.Resume();
+            //
         }
 
         /// <summary>
