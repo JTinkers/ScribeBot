@@ -46,6 +46,9 @@ Some functions that weren't listed below: http://www.moonsharp.org/additions.htm
 --returns: string containing version of a bot (I always forget to update this, but I'll keep it automated later)
 core.version
 
+--process and run lines of code entered into console
+core.processConsoleInput
+
 --get timestamp of when bot was launched
 --returns: the timestamp
 core.timeStarted
