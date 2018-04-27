@@ -47,7 +47,7 @@ Some functions that weren't listed below: http://www.moonsharp.org/additions.htm
 core.version
 
 --process and run lines of code entered into console
-core.processConsoleInput
+core.processConsoleInput()
 
 --get timestamp of when bot was launched
 --returns: the timestamp
