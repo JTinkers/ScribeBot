@@ -9,6 +9,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ScribeBot.Wrappers.Types;
+using System.Diagnostics;
+using System.IO;
 
 namespace ScribeBot.Interface
 {
@@ -221,6 +223,11 @@ namespace ScribeBot.Interface
             }
             else
                 Core.WriteLine(new Color(177, 31, 41), "Fill all fields before creating a package!");
+        }
+
+        private void openPackagesFolderButton_Click(object sender, EventArgs e)
+        {
+            Process.Start($@"{Path.GetDirectoryName(Application.ExecutablePath)}\Data\Packages");
         }
     }
 }

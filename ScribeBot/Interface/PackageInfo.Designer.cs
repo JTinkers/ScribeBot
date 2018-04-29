@@ -57,10 +57,10 @@ namespace ScribeBot.Interface
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(202, 81);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(202, 100);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -77,8 +77,8 @@ namespace ScribeBot.Interface
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 25);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 32);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // nameLabel
@@ -92,7 +92,7 @@ namespace ScribeBot.Interface
             this.nameLabel.Location = new System.Drawing.Point(3, 3);
             this.nameLabel.Margin = new System.Windows.Forms.Padding(3);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(35, 19);
+            this.nameLabel.Size = new System.Drawing.Size(35, 26);
             this.nameLabel.TabIndex = 0;
             this.nameLabel.Text = "label1";
             this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -107,7 +107,7 @@ namespace ScribeBot.Interface
             this.authorLabel.Location = new System.Drawing.Point(44, 3);
             this.authorLabel.Margin = new System.Windows.Forms.Padding(3);
             this.authorLabel.Name = "authorLabel";
-            this.authorLabel.Size = new System.Drawing.Size(153, 19);
+            this.authorLabel.Size = new System.Drawing.Size(153, 26);
             this.authorLabel.TabIndex = 1;
             this.authorLabel.Text = "label2";
             this.authorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -116,11 +116,11 @@ namespace ScribeBot.Interface
             // 
             this.descLabel.AutoEllipsis = true;
             this.descLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.descLabel.ForeColor = System.Drawing.Color.Black;
-            this.descLabel.Location = new System.Drawing.Point(4, 30);
+            this.descLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.descLabel.Location = new System.Drawing.Point(4, 37);
             this.descLabel.Margin = new System.Windows.Forms.Padding(3);
             this.descLabel.Name = "descLabel";
-            this.descLabel.Size = new System.Drawing.Size(194, 13);
+            this.descLabel.Size = new System.Drawing.Size(194, 26);
             this.descLabel.TabIndex = 1;
             this.descLabel.Text = "label3";
             this.descLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -128,18 +128,19 @@ namespace ScribeBot.Interface
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.AutoSize = true;
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.runButton, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.editButton, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(1, 47);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(1, 67);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(200, 33);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(200, 32);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // runButton
@@ -148,24 +149,24 @@ namespace ScribeBot.Interface
             this.runButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.runButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(196)))), ((int)(((byte)(107)))));
             this.runButton.ForeColor = System.Drawing.Color.Black;
-            this.runButton.Location = new System.Drawing.Point(5, 5);
-            this.runButton.Margin = new System.Windows.Forms.Padding(5);
+            this.runButton.Image = global::ScribeBot.Properties.Resources.Run_grey_16x;
+            this.runButton.Location = new System.Drawing.Point(0, 0);
+            this.runButton.Margin = new System.Windows.Forms.Padding(0);
             this.runButton.MinimumSize = new System.Drawing.Size(0, 20);
             this.runButton.Name = "runButton";
-            this.runButton.Size = new System.Drawing.Size(90, 23);
+            this.runButton.Size = new System.Drawing.Size(32, 32);
             this.runButton.TabIndex = 6;
-            this.runButton.Text = "Run";
             this.runButton.UseVisualStyleBackColor = false;
             // 
             // editButton
             // 
             this.editButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editButton.Location = new System.Drawing.Point(105, 5);
-            this.editButton.Margin = new System.Windows.Forms.Padding(5);
+            this.editButton.Image = global::ScribeBot.Properties.Resources.Edit_grey_16x;
+            this.editButton.Location = new System.Drawing.Point(32, 0);
+            this.editButton.Margin = new System.Windows.Forms.Padding(0);
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(90, 23);
+            this.editButton.Size = new System.Drawing.Size(32, 32);
             this.editButton.TabIndex = 5;
-            this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = true;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
@@ -180,7 +181,7 @@ namespace ScribeBot.Interface
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MinimumSize = new System.Drawing.Size(150, 50);
             this.Name = "PackageInfo";
-            this.Size = new System.Drawing.Size(202, 81);
+            this.Size = new System.Drawing.Size(202, 100);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
