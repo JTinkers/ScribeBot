@@ -37,11 +37,67 @@ With a little knowledge of Lua, you can automate mundane tasks, create macros or
 This program uses unmanaged code (see: https://msdn.microsoft.com/en-us/library/ms973872.aspx#manunman_topic6) and provides low-level functionality that if used improperly (intentionally or not) could affect system's security and reliability.
 It's possible to write a malicious script - it's **highly advised** to open packages with package editor and read code before executing it, especially if it comes from untrusted sources.
 
+## Example
+
+Below is an example counter script.
+
+It'll keep counting seconds that have passed since it's been started and it'll continue doing so until you set count to false.
+
+core.processConsoleInput() is crucial here, otherwise sending 'count = false' via console won't be executed.
+
+```lua
+count = true
+i = 0
+
+while(count) do
+	i = i + 1
+	
+	print(i)
+
+	wait(1000)
+
+	core.processConsoleInput()
+end
+```
+
 ## Functions
 
 Some functions that weren't listed below: http://www.moonsharp.org/additions.html
 
 ```lua
+--create an audio device for playing sounds
+--returns: audioDevice instance object
+audio.createDevice()
+
+--get names of audio active audio devices
+--returns: array of names
+audio.getDeviceNames()
+
+--get peak level of an audio device
+--name: name of device to get peak level of
+--returns: peak value
+audio.getPeakValue(name)
+
+--load a sound file into audio device
+--path: drive path or url of the file
+audioDevice:load(path)
+
+--self-explanatory
+audioDevice:pause()
+
+--self-explanatory
+audioDevice:play()
+
+--self-explanatory
+audioDevice:stop()
+
+--get state of the device
+--returns: 0 - stopped, 1 - playing, 2 - paused
+audioDevice.state
+
+--self-explanatory
+audioDevice.volume
+
 --get current version of the bot
 --returns: string containing version of a bot (I always forget to update this, but I'll keep it automated later)
 core.version
