@@ -21,16 +21,21 @@ namespace ScribeBot.Wrappers
         /// <returns>A string value inserted into textbox.</returns>
         public static string ShowPrompt( string message )
         {
+            string text = null;
+
             Prompt prompt = new Prompt();
             prompt.PromptMessage.Text = message;
             prompt.PromptSubmit.Click += (o, e) =>
             {
+                text = prompt.PromptEntryBox.Text;
+
                 prompt.Close();
+                prompt.Dispose();
             };
 
             prompt.ShowDialog();
 
-            return prompt.PromptEntryBox.Text;
+            return text;
         }
     }
 }

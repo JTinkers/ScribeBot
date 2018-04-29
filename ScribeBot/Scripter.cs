@@ -52,12 +52,20 @@ namespace ScribeBot
 
             Directory.GetFiles($@"Data\Extensions\", "*.lua").ToList().ForEach(x => Environment.DoFile(x));
 
+            //Libraries
             Environment.Globals["core"] = typeof(Wrappers.Core);
             Environment.Globals["input"] = typeof(Wrappers.Input);
             Environment.Globals["interface"] = typeof(Wrappers.Interface);
             Environment.Globals["screen"] = typeof(Wrappers.Screen);
             Environment.Globals["audio"] = typeof(Wrappers.Audio);
             Environment.Globals["webdriver"] = typeof(Wrappers.Proxies.WebDriver);
+
+            //Types
+            Environment.Globals["Color"] = typeof(Color);
+
+            //Enums
+            UserData.RegisterType<Native.VirtualKeyCode>();
+            Environment.Globals["VirtualKey"] = UserData.CreateStatic<Native.VirtualKeyCode>();
         }
 
         /// <summary>
@@ -107,19 +115,7 @@ namespace ScribeBot
         {
             if (LuaThread == null || !LuaThread.IsAlive)
             {
-                try
-                {
-                    Environment.DoStringAsync($"{code}");
-                }
-                catch (SyntaxErrorException exception)
-                {
-                    Core.WriteLine(new Color(177, 31, 41), $"Syntax Error: {exception.Message}");
-                }
-                catch (ScriptRuntimeException exception)
-                {
-                    Core.WriteLine(new Color(177, 31, 41), $"Runtime Error: {exception.Message}");
-                }
-
+                Execute(code, false);
                 return;
             }
             

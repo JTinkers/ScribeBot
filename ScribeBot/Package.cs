@@ -50,6 +50,8 @@ namespace ScribeBot
 
                 filePaths.ToList().ForEach(x => archive.CreateEntryFromFile(x, Path.GetFileName(x)));
 
+                archive.Dispose();
+
                 Core.WriteLine(new Color(0, 131, 63), $@"Package {packageName}.zip created!");
             }
             catch( Exception e )

@@ -132,11 +132,9 @@ namespace ScribeBot.Interface
                             WorkshopFetchButton.Text = "Fetch";
                             WorkshopFetchButton.Enabled = true;
 
-                            Package[] installedPackages = Workshop.GetInstalled();
-
                             InstalledPackagesList.Controls.Clear();
 
-                            installedPackages.ToList().ForEach(x =>
+                            Workshop.GetInstalled().ToList().ForEach(x =>
                             {
                                 Dictionary<string, string> packageInfo = x.GetInfo();
 
@@ -193,10 +191,33 @@ namespace ScribeBot.Interface
                     ["Name"] = PackageName.Text,
                     ["Authors"] = PackageAuthors.Text,
                     ["Description"] = PackageDescription.Text,
+                    ["Contact"] = "",
                     ["EntryPoint"] = PackageEntryPoint.Text
                 };
 
                 Workshop.CreatePackage(PackageFolderSelectDialog.SelectedPath, info);
+
+                InstalledPackagesList.Controls.Clear();
+
+                Workshop.GetInstalled().ToList().ForEach(x =>
+                {
+                    Dictionary<string, string> packageInfo = x.GetInfo();
+
+                    PackageInfo i = new PackageInfo();
+                    i.NameLabel.Text = packageInfo["Name"];
+                    i.AuthorLabel.Text = packageInfo["Authors"];
+                    i.DescLabel.Text = packageInfo["Description"];
+                    i.Package = x;
+
+                    i.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left;
+
+                    InstalledPackagesList.Controls.Add(i);
+
+                    i.RunButton.Click += (ob, ed) =>
+                    {
+                        x.Run(true);
+                    };
+                });
             }
             else
                 Core.WriteLine(new Color(177, 31, 41), "Fill all fields before creating a package!");

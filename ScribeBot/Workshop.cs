@@ -98,7 +98,7 @@ namespace ScribeBot
 
             Directory.GetFiles(folderPath).ToList().ForEach(x => filePaths.Add(x));
 
-            Package.Create(Path.GetFileName( folderPath ), filePaths.ToArray());
+            Package.Create(Path.GetFileName(folderPath), filePaths.ToArray());
         }
     }
 }

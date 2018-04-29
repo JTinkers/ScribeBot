@@ -17,9 +17,9 @@ namespace ScribeBot.Wrappers
         /// <summary>
         /// Get whether a key is down or not.
         /// </summary>
-        /// <param name="character">Key to check state of.</param>
+        /// <param name="key">Key to check state of.</param>
         /// <returns>Whether the key is down or not</returns>
-        public static bool IsKeyDown(char character) => Native.API.IsKeyDown((Native.VirtualKeyCode)character);
+        public static bool IsKeyDown(Native.VirtualKeyCode key) => Native.API.IsKeyDown(key);
 
         /// <summary>
         /// Get whether a mouse button specified by number is down or not.
