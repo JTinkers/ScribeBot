@@ -46,7 +46,6 @@ namespace ScribeBot.Interface
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -61,7 +60,7 @@ namespace ScribeBot.Interface
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(202, 97);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(202, 81);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -90,10 +89,10 @@ namespace ScribeBot.Interface
             this.nameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.nameLabel.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nameLabel.Location = new System.Drawing.Point(5, 5);
-            this.nameLabel.Margin = new System.Windows.Forms.Padding(5);
+            this.nameLabel.Location = new System.Drawing.Point(3, 3);
+            this.nameLabel.Margin = new System.Windows.Forms.Padding(3);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(35, 15);
+            this.nameLabel.Size = new System.Drawing.Size(35, 19);
             this.nameLabel.TabIndex = 0;
             this.nameLabel.Text = "label1";
             this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -105,10 +104,10 @@ namespace ScribeBot.Interface
             this.authorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.authorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.authorLabel.ForeColor = System.Drawing.Color.Green;
-            this.authorLabel.Location = new System.Drawing.Point(50, 5);
-            this.authorLabel.Margin = new System.Windows.Forms.Padding(5);
+            this.authorLabel.Location = new System.Drawing.Point(44, 3);
+            this.authorLabel.Margin = new System.Windows.Forms.Padding(3);
             this.authorLabel.Name = "authorLabel";
-            this.authorLabel.Size = new System.Drawing.Size(145, 15);
+            this.authorLabel.Size = new System.Drawing.Size(153, 19);
             this.authorLabel.TabIndex = 1;
             this.authorLabel.Text = "label2";
             this.authorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -118,10 +117,10 @@ namespace ScribeBot.Interface
             this.descLabel.AutoEllipsis = true;
             this.descLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.descLabel.ForeColor = System.Drawing.Color.Black;
-            this.descLabel.Location = new System.Drawing.Point(6, 32);
-            this.descLabel.Margin = new System.Windows.Forms.Padding(5);
+            this.descLabel.Location = new System.Drawing.Point(4, 30);
+            this.descLabel.Margin = new System.Windows.Forms.Padding(3);
             this.descLabel.Name = "descLabel";
-            this.descLabel.Size = new System.Drawing.Size(190, 25);
+            this.descLabel.Size = new System.Drawing.Size(194, 13);
             this.descLabel.TabIndex = 1;
             this.descLabel.Text = "label3";
             this.descLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -129,14 +128,13 @@ namespace ScribeBot.Interface
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.AutoSize = true;
-            this.tableLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.runButton, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.editButton, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(1, 63);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(1, 47);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
@@ -182,7 +180,7 @@ namespace ScribeBot.Interface
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MinimumSize = new System.Drawing.Size(150, 50);
             this.Name = "PackageInfo";
-            this.Size = new System.Drawing.Size(202, 97);
+            this.Size = new System.Drawing.Size(202, 81);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);

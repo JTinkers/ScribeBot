@@ -251,7 +251,6 @@ namespace ScribeBot.Interface
             this.installedPackagesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.installedPackagesPanel.Controls.Add(this.installedPackagesList);
             this.installedPackagesPanel.Location = new System.Drawing.Point(10, 10);
-            this.installedPackagesPanel.Margin = new System.Windows.Forms.Padding(5);
             this.installedPackagesPanel.Name = "installedPackagesPanel";
             this.installedPackagesPanel.Size = new System.Drawing.Size(254, 475);
             this.installedPackagesPanel.TabIndex = 7;
@@ -259,9 +258,8 @@ namespace ScribeBot.Interface
             // installedPackagesList
             // 
             this.installedPackagesList.AutoScroll = true;
-            this.installedPackagesList.AutoSize = true;
-            this.installedPackagesList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.installedPackagesList.BackColor = System.Drawing.Color.Transparent;
+            this.installedPackagesList.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.installedPackagesList.ColumnCount = 1;
             this.installedPackagesList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.installedPackagesList.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -602,7 +600,6 @@ namespace ScribeBot.Interface
             this.optionsPanel.ResumeLayout(false);
             this.scriptsPage.ResumeLayout(false);
             this.installedPackagesPanel.ResumeLayout(false);
-            this.installedPackagesPanel.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
