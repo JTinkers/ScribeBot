@@ -141,7 +141,7 @@
     </Compile>
     <Compile Include="Scripter.cs" />
     <Compile Include="Workshop.cs" />
-    <Compile Include="Wrappers\Proxies\Audio.cs" />
+    <Compile Include="Wrappers\Audio.cs" />
     <Compile Include="Wrappers\Proxies\AudioDevice.cs" />
     <Compile Include="Wrappers\Proxies\WebDriver.cs" />
     <Compile Include="Wrappers\Proxies\WebElement.cs" />

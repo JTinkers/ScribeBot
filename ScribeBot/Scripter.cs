@@ -56,8 +56,8 @@ namespace ScribeBot
             Environment.Globals["input"] = typeof(Wrappers.Input);
             Environment.Globals["interface"] = typeof(Wrappers.Interface);
             Environment.Globals["screen"] = typeof(Wrappers.Screen);
+            Environment.Globals["audio"] = typeof(Wrappers.Audio);
             Environment.Globals["webdriver"] = typeof(Wrappers.Proxies.WebDriver);
-            Environment.Globals["audio"] = typeof(Wrappers.Proxies.Audio);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace ScribeBot
             {
                 try
                 {
-                    Environment.DoString($"{code}");
+                    Environment.DoStringAsync($"{code}");
                 }
                 catch (SyntaxErrorException exception)
                 {
