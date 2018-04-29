@@ -47,6 +47,8 @@ namespace ScribeBot
 
             Environment.Options.DebugPrint = value => Core.Write(new Color(0, 131, 63), value + System.Environment.NewLine);
             Environment.Options.CheckThreadAccess = false;
+            Environment.Options.UseLuaErrorLocations = true;
+            Environment.PerformanceStats.Enabled = true;
 
             Directory.GetFiles($@"Data\Extensions\", "*.lua").ToList().ForEach(x => Environment.DoFile(x));
 
@@ -55,6 +57,7 @@ namespace ScribeBot
             Environment.Globals["interface"] = typeof(Wrappers.Interface);
             Environment.Globals["screen"] = typeof(Wrappers.Screen);
             Environment.Globals["webdriver"] = typeof(Wrappers.Proxies.WebDriver);
+            Environment.Globals["audio"] = typeof(Wrappers.Proxies.Audio);
         }
 
         /// <summary>
@@ -74,6 +77,8 @@ namespace ScribeBot
 
             LuaThread = new Thread(() =>
             {
+                Core.WriteLine(Environment.PerformanceStats.GetPerformanceLog());
+
                 try
                 {
                     Environment.DoString($"{code}");
@@ -102,7 +107,19 @@ namespace ScribeBot
         {
             if (LuaThread == null || !LuaThread.IsAlive)
             {
-                Environment.DoString(code);
+                try
+                {
+                    Environment.DoString($"{code}");
+                }
+                catch (SyntaxErrorException exception)
+                {
+                    Core.WriteLine(new Color(177, 31, 41), $"Syntax Error: {exception.Message}");
+                }
+                catch (ScriptRuntimeException exception)
+                {
+                    Core.WriteLine(new Color(177, 31, 41), $"Runtime Error: {exception.Message}");
+                }
+
                 return;
             }
             

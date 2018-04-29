@@ -75,6 +75,9 @@
     <Reference Include="MoonSharp.Interpreter, Version=2.0.0.0, Culture=neutral, PublicKeyToken=921e73ce94aa17f8, processorArchitecture=MSIL">
       <HintPath>..\packages\MoonSharp.2.0.0.0\lib\net40-client\MoonSharp.Interpreter.dll</HintPath>
     </Reference>
+    <Reference Include="NAudio, Version=1.8.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.8.4\lib\net35\NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -138,6 +141,8 @@
     </Compile>
     <Compile Include="Scripter.cs" />
     <Compile Include="Workshop.cs" />
+    <Compile Include="Wrappers\Proxies\Audio.cs" />
+    <Compile Include="Wrappers\Proxies\AudioDevice.cs" />
     <Compile Include="Wrappers\Proxies\WebDriver.cs" />
     <Compile Include="Wrappers\Proxies\WebElement.cs" />
     <Compile Include="Wrappers\Types\Color.cs" />
@@ -220,6 +225,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="MoonSharp-LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NAudio-LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Newtonsoft.Json-LICENSE.txt">

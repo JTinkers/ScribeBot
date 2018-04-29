@@ -22,11 +22,8 @@ namespace ScribeBot.Wrappers.Proxies
         /// <summary>
         /// Create an instance of WebElement proxy for a specified IWebElement.
         /// </summary>
-        /// <param name="e">IWebElement to attach proxy to.</param>
-        public WebElement(IWebElement e)
-        {
-            element = e;
-        }
+        /// <param name="attachment">IWebElement to attach proxy to.</param>
+        public WebElement(IWebElement attachment) => element = attachment;
 
         /// <summary>
         /// Get the elements inner text.
