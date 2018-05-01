@@ -54,6 +54,7 @@ namespace ScribeBot
 
             //Libraries
             Environment.Globals["core"] = typeof(Wrappers.Core);
+            Environment.Globals["database"] = typeof(Wrappers.Database);
             Environment.Globals["input"] = typeof(Wrappers.Input);
             Environment.Globals["interface"] = typeof(Wrappers.Interface);
             Environment.Globals["screen"] = typeof(Wrappers.Screen);

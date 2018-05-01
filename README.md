@@ -1,6 +1,6 @@
-**README last updated with upload of Release-0.61b**
+**README last updated with upload of Release-0.63b**
 # ScribeBot
-![](https://i.imgur.com/nPWbUCM.png) 
+![](https://i.imgur.com/nPWbUCM.png)
 
 ScribeBot is a highly scriptable automation system.
 
@@ -22,11 +22,9 @@ With a little knowledge of Lua, you can automate mundane tasks, create macros or
 - Workshop hosting that allows for more API calls.
 - Autoupdater.
 - Lua Manual (list of functions, types etc).
-- Merge script execution into a maintained loop, allowing for usage of hotkeys, routines and cross-dependency from outside of the bundle.
 
 ## Known bugs and odd-behavior
-- Running scripts asynchronously doesn't pass debugger errors to the console.
-- Running scripts synchronously prevents interface from working.
+- None
 
 ## Third-party libraries:
 - Selenium - used for web-based automatisations.
@@ -39,9 +37,9 @@ It's possible to write a malicious script - it's **highly advised** to open pack
 
 ## Example
 
-Below is an example counter script.
+Below you can find an example time counter script.
 
-It'll keep counting seconds that have passed since it's been started and it'll continue doing so until you set count to false.
+It'll keep counting seconds that have passed since it's been started and it'll continue doing so until you set 'count' to false.
 
 core.processConsoleInput() is crucial here, otherwise sending 'count = false' via console won't be executed.
 
@@ -51,7 +49,7 @@ i = 0
 
 while(count) do
 	i = i + 1
-	
+
 	print(i)
 
 	wait(1000)
@@ -65,11 +63,16 @@ end
 Some functions that weren't listed below: http://www.moonsharp.org/additions.html
 
 ```lua
+--run a query on local sqlite database
+--query: query string to execute
+--returns: array of rows or an empty array if query requested no rows or matches weren't found
+database.query(query)
+
 --create an audio device for playing sounds
 --returns: audioDevice instance object
 audio.createDevice()
 
---get names of audio active audio devices
+--get names of active audio devices
 --returns: array of names
 audio.getDeviceNames()
 

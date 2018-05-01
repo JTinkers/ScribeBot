@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Drawing.Text;
 using System.Net;
 using Newtonsoft.Json.Linq;
+using ScribeBot.Wrappers;
 
 namespace ScribeBot
 {
