@@ -8,7 +8,7 @@ using System.IO.Compression;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using ScribeBot.Wrappers.Types;
+using ScribeBot.Engine.Containers;
 
 //TO-DO: Remake this entire class
 namespace ScribeBot
@@ -52,11 +52,11 @@ namespace ScribeBot
 
                 archive.Dispose();
 
-                Core.WriteLine(new Color(0, 131, 63), $@"Package {packageName}.zip created!");
+                Core.WriteLine(new ColorContainer(0, 131, 63), $@"Package {packageName}.zip created!");
             }
             catch( Exception e )
             {
-                Core.WriteLine(new Color(177, 31, 41), e.Message);
+                Core.WriteLine(new ColorContainer(177, 31, 41), e.Message);
             }
 
             return new Package($@"Data\Packages\{packageName}.zip"); ;

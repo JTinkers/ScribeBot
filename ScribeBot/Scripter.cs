@@ -7,7 +7,9 @@ using System.Threading;
 using MoonSharp.Interpreter;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using ScribeBot.Wrappers.Types;
+using ScribeBot.Engine.Containers;
+using ScribeBot.Engine.Wrappers;
+using ScribeBot.Engine.Proxies;
 
 namespace ScribeBot
 {
@@ -33,7 +35,7 @@ namespace ScribeBot
         /// <summary>
         /// Manual initializer.
         /// </summary>
-        public static void Initialize() => Core.WriteLine(new Color(205, 205, 205), "-- SCRIPTER INITIALIZED");
+        public static void Initialize() => Core.WriteLine(new ColorContainer(205, 205, 205), "-- SCRIPTER INITIALIZED");
 
         /// <summary>
         /// Static constructor initializing and sharing all vital functionality with Lua environment.
@@ -45,7 +47,7 @@ namespace ScribeBot
 
             UserData.RegisterAssembly();
 
-            Environment.Options.DebugPrint = value => Core.Write(new Color(0, 131, 63), value + System.Environment.NewLine);
+            Environment.Options.DebugPrint = value => Core.Write(new ColorContainer(0, 131, 63), value + System.Environment.NewLine);
             Environment.Options.CheckThreadAccess = false;
             Environment.Options.UseLuaErrorLocations = true;
             Environment.PerformanceStats.Enabled = true;
@@ -53,16 +55,16 @@ namespace ScribeBot
             Directory.GetFiles($@"Data\Extensions\", "*.lua").ToList().ForEach(x => Environment.DoFile(x));
 
             //Libraries
-            Environment.Globals["core"] = typeof(Wrappers.Core);
-            Environment.Globals["database"] = typeof(Wrappers.Database);
-            Environment.Globals["input"] = typeof(Wrappers.Input);
-            Environment.Globals["interface"] = typeof(Wrappers.Interface);
-            Environment.Globals["screen"] = typeof(Wrappers.Screen);
-            Environment.Globals["audio"] = typeof(Wrappers.Audio);
-            Environment.Globals["webdriver"] = typeof(Wrappers.Proxies.WebDriver);
+            Environment.Globals["audio"] = typeof(AudioWrapper);
+            Environment.Globals["core"] = typeof(CoreWrapper);
+            Environment.Globals["database"] = typeof(DatabaseWrapper);
+            Environment.Globals["input"] = typeof(InputWrapper);
+            Environment.Globals["interface"] = typeof(InterfaceWrapper);
+            Environment.Globals["screen"] = typeof(ScreenWrapper);
+            Environment.Globals["webdriver"] = typeof(WebDriverProxy);
 
             //Types
-            Environment.Globals["Color"] = typeof(Color);
+            Environment.Globals["Color"] = typeof(ColorContainer);
 
             //Enums
             UserData.RegisterType<Native.VirtualKeyCode>();
@@ -79,7 +81,7 @@ namespace ScribeBot
             Core.ConsoleInputQueue.Clear();
 
             if (!silent)
-                Core.WriteLine(new Color(0, 131, 63), $"> {code}");
+                Core.WriteLine(new ColorContainer(0, 131, 63), $"> {code}");
 
             if (LuaThread != null && LuaThread.IsAlive)
                 LuaThread.Abort();
@@ -94,11 +96,11 @@ namespace ScribeBot
                 }
                 catch (SyntaxErrorException exception)
                 {
-                    Core.WriteLine(new Color(177, 31, 41), $"Syntax Error: {exception.Message}");
+                    Core.WriteLine(new ColorContainer(177, 31, 41), $"Syntax Error: {exception.Message}");
                 }
                 catch (ScriptRuntimeException exception)
                 {
-                    Core.WriteLine(new Color(177, 31, 41), $"Runtime Error: {exception.Message}");
+                    Core.WriteLine(new ColorContainer(177, 31, 41), $"Runtime Error: {exception.Message}");
                 }
             })
             {

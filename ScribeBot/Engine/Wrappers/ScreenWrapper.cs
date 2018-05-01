@@ -1,21 +1,21 @@
-﻿using MoonSharp.Interpreter;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Drawing = System.Drawing;
-using Forms = System.Windows.Forms;
+using System.Windows.Forms;
+using MoonSharp.Interpreter;
+using ScribeBot.Engine.Containers;
 
-namespace ScribeBot.Wrappers
+namespace ScribeBot.Engine.Wrappers
 {
     /// <summary>
     /// Wrapper containing functionality related to screen.
     /// </summary>
     [MoonSharpUserData]
-    static class Screen
+    static class ScreenWrapper
     {
         /// <summary>
         /// Get color of a pixel on specified position.
@@ -23,11 +23,11 @@ namespace ScribeBot.Wrappers
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns>Color structure containing RGB values.</returns>
-        public static Types.Color GetPixel(int x, int y)
+        public static ColorContainer GetPixel(int x, int y)
         {
             Color px = Native.API.GetPixel(x, y);
 
-            return new Types.Color() { R = px.R, G = px.G, B = px.B };
+            return new ColorContainer() { R = px.R, G = px.G, B = px.B };
         }
 
         /// <summary>
@@ -38,13 +38,14 @@ namespace ScribeBot.Wrappers
         {
             int w, h;
 
-            Forms.Screen[] screens = Forms.Screen.AllScreens;
+            Screen[] screens = Screen.AllScreens;
 
             w = screens.ToList().Sum(i => i.Bounds.Width);
             h = screens.ToList().Max(i => i.Bounds.Height);
 
             Bitmap screen = new Bitmap( w, h, PixelFormat.Format32bppArgb );
-            Drawing.Graphics gfx = Drawing.Graphics.FromImage(screen);
+
+            Graphics gfx = Graphics.FromImage(screen);
 
             gfx.CopyFromScreen(0, 0, 0, 0, new Size(w, h), CopyPixelOperation.SourceCopy);
 
@@ -68,11 +69,11 @@ namespace ScribeBot.Wrappers
         /// Get total size of all your screens combied.
         /// </summary>
         /// <returns>Total size of screens.</returns>
-        public static Types.Size GetSize()
+        public static SizeContainer GetSize()
         {
-            Forms.Screen[] screens = Forms.Screen.AllScreens;
+            Screen[] screens = Screen.AllScreens;
 
-            return new Types.Size() { Width = screens.ToList().Sum(x => x.Bounds.Width), Height = screens.ToList().Max(i => i.Bounds.Height) };
+            return new SizeContainer() { Width = screens.ToList().Sum(x => x.Bounds.Width), Height = screens.ToList().Max(i => i.Bounds.Height) };
         }
     }
 }

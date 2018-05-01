@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using MoonSharp.Interpreter;
 using ScribeBot.Interface;
 
-namespace ScribeBot.Wrappers
+namespace ScribeBot.Engine.Wrappers
 {
     /// <summary>
     /// Class containing functions that allow for creation and usage of WinForms interfaces exposed to Lua environment.
     /// </summary>
     [MoonSharpUserData]
-    static class Interface
+    static class InterfaceWrapper
     {
         /// <summary>
         /// Display a popup with the message and an entry box. Data entered into the entry box will be passed back to Lua environment upon submission.

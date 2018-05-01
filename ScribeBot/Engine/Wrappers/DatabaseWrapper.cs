@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.IO;
 
-namespace ScribeBot.Wrappers
+namespace ScribeBot.Engine.Wrappers
 {
     [MoonSharpUserData]
-    static class Database
+    static class DatabaseWrapper
     {
         private static SQLiteConnection connection;
 
-        static Database()
+        static DatabaseWrapper()
         {
             if (!File.Exists("Data/User Data/database.db"))
                 SQLiteConnection.CreateFile("Data/User Data/database.db");
@@ -48,7 +48,7 @@ namespace ScribeBot.Wrappers
             }
             catch (Exception e)
             {
-                Core.WriteLine(e.Message);
+                CoreWrapper.WriteLine(e.Message);
             }
 
             connection.Close();

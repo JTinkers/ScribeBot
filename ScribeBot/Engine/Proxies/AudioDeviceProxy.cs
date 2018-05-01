@@ -1,18 +1,18 @@
-﻿using MoonSharp.Interpreter;
-using NAudio.Wave;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MoonSharp.Interpreter;
+using NAudio.Wave;
 
-namespace ScribeBot.Wrappers.Proxies
+namespace ScribeBot.Engine.Proxies
 {
     /// <summary>
     /// Proxy for NAudio's WaveOutEvent.
     /// </summary>
     [MoonSharpUserData]
-    class AudioDevice
+    class AudioDeviceProxy
     {
         private WaveOutEvent outputDevice;
         private AudioFileReader fileReader;
@@ -21,7 +21,7 @@ namespace ScribeBot.Wrappers.Proxies
         /// Create an instance of AudioDevice proxy for a specified WaveOutEvent.
         /// </summary>
         /// <param name="attachment">WaveOutEvent to attach proxy to.</param>
-        public AudioDevice(WaveOutEvent attachment) => outputDevice = attachment;
+        public AudioDeviceProxy(WaveOutEvent attachment) => outputDevice = attachment;
 
         /// <summary>
         /// Load sound file from harddrive or URL.

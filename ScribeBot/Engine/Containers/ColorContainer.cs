@@ -5,17 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using MoonSharp.Interpreter;
 
-namespace ScribeBot.Wrappers.Types
+namespace ScribeBot.Engine.Containers
 {
     /// <summary>
-    /// Proxy Type
+    /// Container structure for System.Drawing.Color
     /// </summary>
     [MoonSharpUserData]
-    struct Color
+    struct ColorContainer
     {
         public int R, G, B;
 
-        public Color( int r, int g, int b )
+        public ColorContainer( int r, int g, int b )
         {
             R = r;
             G = g;

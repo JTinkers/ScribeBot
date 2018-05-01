@@ -1,28 +1,28 @@
-﻿using MoonSharp.Interpreter;
-using NAudio.Wave;
+﻿using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ScribeBot.Wrappers.Proxies;
 using NAudio.CoreAudioApi;
+using MoonSharp.Interpreter;
+using ScribeBot.Engine.Proxies;
 
-namespace ScribeBot.Wrappers
+namespace ScribeBot.Engine.Wrappers
 {
     /// <summary>
     /// Wrapper containing NAudio's functionality exposed to Lua environment.
     /// </summary>
     [MoonSharpUserData]
-    static class Audio
+    static class AudioWrapper
     {
         /// <summary>
         /// Create an instance of AudioDevice proxy that allows for loading and playing of sound files.
         /// </summary>
         /// <returns>Instance of AudioDevice proxy.</returns>
-        public static AudioDevice CreateDevice()
+        public static AudioDeviceProxy CreateDevice()
         {
-            return new AudioDevice(new WaveOutEvent());
+            return new AudioDeviceProxy(new WaveOutEvent());
         }
 
         /// <summary>

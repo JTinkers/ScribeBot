@@ -5,15 +5,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using MoonSharp.Interpreter;
-using ScribeBot.Wrappers.Types;
+using ScribeBot.Engine.Containers;
 
-namespace ScribeBot.Wrappers
+namespace ScribeBot.Engine.Wrappers
 {
     /// <summary>
     /// Wrapper containing all core functionality exposed to Lua environment.
     /// </summary>
     [MoonSharpUserData]
-    static class Core
+    static class CoreWrapper
     {
         public static string Version => ScribeBot.Core.Version;
 
@@ -29,11 +29,11 @@ namespace ScribeBot.Wrappers
 
         public static void SetWindowSize(string title, int w, int h) => Native.API.SetWindowSize(title, w, h);
 
-        public static Size GetWindowSize(string title) => Native.API.GetWindowSize(title);
+        public static SizeContainer GetWindowSize(string title) => Native.API.GetWindowSize(title);
 
         public static void SetWindowPos(string title, int x, int y) => Native.API.SetWindowPos(title, x, y);
 
-        public static Point GetWindowPos(string title) => Native.API.GetWindowPos(title);
+        public static PointContainer GetWindowPos(string title) => Native.API.GetWindowPos(title);
 
         public static bool IsWindowVisible(string title) => Native.API.IsWindowVisible(title);
 

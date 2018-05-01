@@ -162,20 +162,19 @@
     </Compile>
     <Compile Include="Scripter.cs" />
     <Compile Include="Workshop.cs" />
-    <Compile Include="Wrappers\Audio.cs" />
-    <Compile Include="Wrappers\Graphics.cs" />
-    <Compile Include="Wrappers\OCR.cs" />
-    <Compile Include="Wrappers\Proxies\AudioDevice.cs" />
-    <Compile Include="Wrappers\Proxies\WebDriver.cs" />
-    <Compile Include="Wrappers\Proxies\WebElement.cs" />
-    <Compile Include="Wrappers\Database.cs" />
-    <Compile Include="Wrappers\Types\Color.cs" />
-    <Compile Include="Wrappers\Types\Point.cs" />
-    <Compile Include="Wrappers\Core.cs" />
-    <Compile Include="Wrappers\Input.cs" />
-    <Compile Include="Wrappers\Interface.cs" />
-    <Compile Include="Wrappers\Screen.cs" />
-    <Compile Include="Wrappers\Types\Size.cs" />
+    <Compile Include="Engine\Wrappers\AudioWrapper.cs" />
+    <Compile Include="Engine\Wrappers\OCRWrapper.cs" />
+    <Compile Include="Engine\Proxies\AudioDeviceProxy.cs" />
+    <Compile Include="Engine\Proxies\WebDriverProxy.cs" />
+    <Compile Include="Engine\Proxies\WebElementProxy.cs" />
+    <Compile Include="Engine\Wrappers\DatabaseWrapper.cs" />
+    <Compile Include="Engine\Containers\ColorContainer.cs" />
+    <Compile Include="Engine\Containers\PointContainer.cs" />
+    <Compile Include="Engine\Wrappers\CoreWrapper.cs" />
+    <Compile Include="Engine\Wrappers\InputWrapper.cs" />
+    <Compile Include="Engine\Wrappers\InterfaceWrapper.cs" />
+    <Compile Include="Engine\Wrappers\ScreenWrapper.cs" />
+    <Compile Include="Engine\Containers\SizeContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

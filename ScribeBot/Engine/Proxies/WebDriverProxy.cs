@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MoonSharp.Interpreter;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
+using MoonSharp.Interpreter;
 
-//Not the best way to do things, but this will do for noow.
-namespace ScribeBot.Wrappers.Proxies
+namespace ScribeBot.Engine.Proxies
 {
     /// <summary>
     /// Proxy for Selenium's WebDriver.
     /// </summary>
     [MoonSharpUserData]
-    class WebDriver
+    class WebDriverProxy
     {
         private ChromeDriver driver;
 
@@ -25,9 +24,9 @@ namespace ScribeBot.Wrappers.Proxies
         /// </summary>
         /// <param name="chromeDriverPath">The chrome driver service path.</param>
         /// <returns>An instance of chrome driver.</returns>
-        public static WebDriver Create(string chromeDriverPath)
+        public static WebDriverProxy Create(string chromeDriverPath)
         {
-            var instance = new WebDriver();
+            var instance = new WebDriverProxy();
             var options = new ChromeOptions();
             options.AddArgument("--dns-prefetch-disable");
 
@@ -90,11 +89,11 @@ namespace ScribeBot.Wrappers.Proxies
         /// </summary>
         /// <param name="id">ID to search by.</param>
         /// <returns>An array of web elements.</returns>
-        public WebElement[] FindElementsById(string id)
+        public WebElementProxy[] FindElementsById(string id)
         {
-            var elems = new List<WebElement>();
+            var elems = new List<WebElementProxy>();
 
-            Driver.FindElementsById(id).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            Driver.FindElementsById(id).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -104,11 +103,11 @@ namespace ScribeBot.Wrappers.Proxies
         /// </summary>
         /// <param name="name">Class name to search by.</param>
         /// <returns>An array of web elements.</returns>
-        public WebElement[] FindElementsByClass(string name)
+        public WebElementProxy[] FindElementsByClass(string name)
         {
-            var elems = new List<WebElement>();
+            var elems = new List<WebElementProxy>();
 
-            Driver.FindElementsByClassName(name).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            Driver.FindElementsByClassName(name).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -118,11 +117,11 @@ namespace ScribeBot.Wrappers.Proxies
         /// </summary>
         /// <param name="link">Link to search by.</param>
         /// <returns>An array of web elements.</returns>
-        public WebElement[] FindElementsByLinkText(string link)
+        public WebElementProxy[] FindElementsByLinkText(string link)
         {
-            var elems = new List<WebElement>();
+            var elems = new List<WebElementProxy>();
 
-            Driver.FindElements(By.LinkText(link)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            Driver.FindElements(By.LinkText(link)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -132,11 +131,11 @@ namespace ScribeBot.Wrappers.Proxies
         /// </summary>
         /// <param name="link">Link to search by.</param>
         /// <returns>An array of web elements.</returns>
-        public WebElement[] FindElementsByPartialLinkText(string link)
+        public WebElementProxy[] FindElementsByPartialLinkText(string link)
         {
-            var elems = new List<WebElement>();
+            var elems = new List<WebElementProxy>();
 
-            Driver.FindElements(By.PartialLinkText(link)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            Driver.FindElements(By.PartialLinkText(link)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -146,11 +145,11 @@ namespace ScribeBot.Wrappers.Proxies
         /// </summary>
         /// <param name="selector">Css selector to search by.</param>
         /// <returns>An array of web elements.</returns>
-        public WebElement[] FindElementsByCssSelector(string selector)
+        public WebElementProxy[] FindElementsByCssSelector(string selector)
         {
-            var elems = new List<WebElement>();
+            var elems = new List<WebElementProxy>();
 
-            Driver.FindElements(By.CssSelector(selector)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            Driver.FindElements(By.CssSelector(selector)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -160,11 +159,11 @@ namespace ScribeBot.Wrappers.Proxies
         /// </summary>
         /// <param name="xpath">XPath string to search by.</param>
         /// <returns>An array of web elements.</returns>
-        public WebElement[] FindElementsByXPath(string xpath)
+        public WebElementProxy[] FindElementsByXPath(string xpath)
         {
-            var elems = new List<WebElement>();
+            var elems = new List<WebElementProxy>();
 
-            Driver.FindElements(By.XPath(xpath)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            Driver.FindElements(By.XPath(xpath)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -174,11 +173,11 @@ namespace ScribeBot.Wrappers.Proxies
         /// </summary>
         /// <param name="name">Name to search by.</param>
         /// <returns>An array of web elements.</returns>
-        public WebElement[] FindElementsByName(string name)
+        public WebElementProxy[] FindElementsByName(string name)
         {
-            var elems = new List<WebElement>();
+            var elems = new List<WebElementProxy>();
 
-            Driver.FindElements(By.Name(name)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            Driver.FindElements(By.Name(name)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }

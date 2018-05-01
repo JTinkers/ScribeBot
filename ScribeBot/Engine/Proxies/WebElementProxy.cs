@@ -8,14 +8,15 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
+using ScribeBot.Engine.Containers;
 
-namespace ScribeBot.Wrappers.Proxies
+namespace ScribeBot.Engine.Proxies
 {
     /// <summary>
     /// Proxy for Selenium's IWebElement interface.
     /// </summary>
     [MoonSharpUserData]
-    class WebElement
+    class WebElementProxy
     {
         private IWebElement element;
 
@@ -23,7 +24,7 @@ namespace ScribeBot.Wrappers.Proxies
         /// Create an instance of WebElement proxy for a specified IWebElement.
         /// </summary>
         /// <param name="attachment">IWebElement to attach proxy to.</param>
-        public WebElement(IWebElement attachment) => element = attachment;
+        public WebElementProxy(IWebElement attachment) => element = attachment;
 
         /// <summary>
         /// Get the elements inner text.
@@ -43,12 +44,12 @@ namespace ScribeBot.Wrappers.Proxies
         /// <summary>
         /// Returns size of the element.
         /// </summary>
-        public Types.Size Size => new Types.Size() { Width = element.Size.Width, Height = element.Size.Height };
+        public SizeContainer Size => new SizeContainer() { Width = element.Size.Width, Height = element.Size.Height };
 
         /// <summary>
         /// Returns location of the element.
         /// </summary>
-        public Types.Point Location => new Types.Point() { X = element.Location.X, Y = element.Location.Y };
+        public PointContainer Location => new PointContainer() { X = element.Location.X, Y = element.Location.Y };
 
         /// <summary>
         /// Send a sequence of keys to the element.
@@ -76,11 +77,11 @@ namespace ScribeBot.Wrappers.Proxies
         /// </summary>
         /// <param name="id">ID to search by.</param>
         /// <returns>An array of web elements.</returns>
-        public WebElement[] FindElementsById(string id)
+        public WebElementProxy[] FindElementsById(string id)
         {
-            var elems = new List<WebElement>();
+            var elems = new List<WebElementProxy>();
 
-            element.FindElements(By.Id(id)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            element.FindElements(By.Id(id)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -90,11 +91,11 @@ namespace ScribeBot.Wrappers.Proxies
         /// </summary>
         /// <param name="name">Class name to search by.</param>
         /// <returns>An array of web elements.</returns>
-        public WebElement[] FindElementsByClass(string name)
+        public WebElementProxy[] FindElementsByClass(string name)
         {
-            var elems = new List<WebElement>();
+            var elems = new List<WebElementProxy>();
 
-            element.FindElements(By.ClassName(name)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            element.FindElements(By.ClassName(name)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -104,11 +105,11 @@ namespace ScribeBot.Wrappers.Proxies
         /// </summary>
         /// <param name="link">Link to search by.</param>
         /// <returns>An array of web elements.</returns>
-        public WebElement[] FindElementsByLinkText(string link)
+        public WebElementProxy[] FindElementsByLinkText(string link)
         {
-            var elems = new List<WebElement>();
+            var elems = new List<WebElementProxy>();
 
-            element.FindElements(By.LinkText(link)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            element.FindElements(By.LinkText(link)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -118,11 +119,11 @@ namespace ScribeBot.Wrappers.Proxies
         /// </summary>
         /// <param name="link">Link to search by.</param>
         /// <returns>An array of web elements.</returns>
-        public WebElement[] FindElementsByPartialLinkText(string link)
+        public WebElementProxy[] FindElementsByPartialLinkText(string link)
         {
-            var elems = new List<WebElement>();
+            var elems = new List<WebElementProxy>();
 
-            element.FindElements(By.PartialLinkText(link)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            element.FindElements(By.PartialLinkText(link)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -132,11 +133,11 @@ namespace ScribeBot.Wrappers.Proxies
         /// </summary>
         /// <param name="selector">Css selector to search by.</param>
         /// <returns>An array of web elements.</returns>
-        public WebElement[] FindElementsByCssSelector(string selector)
+        public WebElementProxy[] FindElementsByCssSelector(string selector)
         {
-            var elems = new List<WebElement>();
+            var elems = new List<WebElementProxy>();
 
-            element.FindElements(By.CssSelector(selector)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            element.FindElements(By.CssSelector(selector)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -146,11 +147,11 @@ namespace ScribeBot.Wrappers.Proxies
         /// </summary>
         /// <param name="xpath">XPath string to search by.</param>
         /// <returns>An array of web elements.</returns>
-        public WebElement[] FindElementsByXPath(string xpath)
+        public WebElementProxy[] FindElementsByXPath(string xpath)
         {
-            var elems = new List<WebElement>();
+            var elems = new List<WebElementProxy>();
 
-            element.FindElements(By.XPath(xpath)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            element.FindElements(By.XPath(xpath)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -160,11 +161,11 @@ namespace ScribeBot.Wrappers.Proxies
         /// </summary>
         /// <param name="name">Name to search by.</param>
         /// <returns>An array of web elements.</returns>
-        public WebElement[] FindElementsByName(string name)
+        public WebElementProxy[] FindElementsByName(string name)
         {
-            var elems = new List<WebElement>();
+            var elems = new List<WebElementProxy>();
 
-            element.FindElements(By.Name(name)).ToList().ForEach(x => elems.Add(new WebElement(x)));
+            element.FindElements(By.Name(name)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }

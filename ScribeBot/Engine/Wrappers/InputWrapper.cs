@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using MoonSharp.Interpreter;
-using ScribeBot.Wrappers.Types;
+using ScribeBot.Engine.Containers;
 
-namespace ScribeBot.Wrappers
+namespace ScribeBot.Engine.Wrappers
 {
     /// <summary>
     /// Wrapper containing all input functionality exposed to Lua environment.
     /// </summary>
     [MoonSharpUserData]
-    static class Input
+    static class InputWrapper
     {
         /// <summary>
         /// Get whether a key is down or not.
@@ -62,6 +62,6 @@ namespace ScribeBot.Wrappers
         /// Get current position of the cursor.
         /// </summary>
         /// <returns>Position of the cursor as a Point structure.</returns>
-        public static Point GetCursorPos() => Native.API.GetCursorPos();
+        public static PointContainer GetCursorPos() => Native.API.GetCursorPos();
     }
 }

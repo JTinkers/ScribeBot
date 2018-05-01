@@ -12,7 +12,7 @@ using System.Diagnostics;
 using System.Drawing.Text;
 using System.Net;
 using Newtonsoft.Json.Linq;
-using ScribeBot.Wrappers;
+using ScribeBot.Engine.Containers;
 
 namespace ScribeBot
 {
@@ -116,11 +116,11 @@ namespace ScribeBot
                 }
                 catch (SyntaxErrorException exception)
                 {
-                    WriteLine(new Wrappers.Types.Color(177, 31, 41), $"Syntax Error: {exception.Message}");
+                    WriteLine(new ColorContainer(177, 31, 41), $"Syntax Error: {exception.Message}");
                 }
                 catch (ScriptRuntimeException exception)
                 {
-                    WriteLine(new Wrappers.Types.Color(177, 31, 41), $"Runtime Error: {exception.Message}");
+                    WriteLine(new ColorContainer(177, 31, 41), $"Runtime Error: {exception.Message}");
                 }
             }
         }

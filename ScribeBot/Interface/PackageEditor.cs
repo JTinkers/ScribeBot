@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ScribeBot.Wrappers.Types;
+using ScribeBot.Engine.Containers;
 
 //Remake this
 namespace ScribeBot.Interface
