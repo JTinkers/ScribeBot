@@ -16,7 +16,7 @@ namespace ScribeBot
     /// <summary>
     /// Class creating and maintaining environment for Lua scripts.
     /// </summary>
-    public static class Scripter
+    static class Scripter
     {
         private static Script environment = new Script();
 

@@ -12,7 +12,7 @@ namespace ScribeBot
     /// <summary>
     /// Class containing exxtensions for a variety of other classes
     /// </summary>
-    public static class Extensions
+    static class Extensions
     {
         /// <summary>
         /// Append RichTextBox with a multi-color text.

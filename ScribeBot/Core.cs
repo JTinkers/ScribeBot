@@ -19,7 +19,7 @@ namespace ScribeBot
     /// <summary>
     /// Class containing core functionality.
     /// </summary>
-    public static class Core
+    static class Core
     {
         private static string version = "0.6beta";
         private static double timeStarted = (DateTime.Now.ToUniversalTime() - new DateTime(1970, 1, 1)).TotalSeconds;
