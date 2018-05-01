@@ -132,27 +132,5 @@ namespace ScribeBot
             if (LuaThread != null && LuaThread.IsAlive)
                 LuaThread.Abort();
         }
-
-        /// <summary>
-        /// Suspend Lua thread/environment.
-        /// </summary>
-        public static void Suspend()
-        {
-            //
-        }
-
-        /// <summary>
-        /// Resume Lua thread/environment.
-        /// </summary>
-        public static void Resume()
-        {
-            //
-        }
-
-        /// <summary>
-        /// Get whether Lua thread/environment is paused.
-        /// </summary>
-        /// <returns>Whether Lua thread is suspended.</returns>
-        public static bool IsPaused() => LuaThread?.ThreadState == System.Threading.ThreadState.WaitSleepJoin;
     }
 }

@@ -127,6 +127,7 @@ namespace ScribeBot.Interface
             this.consoleInput.Name = "consoleInput";
             this.consoleInput.Size = new System.Drawing.Size(332, 20);
             this.consoleInput.TabIndex = 1;
+            this.consoleInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.consoleInput_KeyDown);
             this.consoleInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.consoleInput_KeyPress);
             // 
             // consoleRun

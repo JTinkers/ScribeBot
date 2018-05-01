@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Drawing = System.Drawing;
 using Forms = System.Windows.Forms;
 
 namespace ScribeBot.Wrappers
@@ -43,7 +44,7 @@ namespace ScribeBot.Wrappers
             h = screens.ToList().Max(i => i.Bounds.Height);
 
             Bitmap screen = new Bitmap( w, h, PixelFormat.Format32bppArgb );
-            Graphics gfx = Graphics.FromImage(screen);
+            Drawing.Graphics gfx = Drawing.Graphics.FromImage(screen);
 
             gfx.CopyFromScreen(0, 0, 0, 0, new Size(w, h), CopyPixelOperation.SourceCopy);
 

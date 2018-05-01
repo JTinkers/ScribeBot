@@ -19,6 +19,7 @@ namespace ScribeBot.Interface
     /// </summary>
     public partial class Window : Form
     {
+        private List<string> commands = new List<string>();
         public Window()
         {
             InitializeComponent();
@@ -55,7 +56,12 @@ namespace ScribeBot.Interface
 
         private void consoleRun_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(ConsoleInput.Text))
+                return;
+
             Scripter.InjectLine(ConsoleInput.Text);
+
+            commands.Add(ConsoleInput.Text);
 
             ConsoleInput.Text = "";
         }
@@ -65,6 +71,29 @@ namespace ScribeBot.Interface
             if (e.KeyChar == (char)Keys.Enter)
             {
                 ConsoleRun.PerformClick();
+                e.Handled = true;
+            }
+        }
+
+        private void consoleInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                int i = commands.FindIndex(x => x == ConsoleInput.Text) + 1;
+
+                if (commands.Count > 0 && i < commands.Count)
+                    ConsoleInput.Text = commands[i];
+
+                e.Handled = true;
+            }
+
+            if (e.KeyCode == Keys.Down)
+            {
+                int i = commands.FindIndex(x => x == ConsoleInput.Text) - 1;
+
+                if (commands.Count > 0 && i >= 0)
+                    ConsoleInput.Text = commands[i];
+
                 e.Handled = true;
             }
         }
