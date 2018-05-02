@@ -68,6 +68,11 @@ Some functions that weren't listed below: http://www.moonsharp.org/additions.htm
 --returns: array of rows or an empty array if query requested no rows or matches weren't found
 database.query(query)
 
+--play a console beep of given frequency
+--freq: a note from NoteFrequencies
+--duration: time to play it for
+audio.playNote(freq, duration)
+
 --create an audio device for playing sounds
 --returns: audioDevice instance object
 audio.createDevice()
