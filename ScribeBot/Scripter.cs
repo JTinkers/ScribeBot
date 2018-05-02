@@ -68,7 +68,10 @@ namespace ScribeBot
 
             //Enums
             UserData.RegisterType<Native.VirtualKeyCode>();
+            UserData.RegisterType<NoteFrequencies>();
+
             Environment.Globals["VirtualKey"] = UserData.CreateStatic<Native.VirtualKeyCode>();
+            Environment.Globals["NoteFrequencies"] = UserData.CreateStatic<NoteFrequencies>();
         }
 
         /// <summary>
