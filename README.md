@@ -74,7 +74,7 @@ database.query(query)
 audio.playNote(freq, duration)
 
 --create an audio device for playing sounds
---returns: audioDevice instance object
+--returns: audiodevice instance object
 audio.createDevice()
 
 --get names of active audio devices
@@ -88,23 +88,23 @@ audio.getPeakValue(name)
 
 --load a sound file into audio device
 --path: drive path or url of the file
-audioDevice:load(path)
+audiodevice:load(path)
 
 --self-explanatory
-audioDevice:pause()
+audiodevice:pause()
 
 --self-explanatory
-audioDevice:play()
+audiodevice:play()
 
 --self-explanatory
-audioDevice:stop()
+audiodevice:stop()
 
 --get state of the device
 --returns: 0 - stopped, 1 - playing, 2 - paused
-audioDevice.state
+audiodevice.state
 
 --self-explanatory
-audioDevice.volume
+audiodevice.volume
 
 --get current version of the bot
 --returns: string containing version of a bot (I always forget to update this, but I'll keep it automated later)
@@ -170,13 +170,29 @@ core.close()
 --delay: delay after which each key should be emulated - default: 100ms
 input.sendKeyPress(seq, delay)
 
---emulate key press for a key, use hex values for other keys
---char: key to emulate
-input.sendKeyPress(char)
+--emulate key press and release for a key, use hex values for other keys
+--virtualkey: key from virtualkey enum to emulate
+input.sendKeyPress(virtualkey)
+
+--emulate key press
+--virtualkey: key from virtualkey enum to emulate
+input.sendKeyDown(virtualkey)
+
+--emulate key release
+--virtualkey: key from virtualkey enum to emulate
+input.sendKeyUp(virtualkey)
+
+--emulate mouse button press and release
+--number: number of the button, 0 - left, 1 - right ...
+input.sendMousePress(number)
 
 --emulate mouse button press
 --number: number of the button, 0 - left, 1 - right ...
-input.sendMousePress(number)
+input.sendMouseDown(number)
+
+--emulate mouse button release
+--number: number of the button, 0 - left, 1 - right ...
+input.sendMouseUp(number)
 
 --get whether key is down or not
 --returns: true/false
@@ -208,140 +224,140 @@ screen.getSize()
 
 --get the title of current browser window
 --returns: the title
-webDriver.title
+webdriver.title
 
 --get url of current web page
 --returns: the url
-webDriver.url
+webdriver.url
 
 --create an instance of webdriver
 --path: path to chromedriver.exe
 --returns: webdriver instance object
-webDriver.create(path)
+webdriver.create(path)
 
 --go to a specified url
 --url: the url to go to
-webDriver:goToUrl(url)
+webdriver:goToUrl(url)
 
 --refresh page
-webDriver:refresh()
+webdriver:refresh()
 
 --close and dispose webdriver instance
-webDriver:close()
+webdriver:close()
 
 --emulate key press
 --key: key to emulate press of
-webDriver:sendKeyPress(key)
+webdriver:sendKeyPress(key)
 
 --emulate key release
 --key: key to emulate release of
-webDriver:sendKeyRelease(key)
+webdriver:sendKeyRelease(key)
 
 --emulate a sequence of keys
-webDriver:sendKeys(keySequence)
+webdriver:sendKeys(keySequence)
 
 --find DOM elements using their id
 --id: id to search by
---returns: a table of webElements
-webDriver:findElementsById(id)
+--returns: a table of webelements
+webdriver:findElementsById(id)
 
 --find DOM elements using their class
 --class: class to search by
---returns: a table of webElements
-webDriver:findElementsByClass(class)
+--returns: a table of webelements
+webdriver:findElementsByClass(class)
 
 --find DOM elements using their link text
 --linkText: link text to search by
---returns: a table of webElements
-webDriver:findElementsByLinkText(linkText)
+--returns: a table of webelements
+webdriver:findElementsByLinkText(linkText)
 
 --find DOM elements using their partial link text
 --linkText: partial link text to search by
---returns: a table of webElements
-webDriver:findElementsByPartialLinkText(linkText)
+--returns: a table of webelements
+webdriver:findElementsByPartialLinkText(linkText)
 
 --find DOM elements using css selectors
 --selector: selector to search by
---returns: a table of webElements
-webDriver:findElementsByCssSelector(selector)
+--returns: a table of webelements
+webdriver:findElementsByCssSelector(selector)
 
 --find DOM elements using xpath
 --xpath: xpath to search by
---returns: a table of webElements
-webDriver:findElementsByXPath(xpath)
+--returns: a table of webelements
+webdriver:findElementsByXPath(xpath)
 
 --find DOM elements using their names
 --name: name to search by
---returns a table of webElements
+--returns a table of webelements
 webdriver:findElementsByName(name)
 
 --get text contained within a DOM element
 --returns: text contained within DOM element(duh)
-webElement.text
+webelement.text
 
 --get whether element is enabled or not
 --returns: true/false
-webElement.enabled
+webelement.enabled
 
 --get whether element is displayed or not
 --returns: true/false
-webElement.displayed
+webelement.displayed
 
 --get the size of element
 --returns: Size { Width, Height }
-webElement.size
+webelement.size
 
 --get the location of element
 --returns: Point { X, Y }
-webElement.location
+webelement.location
 
 --clear the element, mostly used for text fields
-webElement:clear()
+webelement:clear()
 
 --if DOM element is inside a form, submit form
-webElement:submit()
+webelement:submit()
 
 --emulate a click on DOM element
-webElement:click()
+webelement:click()
 
 --send a key sequence
 --seq: keys to emulate
-webElement:SendKeys(seq)
+webelement:SendKeys(seq)
 
 --find DOM elements using their id
 --id: id to search by
---returns: a table of webElements
-webElement:findElementsById(id)
+--returns: a table of webelements
+webelement:findElementsById(id)
 
 --find DOM elements using their class
 --class: class to search by
---returns: a table of webElements
-webElement:findElementsByClass(class)
+--returns: a table of webelements
+webelement:findElementsByClass(class)
 
 --find DOM elements using their link text
 --linkText: link text to search by
---returns: a table of webElements
-webElement:findElementsByLinkText(linkText)
+--returns: a table of webelements
+webelement:findElementsByLinkText(linkText)
 
 --find DOM elements using their partial link text
 --linkText: partial link text to search by
---returns: a table of webElements
-webElement:findElementsByPartialLinkText(linkText)
+--returns: a table of webelements
+webelement:findElementsByPartialLinkText(linkText)
 
 --find DOM elements using css selectors
 --selector: selector to search by
---returns: a table of webElements
-webElement:findElementsByCssSelector(selector)
+--returns: a table of webelements
+webelement:findElementsByCssSelector(selector)
 
 --find DOM elements using xpath
 --xpath: xpath to search by
---returns: a table of webElements
-webElement:findElementsByXPath(xpath)
+--returns: a table of webelements
+webelement:findElementsByXPath(xpath)
 
 --find DOM elements using their names
 --name: name to search by
---returns a table of webElements
-webElement:findElementsByName(name)
+--returns a table of webelements
+webelement:findElementsByName(name)
 
 --create a prompt window with specified message and value input
 --message: message to show
