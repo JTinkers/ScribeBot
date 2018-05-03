@@ -198,6 +198,16 @@ namespace ScribeBot.Native
         /// <param name="key">VirtualKeyCode of key to emulate.</param>
         public static void SendKeyPress(VirtualKeyCode key)
         {
+            SendKeyDown(key);
+            SendKeyUp(key);
+        }
+
+        /// <summary>
+        /// Emulate key press.
+        /// </summary>
+        /// <param name="key">VirtualKeyCode of key to emulate.</param>
+        public static void SendKeyDown(VirtualKeyCode key)
+        {
             Input[] inputs = new Input[]
             {
                 new Input
@@ -208,6 +218,31 @@ namespace ScribeBot.Native
                         KeyboardInput = new KeyboardInputData
                         {
                             VirtualKey = key
+                        }
+                    }
+                }
+            };
+
+            Native.SendInput((uint)inputs.Length, inputs, Input.Size);
+        }
+
+        /// <summary>
+        /// Emulate key press.
+        /// </summary>
+        /// <param name="key">VirtualKeyCode of key to emulate.</param>
+        public static void SendKeyUp(VirtualKeyCode key)
+        {
+            Input[] inputs = new Input[]
+            {
+                new Input
+                {
+                    Type = 1,
+                    Data = new InputUnion
+                    {
+                        KeyboardInput = new KeyboardInputData
+                        {
+                            VirtualKey = key,
+                            Flags = KeyEventFlags.KEYUP | 0
                         }
                     }
                 }

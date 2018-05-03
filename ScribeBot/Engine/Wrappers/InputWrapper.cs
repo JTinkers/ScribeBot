@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 using MoonSharp.Interpreter;
 using ScribeBot.Engine.Containers;
 
@@ -35,24 +36,35 @@ namespace ScribeBot.Engine.Wrappers
         /// <param name="delay">Delay between key presses.</param>
         public static void SendKeyPress(string text, int delay = 100) => text.ToList().ForEach(x =>
         {
-            SendKeyPress(x);
+            if (char.IsUpper(x))
+            {
+                SendKeyDown(Native.VirtualKeyCode.LSHIFT);
+                SendKeyPress((Native.VirtualKeyCode)char.ToUpper(x));
+                SendKeyUp(Native.VirtualKeyCode.LSHIFT);
+            }
+            else
+                SendKeyPress((Native.VirtualKeyCode)char.ToUpper(x));
+
             Thread.Sleep(delay);
         });
 
         /// <summary>
-        /// Send a character that'll be interpreted as a single key to emulate.
+        /// Emulate key press and release
         /// </summary>
-        /// <param name="charnum">The character to input.</param>
-        public static void SendKeyPress(int charnum)
-        {
-            Native.API.SendKeyPress((Native.VirtualKeyCode)charnum);
-        }
+        /// <param name="key">VirtualKeyCode of key to emulate.</param>
+        public static void SendKeyPress(Native.VirtualKeyCode key) => Native.API.SendKeyPress(key);
 
         /// <summary>
-        /// Send mousebutton press.
+        /// Emulate key press.
         /// </summary>
-        /// <param name="button">Number of button to emulate - starting from left:0.</param>
-        public static void SendMousePress(int button) => Native.API.SendMousePress(button);
+        /// <param name="key">VirtualKeyCode of key to emulate.</param>
+        public static void SendKeyDown(Native.VirtualKeyCode key) => Native.API.SendKeyDown(key);
+
+        /// <summary>
+        /// Emulate key release.
+        /// </summary>
+        /// <param name="key">VirtualKeyCode of key to emulate.</param>
+        public static void SendKeyUp(Native.VirtualKeyCode key) => Native.API.SendKeyUp(key);
 
         /// <summary>
         /// Set position of the cursor.
@@ -66,6 +78,12 @@ namespace ScribeBot.Engine.Wrappers
         /// </summary>
         /// <returns>Position of the cursor as a Point structure.</returns>
         public static PointContainer GetCursorPos() => Native.API.GetCursorPos();
+
+        /// <summary>
+        /// Send mousebutton press.
+        /// </summary>
+        /// <param name="button">Number of button to emulate - starting from left:0.</param>
+        public static void SendMousePress(int button) => Native.API.SendMousePress(button);
 
         /// <summary>
         /// Emulate mouse button press.
