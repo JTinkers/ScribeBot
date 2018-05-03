@@ -576,8 +576,7 @@ namespace ScribeBot.Interface
             // 
             // packageFolderSelectDialog
             // 
-            this.packageFolderSelectDialog.Description = "Select folder to transform into a package.";
-            this.packageFolderSelectDialog.ShowNewFolderButton = false;
+            this.packageFolderSelectDialog.HelpRequest += new System.EventHandler(this.folderBrowserDialog1_HelpRequest);
             // 
             // Window
             // 
@@ -654,9 +653,9 @@ namespace ScribeBot.Interface
         private TextBox packageDescription;
         private Button packageCreateFolder;
         private Button packageSelectFolder;
-        private FolderBrowserDialog packageFolderSelectDialog;
         private TableLayoutPanel tableLayoutPanel5;
         private Button openPackagesFolderButton;
+        private FolderBrowserDialog packageFolderSelectDialog;
 
         public RichTextBox ConsoleOutput { get => consoleOutput; set => consoleOutput = value; }
         public TextBox ConsoleInput { get => consoleInput; set => consoleInput = value; }
@@ -666,12 +665,12 @@ namespace ScribeBot.Interface
         public Button WorkshopFetchButton { get => workshopFetchButton; set => workshopFetchButton = value; }
         public TableLayoutPanel InstalledPackagesList { get => installedPackagesList; set => installedPackagesList = value; }
         public TableLayoutPanel BrowserPackageList { get => browserPackageList; set => browserPackageList = value; }
-        public FolderBrowserDialog PackageFolderSelectDialog { get => packageFolderSelectDialog; set => packageFolderSelectDialog = value; }
         public Button PackageCreateFolder { get => packageCreateFolder; set => packageCreateFolder = value; }
         public Button PackageSelectFolder { get => packageSelectFolder; set => packageSelectFolder = value; }
         public TextBox PackageName { get => packageName; set => packageName = value; }
         public TextBox PackageAuthors { get => packageAuthors; set => packageAuthors = value; }
         public TextBox PackageEntryPoint { get => packageEntryPoint; set => packageEntryPoint = value; }
         public TextBox PackageDescription { get => packageDescription; set => packageDescription = value; }
+        public FolderBrowserDialog PackageFolderSelectDialog { get => packageFolderSelectDialog; set => packageFolderSelectDialog = value; }
     }
 }
