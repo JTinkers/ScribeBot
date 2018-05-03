@@ -258,10 +258,5 @@ namespace ScribeBot.Interface
         {
             Process.Start($@"{Path.GetDirectoryName(Application.ExecutablePath)}\Data\Packages");
         }
-
-        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
-        {
-
-        }
     }
 }

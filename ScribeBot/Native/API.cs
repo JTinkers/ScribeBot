@@ -219,7 +219,7 @@ namespace ScribeBot.Native
         /// <summary>
         /// Emulate a mouse key press.
         /// </summary>
-        /// <param name="button">Number of mousebutton to emulate.</param>
+        /// <param name="button">Number of mouse button to emulate.</param>
         public static void SendMousePress(int button)
         {
             PointContainer cPos = GetCursorPos();
@@ -238,6 +238,60 @@ namespace ScribeBot.Native
 
                 case 2:
                     Native.mouse_event((int)MouseEventFlags.MIDDLEDOWN, cPos.X, cPos.Y, 0, 0);
+                    Native.mouse_event((int)MouseEventFlags.MIDDLEUP, cPos.X, cPos.Y, 0, 0);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Emulate mouse press.
+        /// </summary>
+        /// <param name="button">Number of mouse button to emulate.</param>
+        public static void SendMouseDown(int button)
+        {
+            PointContainer cPos = GetCursorPos();
+
+            switch (button)
+            {
+                case 0:
+                    Native.mouse_event((int)MouseEventFlags.LEFTDOWN, cPos.X, cPos.Y, 0, 0);
+                    break;
+
+                case 1:
+                    Native.mouse_event((int)MouseEventFlags.RIGHTDOWN, cPos.X, cPos.Y, 0, 0);
+                    break;
+
+                case 2:
+                    Native.mouse_event((int)MouseEventFlags.MIDDLEDOWN, cPos.X, cPos.Y, 0, 0);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Emulate mouse button release.
+        /// </summary>
+        /// <param name="button">Number of mouse button to emulate.</param>
+        public static void SendMouseUp(int button)
+        {
+            PointContainer cPos = GetCursorPos();
+
+            switch (button)
+            {
+                case 0:
+                    Native.mouse_event((int)MouseEventFlags.LEFTUP, cPos.X, cPos.Y, 0, 0);
+                    break;
+
+                case 1:
+                    Native.mouse_event((int)MouseEventFlags.RIGHTUP, cPos.X, cPos.Y, 0, 0);
+                    break;
+
+                case 2:
                     Native.mouse_event((int)MouseEventFlags.MIDDLEUP, cPos.X, cPos.Y, 0, 0);
                     break;
 

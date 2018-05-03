@@ -36,14 +36,17 @@ namespace ScribeBot.Engine.Wrappers
         public static void SendKeyPress(string text, int delay = 100) => text.ToList().ForEach(x =>
         {
             SendKeyPress(x);
-            Thread.Sleep(delay); 
+            Thread.Sleep(delay);
         });
 
         /// <summary>
         /// Send a character that'll be interpreted as a single key to emulate.
         /// </summary>
-        /// <param name="character">The character to input.</param>
-        public static void SendKeyPress(char character) => Native.API.SendKeyPress((Native.VirtualKeyCode)character);
+        /// <param name="charnum">The character to input.</param>
+        public static void SendKeyPress(int charnum)
+        {
+            Native.API.SendKeyPress((Native.VirtualKeyCode)charnum);
+        }
 
         /// <summary>
         /// Send mousebutton press.
@@ -63,5 +66,17 @@ namespace ScribeBot.Engine.Wrappers
         /// </summary>
         /// <returns>Position of the cursor as a Point structure.</returns>
         public static PointContainer GetCursorPos() => Native.API.GetCursorPos();
+
+        /// <summary>
+        /// Emulate mouse button press.
+        /// </summary>
+        /// <param name="button">Number of mouse button to emulate.</param>
+        public static void SendMouseDown(int button) => Native.API.SendMouseDown(button);
+
+        /// <summary>
+        /// Emulate mouse button release.
+        /// </summary>
+        /// <param name="button">Number of mouse button to emulate.</param>
+        public static void SendMouseUp(int button) => Native.API.SendMouseUp(button);
     }
 }

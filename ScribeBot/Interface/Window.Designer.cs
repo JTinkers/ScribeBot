@@ -574,10 +574,6 @@ namespace ScribeBot.Interface
             this.packageDescription.Size = new System.Drawing.Size(148, 68);
             this.packageDescription.TabIndex = 7;
             // 
-            // packageFolderSelectDialog
-            // 
-            this.packageFolderSelectDialog.HelpRequest += new System.EventHandler(this.folderBrowserDialog1_HelpRequest);
-            // 
             // Window
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
