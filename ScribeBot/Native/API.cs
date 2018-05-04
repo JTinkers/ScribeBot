@@ -242,7 +242,7 @@ namespace ScribeBot.Native
                         KeyboardInput = new KeyboardInputData
                         {
                             VirtualKey = key,
-                            Flags = KeyEventFlags.KEYUP | 0
+                            Flags = KeyEventFlags.KEYUP
                         }
                     }
                 }
