@@ -169,12 +169,12 @@ core.getWindowTitles()
 --close ScribeBot entirely
 core.close()
 
---emulate key presses for a sequence of keys
+--emulate presses and releases for a sequence of keys
 --seq: sequence of keys to emulate
 --delay: delay after which each key should be emulated - default: 100ms
 input.sendKeyPress(seq, delay)
 
---emulate key press and release for a key, use hex values for other keys
+--emulate key press and release
 --virtualkey: key from virtualkey enum to emulate
 input.sendKeyPress(virtualkey)
 
