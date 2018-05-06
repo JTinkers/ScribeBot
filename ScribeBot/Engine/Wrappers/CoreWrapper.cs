@@ -15,13 +15,13 @@ namespace ScribeBot.Engine.Wrappers
     [MoonSharpUserData]
     static class CoreWrapper
     {
-        public static string Version => ScribeBot.Core.Version;
+        public static string Version => Core.Version;
 
-        public static void ProcessConsoleInput() => ScribeBot.Core.ProcessConsoleInput();
+        public static void ProcessConsoleInput() => Core.ProcessConsoleInput();
 
-        public static void Write(string text) => ScribeBot.Core.Write(text);
+        public static void Write(string text) => Core.Write(text);
 
-        public static void WriteLine(string line) => ScribeBot.Core.WriteLine(line);
+        public static void WriteLine(string line) => Core.WriteLine(line);
 
         public static void SetFocusWindow(string title) => Native.API.SetFocusWindow(title);
 
@@ -39,6 +39,6 @@ namespace ScribeBot.Engine.Wrappers
 
         public static string[] GetWindowTitles() => Native.API.GetWindowTitles();
 
-        public static void Close() => ScribeBot.Core.Close();
+        public static void Close() => Core.Close();
     }
 }
