@@ -1,4 +1,4 @@
-**README last updated with upload of Release-0.63b**
+**README last updated with upload of Release-0.65b**
 # ScribeBot
 ![](https://i.imgur.com/nPWbUCM.png)
 
@@ -18,10 +18,13 @@ With a little knowledge of Lua, you can automate mundane tasks, create macros or
 - Built-in package editor - edit packages without having to unzip them.
 - Logging system - find out what broke when you were away.
 
-## Planned Features
+## Planned Changes/Features
 - Workshop hosting that allows for more API calls.
 - Autoupdater.
+- Interface remake.
+- OCR/OSR implementation.
 - Lua Manual (list of functions, types etc).
+- Complete remake and refactoring of certain libraries.
 
 ## Known bugs and odd-behavior
 - None
@@ -30,14 +33,15 @@ With a little knowledge of Lua, you can automate mundane tasks, create macros or
 - Selenium - used for web-based automatisations.
 - Newtonsoft's Json - Used for reading info.json from packages.
 - MoonSharp - used as Lua interpterer.
+- Tesseract - used for OCR (not yet implemented).
 
 ## Important Notice
 This program uses unmanaged code (see: https://msdn.microsoft.com/en-us/library/ms973872.aspx#manunman_topic6) and provides low-level functionality that if used improperly (intentionally or not) could affect system's security and reliability.
 It's possible to write a malicious script - it's **highly advised** to open packages with package editor and read code before executing it, especially if it comes from untrusted sources.
 
-## Example
+## Code Examples
 
-Below you can find an example time counter script.
+Below you can find a simplistic stopwatch script.
 
 It'll keep counting seconds that have passed since it's been started and it'll continue doing so until you set 'count' to false.
 
@@ -211,8 +215,8 @@ input.setCursorPos(x, y)
 input.getCursorPos()
 
 --get color of position on a specific position
---returns: Color { R, G, B }
-screen.getPixel(x, y)
+--returns: W x H array of Color { R, G, B }
+screen.getPixels(x, y, w, h)
 
 --capture screen
 --savePath: path to save screenshot to
