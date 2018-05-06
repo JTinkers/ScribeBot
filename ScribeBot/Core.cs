@@ -156,7 +156,7 @@ namespace ScribeBot
         /// Write a string of text.
         /// </summary>
         /// <param name="value">String to write</param>
-        public static void Write(String value)
+        public static void Write(string value)
         {
             MainWindow?.Invoke(new Action(() =>
             {
@@ -190,7 +190,7 @@ namespace ScribeBot
         /// Write a string of text and append it with a linebreak.
         /// </summary>
         /// <param name="value">String to write</param>
-        public static void WriteLine(String value)
+        public static void WriteLine(string value)
         {
             MainWindow?.Invoke(new Action(() =>
             {
@@ -217,7 +217,7 @@ namespace ScribeBot
             {
                 text.Append(args[i + 1].ToString());
             }
-            text.Append("\n");
+            text.Append(Environment.NewLine);
 
             Log.Append(text);
         }

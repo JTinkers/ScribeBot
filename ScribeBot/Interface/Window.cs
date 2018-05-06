@@ -61,7 +61,8 @@ namespace ScribeBot.Interface
 
             Scripter.InjectLine(ConsoleInput.Text);
 
-            commands.Add(ConsoleInput.Text);
+
+            commands.Insert(0, ConsoleInput.Text);
 
             ConsoleInput.Text = "";
         }
