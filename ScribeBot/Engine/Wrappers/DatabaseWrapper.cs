@@ -14,6 +14,9 @@ namespace ScribeBot.Engine.Wrappers
     {
         private static SQLiteConnection connection;
 
+        /// <summary>
+        /// Static constructor creating a database file.
+        /// </summary>
         static DatabaseWrapper()
         {
             if (!File.Exists("Data/User Data/database.db"))
@@ -22,6 +25,11 @@ namespace ScribeBot.Engine.Wrappers
             connection = new SQLiteConnection("Data Source=Data/User Data/database.db");
         }
 
+        /// <summary>
+        /// Execute a query on the local database.
+        /// </summary>
+        /// <param name="query">Query string to execute.</param>
+        /// <returns>Results or null if query yields no returned data.</returns>
         public static Dictionary<string, object>[] Query(string query)
         {
             connection.Open();
