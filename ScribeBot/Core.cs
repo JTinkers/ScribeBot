@@ -21,7 +21,7 @@ namespace ScribeBot
     /// </summary>
     static class Core
     {
-        private static string version = "0.6beta";
+        private static string version = "0.65b";
         private static double timeStarted = (DateTime.Now.ToUniversalTime() - new DateTime(1970, 1, 1)).TotalSeconds;
         private static List<string> consoleInputQueue = new List<string>();
         private static Thread interfaceThread;
@@ -99,10 +99,13 @@ namespace ScribeBot
         }
 
         /// <summary>
-        /// Process lines of code entered via console.
+        /// Process console input sent while script was running.
         /// </summary>
         public static void ProcessConsoleInput()
         {
+            if (Native.API.IsKeyDown(Native.VirtualKeyCode.PAUSE))
+                Scripter.Stop();
+
             if (ConsoleInputQueue.Count > 0)
             {
                 try
@@ -121,6 +124,10 @@ namespace ScribeBot
                 catch (ScriptRuntimeException exception)
                 {
                     WriteLine(new ColorContainer(177, 31, 41), $"Runtime Error: {exception.Message}");
+                }
+                catch (Exception exception)
+                {
+                    WriteLine(new ColorContainer(177, 31, 41), $"Error: {exception.Message}");
                 }
             }
         }

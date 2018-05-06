@@ -31,6 +31,7 @@ namespace ScribeBot.Interface
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.consolePanel = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -69,6 +70,7 @@ namespace ScribeBot.Interface
             this.packageEntryPoint = new System.Windows.Forms.TextBox();
             this.packageDescription = new System.Windows.Forms.TextBox();
             this.packageFolderSelectDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.consolePanel.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.consoleContainer.SuspendLayout();
@@ -271,6 +273,7 @@ namespace ScribeBot.Interface
             this.scriptStop.Text = "Stop";
             this.scriptStop.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.scriptStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip.SetToolTip(this.scriptStop, "Use \'BREAK\' button to stop script at any time.");
             this.scriptStop.UseVisualStyleBackColor = true;
             this.scriptStop.Click += new System.EventHandler(this.scriptStop_Click);
             // 
@@ -652,6 +655,7 @@ namespace ScribeBot.Interface
         private TableLayoutPanel tableLayoutPanel5;
         private Button openPackagesFolderButton;
         private FolderBrowserDialog packageFolderSelectDialog;
+        private ToolTip toolTip;
 
         public RichTextBox ConsoleOutput { get => consoleOutput; set => consoleOutput = value; }
         public TextBox ConsoleInput { get => consoleInput; set => consoleInput = value; }

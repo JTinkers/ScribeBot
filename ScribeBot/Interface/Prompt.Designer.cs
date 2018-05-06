@@ -56,6 +56,7 @@ namespace ScribeBot.Interface
             this.promptEntryBox.Name = "promptEntryBox";
             this.promptEntryBox.Size = new System.Drawing.Size(202, 20);
             this.promptEntryBox.TabIndex = 1;
+            this.promptEntryBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.promptEntryBox_KeyPress);
             // 
             // promptSubmit
             // 

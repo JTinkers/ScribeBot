@@ -16,5 +16,15 @@ namespace ScribeBot.Interface
         {
             InitializeComponent();
         }
+
+        private void promptEntryBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                PromptSubmit.PerformClick();
+
+                e.Handled = true;
+            }
+        }
     }
 }
