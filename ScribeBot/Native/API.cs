@@ -32,20 +32,14 @@ namespace ScribeBot.Native
             return IntPtr.Zero;
         }
 
-        /// <summary>
-        /// Get color of a pixel on specified position.
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns>Pixel color.</returns>
-        public static Color GetPixel( int x, int y )
+        public static Bitmap CopyScreenArea( int x, int y, int w = 1, int h = 1 )
         {
-            Bitmap container = new Bitmap(1, 1);
+            Bitmap container = new Bitmap(w, h);
 
             Graphics dst = Graphics.FromImage(container);
             Graphics src = Graphics.FromHwnd(IntPtr.Zero);
 
-            Native.BitBlt(dst.GetHdc(), 0, 0, 1, 1, src.GetHdc(), x, y, (int)CopyPixelOperation.SourceCopy);
+            Native.BitBlt(dst.GetHdc(), 0, 0, w, h, src.GetHdc(), x, y, (int)CopyPixelOperation.SourceCopy);
 
             dst.ReleaseHdc();
             src.ReleaseHdc();
@@ -53,12 +47,7 @@ namespace ScribeBot.Native
             dst.Dispose();
             src.Dispose();
 
-            Color color = container.GetPixel(0, 0);
-
-            container.LockBits(new Rectangle(0, 0, 1, 1), Drawing.Imaging.ImageLockMode.ReadOnly, Drawing.Imaging.PixelFormat.Format32bppArgb);
-            container.Dispose();
-
-            return color;
+            return container;
         }
 
         public static string[] GetWindowTitles()

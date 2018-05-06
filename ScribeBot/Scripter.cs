@@ -91,11 +91,15 @@ namespace ScribeBot
 
             LuaThread = new Thread(() =>
             {
-                Core.WriteLine(Environment.PerformanceStats.GetPerformanceLog());
-
                 try
                 {
+                    Stopwatch stopWatch = Stopwatch.StartNew();
+
                     Environment.DoString($"{code}");
+
+                    stopWatch.Stop();
+
+                    Core.WriteLine($"Script executed in: {stopWatch.ElapsedMilliseconds}ms");
                 }
                 catch (SyntaxErrorException exception)
                 {

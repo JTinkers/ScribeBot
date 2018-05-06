@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,16 +20,40 @@ namespace ScribeBot.Engine.Wrappers
     static class ScreenWrapper
     {
         /// <summary>
-        /// Get color of a pixel on specified position.
+        /// Get an area of screen as an array of colors.
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        /// <returns>Color structure containing RGB values.</returns>
-        public static ColorContainer GetPixel(int x, int y)
+        /// <param name="w"></param>
+        /// <param name="h"></param>
+        /// <returns>2D array of pixel colors.</returns>
+        public static ColorContainer[][] GetPixels(int x, int y, int w, int h)
         {
-            Color px = Native.API.GetPixel(x, y);
+            Bitmap pixels = Native.API.CopyScreenArea(x, y, w, h);
 
-            return new ColorContainer() { R = px.R, G = px.G, B = px.B };
+            //Has to be array of arrays rather than 2D array - silly conversion
+            ColorContainer[][] colors = new ColorContainer[w][];
+            for (int i = 0; i < w; i++)
+            {
+                colors[i] = new ColorContainer[h];
+            }
+
+            BitmapData data = pixels.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+
+            int v = data.Stride * h;
+
+            byte[] values = new byte[v];
+
+            Marshal.Copy(data.Scan0, values, 0, v);
+
+            pixels.UnlockBits(data);
+
+            for (int i = 0; i < values.Length; i+=4)
+            {
+                colors[(i / 4) / w][(i / 4) % h] = new ColorContainer(values[i], values[i + 1], values[i + 2]);
+            }
+
+            return colors;
         }
 
         /// <summary>
