@@ -18,19 +18,15 @@ namespace ScribeBot
     /// </summary>
     static class Scripter
     {
-        private static Script environment = new Script();
-
-        private static Thread luaThread;
-
         /// <summary>
         /// Class instance containing MoonSharp scripting session.
         /// </summary>
-        public static Script Environment { get => environment; set => environment = value; }
+        public static Script Environment { get; set; } = new Script();
 
         /// <summary>
         /// Thread scripts are executed on.
         /// </summary>
-        public static Thread LuaThread { get => luaThread; set => luaThread = value; }
+        public static Thread LuaThread { get; set; }
 
         /// <summary>
         /// Manual initializer.

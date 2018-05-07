@@ -18,12 +18,10 @@ namespace ScribeBot
     /// </summary>
     public class Package
     {
-        private string archivePath;
-
         /// <summary>
         /// Path to the archive that the instance of this class represents.
         /// </summary>
-        public string ArchivePath { get => archivePath; set => archivePath = value; }
+        public string ArchivePath { get; set; }
 
         /// <summary>
         /// Creates a package with given archive path.
@@ -31,7 +29,7 @@ namespace ScribeBot
         /// <param name="path">Path to archive.</param>
         public Package( string path )
         {
-            archivePath = path;
+            ArchivePath = path;
         }
 
         /// <summary>

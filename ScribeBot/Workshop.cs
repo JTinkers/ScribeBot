@@ -18,18 +18,15 @@ namespace ScribeBot
     /// </summary>
     public static class Workshop
     {
-        private static string workshopAddress = $@"https://api.github.com/repos/jonekcode/ScribeBot-Workshop/contents/";
-        private static WebClient netClient = new WebClient();
-
         /// <summary>
         /// String containing address to the ScribeBot-Workshop script repository.
         /// </summary>
-        public static string WorkshopAddress { get => workshopAddress; set => workshopAddress = value; }
+        public static string WorkshopAddress { get; set; } = $@"https://api.github.com/repos/jonekcode/ScribeBot-Workshop/contents/";
 
         /// <summary>
         /// WebClient used for simple HTTP Requests. Mainly workshop fetching/downloading.
         /// </summary>
-        public static WebClient NetClient { get => netClient; set => netClient = value; }
+        public static WebClient NetClient { get; set; } = new WebClient();
 
         /// <summary>
         /// Get list of installed packages.

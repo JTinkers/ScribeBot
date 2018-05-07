@@ -21,60 +21,50 @@ namespace ScribeBot
     /// </summary>
     static class Core
     {
-        private static string version = "0.65b";
-        private static double timeStarted = (DateTime.Now.ToUniversalTime() - new DateTime(1970, 1, 1)).TotalSeconds;
-        private static List<string> consoleInputQueue = new List<string>();
-        private static Thread interfaceThread;
-        private static Window mainWindow;
-        private static PackageEditor editor = new PackageEditor();
-        private static PrivateFontCollection fonts = new PrivateFontCollection();
-        private static StringBuilder log = new StringBuilder();
-        private static StreamWriter logStream = new StreamWriter($@"{Application.StartupPath}\Data\Logs\{DateTime.Today.Day}_{DateTime.Today.Month}_{DateTime.Today.Year}.txt", true );
-
         /// <summary>
         /// Current version of ScribeBot.
         /// </summary>
-        public static string Version { get => version; private set => version = value; }
+        public static string Version { get; private set; } = "0.65b";
 
         /// <summary>
         /// Timestamp of when ScribeBot was ran.
         /// </summary>
-        public static double TimeStarted { get => timeStarted; set => timeStarted = value; }
+        public static double TimeStarted { get; set; } = (DateTime.Now.ToUniversalTime() - new DateTime(1970, 1, 1)).TotalSeconds;
 
         /// <summary>
         /// Thread on which WinForms class instances are ran.
         /// </summary>
-        public static Thread InterfaceThread { get => interfaceThread; private set => interfaceThread = value; }
+        public static Thread InterfaceThread { get; private set; }
 
         /// <summary>
         /// The main frame for user interface.
         /// </summary>
-        public static Window MainWindow { get => mainWindow; private set => mainWindow = value; }
+        public static Window MainWindow { get; private set; }
 
         /// <summary>
         /// Container for all custom fonts used by the program.
         /// </summary>
-        public static PrivateFontCollection Fonts { get => fonts; set => fonts = value; }
+        public static PrivateFontCollection Fonts { get; set; } = new PrivateFontCollection();
 
         /// <summary>
         /// Stream to a date-signed log file.
         /// </summary>
-        public static StreamWriter LogStream { get => logStream; set => logStream = value; }
+        public static StreamWriter LogStream { get; set; } = new StreamWriter($@"{Application.StartupPath}\Data\Logs\{DateTime.Today.Day}_{DateTime.Today.Month}_{DateTime.Today.Year}.txt", true);
 
         /// <summary>
         /// Contains console output as a log.
         /// </summary>
-        public static StringBuilder Log { get => log; set => log = value; }
+        public static StringBuilder Log { get; set; } = new StringBuilder();
 
         /// <summary>
         /// Built-in package editor.
         /// </summary>
-        public static PackageEditor Editor { get => editor; set => editor = value; }
+        public static PackageEditor Editor { get; set; } = new PackageEditor();
 
         /// <summary>
         /// Queue containing strings inputed via console for processing.
         /// </summary>
-        public static List<string> ConsoleInputQueue { get => consoleInputQueue; set => consoleInputQueue = value; }
+        public static List<string> ConsoleInputQueue { get; set; } = new List<string>();
 
         /// <summary>
         /// Initializes object-based enumerations, loads fonts, opens user interface etc. basically anything that has to be done once the program starts.
