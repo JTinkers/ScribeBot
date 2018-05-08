@@ -147,7 +147,7 @@ namespace ScribeBot.Interface
             // 
             this.runButton.BackColor = System.Drawing.Color.Transparent;
             this.runButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.runButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(196)))), ((int)(((byte)(107)))));
+            this.runButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.runButton.ForeColor = System.Drawing.Color.Black;
             this.runButton.Image = global::ScribeBot.Properties.Resources.Run_grey_16x;
             this.runButton.Location = new System.Drawing.Point(0, 0);
