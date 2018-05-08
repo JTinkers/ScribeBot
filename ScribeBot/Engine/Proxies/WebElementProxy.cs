@@ -18,59 +18,62 @@ namespace ScribeBot.Engine.Proxies
     [MoonSharpUserData]
     class WebElementProxy
     {
-        private IWebElement element;
-
         /// <summary>
         /// Create an instance of WebElement proxy for a specified IWebElement.
         /// </summary>
         /// <param name="attachment">IWebElement to attach proxy to.</param>
-        public WebElementProxy(IWebElement attachment) => element = attachment;
+        public WebElementProxy(IWebElement attachment) => Element = attachment;
+
+        /// <summary>
+        /// IWebElement that WebElementyProxy is attached to.
+        /// </summary>
+        public IWebElement Element { get; private set; }
 
         /// <summary>
         /// Get the elements inner text.
         /// </summary>
-        public string Text => element.Text;
+        public string Text => Element.Text;
 
         /// <summary>
         /// Returns whether or not the element is enabled.
         /// </summary>
-        public bool Enabled => element.Enabled;
+        public bool Enabled => Element.Enabled;
 
         /// <summary>
         /// Returns whether or not the element is displayed.
         /// </summary>
-        public bool Displayed => element.Displayed;
+        public bool Displayed => Element.Displayed;
 
         /// <summary>
         /// Returns size of the element.
         /// </summary>
-        public SizeContainer Size => new SizeContainer() { Width = element.Size.Width, Height = element.Size.Height };
+        public SizeContainer Size => new SizeContainer() { Width = Element.Size.Width, Height = Element.Size.Height };
 
         /// <summary>
         /// Returns location of the element.
         /// </summary>
-        public PointContainer Location => new PointContainer() { X = element.Location.X, Y = element.Location.Y };
+        public PointContainer Location => new PointContainer() { X = Element.Location.X, Y = Element.Location.Y };
 
         /// <summary>
         /// Send a sequence of keys to the element.
         /// </summary>
         /// <param name="text">The sequence to send.</param>
-        public void SendKeys(string text) => element.SendKeys(text);
+        public void SendKeys(string text) => Element.SendKeys(text);
 
         /// <summary>
         /// Emulate a click on the element.
         /// </summary>
-        public void Click() => element.Click();
+        public void Click() => Element.Click();
 
         /// <summary>
         /// Submit form the element is a part of.
         /// </summary>
-        public void Submit() => element.Submit();
+        public void Submit() => Element.Submit();
 
         /// <summary>
         /// Clear contents of the element.
         /// </summary>
-        public void Clear() => element.Clear();
+        public void Clear() => Element.Clear();
 
         /// <summary>
         /// Find DOM elements on the website.
@@ -81,7 +84,7 @@ namespace ScribeBot.Engine.Proxies
         {
             var elems = new List<WebElementProxy>();
 
-            element.FindElements(By.Id(id)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
+            Element.FindElements(By.Id(id)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -95,7 +98,7 @@ namespace ScribeBot.Engine.Proxies
         {
             var elems = new List<WebElementProxy>();
 
-            element.FindElements(By.ClassName(name)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
+            Element.FindElements(By.ClassName(name)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -109,7 +112,7 @@ namespace ScribeBot.Engine.Proxies
         {
             var elems = new List<WebElementProxy>();
 
-            element.FindElements(By.LinkText(link)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
+            Element.FindElements(By.LinkText(link)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -123,7 +126,7 @@ namespace ScribeBot.Engine.Proxies
         {
             var elems = new List<WebElementProxy>();
 
-            element.FindElements(By.PartialLinkText(link)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
+            Element.FindElements(By.PartialLinkText(link)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -137,7 +140,7 @@ namespace ScribeBot.Engine.Proxies
         {
             var elems = new List<WebElementProxy>();
 
-            element.FindElements(By.CssSelector(selector)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
+            Element.FindElements(By.CssSelector(selector)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -151,7 +154,7 @@ namespace ScribeBot.Engine.Proxies
         {
             var elems = new List<WebElementProxy>();
 
-            element.FindElements(By.XPath(xpath)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
+            Element.FindElements(By.XPath(xpath)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }
@@ -165,7 +168,7 @@ namespace ScribeBot.Engine.Proxies
         {
             var elems = new List<WebElementProxy>();
 
-            element.FindElements(By.Name(name)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
+            Element.FindElements(By.Name(name)).ToList().ForEach(x => elems.Add(new WebElementProxy(x)));
 
             return elems.ToArray();
         }

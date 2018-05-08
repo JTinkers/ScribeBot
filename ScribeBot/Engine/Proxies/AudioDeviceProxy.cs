@@ -14,14 +14,21 @@ namespace ScribeBot.Engine.Proxies
     [MoonSharpUserData]
     class AudioDeviceProxy
     {
-        private WaveOutEvent outputDevice;
-        private AudioFileReader fileReader;
-
         /// <summary>
         /// Create an instance of AudioDevice proxy for a specified WaveOutEvent.
         /// </summary>
         /// <param name="attachment">WaveOutEvent to attach proxy to.</param>
-        public AudioDeviceProxy(WaveOutEvent attachment) => outputDevice = attachment;
+        public AudioDeviceProxy(WaveOutEvent attachment) => OutputDevice = attachment;
+
+        /// <summary>
+        /// WaveOutEvent that AudioDeviceProxy is attached to.
+        /// </summary>
+        private WaveOutEvent OutputDevice { get; set; }
+
+        /// <summary>
+        /// AudioFileReader that AudioDeviceProxy utilises for file loading.
+        /// </summary>
+        private AudioFileReader FileReader { get; set; }
 
         /// <summary>
         /// Load sound file from harddrive or URL.
@@ -29,33 +36,33 @@ namespace ScribeBot.Engine.Proxies
         /// <param name="path">Path or URL</param>
         public void Load(string path)
         {
-            fileReader = new AudioFileReader(path);
-            outputDevice.Init(fileReader);
+            FileReader = new AudioFileReader(path);
+            OutputDevice.Init(FileReader);
         }
 
         /// <summary>
         /// Play pre-loaded sound.
         /// </summary>
-        public void Play() => outputDevice.Play();
+        public void Play() => OutputDevice.Play();
 
         /// <summary>
         /// Stop currently playing sound.
         /// </summary>
-        public void Stop() => outputDevice.Stop();
+        public void Stop() => OutputDevice.Stop();
 
         /// <summary>
         /// Pause currently playing sound.
         /// </summary>
-        public void Pause() => outputDevice.Pause();
+        public void Pause() => OutputDevice.Pause();
 
         /// <summary>
         /// Get volume of currently played sound.
         /// </summary>
-        public float Volume => outputDevice.Volume;
+        public float Volume => OutputDevice.Volume;
 
         /// <summary>
         /// Get current state of device.
         /// </summary>
-        public int State => (int)outputDevice.PlaybackState;
+        public int State => (int)OutputDevice.PlaybackState;
     }
 }

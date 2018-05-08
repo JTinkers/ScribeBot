@@ -17,23 +17,26 @@ namespace ScribeBot.Engine.Proxies
     [MoonSharpUserData]
     class WebDriverProxy
     {
-        private ChromeDriver driver;
-
         /// <summary>
         /// Creates an instance of chrome driver.
         /// </summary>
-        /// <param name="chromeDriverPath">The chrome driver service path.</param>
+        /// <param name="path">The chrome driver service path.</param>
         /// <returns>An instance of chrome driver.</returns>
-        public static WebDriverProxy Create(string chromeDriverPath)
+        public static WebDriverProxy Create(string path)
         {
             var instance = new WebDriverProxy();
             var options = new ChromeOptions();
             options.AddArgument("--dns-prefetch-disable");
 
-            instance.Driver = new ChromeDriver(chromeDriverPath, options);
+            instance.Driver = new ChromeDriver(path, options);
 
             return instance;
         }
+
+        /// <summary>
+        /// Driver instance that proxy is attached to.
+        /// </summary>
+        public ChromeDriver Driver { get; private set; }
 
         /// <summary>
         /// Gets the title of current browser window.
@@ -44,11 +47,6 @@ namespace ScribeBot.Engine.Proxies
         /// Gets the url of currently open webpage.
         /// </summary>
         public string Url => Driver.Url;
-
-        /// <summary>
-        /// Driver instance that proxy is attached to.
-        /// </summary>
-        public ChromeDriver Driver { get => driver; set => driver = value; }
 
         /// <summary>
         /// Navigate to a specified website.
