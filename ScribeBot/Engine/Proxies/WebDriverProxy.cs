@@ -25,7 +25,9 @@ namespace ScribeBot.Engine.Proxies
         {
             var instance = new WebDriverProxy();
             var options = new ChromeOptions();
+
             options.AddArgument("--dns-prefetch-disable");
+            options.AddArgument("--disable-infobars");
 
             instance.Driver = new ChromeDriver(DefaultDriver, options);
 
@@ -34,7 +36,7 @@ namespace ScribeBot.Engine.Proxies
 
         static WebDriverProxy()
         {
-            DefaultDriver.HideCommandPromptWindow = true;
+            //DefaultDriver.HideCommandPromptWindow = true;
         }
 
         /// <summary>
