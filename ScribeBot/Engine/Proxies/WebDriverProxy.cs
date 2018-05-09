@@ -20,18 +20,27 @@ namespace ScribeBot.Engine.Proxies
         /// <summary>
         /// Creates an instance of chrome driver.
         /// </summary>
-        /// <param name="path">The chrome driver service path.</param>
         /// <returns>An instance of chrome driver.</returns>
-        public static WebDriverProxy Create(string path)
+        public static WebDriverProxy Create()
         {
             var instance = new WebDriverProxy();
             var options = new ChromeOptions();
             options.AddArgument("--dns-prefetch-disable");
 
-            instance.Driver = new ChromeDriver(path, options);
+            instance.Driver = new ChromeDriver(DefaultDriver, options);
 
             return instance;
         }
+
+        static WebDriverProxy()
+        {
+            DefaultDriver.HideCommandPromptWindow = true;
+        }
+
+        /// <summary>
+        /// Default ChromeDriver with settings unavailable after driver creation.
+        /// </summary>
+        static ChromeDriverService DefaultDriver { get; set; } = ChromeDriverService.CreateDefaultService("Library Data/ChromeDriver");
 
         /// <summary>
         /// Driver instance that proxy is attached to.

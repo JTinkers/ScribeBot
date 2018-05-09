@@ -70,7 +70,7 @@ namespace ScribeBot.Engine.Wrappers
         /// <summary>
         /// Take a screenshot and save it to a given path.
         /// </summary>
-        /// <param name="path">Save path.</param>
+        /// <param name="path">Savepath.</param>
         public static void Capture(string path)
         {
             int w, h;
