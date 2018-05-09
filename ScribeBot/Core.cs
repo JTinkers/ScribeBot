@@ -167,7 +167,7 @@ namespace ScribeBot
                 MainWindow.ConsoleOutput.AppendText(args);
             }));
 
-            StringBuilder text = new StringBuilder();
+            var text = new StringBuilder();
             for (int i = 0; i < args.Length; i += 2)
             {
                 text.Append((String)args[i + 1]);
@@ -202,7 +202,7 @@ namespace ScribeBot
                 MainWindow.ConsoleOutput.AppendText(Environment.NewLine);
             }));
 
-            StringBuilder text = new StringBuilder();
+            var text = new StringBuilder();
             for (int i = 0; i < args.Length; i += 2)
             {
                 text.Append(args[i + 1].ToString());

@@ -42,8 +42,8 @@ namespace ScribeBot.Engine.Wrappers
         /// <returns>An array containing names of audio devices.</returns>
         public static string[] GetDeviceNames()
         {
-            MMDeviceEnumerator enumerator = new MMDeviceEnumerator();
-            MMDeviceCollection devices = enumerator.EnumerateAudioEndPoints(DataFlow.All, DeviceState.Active);
+            var enumerator = new MMDeviceEnumerator();
+            var devices = enumerator.EnumerateAudioEndPoints(DataFlow.All, DeviceState.Active);
 
             return devices.Select(x => x.FriendlyName).ToArray();
         }
@@ -55,10 +55,10 @@ namespace ScribeBot.Engine.Wrappers
         /// <returns>Master peak level.</returns>
         public static int GetPeakValue(string deviceName)
         {
-            MMDeviceEnumerator enumerator = new MMDeviceEnumerator();
-            MMDeviceCollection devices = enumerator.EnumerateAudioEndPoints(DataFlow.All, DeviceState.Active);
+            var enumerator = new MMDeviceEnumerator();
+            var devices = enumerator.EnumerateAudioEndPoints(DataFlow.All, DeviceState.Active);
 
-            MMDevice device = devices.Where(x => x.FriendlyName == deviceName).First();
+            var device = devices.Where(x => x.FriendlyName == deviceName).First();
             return (int)Math.Round(device.AudioMeterInformation.MasterPeakValue * 100);
         }
     }

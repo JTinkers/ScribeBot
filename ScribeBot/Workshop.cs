@@ -34,7 +34,7 @@ namespace ScribeBot
         /// <returns>List of installed packages.</returns>
         public static Package[] GetInstalled()
         {
-            List<Package> packages = new List<Package>();
+            var packages = new List<Package>();
 
             Directory.GetFiles($@"Data\Packages\", "*.zip").ToList().ForEach(x => packages.Add(new Package(x)));
 
@@ -49,7 +49,7 @@ namespace ScribeBot
         {
             Core.WriteLine(new ColorContainer(89, 73, 163), "Fetching workshop list.", new ColorContainer(177, 31, 41), "\nWARNING: Using this function too often might get you temporarily IP banned from Github API!");
 
-            Dictionary<string, string> list = new Dictionary<string, string>();
+            var list = new Dictionary<string, string>();
 
             NetClient.Headers["User-Agent"] = "ScribeBot - Workshop Content Fetching";
 
@@ -88,10 +88,10 @@ namespace ScribeBot
         /// <param name="info">Unformatted table containing data that later will be turned to info.json.</param>
         public static void CreatePackage(string folderPath, Dictionary<string, string> info)
         {
-            string json = JsonConvert.SerializeObject(info, Formatting.Indented);
-            File.WriteAllText($@"{folderPath}\info.json", json);
+            var json = JsonConvert.SerializeObject(info, Formatting.Indented);
+            var filePaths = new List<string>();
 
-            List<string> filePaths = new List<string>();
+            File.WriteAllText($@"{folderPath}\info.json", json);
 
             Directory.GetFiles(folderPath).ToList().ForEach(x => filePaths.Add(x));
 

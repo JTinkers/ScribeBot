@@ -22,7 +22,7 @@ namespace ScribeBot.Native
         /// <returns></returns>
         private static IntPtr GetWindowHandleByTitle(string title)
         {
-            IEnumerable<Process> processes = Process.GetProcesses().Where(x => !String.IsNullOrEmpty(x.MainWindowTitle));
+            var processes = Process.GetProcesses().Where(x => !String.IsNullOrEmpty(x.MainWindowTitle));
 
             processes = processes.Where(x => x.MainWindowTitle == title);
 
@@ -34,10 +34,10 @@ namespace ScribeBot.Native
 
         public static Bitmap CopyScreenArea( int x, int y, int w = 1, int h = 1 )
         {
-            Bitmap container = new Bitmap(w, h);
+            var container = new Bitmap(w, h);
 
-            Graphics dst = Graphics.FromImage(container);
-            Graphics src = Graphics.FromHwnd(IntPtr.Zero);
+            var dst = Graphics.FromImage(container);
+            var src = Graphics.FromHwnd(IntPtr.Zero);
 
             Native.BitBlt(dst.GetHdc(), 0, 0, w, h, src.GetHdc(), x, y, (int)CopyPixelOperation.SourceCopy);
 
@@ -52,7 +52,7 @@ namespace ScribeBot.Native
 
         public static string[] GetWindowTitles()
         {
-            IEnumerable<Process> processes = Process.GetProcesses().Where(x => !String.IsNullOrEmpty(x.MainWindowTitle));
+            var processes = Process.GetProcesses().Where(x => !String.IsNullOrEmpty(x.MainWindowTitle));
 
             if (processes.Any())
                 return processes.Select(x => x.MainWindowTitle).ToArray();
@@ -78,7 +78,7 @@ namespace ScribeBot.Native
         /// <returns>Title of window currently in focus.</returns>
         public static string GetFocusWindow()
         {
-            StringBuilder title = new StringBuilder();
+            var title = new StringBuilder();
 
             Native.GetWindowText(Native.GetForegroundWindow(), title, 256);
 
@@ -92,7 +92,7 @@ namespace ScribeBot.Native
         /// <returns>Whether it's visible or not</returns>
         public static bool IsWindowVisible(string title)
         {
-            IntPtr handle = GetWindowHandleByTitle(title);
+            var handle = GetWindowHandleByTitle(title);
 
             return Native.IsWindowVisible(handle);
         }
@@ -105,7 +105,7 @@ namespace ScribeBot.Native
         /// <param name="height">The height of window.</param>
         public static void SetWindowSize(string title, int width, int height)
         {
-            IntPtr handle = GetWindowHandleByTitle(title);
+            var handle = GetWindowHandleByTitle(title);
 
             Native.GetWindowRect(handle, out WindowRect rect);
 
@@ -119,7 +119,7 @@ namespace ScribeBot.Native
         /// <returns>The size of window.</returns>
         public static SizeContainer GetWindowSize(string title)
         {
-            IntPtr handle = GetWindowHandleByTitle(title);
+            var handle = GetWindowHandleByTitle(title);
 
             Native.GetWindowRect(handle, out WindowRect rect);
 
@@ -134,7 +134,7 @@ namespace ScribeBot.Native
         /// <param name="y"></param>
         public static void SetWindowPos(string title, int x, int y)
         {
-            IntPtr handle = GetWindowHandleByTitle(title);
+            var handle = GetWindowHandleByTitle(title);
 
             Native.GetWindowRect(handle, out WindowRect rect);
 
@@ -197,7 +197,7 @@ namespace ScribeBot.Native
         /// <param name="key">VirtualKeyCode of key to emulate.</param>
         public static void SendKeyDown(VirtualKeyCode key)
         {
-            Input[] inputs = new Input[]
+            var inputs = new Input[]
             {
                 new Input
                 {
@@ -212,6 +212,9 @@ namespace ScribeBot.Native
                 }
             };
 
+            var list = new Dictionary<List<string>, int>();
+            var news = new List<string>();
+
             Native.SendInput((uint)inputs.Length, inputs, Input.Size);
         }
 
@@ -221,7 +224,7 @@ namespace ScribeBot.Native
         /// <param name="key">VirtualKeyCode of key to emulate.</param>
         public static void SendKeyUp(VirtualKeyCode key)
         {
-            Input[] inputs = new Input[]
+            var inputs = new Input[]
             {
                 new Input
                 {
@@ -246,7 +249,7 @@ namespace ScribeBot.Native
         /// <param name="button">Number of mouse button to emulate.</param>
         public static void SendMousePress(int button)
         {
-            PointContainer cPos = GetCursorPos();
+            var cPos = GetCursorPos();
 
             switch (button)
             {
@@ -276,7 +279,7 @@ namespace ScribeBot.Native
         /// <param name="button">Number of mouse button to emulate.</param>
         public static void SendMouseDown(int button)
         {
-            PointContainer cPos = GetCursorPos();
+            var cPos = GetCursorPos();
 
             switch (button)
             {
@@ -303,7 +306,7 @@ namespace ScribeBot.Native
         /// <param name="button">Number of mouse button to emulate.</param>
         public static void SendMouseUp(int button)
         {
-            PointContainer cPos = GetCursorPos();
+            var cPos = GetCursorPos();
 
             switch (button)
             {

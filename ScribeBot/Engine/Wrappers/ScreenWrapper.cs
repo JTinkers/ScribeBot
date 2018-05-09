@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using AImageFormat = System.Drawing.Imaging.ImageFormat;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tesseract;
 using MoonSharp.Interpreter;
 using ScribeBot.Engine.Containers;
 
@@ -19,6 +21,15 @@ namespace ScribeBot.Engine.Wrappers
     [MoonSharpUserData]
     static class ScreenWrapper
     {
+        public static string Recognize(int x, int y, int w, int h)
+        {
+            var engine = new TesseractEngine(@"Library Data/Tessdata", "eng", EngineMode.Default);
+
+            var image = Native.API.CopyScreenArea(x, y, w, h);
+
+            return engine.Process(image).GetText();
+        }
+
         /// <summary>
         /// Get an area of screen as an array of colors.
         /// </summary>
@@ -27,7 +38,7 @@ namespace ScribeBot.Engine.Wrappers
         /// <param name="w"></param>
         /// <param name="h"></param>
         /// <returns>2D array of pixel colors.</returns>
-        public static ColorContainer[][] GetPixels(int x, int y, int w, int h)
+        public static ColorContainer[][] GetPixels(int x, int y, int w = 1, int h = 1)
         {
             Bitmap pixels = Native.API.CopyScreenArea(x, y, w, h);
 
@@ -80,7 +91,7 @@ namespace ScribeBot.Engine.Wrappers
                 if (String.IsNullOrEmpty(path))
                     path = $@"{DateTime.Today.Day}_{DateTime.Today.Month}-{DateTime.Now.Hour}_{DateTime.Now.Minute}_{DateTime.Now.Second}.png";
 
-                screen.Save($@"Data/User/{path}", ImageFormat.Png);
+                screen.Save($@"Data/User/{path}", AImageFormat.Png);
             }
             catch
             {

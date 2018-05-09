@@ -89,7 +89,7 @@ namespace ScribeBot
             {
                 try
                 {
-                    Stopwatch stopWatch = Stopwatch.StartNew();
+                    var stopWatch = Stopwatch.StartNew();
 
                     Environment.DoString($"{code}");
 

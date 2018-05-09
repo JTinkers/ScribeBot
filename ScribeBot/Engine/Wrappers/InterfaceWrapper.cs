@@ -23,7 +23,7 @@ namespace ScribeBot.Engine.Wrappers
         {
             string text = null;
 
-            Prompt prompt = new Prompt();
+            var prompt = new Prompt();
             prompt.PromptMessage.Text = message;
             prompt.PromptSubmit.Click += (o, e) =>
             {

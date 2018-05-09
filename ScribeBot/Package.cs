@@ -44,7 +44,7 @@ namespace ScribeBot
 
             try
             {
-                ZipArchive archive = ZipFile.Open($@"Data\Packages\{packageName}.zip", ZipArchiveMode.Create);
+                var archive = ZipFile.Open($@"Data\Packages\{packageName}.zip", ZipArchiveMode.Create);
 
                 filePaths.ToList().ForEach(x => archive.CreateEntryFromFile(x, Path.GetFileName(x)));
 
@@ -66,9 +66,9 @@ namespace ScribeBot
         /// <returns>Package name, authors, description etc.</returns>
         public Dictionary<string, string> GetInfo()
         {
-            ZipArchive archive = ZipFile.OpenRead(ArchivePath);
+            var archive = ZipFile.OpenRead(ArchivePath);
 
-            StreamReader reader = new StreamReader(archive.GetEntry("info.json").Open());
+            var reader = new StreamReader(archive.GetEntry("info.json").Open());
 
             string contents = reader.ReadToEnd();
 
@@ -86,9 +86,9 @@ namespace ScribeBot
         /// <returns>Contents as a string.</returns>
         public string ReadFileContents(string fileName)
         {
-            ZipArchive archive = ZipFile.OpenRead(ArchivePath);
+            var archive = ZipFile.OpenRead(ArchivePath);
 
-            StreamReader reader = new StreamReader(archive.GetEntry(fileName).Open());
+            var reader = new StreamReader(archive.GetEntry(fileName).Open());
 
             string contents = reader.ReadToEnd();
 
@@ -105,12 +105,12 @@ namespace ScribeBot
         /// <param name="contents">Contents to write.</param>
         public void WriteFileContents(string fileName, string contents)
         {
-            ZipArchive archive = ZipFile.Open(ArchivePath, ZipArchiveMode.Update);
+            var archive = ZipFile.Open(ArchivePath, ZipArchiveMode.Update);
 
             archive.GetEntry(fileName).Delete();
             archive.CreateEntry(fileName);
 
-            StreamWriter writer = new StreamWriter(archive.GetEntry(fileName).Open());
+            var writer = new StreamWriter(archive.GetEntry(fileName).Open());
 
             writer.Write(contents);
 
@@ -124,7 +124,7 @@ namespace ScribeBot
         /// <param name="silent">Defines whether console shouldn't output the executed code.</param>
         public void Run(bool silent = true)
         {
-            Dictionary<string, string> info = GetInfo();
+            var info = GetInfo();
 
             Scripter.Execute(ReadFileContents(info["EntryPoint"]), silent);
         }
@@ -135,9 +135,9 @@ namespace ScribeBot
         /// <returns>Entries as a ZipArchiveEntry array.</returns>
         public ZipArchiveEntry[] GetFiles()
         {
-            ZipArchive archive = ZipFile.OpenRead(ArchivePath);
+            var archive = ZipFile.OpenRead(ArchivePath);
 
-            ZipArchiveEntry[] entries = archive.Entries.ToArray();
+            var entries = archive.Entries.ToArray();
 
             archive.Dispose();
 

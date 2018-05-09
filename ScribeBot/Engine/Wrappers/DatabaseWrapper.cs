@@ -34,18 +34,18 @@ namespace ScribeBot.Engine.Wrappers
         {
             connection.Open();
 
-            List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
+            var data = new List<Dictionary<string, object>>();
 
-            SQLiteCommand cmd = connection.CreateCommand();
+            var cmd = connection.CreateCommand();
             cmd.CommandText = query;
 
             try
             {
-                SQLiteDataReader reader = cmd.ExecuteReader();
+                var reader = cmd.ExecuteReader();
 
                 while(reader.Read())
                 {
-                    Dictionary<string, object> row = new Dictionary<string, object>();
+                    var row = new Dictionary<string, object>();
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
                         row.Add(reader.GetName(i), reader.GetValue(i));
