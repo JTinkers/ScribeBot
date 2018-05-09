@@ -8,8 +8,6 @@ With a little knowledge of Lua, you can automate mundane tasks, create macros or
 
 ![https://i.imgur.com/GqcLPoj.png](https://i.imgur.com/GqcLPoj.png)
 
-### Join our discord server if you have questions/suggestions or a cool script to share: <a href=https://discord.gg/Scdf4QX><img src="https://discordapp.com/assets/fc0b01fe10a0b8c602fb0106d8189d9b.png" width="100"></a>
-
 ## Program Features
 - Lua interpreter plugged to numerous APIs and libraries - create robust systems without expert knowledge.
 - Simple and easy interface - it's not beautiful, but it works.
