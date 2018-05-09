@@ -101,6 +101,10 @@ namespace ScribeBot
                 {
                     Core.WriteLine(new ColorContainer(177, 31, 41), $"Syntax Error: {exception.Message}");
                 }
+                catch (IndexOutOfRangeException exception)
+                {
+                    Core.WriteLine(new ColorContainer(177, 31, 41), $"Engine Error: {exception.Message}");
+                }
                 catch (ScriptRuntimeException exception)
                 {
                     Core.WriteLine(new ColorContainer(177, 31, 41), $"Runtime Error: {exception.Message}");

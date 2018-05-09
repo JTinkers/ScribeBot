@@ -17,14 +17,20 @@ namespace ScribeBot.Interface
     {
         private Package package;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public Package Package { get => package; set => package = value; }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public PackageEditor()
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             InitializeComponent();
         }
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public void OpenPackage(Package import)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             package = import;
 

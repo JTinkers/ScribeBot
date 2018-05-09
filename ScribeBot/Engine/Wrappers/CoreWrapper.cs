@@ -21,14 +21,12 @@ namespace ScribeBot.Engine.Wrappers
 
         public static void Write(string text) => Core.Write(text);
 
-        public static void WriteLine(string line) => Core.WriteLine(line);
-
         public static void WriteLine(params object[] args)
         {
-            if (args.Length > 0)
+            if (args.Length > 1)
                 Core.WriteLine(args);
             else
-                Core.WriteLine(args[0]);
+                Core.WriteLine(args[0].ToString());
         }
 
         public static void SetFocusWindow(string title) => Native.API.SetFocusWindow(title);

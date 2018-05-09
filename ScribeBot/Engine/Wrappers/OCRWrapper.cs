@@ -10,10 +10,6 @@ namespace ScribeBot.Engine.Wrappers
     [MoonSharpUserData]
     static class OCRWrapper
     {
-        /// <summary>
-        /// Preparing
-        /// </summary>
-        /// <returns></returns>
         public static string Recognize()
         {
             return "";
