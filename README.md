@@ -14,7 +14,7 @@ With a little knowledge of Lua, you can automate mundane tasks, create macros or
 ### Join our discord server if you have questions/suggestions or a cool script to share: <a href=https://discord.gg/nXdGWnQ><img src="https://discordapp.com/assets/fc0b01fe10a0b8c602fb0106d8189d9b.png" width="100"></a>
 
 ## Important Notice
-This program uses unmanaged code (see: [this](https://msdn.microsoft.com/en-us/library/ms973872.aspx#manunman_topic6) MSDN topic) and provides low-level functionality that if used improperly (intentionally or not) could affect system's security and reliability.
+This program uses unmanaged code ([msdn topic](https://msdn.microsoft.com/en-us/library/ms973872.aspx#manunman_topic6)) and provides low-level functionality that if used improperly (intentionally or not) could affect system's security and reliability.
 It's possible to write a malicious script - it's **highly advised** to open packages with package editor and read code before executing it, especially if it comes from untrusted sources.
 
 ## Program Features
@@ -42,7 +42,7 @@ It's possible to write a malicious script - it's **highly advised** to open pack
 
 ## Code Examples
 
-Below you can find a simplistic stopwatch script.
+You can find a simplistic stopwatch script below.
 
 It'll keep counting seconds that have passed since it's been started and it'll continue doing so until you set `count` to `false`.
 
@@ -65,7 +65,7 @@ end
 
 ## Functions
 
-Some functions that weren't listed below you can find [here](http://www.moonsharp.org/additions.html).
+Some functions that weren't listed below can be found [here](http://www.moonsharp.org/additions.html).
 
 | Name | Function | Params | Returns |
 | :--- | :--- | ---: | ---: |
