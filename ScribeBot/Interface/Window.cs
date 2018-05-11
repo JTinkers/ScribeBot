@@ -259,5 +259,20 @@ namespace ScribeBot.Interface
         {
             Process.Start($@"{Path.GetDirectoryName(Application.ExecutablePath)}\Data\Packages");
         }
+
+        private void Window_Resize(object sender, EventArgs e)
+        {
+            if(WindowState == FormWindowState.Minimized)
+            {
+                notifyIcon1.Visible = true;
+                Hide();
+            }
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            WindowState = FormWindowState.Normal;
+        }
     }
 }

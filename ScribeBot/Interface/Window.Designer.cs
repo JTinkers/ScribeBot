@@ -71,6 +71,7 @@ namespace ScribeBot.Interface
             this.packageDescription = new System.Windows.Forms.TextBox();
             this.packageFolderSelectDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.consolePanel.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.consoleContainer.SuspendLayout();
@@ -100,7 +101,7 @@ namespace ScribeBot.Interface
             this.consolePanel.Margin = new System.Windows.Forms.Padding(5);
             this.consolePanel.Name = "consolePanel";
             this.consolePanel.Padding = new System.Windows.Forms.Padding(5);
-            this.consolePanel.Size = new System.Drawing.Size(482, 552);
+            this.consolePanel.Size = new System.Drawing.Size(482, 551);
             this.consolePanel.TabIndex = 0;
             this.consolePanel.TabStop = false;
             this.consolePanel.Text = "Console";
@@ -218,7 +219,7 @@ namespace ScribeBot.Interface
             this.layoutPanel.Name = "layoutPanel";
             this.layoutPanel.RowCount = 1;
             this.layoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.layoutPanel.Size = new System.Drawing.Size(784, 562);
+            this.layoutPanel.Size = new System.Drawing.Size(784, 561);
             this.layoutPanel.TabIndex = 1;
             // 
             // optionsPanel
@@ -230,7 +231,7 @@ namespace ScribeBot.Interface
             this.optionsPanel.Margin = new System.Windows.Forms.Padding(5);
             this.optionsPanel.Name = "optionsPanel";
             this.optionsPanel.SelectedIndex = 0;
-            this.optionsPanel.Size = new System.Drawing.Size(282, 552);
+            this.optionsPanel.Size = new System.Drawing.Size(282, 551);
             this.optionsPanel.TabIndex = 1;
             // 
             // scriptsPage
@@ -241,7 +242,7 @@ namespace ScribeBot.Interface
             this.scriptsPage.Margin = new System.Windows.Forms.Padding(0);
             this.scriptsPage.Name = "scriptsPage";
             this.scriptsPage.Padding = new System.Windows.Forms.Padding(5);
-            this.scriptsPage.Size = new System.Drawing.Size(274, 526);
+            this.scriptsPage.Size = new System.Drawing.Size(274, 525);
             this.scriptsPage.TabIndex = 0;
             this.scriptsPage.Text = "Packages";
             this.scriptsPage.UseVisualStyleBackColor = true;
@@ -320,7 +321,7 @@ namespace ScribeBot.Interface
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(5);
-            this.tabPage1.Size = new System.Drawing.Size(274, 526);
+            this.tabPage1.Size = new System.Drawing.Size(274, 525);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "Workshop";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -341,7 +342,7 @@ namespace ScribeBot.Interface
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(264, 516);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(264, 515);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // tableLayoutPanel7
@@ -405,7 +406,7 @@ namespace ScribeBot.Interface
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox1.Size = new System.Drawing.Size(254, 233);
+            this.groupBox1.Size = new System.Drawing.Size(254, 232);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create Package";
@@ -577,10 +578,16 @@ namespace ScribeBot.Interface
             this.packageDescription.Size = new System.Drawing.Size(148, 68);
             this.packageDescription.TabIndex = 7;
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
             // Window
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.layoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -589,6 +596,7 @@ namespace ScribeBot.Interface
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ScribeBot";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Window_FormClosing);
+            this.Resize += new System.EventHandler(this.Window_Resize);
             this.consolePanel.ResumeLayout(false);
             this.consolePanel.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -656,6 +664,7 @@ namespace ScribeBot.Interface
         private Button openPackagesFolderButton;
         private FolderBrowserDialog packageFolderSelectDialog;
         private ToolTip toolTip;
+        private NotifyIcon notifyIcon1;
 
         public RichTextBox ConsoleOutput { get => consoleOutput; set => consoleOutput = value; }
         public TextBox ConsoleInput { get => consoleInput; set => consoleInput = value; }
