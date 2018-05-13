@@ -24,7 +24,7 @@ namespace ScribeBot
         /// <summary>
         /// Current version of ScribeBot.
         /// </summary>
-        public static string Version { get; private set; } = "0.65b";
+        public static string Version { get; private set; } = "0.65b Pre-release";
 
         /// <summary>
         /// Timestamp of when ScribeBot was ran.

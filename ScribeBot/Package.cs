@@ -27,10 +27,7 @@ namespace ScribeBot
         /// Creates a package with given archive path.
         /// </summary>
         /// <param name="path">Path to archive.</param>
-        public Package( string path )
-        {
-            ArchivePath = path;
-        }
+        public Package(string path) => ArchivePath = path;
 
         /// <summary>
         /// Creates a package (zip archive) using supplied files.
@@ -122,12 +119,7 @@ namespace ScribeBot
         /// Execute a package at specified entry point (defined inside info.json).
         /// </summary>
         /// <param name="silent">Defines whether console shouldn't output the executed code.</param>
-        public void Run(bool silent = true)
-        {
-            var info = GetInfo();
-
-            Scripter.Execute(ReadFileContents(info["EntryPoint"]), silent);
-        }
+        public void Run(bool silent = true) => Scripter.Execute(ReadFileContents(GetInfo()["EntryPoint"]), silent);
 
         /// <summary>
         /// Get files inside a package.
@@ -135,13 +127,10 @@ namespace ScribeBot
         /// <returns>Entries as a ZipArchiveEntry array.</returns>
         public ZipArchiveEntry[] GetFiles()
         {
-            var archive = ZipFile.OpenRead(ArchivePath);
-
-            var entries = archive.Entries.ToArray();
-
-            archive.Dispose();
-
-            return entries;
+            using (var archive = ZipFile.OpenRead(ArchivePath))
+            {
+                return archive.Entries.ToArray();
+            }
         }
     }
 }
