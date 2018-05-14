@@ -13,6 +13,7 @@ using System.Drawing.Text;
 using System.Net;
 using Newtonsoft.Json.Linq;
 using ScribeBot.Engine.Containers;
+using Newtonsoft.Json;
 
 namespace ScribeBot
 {
@@ -21,10 +22,12 @@ namespace ScribeBot
     /// </summary>
     static class Core
     {
+        public static string ReleaseAddress { get; private set; } = @"https://api.github.com/repos/jonekcode/ScribeBot/releases";
+
         /// <summary>
         /// Current version of ScribeBot.
         /// </summary>
-        public static string Version { get; private set; } = "0.65b Pre-release";
+        public static string Version { get; private set; }
 
         /// <summary>
         /// Timestamp of when ScribeBot was ran.
@@ -71,6 +74,9 @@ namespace ScribeBot
         /// </summary>
         public static void Initialize()
         {
+            var Info = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText("info.json"));
+            Version = Info["Version"];
+
             Fonts.AddFontFile($@"{Application.StartupPath}\Data\Fonts\OfficeCodePro-Medium.ttf");
 
             InterfaceThread = new Thread(() =>

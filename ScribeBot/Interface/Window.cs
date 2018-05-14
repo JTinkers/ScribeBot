@@ -1,16 +1,15 @@
-﻿using MoonSharp.Interpreter;
+﻿using Newtonsoft.Json.Linq;
+using ScribeBot.Engine.Containers;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.Text;
+using System.Net;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.IO;
-using ScribeBot.Engine.Containers;
 
 namespace ScribeBot.Interface
 {
@@ -24,10 +23,12 @@ namespace ScribeBot.Interface
         {
             InitializeComponent();
 
+            InfoVersion.Text = Core.Version;
+
             ConsoleOutput.Font = new System.Drawing.Font(Core.Fonts.Families[0], 10f);
 
             Package[] installedPackages = Workshop.GetInstalled();
-            
+
             installedPackages.ToList().ForEach(x =>
             {
                 Dictionary<string, string> packageInfo = x.GetInfo();
@@ -148,14 +149,14 @@ namespace ScribeBot.Interface
                         p.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left;
 
                         BrowserPackageList.Controls.Add(p);
-                        
+
                         p.DownloadButton.Click += (o, ce) =>
                         {
                             p.DownloadButton.Text = "Downloading..";
                             p.DownloadButton.Enabled = false;
 
                             WorkshopFetchButton.Enabled = false;
-                            
+
                             Workshop.DownloadPackage(package.Value, package.Key);
 
                             p.DownloadButton.Text = "Download";
@@ -206,7 +207,7 @@ namespace ScribeBot.Interface
             fileDialogThread.Start();
             fileDialogThread.Join();
 
-            if( !String.IsNullOrEmpty( PackageFolderSelectDialog.SelectedPath ) )
+            if (!String.IsNullOrEmpty(PackageFolderSelectDialog.SelectedPath))
             {
                 PackageCreateFolder.Enabled = true;
             }
@@ -260,19 +261,27 @@ namespace ScribeBot.Interface
             Process.Start($@"{Path.GetDirectoryName(Application.ExecutablePath)}\Data\Packages");
         }
 
-        private void Window_Resize(object sender, EventArgs e)
+        private void checkUpdate_Click(object sender, EventArgs e)
         {
-            if(WindowState == FormWindowState.Minimized)
-            {
-                notifyIcon1.Visible = true;
-                Hide();
-            }
-        }
+            Core.WriteLine(new ColorContainer(89, 73, 163), "Checking for updates.", new ColorContainer(177, 31, 41), "\nWARNING: Using this function too often might get you temporarily IP banned from Github API!");
 
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            Show();
-            WindowState = FormWindowState.Normal;
+            using (var client = new WebClient())
+            {
+                client.Headers["User-Agent"] = "ScribeBot - Update Fetching";
+
+                IEnumerable<JToken> tokens = JArray.Parse(client.DownloadString(Core.ReleaseAddress)).Children();
+
+                var latestVersion = float.Parse(Regex.Match(tokens.First()["tag_name"].ToString(), @"\d+[.]\d+").Value);
+                var currentVersion = float.Parse(Regex.Match(Core.Version, @"\d+[.]\d+").Value);
+
+                if (latestVersion > currentVersion)
+                {
+                    Core.WriteLine(new ColorContainer(89, 73, 163), $"It seems that a new version is available for download {tokens.First()["tag_name"]}");
+                    downloadUpdate.Enabled = true;
+                }
+                else
+                    Core.WriteLine(new ColorContainer(89, 73, 163), "You have the latest version. No download is neccessary.");
+            }
         }
     }
 }

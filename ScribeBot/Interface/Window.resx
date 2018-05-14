@@ -120,13 +120,24 @@
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>247, 28</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAUVJREFUeF7t
+        2rFNw1AUhWGWygg0yRAM4AUo2IMd0lDTGKWkokmTAimbJO19R0fnKQIpD95f/M2N7eh+hSVbftg87i4z
+        B4AbzhQAblg7vL82fX2+Dd3p+NHkdqoB4IY1AABoAc7fxz9VDwQAHWgAzA6gKYi7Ed2z3sIaAG6YAgCA
+        FkD/cLTcDjUA3DAFwGwAvYW3T/um3u+99PzndYnp8W6HFABuWAMAgAwwWm6HFABuWAMAgAywvKw/Sq+3
+        LktMj9fcDikA3LAGAAAZYLTcDikA3LAGAAAZwN2oUnq+eyC6Jb2e2yEFgBvWAAAgA4yW2yEFgBvWAJgd
+        QFMQ96LylnQB98BU0+N7uR1qALhhCgAAWgD3kcI9AwAAAH4XQBd2HyOOXA8EAB1oAADQArgbz0j1FtYA
+        cMMaALMD/PcAcMOZmhxgd7kCR8LtF/VEDLAAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="packageFolderSelectDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>22, 35</value>
   </metadata>
   <metadata name="notifyIcon1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>372, 39</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="notifyIcon1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAQEAAAAEAIAAoQgAAFgAAACgAAABAAAAAgAAAAAEAIAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA
