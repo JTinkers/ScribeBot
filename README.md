@@ -11,6 +11,13 @@ With a little knowledge of Lua, you can automate mundane tasks, create macros or
 	<img src="https://i.imgur.com/GqcLPoj.png" />
 </p>
 
+<p align="center">
+	<b>Now with auto-updater!</b>
+</p>
+<p align="center">
+	<img src="https://i.imgur.com/7daPYmG.png" />
+</p>
+
 ### Join our discord server if you have questions/suggestions or a cool script to share: <a href=https://discord.gg/nXdGWnQ><img src="https://discordapp.com/assets/fc0b01fe10a0b8c602fb0106d8189d9b.png" width="100"></a>
 
 ## Important Notice
