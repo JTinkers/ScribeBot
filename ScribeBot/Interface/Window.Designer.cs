@@ -696,6 +696,7 @@ namespace ScribeBot.Interface
             this.downloadUpdate.TabIndex = 2;
             this.downloadUpdate.Text = "Update";
             this.downloadUpdate.UseVisualStyleBackColor = false;
+            this.downloadUpdate.Click += new System.EventHandler(this.downloadUpdate_Click);
             // 
             // notifyIcon1
             // 

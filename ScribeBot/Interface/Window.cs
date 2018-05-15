@@ -276,12 +276,19 @@ namespace ScribeBot.Interface
 
                 if (latestVersion > currentVersion)
                 {
-                    Core.WriteLine(new ColorContainer(89, 73, 163), $"It seems that a new version is available for download {tokens.First()["tag_name"]}");
+                    Core.WriteLine(new ColorContainer(89, 73, 163), $"New version is available: {tokens.First()["tag_name"]}.\nClick 'Update' to download and install the update.\nData folder will be backed up before the process.");
                     downloadUpdate.Enabled = true;
                 }
                 else
-                    Core.WriteLine(new ColorContainer(89, 73, 163), "You have the latest version. No download is neccessary.");
+                    Core.WriteLine(new ColorContainer(89, 73, 163), "You have the latest version. No update is neccessary.");
             }
+        }
+
+        private void downloadUpdate_Click(object sender, EventArgs e)
+        {
+            Process.Start("Updater.exe");
+
+            Core.Close();
         }
     }
 }
