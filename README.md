@@ -42,7 +42,6 @@ It's possible to write a malicious script - it's **highly advised** to open pack
 | interface | Create 'value input request' prompts                               |            -           |
 | screen    | Recognize text, capture screen, read screen pixels, manage screens |        Tesseract       |
 | webdriver | Create web automations                                             |         Selenium       |
-| core      | Manage windows, write to console, process console input            |            -           |
 
 ## Known bugs and odd-behavior
 - None
