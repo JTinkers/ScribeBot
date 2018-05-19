@@ -215,6 +215,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Data\Extensions\table.lua">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Data\Extensions\wait.lua">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
