@@ -1,7 +1,6 @@
+# ScribeBot
 
 ![](https://i.imgur.com/1iRhIRy.gif)
-
-# ScribeBot
 
 ScribeBot is a highly scriptable automation system.
 
@@ -14,8 +13,15 @@ With a little knowledge of Lua, you can automate mundane tasks, create macros or
 <p align="center">
 	<b>Now with auto-updater!</b>
 </p>
+
 <p align="center">
 	<img src="https://i.imgur.com/7daPYmG.png" />
+</p>
+
+### COMING SOON - ScribeBot 1.0 Beta
+#### (This is a preview of UI which will be a part of ScribeBot in 1.0 Beta release)
+<p align="center">
+	<img src="https://i.imgur.com/rDgWKLF.png" />
 </p>
 
 ### Join our discord server if you have questions/suggestions or a cool script to share: <a href=https://discord.gg/nXdGWnQ><img src="https://discordapp.com/assets/fc0b01fe10a0b8c602fb0106d8189d9b.png" width="100"></a>
