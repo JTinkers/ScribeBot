@@ -18,7 +18,7 @@ With a little knowledge of Lua, you can automate mundane tasks, create macros or
 	<img src="https://i.imgur.com/7daPYmG.png" />
 </p>
 
-### COMING SOON - ScribeBot 1.0 Beta
+## COMING SOON - ScribeBot 1.0 Beta
 #### (This is a preview of UI which will be a part of ScribeBot in 1.0 Beta release)
 <p align="center">
 	<img src="https://i.imgur.com/rDgWKLF.png" />
