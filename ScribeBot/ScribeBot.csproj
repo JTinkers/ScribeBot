@@ -214,6 +214,7 @@
     <Compile Include="Engine\Containers\SizeContainer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="x86\SQLite.Interop.dll" />
     <None Include="App.config" />
     <None Include="Data\Extensions\table.lua">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -323,6 +324,7 @@
     <Content Include="x64\libtesseract304.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="x64\SQLite.Interop.dll" />
     <Content Include="x86\liblept172.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

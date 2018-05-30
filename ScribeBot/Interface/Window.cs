@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using ScribeBot.Engine.Containers;
+using ScribeBot.Engine.Wrappers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -48,6 +49,27 @@ namespace ScribeBot.Interface
                     x.Run(true);
                 };
             });
+
+            var hoverColor = new ColorContainer(0, 0, 0);
+            var cursorPos = new PointContainer(0, 0);
+
+            var timer = new System.Timers.Timer();
+            timer.Interval = 1000;
+            timer.Elapsed += (s, a) =>
+            {
+                if (this == null)
+                    return;
+
+                cursorPos = InputWrapper.GetCursorPos();
+                hoverColor = ScreenWrapper.GetPixels(cursorPos.X, cursorPos.Y, 1, 1)[0][0];
+                
+                Invoke(new Action(() =>
+                {
+                    ColorDisplay.Text = $"R: {hoverColor.R} G: {hoverColor.G} B: {hoverColor.B}";
+                    CursorPosDisplay.Text = $"X: {cursorPos.X} Y: {cursorPos.Y}";
+                }));
+            };
+            timer.Start();
         }
 
         private void scriptStop_Click(object sender, EventArgs e)

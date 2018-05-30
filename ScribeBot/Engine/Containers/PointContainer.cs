@@ -15,6 +15,12 @@ namespace ScribeBot.Engine.Containers
     {
         public int X, Y;
 
+        public PointContainer(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+
         /// <summary>
         /// Override to simplify console output.
         /// </summary>

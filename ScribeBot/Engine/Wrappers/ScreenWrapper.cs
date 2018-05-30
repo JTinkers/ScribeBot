@@ -61,7 +61,7 @@ namespace ScribeBot.Engine.Wrappers
 
             for (int i = 0; i < values.Length; i+=4)
             {
-                colors[(i / 4) / w][(i / 4) % h] = new ColorContainer(values[i], values[i + 1], values[i + 2]);
+                colors[(i / 4) / w][(i / 4) % h] = new ColorContainer(values[i + 2], values[i + 1], values[i]);
             }
 
             return colors;

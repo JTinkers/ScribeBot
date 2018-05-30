@@ -15,6 +15,12 @@ namespace ScribeBot.Engine.Containers
     {
         public int Width, Height;
 
+        public SizeContainer(int w, int h)
+        {
+            Width = w;
+            Height = h;
+        }
+
         /// <summary>
         /// Override to simplify console output.
         /// </summary>
