@@ -38,7 +38,7 @@ namespace ScribeBot.Engine.Wrappers
         /// <param name="w"></param>
         /// <param name="h"></param>
         /// <returns>2D array of pixel colors.</returns>
-        public static ColorContainer[][] GetPixels(int x, int y, int w = 1, int h = 1)
+        public static ColorContainer[][] GetPixels(int x, int y, int w, int h)
         {
             Bitmap pixels = Native.API.CopyScreenArea(x, y, w, h);
 
@@ -51,17 +51,18 @@ namespace ScribeBot.Engine.Wrappers
 
             BitmapData data = pixels.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
 
-            int v = data.Stride * h;
+            byte[] values = new byte[data.Stride * h];
 
-            byte[] values = new byte[v];
-
-            Marshal.Copy(data.Scan0, values, 0, v);
+            Marshal.Copy(data.Scan0, values, 0, data.Stride * h);
 
             pixels.UnlockBits(data);
 
-            for (int i = 0; i < values.Length; i+=4)
+            for(int j = 0; j < data.Height; j++)
             {
-                colors[(i / 4) / w][(i / 4) % h] = new ColorContainer(values[i + 2], values[i + 1], values[i]);
+                for(int i = 0; i < data.Width; i++)
+                {
+                    colors[i][j] = new ColorContainer(values[j * data.Width * 4 + i * 4 + 2], values[j * data.Width * 4 + i * 4 + 1], values[j * data.Width * 4 + i * 4]);
+                }
             }
 
             return colors;

@@ -14,6 +14,7 @@ using System.Net;
 using Newtonsoft.Json.Linq;
 using ScribeBot.Engine.Containers;
 using Newtonsoft.Json;
+using ScribeBot.Engine.Wrappers;
 
 namespace ScribeBot
 {
