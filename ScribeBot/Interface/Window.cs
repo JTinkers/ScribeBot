@@ -308,9 +308,9 @@ namespace ScribeBot.Interface
 
         private void downloadUpdate_Click(object sender, EventArgs e)
         {
-            File.Copy("Updater.exe", $"Updater {Core.Version}");
+            File.Copy("Updater.exe", $"Updater {Core.Version}.exe");
 
-            Process.Start("Updater {Core.Version}");
+            Process.Start("Updater {Core.Version}.exe");
 
             Core.Close();
         }
