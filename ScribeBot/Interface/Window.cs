@@ -311,6 +311,8 @@ namespace ScribeBot.Interface
             if(!File.Exists($"Updater {Core.Version}.exe") && File.Exists("Updater.exe"))
                 File.Copy("Updater.exe", $"Updater {Core.Version}.exe");
 
+            Thread.Sleep(1000);
+
             Process.Start($"Updater {Core.Version}.exe");
 
             Core.Close();
