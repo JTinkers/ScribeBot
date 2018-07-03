@@ -19,6 +19,11 @@ namespace ScribeBot
     public class Package
     {
         /// <summary>
+        /// Marks packages that are plain folders and not zip files.
+        /// </summary>
+        public bool IsZipped { get; set; }
+
+        /// <summary>
         /// Path to the archive that the instance of this class represents.
         /// </summary>
         public string ArchivePath { get; set; }
@@ -63,15 +68,23 @@ namespace ScribeBot
         /// <returns>Package name, authors, description etc.</returns>
         public Dictionary<string, string> GetInfo()
         {
-            var archive = ZipFile.OpenRead(ArchivePath);
+            string contents;
+            if (IsZipped)
+            {
+                var archive = ZipFile.OpenRead(ArchivePath);
 
-            var reader = new StreamReader(archive.GetEntry("info.json").Open());
+                var reader = new StreamReader(archive.GetEntry("info.json").Open());
 
-            string contents = reader.ReadToEnd();
+                contents = reader.ReadToEnd();
 
-            //Neccessary force-disposal and close to preven IO exceptions.
-            reader.Dispose();
-            archive.Dispose();
+                //Neccessary force-disposal and close to preven IO exceptions.
+                reader.Dispose();
+                archive.Dispose();
+            }
+            else
+            {
+                contents = File.ReadAllText($@"{ArchivePath}\info.json");
+            }
 
             return JsonConvert.DeserializeObject<Dictionary<string, string>>(contents);
         }
@@ -83,14 +96,22 @@ namespace ScribeBot
         /// <returns>Contents as a string.</returns>
         public string ReadFileContents(string fileName)
         {
-            var archive = ZipFile.OpenRead(ArchivePath);
+            string contents;
+            if (IsZipped)
+            {
+                var archive = ZipFile.OpenRead(ArchivePath);
 
-            var reader = new StreamReader(archive.GetEntry(fileName).Open());
+                var reader = new StreamReader(archive.GetEntry(fileName).Open());
 
-            string contents = reader.ReadToEnd();
+                contents = reader.ReadToEnd();
 
-            reader.Dispose();
-            archive.Dispose();
+                reader.Dispose();
+                archive.Dispose();
+            }
+            else
+            {
+                contents = File.ReadAllText($@"{ArchivePath}\{fileName}");
+            }
 
             return contents;
         }
@@ -102,17 +123,24 @@ namespace ScribeBot
         /// <param name="contents">Contents to write.</param>
         public void WriteFileContents(string fileName, string contents)
         {
-            var archive = ZipFile.Open(ArchivePath, ZipArchiveMode.Update);
+            if (IsZipped)
+            {
+                var archive = ZipFile.Open(ArchivePath, ZipArchiveMode.Update);
 
-            archive.GetEntry(fileName).Delete();
-            archive.CreateEntry(fileName);
+                archive.GetEntry(fileName).Delete();
+                archive.CreateEntry(fileName);
 
-            var writer = new StreamWriter(archive.GetEntry(fileName).Open());
+                var writer = new StreamWriter(archive.GetEntry(fileName).Open());
 
-            writer.Write(contents);
+                writer.Write(contents);
 
-            writer.Dispose();
-            archive.Dispose();
+                writer.Dispose();
+                archive.Dispose();
+            }
+            else
+            {
+                File.WriteAllText($@"{ArchivePath}\{fileName}", contents);
+            }
         }
 
         /// <summary>
@@ -125,11 +153,18 @@ namespace ScribeBot
         /// Get files inside a package.
         /// </summary>
         /// <returns>Entries as a ZipArchiveEntry array.</returns>
-        public ZipArchiveEntry[] GetFiles()
+        public object[] GetFiles()
         {
-            using (var archive = ZipFile.OpenRead(ArchivePath))
+            if (IsZipped)
             {
-                return archive.Entries.ToArray();
+                using (var archive = ZipFile.OpenRead(ArchivePath))
+                {
+                    return archive.Entries.ToArray();
+                }
+            }
+            else
+            {
+                return Directory.GetFiles($"{ArchivePath}");
             }
         }
     }

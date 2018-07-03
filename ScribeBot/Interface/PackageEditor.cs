@@ -17,20 +17,14 @@ namespace ScribeBot.Interface
     {
         private Package package;
 
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public Package Package { get => package; set => package = value; }
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public PackageEditor()
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             InitializeComponent();
         }
 
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public void OpenPackage(Package import)
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             package = import;
 
@@ -38,7 +32,13 @@ namespace ScribeBot.Interface
 
             FileTree.Nodes.Clear();
 
-            package.GetFiles().ToList().ForEach(x => FileTree.Nodes.Add(new TreeNode(x.Name)));
+            object[] files = package.GetFiles();
+
+            if( package.IsZipped )
+                files.Cast<ZipArchiveEntry>().ToList().ForEach(x => FileTree.Nodes.Add(new TreeNode(x.Name)));
+            else
+                files.ToList().ForEach(x => FileTree.Nodes.Add(new TreeNode(Path.GetFileName((string)x))));
+            
 
             Show();
         }
