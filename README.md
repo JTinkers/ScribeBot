@@ -151,5 +151,5 @@ Some functions that weren't listed below can be found [here](http://www.moonshar
 | `webelement.text` | Get text inside the element | - | string text |
 
 <p align="center">
-	<i>README last updated with upload of Release-0.65b</i>
+	<i>README last updated with upload of Release-0.73b</i>
 </p>
