@@ -118,6 +118,144 @@ Some functions that weren't listed below can be found [here](http://www.moonshar
 | `screen.getSize` | Get total work-space (resolutions of all screens summed up) | - | Size size |
 | `screen.recognize` | Try recognizing text on the screen | number x, y, w, h | string text |
 
+Selenium Functions
+---get the title of current browser window
+---returns: the title
+-webdriver.title
+-
+---get url of current web page
+---returns: the url
+-webdriver.url
+-
+---create an instance of webdriver
+---path: path to chromedriver.exe
+---returns: webdriver instance object
+-webdriver.create(path)
+-
+---go to a specified url
+---url: the url to go to
+-webdriver:goToUrl(url)
+-
+---refresh page
+-webdriver:refresh()
+-
+---close and dispose webdriver instance
+-webdriver:close()
+-
+---emulate key press
+---key: key to emulate press of
+-webdriver:sendKeyPress(key)
+-
+---emulate key release
+---key: key to emulate release of
+-webdriver:sendKeyRelease(key)
+-
+---emulate a sequence of keys
+-webdriver:sendKeys(keySequence)
+-
+---find DOM elements using their id
+---id: id to search by
+---returns: a table of webelements
+-webdriver:findElementsById(id)
+-
+---find DOM elements using their class
+---class: class to search by
+---returns: a table of webelements
+-webdriver:findElementsByClass(class)
+-
+---find DOM elements using their link text
+---linkText: link text to search by
+---returns: a table of webelements
+-webdriver:findElementsByLinkText(linkText)
+-
+---find DOM elements using their partial link text
+---linkText: partial link text to search by
+---returns: a table of webelements
+-webdriver:findElementsByPartialLinkText(linkText)
+-
+---find DOM elements using css selectors
+---selector: selector to search by
+---returns: a table of webelements
+-webdriver:findElementsByCssSelector(selector)
+-
+---find DOM elements using xpath
+---xpath: xpath to search by
+---returns: a table of webelements
+-webdriver:findElementsByXPath(xpath)
+-
+---find DOM elements using their names
+---name: name to search by
+---returns a table of webelements
+-webdriver:findElementsByName(name)
+-
+---get text contained within a DOM element
+---returns: text contained within DOM element(duh)
+-webelement.text
+-
+---get whether element is enabled or not
+---returns: true/false
+-webelement.enabled
+-
+---get whether element is displayed or not
+---returns: true/false
+-webelement.displayed
+-
+---get the size of element
+---returns: Size { Width, Height }
+-webelement.size
+-
+---get the location of element
+---returns: Point { X, Y }
+-webelement.location
+-
+---clear the element, mostly used for text fields
+-webelement:clear()
+-
+---if DOM element is inside a form, submit form
+-webelement:submit()
+-
+---emulate a click on DOM element
+-webelement:click()
+-
+---send a key sequence
+---seq: keys to emulate
+-webelement:SendKeys(seq)
+-
+---find DOM elements using their id
+---id: id to search by
+---returns: a table of webelements
+-webelement:findElementsById(id)
+-
+---find DOM elements using their class
+---class: class to search by
+---returns: a table of webelements
+-webelement:findElementsByClass(class)
+-
+---find DOM elements using their link text
+---linkText: link text to search by
+---returns: a table of webelements
+-webelement:findElementsByLinkText(linkText)
+-
+---find DOM elements using their partial link text
+---linkText: partial link text to search by
+---returns: a table of webelements
+-webelement:findElementsByPartialLinkText(linkText)
+-
+---find DOM elements using css selectors
+---selector: selector to search by
+---returns: a table of webelements
+-webelement:findElementsByCssSelector(selector)
+-
+---find DOM elements using xpath
+---xpath: xpath to search by
+---returns: a table of webelements
+-webelement:findElementsByXPath(xpath)
+-
+---find DOM elements using their names
+---name: name to search by
+---returns a table of webelements
+-webelement:findElementsByName(name)
+
 <p align="center">
 	<i>README last updated with upload of Release-0.65b</i>
 </p>
