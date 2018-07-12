@@ -117,6 +117,38 @@ Some functions that weren't listed below can be found [here](http://www.moonshar
 | `screen.getPixels` | Get 2D array of all pixels in a given screen portion | number x, y, w, h | Color[][] colors |
 | `screen.getSize` | Get total work-space (resolutions of all screens summed up) | - | Size size |
 | `screen.recognize` | Try recognizing text on the screen | number x, y, w, h | string text |
+| `webdriver.close`
+| `webdriver.create` | Create a webdriver instance | - | WebDriver driver |
+| `webdriver.findElementsByClass` | Get DOM elements of a certain class | string class | WebElement[] elems |
+| `webdriver.findElementsByCssSelector` | Get DOM elements by CSS selector | string selector | WebElement[] elems |
+| `webdriver.findElementsById` | Get DOM elements of a certain ID | string id | WebElement[] elems |
+| `webdriver.findElementsByLinkText` | Get DOM elements by their link's text | string text | WebElement[] elems |
+| `webdriver.findElementsByName` | Get DOM elements by name attribute | string name | WebElement[] elems |
+| `webdriver.findElementsByPartialLinkText` | Get DOM elements by partial link's text | string text | WebElement[] elems |
+| `webdriver.findElementsByXPath` | Get DOM elements by XPath selector | string xpath | WebElement[] elems |
+| `webdriver.GoToUrl` | Go to specified url | string url | - |
+| `webdriver.refresh` | S/E | - | - |
+| `webdriver.sendKeyPress` | Emulate a key press | string key | - |
+| `webdriver.sendKeyRelease` | Emulate a key release | string key | - |
+| `webdriver.sendKeys` | Emulate a key presses & releases | string keys | - |
+| `webdriver.title` | Get title of the web browser | - | string title |
+| `webdriver.url` | Get url of the web browser | - | string url |
+| `webelement.clear` | Clear DOM element like text-field etc. | - | - |
+| `webelement.click` | Emulate click on DOM element | - | - |
+| `webelement.findElementsByClass` | Get DOM elements of a certain class | string class | WebElement[] elems |
+| `webelement.findElementsByCssSelector` | Get DOM elements by CSS selector | string selector | WebElement[] elems |
+| `webelement.findElementsById` | Get DOM elements of a certain ID | string id | WebElement[] elems |
+| `webelement.findElementsByLinkText` | Get DOM elements by their link's text | string text | WebElement[] elems |
+| `webelement.findElementsByName` | Get DOM elements by name attribute | string name | WebElement[] elems |
+| `webelement.findElementsByPartialLinkText` | Get DOM elements by partial link's text | string text | WebElement[] elems |
+| `webelement.findElementsByXPath` | Get DOM elements by XPath selector | string xpath | WebElement[] elems |
+| `webelement.sendKeys` | Emulate a key presses & releases | string keys | - |
+| `webelement.submit` | Submit form that DOM element is part of | - | - |
+| `webelement.displayed` | Get whether element is displayed | - | bool displayed |
+| `webelement.enabled` | Get whether element is enabled or not | - | bool enabled |
+| `webelement.location` | Get location of the element | - | Point pos |
+| `webelement.size` | Get size of the element | - | Size size |
+| `webelement.text` | Get text inside the element | - | string text |
 
 <p align="center">
 	<i>README last updated with upload of Release-0.65b</i>
