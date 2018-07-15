@@ -16,6 +16,15 @@ namespace ScribeBot.Engine.Wrappers
     static class InputWrapper
     {
         /// <summary>
+        /// Post WinAPI message directly to the window.
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="message"></param>
+        /// <param name="param1"></param>
+        /// <param name="param2"></param>
+        public static void PostMessage(string title, uint message, int param1, int param2) => Native.API.PostMessage(title, message, param1, param2);
+
+        /// <summary>
         /// Get whether a key is down or not.
         /// </summary>
         /// <param name="key">Key to check state of.</param>

@@ -32,6 +32,14 @@ namespace ScribeBot.Native
             return IntPtr.Zero;
         }
 
+        /// <summary>
+        /// Generate a bitmap from screen portion.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="w"></param>
+        /// <param name="h"></param>
+        /// <returns></returns>
         public static Bitmap CopyScreenArea( int x, int y, int w = 1, int h = 1 )
         {
             var container = new Bitmap(w, h);
@@ -50,6 +58,19 @@ namespace ScribeBot.Native
             return container;
         }
 
+        /// <summary>
+        /// Post WinAPI message directly to the window.
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="message"></param>
+        /// <param name="param1"></param>
+        /// <param name="param2"></param>
+        public static void PostMessage(string title, uint message, int param1, int param2) => Native.PostMessage(GetWindowHandleByTitle(title), message, param1, param2);
+
+        /// <summary>
+        /// Get an array containing titles of all visible windows.
+        /// </summary>
+        /// <returns>An array of strings with window titles.</returns>
         public static string[] GetWindowTitles()
         {
             var processes = Process.GetProcesses().Where(x => !String.IsNullOrEmpty(x.MainWindowTitle));
