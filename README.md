@@ -101,6 +101,7 @@ Some functions that weren't listed below can be found [here](http://www.moonshar
 | `core.writeLine` | Write colored (or not) text to the console | Color color, string Text ... | - |
 | `core.version` | Get current bot version | - | string version |
 | `database.query` | Execute a query on the local database | string query | - |
+| `input.postMessage` | Post message directly to a window | string windowTitle, int message, int p1, int p2 | - |
 | `input.getCursorPos` | Get position of cursor | - | Point pos |
 | `input.setCursorPos` | Set position of cursor | number x, y | - |
 | `input.isKeyDown` | Get whether key is down | (Enum)VirtualKey key | bool isKeyDown |
