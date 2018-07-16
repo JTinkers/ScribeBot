@@ -157,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core.cs" />
+    <Compile Include="Engine\Wrappers\BitWrapper.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Interface\PackageEditor.cs">
       <SubType>Form</SubType>

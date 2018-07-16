@@ -58,6 +58,7 @@ namespace ScribeBot
             Environment.Globals["interface"] = typeof(InterfaceWrapper);
             Environment.Globals["screen"] = typeof(ScreenWrapper);
             Environment.Globals["webdriver"] = typeof(WebDriverProxy);
+            Environment.Globals["bit"] = typeof(BitWrapper);
 
             //Types
             Environment.Globals["Color"] = typeof(ColorContainer);
