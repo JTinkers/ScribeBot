@@ -39,14 +39,13 @@ namespace ScribeBot
             Directory.GetFiles($@"Data\Packages\", "*.zip").ToList().ForEach(x =>
             {
                 var package = new Package(x);
-                package.IsZipped = true;
                 packages.Add(package);
             });
 
             Directory.GetDirectories($@"Data\Packages\").ToList().ForEach(x =>
             {
                 var package = new Package(x);
-                package.IsZipped = false;
+
                 packages.Add(package);
             });
 

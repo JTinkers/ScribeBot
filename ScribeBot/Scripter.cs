@@ -62,6 +62,8 @@ namespace ScribeBot
 
             //Types
             Environment.Globals["Color"] = typeof(ColorContainer);
+            Environment.Globals["Point"] = typeof(PointContainer);
+            Environment.Globals["Size"] = typeof(SizeContainer);
 
             //Enums
             UserData.RegisterType<Native.VirtualKeyCode>();

@@ -21,7 +21,7 @@ namespace ScribeBot
         /// <summary>
         /// Marks packages that are plain folders and not zip files.
         /// </summary>
-        public bool IsZipped { get; set; }
+        public bool IsZipped { get => ArchivePath.EndsWith(".zip"); }
 
         /// <summary>
         /// Path to the archive that the instance of this class represents.
@@ -164,7 +164,7 @@ namespace ScribeBot
             }
             else
             {
-                return Directory.GetFiles($"{ArchivePath}");
+                return Directory.GetFiles(ArchivePath);
             }
         }
     }

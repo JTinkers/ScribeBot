@@ -21,6 +21,14 @@ namespace ScribeBot.Engine.Wrappers
     [MoonSharpUserData]
     static class ScreenWrapper
     {
+        /// <summary>
+        /// Attempts to read text off of screen area using Google's Tesseract.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="w"></param>
+        /// <param name="h"></param>
+        /// <returns>The predicted text</returns>
         public static string Recognize(int x, int y, int w, int h)
         {
             var engine = new TesseractEngine(@"Library Data/Tessdata", "eng", EngineMode.Default);
