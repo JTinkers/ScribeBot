@@ -27,17 +27,17 @@ namespace ScribeBot.Engine.Containers
         {
             var bmp = new Bitmap(path);
 
-            var colors = new ColorContainer[bmp.Height][];
-            for (int i = 0; i < bmp.Width; i++)
+            var colors = new ColorContainer[bmp.Width][];
+            for (int i = 0; i < bmp.Height; i++)
             {
-                colors[i] = new ColorContainer[bmp.Height];
+                colors[i] = new ColorContainer[bmp.Width];
             }
 
             for (int y = 0; y < bmp.Height; y++)
             {
                 for (int x = 0; x < bmp.Width; x++)
                 {
-                    colors[y][x] = new ColorContainer(bmp.GetPixel(y, x).R, bmp.GetPixel(y, x).G, bmp.GetPixel(y, x).B);
+                    colors[x][y] = new ColorContainer(bmp.GetPixel(x, y).R, bmp.GetPixel(x, y).G, bmp.GetPixel(x, y).B);
                 }
             }
 
