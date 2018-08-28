@@ -51,9 +51,6 @@ It's possible to write a malicious script - it's **highly advised** to open pack
 | screen    | Recognize text, capture screen, read screen pixels, manage screens |        Tesseract       |
 | webdriver | Create web automations                                             |         Selenium       |
 
-## Known bugs and odd-behavior
-- None
-
 ## Code Examples
 
 You can find a simplistic stopwatch script below.
