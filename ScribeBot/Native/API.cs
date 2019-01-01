@@ -233,9 +233,6 @@ namespace ScribeBot.Native
                 }
             };
 
-            var list = new Dictionary<List<string>, int>();
-            var news = new List<string>();
-
             Native.SendInput((uint)inputs.Length, inputs, Input.Size);
         }
 
