@@ -38,15 +38,26 @@ namespace ScribeBot.Engine.Wrappers
             return engine.Process(image).GetText();
         }
 
-        /// <summary>
-        /// Get an area of screen as an array of colors.
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="w"></param>
-        /// <param name="h"></param>
-        /// <returns>2D array of pixel colors.</returns>
-        public static ColorContainer[][] GetPixels(int x, int y, int w, int h)
+		public static string Recognize(int x, int y, int w, int h, float scale = 1)
+		{
+			var engine = new TesseractEngine(@"Library Data/Tessdata", "eng", EngineMode.Default);
+
+			var image = Native.API.CopyScreenArea(x, y, w, h);
+
+			var scaled = new Bitmap(image, new Size((int)(image.Width * scale), (int)(image.Height * scale)));
+
+			return engine.Process(scaled).GetText();
+		}
+
+		/// <summary>
+		/// Get an area of screen as an array of colors.
+		/// </summary>
+		/// <param name="x"></param>
+		/// <param name="y"></param>
+		/// <param name="w"></param>
+		/// <param name="h"></param>
+		/// <returns>2D array of pixel colors.</returns>
+		public static ColorContainer[][] GetPixels(int x, int y, int w, int h)
         {
             Bitmap pixels = Native.API.CopyScreenArea(x, y, w, h);
 
