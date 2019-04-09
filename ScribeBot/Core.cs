@@ -88,11 +88,12 @@ namespace ScribeBot
                 MainWindow.ShowDialog();
             })
             {
-                Name = "Interface Thread"
+                Name = "Interface Thread",
             };
+			InterfaceThread.SetApartmentState(ApartmentState.STA);
             InterfaceThread.Start();
 
-            Scripter.Initialize();
+			Scripter.Initialize();
         }
 
         /// <summary>

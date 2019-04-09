@@ -25,16 +25,17 @@ namespace ScribeBot
             //if arg doesn't fit any other overload, it'll run this function - which requires additional precautions
             if (args.Length < 2)
             {
-                textBox.AppendText(args[0].ToString());
+				textBox.AppendText(args[0].ToString());
+
                 return;
             }
 
             for (int i = 0; i < args.Length; i+=2)
             {
-                ColorContainer color = (ColorContainer)args[i];
-                textBox.AppendText((String)args[i+1]);
-                textBox.Select(Math.Max(textBox.TextLength - args[i + 1].ToString().Length, 0), args[i + 1].ToString().Length);
-                textBox.SelectionColor = Color.FromArgb(color.R, color.G, color.B);
+				ColorContainer color = (ColorContainer)args[i];
+				textBox.AppendText((String)args[i+1]);
+				textBox.Select(Math.Max(textBox.TextLength - args[i + 1].ToString().Length, 0), args[i + 1].ToString().Length);
+				textBox.SelectionColor = Color.FromArgb(color.R, color.G, color.B);
             }
         }
     }
