@@ -11,7 +11,7 @@ namespace ScribeBot.Engine.Containers
     /// Container structure for System.Drawing.Point
     /// </summary>
     [MoonSharpUserData]
-    struct PointContainer
+    public struct PointContainer
     {
         public int X, Y;
 

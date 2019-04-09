@@ -61,9 +61,9 @@ namespace ScribeBot
             Environment.Globals["bit"] = typeof(BitWrapper);
 
             //Types
-            Environment.Globals["Color"] = typeof(ColorContainer);
-            Environment.Globals["Point"] = typeof(PointContainer);
-            Environment.Globals["Size"] = typeof(SizeContainer);
+            Environment.Globals["Color"] = new ColorContainer();
+            Environment.Globals["Point"] = new PointContainer();
+            Environment.Globals["Size"] = new SizeContainer();
 
             //Enums
             UserData.RegisterType<Native.VirtualKeyCode>();
@@ -102,16 +102,20 @@ namespace ScribeBot
                 }
                 catch (SyntaxErrorException exception)
                 {
-                    Core.WriteLine(new ColorContainer(177, 31, 41), $"Syntax Error: {exception.Message}");
+                    Core.WriteLine(new ColorContainer(177, 31, 41), $"Syntax Error: {exception}");
                 }
                 catch (IndexOutOfRangeException exception)
                 {
-                    Core.WriteLine(new ColorContainer(177, 31, 41), $"Engine Error: {exception.Message}");
+                    Core.WriteLine(new ColorContainer(177, 31, 41), $"Engine Error: {exception}");
                 }
                 catch (ScriptRuntimeException exception)
                 {
-                    Core.WriteLine(new ColorContainer(177, 31, 41), $"Runtime Error: {exception.Message}");
+                    Core.WriteLine(new ColorContainer(177, 31, 41), $"Runtime Error: {exception}");
                 }
+				catch (Exception exception)
+				{
+					Core.WriteLine(new ColorContainer(177, 31, 41), $"Exception: {exception}");
+				}
             })
             {
                 Name = "Lua Thread",

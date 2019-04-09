@@ -12,7 +12,7 @@ namespace ScribeBot.Engine.Containers
     /// Container structure for System.Drawing.Color
     /// </summary>
     [MoonSharpUserData]
-    struct ColorContainer
+    public struct ColorContainer
     {
         public int R, G, B;
 

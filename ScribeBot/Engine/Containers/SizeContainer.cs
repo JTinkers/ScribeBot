@@ -11,7 +11,7 @@ namespace ScribeBot.Engine.Containers
     /// Container structure for System.Drawing.Size
     /// </summary>
     [MoonSharpUserData]
-    struct SizeContainer
+    public struct SizeContainer
     {
         public int Width, Height;
 

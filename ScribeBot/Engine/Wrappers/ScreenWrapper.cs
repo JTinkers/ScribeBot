@@ -38,7 +38,7 @@ namespace ScribeBot.Engine.Wrappers
 			return engine.Process(image).GetText();
 		}
 
-		public static string Recognize(int x, int y, int w, int h, float scale = 1)
+		public static string Recognize(int x, int y, int w, int h, float scale)
 		{
 			var engine = new TesseractEngine(@"Library Data/Tessdata", "eng", EngineMode.Default);
 
@@ -46,7 +46,9 @@ namespace ScribeBot.Engine.Wrappers
 
 			var scaled = new Bitmap(image, new Size((int)(image.Width * scale), (int)(image.Height * scale)));
 
-			return engine.Process(scaled).GetText();
+			var output = engine.Process(scaled).GetText();
+
+			return output ?? string.Empty;
 		}
 
 		/// <summary>

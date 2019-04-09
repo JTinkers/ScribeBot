@@ -65,6 +65,9 @@ namespace ScribeBot.Interface
                 
                 Invoke(new Action(() =>
                 {
+					if (IsDisposed)
+						return;
+
                     ColorDisplay.Text = $"R: {hoverColor.R} G: {hoverColor.G} B: {hoverColor.B}";
                     CursorPosDisplay.Text = $"X: {cursorPos.X} Y: {cursorPos.Y}";
                 }));
