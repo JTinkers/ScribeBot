@@ -8,6 +8,8 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
 using MoonSharp.Interpreter;
+using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace ScribeBot.Engine.Proxies
 {
@@ -75,23 +77,60 @@ namespace ScribeBot.Engine.Proxies
         /// </summary>
         public void Close() => Driver.Quit();
 
+        private Regex keyPattern = new Regex(@"\{(\w+)\}");
+
         /// <summary>
         /// Send key press.
         /// </summary>
         /// <param name="key">Key to emulate.</param>
-        public void SendKeyPress(string key) => Driver.Keyboard.PressKey(key);
+        public void SendKeyPress(string key)
+        {
+            if (keyPattern.IsMatch(key))
+            {
+                key = keyPattern.Match(key).Groups[1].Value;
+
+                var prop = (string)(typeof(Keys).GetField(key).GetValue(null));
+
+                Driver.Keyboard.PressKey(prop);
+            }
+            else
+                Driver.Keyboard.PressKey(key);
+        }
 
         /// <summary>
         /// Send key release.
         /// </summary>
         /// <param name="key">Key to emulate.</param>
-        public void SendKeyRelease(string key) => Driver.Keyboard.ReleaseKey(key);
+        public void SendKeyRelease(string key)
+        {
+            if (keyPattern.IsMatch(key))
+            {
+                key = keyPattern.Match(key).Groups[1].Value;
 
-        /// <summary>
-        /// Send a sequence of key presses and releases.
-        /// </summary>
-        /// <param name="keySequence">Sequence of keys to emulate.</param>
-        public void SendKeys(string keySequence) => Driver.Keyboard.SendKeys(keySequence);
+                var prop = (string)(typeof(Keys).GetField(key).GetValue(null));
+
+                Driver.Keyboard.ReleaseKey(prop);
+            }
+            else
+                Driver.Keyboard.ReleaseKey(key);
+        }
+
+        public void SendKeys(params string[] keys)
+        {
+            keys.ToList().ForEach(x =>
+            {
+                if (keyPattern.IsMatch(x))
+                {
+                    var key = keyPattern.Match(x).Groups[1].Value;
+
+                    var prop = (string)(typeof(Keys).GetField(key).GetValue(null));
+
+                    Driver.Keyboard.SendKeys(prop);
+                }
+                else
+                    Driver.Keyboard.SendKeys(x);
+            });
+        }
 
         /// <summary>
         /// Find DOM elements on the website.

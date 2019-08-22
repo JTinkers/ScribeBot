@@ -257,7 +257,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Data\Packages\ExamplePackage\main.lua">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Library Data\Tessdata\eng.traineddata">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
