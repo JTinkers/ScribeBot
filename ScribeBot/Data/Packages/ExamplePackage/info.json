@@ -1,0 +1,7 @@
+{
+	"Name": "ExamplePackage",
+	"Description": "Don't turn this into package, just drop to your packages folder!",
+	"Authors": "JonekCode",
+	"Contact": "",
+	"EntryPoint": "main.lua"
+}

@@ -172,5 +172,12 @@ namespace ScribeBot.Engine.Proxies
 
             return elems.ToArray();
         }
+
+        /// <summary>
+        /// Retrieve value of an attribute.
+        /// </summary>
+        /// <param name="attribute">Attribute name</param>
+        /// <returns></returns>
+        public object GetAttribute(string attribute) => Element.GetAttribute(attribute);
     }
 }

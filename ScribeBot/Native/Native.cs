@@ -49,8 +49,8 @@ namespace ScribeBot.Native
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetCursorPos(out NativePoint point);
 
-        [DllImport("user32.dll")]
-        public static extern void mouse_event(int flags, int x, int y, int buttons, int extraInfo);
+        [DllImport("user32.dll",EntryPoint = "mouse_event")]
+        public static extern void MouseEvent(int flags, int x, int y, int buttons, int extraInfo);
 
         [DllImport("gdi32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]

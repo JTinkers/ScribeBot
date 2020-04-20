@@ -265,25 +265,26 @@ namespace ScribeBot.Native
         /// Emulate a mouse key press.
         /// </summary>
         /// <param name="button">Number of mouse button to emulate.</param>
-        public static void SendMousePress(int button)
+        public static void SendMousePress(int button, PointContainer? pos = null)
         {
-            var cPos = GetCursorPos();
+            if (!pos.HasValue)
+                pos = GetCursorPos();
 
             switch (button)
             {
                 case 0:
-                    Native.mouse_event((int)MouseEventFlags.LEFTDOWN, cPos.X, cPos.Y, 0, 0);
-                    Native.mouse_event((int)MouseEventFlags.LEFTUP, cPos.X, cPos.Y, 0, 0);
+                    Native.MouseEvent((int)MouseEventFlags.LEFTDOWN, pos.Value.X, pos.Value.Y, 0, 0);
+                    Native.MouseEvent((int)MouseEventFlags.LEFTUP, pos.Value.X, pos.Value.Y, 0, 0);
                     break;
 
                 case 1:
-                    Native.mouse_event((int)MouseEventFlags.RIGHTDOWN, cPos.X, cPos.Y, 0, 0);
-                    Native.mouse_event((int)MouseEventFlags.RIGHTUP, cPos.X, cPos.Y, 0, 0);
+                    Native.MouseEvent((int)MouseEventFlags.RIGHTDOWN, pos.Value.X, pos.Value.Y, 0, 0);
+                    Native.MouseEvent((int)MouseEventFlags.RIGHTUP, pos.Value.X, pos.Value.Y, 0, 0);
                     break;
 
                 case 2:
-                    Native.mouse_event((int)MouseEventFlags.MIDDLEDOWN, cPos.X, cPos.Y, 0, 0);
-                    Native.mouse_event((int)MouseEventFlags.MIDDLEUP, cPos.X, cPos.Y, 0, 0);
+                    Native.MouseEvent((int)MouseEventFlags.MIDDLEDOWN, pos.Value.X, pos.Value.Y, 0, 0);
+                    Native.MouseEvent((int)MouseEventFlags.MIDDLEUP, pos.Value.X, pos.Value.Y, 0, 0);
                     break;
 
                 default:
@@ -295,22 +296,23 @@ namespace ScribeBot.Native
         /// Emulate mouse press.
         /// </summary>
         /// <param name="button">Number of mouse button to emulate.</param>
-        public static void SendMouseDown(int button)
+        public static void SendMouseDown(int button, PointContainer? pos = null)
         {
-            var cPos = GetCursorPos();
+            if(!pos.HasValue)
+                pos = GetCursorPos();
 
             switch (button)
             {
                 case 0:
-                    Native.mouse_event((int)MouseEventFlags.LEFTDOWN, cPos.X, cPos.Y, 0, 0);
+                    Native.MouseEvent((int)MouseEventFlags.LEFTDOWN, pos.Value.X, pos.Value.Y, 0, 0);
                     break;
 
                 case 1:
-                    Native.mouse_event((int)MouseEventFlags.RIGHTDOWN, cPos.X, cPos.Y, 0, 0);
+                    Native.MouseEvent((int)MouseEventFlags.RIGHTDOWN, pos.Value.X, pos.Value.Y, 0, 0);
                     break;
 
                 case 2:
-                    Native.mouse_event((int)MouseEventFlags.MIDDLEDOWN, cPos.X, cPos.Y, 0, 0);
+                    Native.MouseEvent((int)MouseEventFlags.MIDDLEDOWN, pos.Value.X, pos.Value.Y, 0, 0);
                     break;
 
                 default:
@@ -322,22 +324,23 @@ namespace ScribeBot.Native
         /// Emulate mouse button release.
         /// </summary>
         /// <param name="button">Number of mouse button to emulate.</param>
-        public static void SendMouseUp(int button)
+        public static void SendMouseUp(int button, PointContainer? pos = null)
         {
-            var cPos = GetCursorPos();
+            if (!pos.HasValue)
+                pos = GetCursorPos();
 
             switch (button)
             {
                 case 0:
-                    Native.mouse_event((int)MouseEventFlags.LEFTUP, cPos.X, cPos.Y, 0, 0);
+                    Native.MouseEvent((int)MouseEventFlags.LEFTUP, pos.Value.X, pos.Value.Y, 0, 0);
                     break;
 
                 case 1:
-                    Native.mouse_event((int)MouseEventFlags.RIGHTUP, cPos.X, cPos.Y, 0, 0);
+                    Native.MouseEvent((int)MouseEventFlags.RIGHTUP, pos.Value.X, pos.Value.Y, 0, 0);
                     break;
 
                 case 2:
-                    Native.mouse_event((int)MouseEventFlags.MIDDLEUP, cPos.X, cPos.Y, 0, 0);
+                    Native.MouseEvent((int)MouseEventFlags.MIDDLEUP, pos.Value.X, pos.Value.Y, 0, 0);
                     break;
 
                 default:

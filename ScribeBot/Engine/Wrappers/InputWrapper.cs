@@ -6,7 +6,6 @@ using System.Threading;
 using System.Windows.Forms;
 using MoonSharp.Interpreter;
 using ScribeBot.Engine.Containers;
-
 namespace ScribeBot.Engine.Wrappers
 {
     /// <summary>
@@ -105,5 +104,23 @@ namespace ScribeBot.Engine.Wrappers
         /// </summary>
         /// <param name="button">Number of mouse button to emulate.</param>
         public static void SendMouseUp(int button) => Native.API.SendMouseUp(button);
+
+        /// <summary>
+        /// Send mousebutton press.
+        /// </summary>
+        /// <param name="button">Number of button to emulate - starting from left:0.</param>
+        public static void SendMousePressEvent(int button, PointContainer pos) => Native.API.SendMousePress(button, pos);
+
+        /// <summary>
+        /// Emulate mouse button press.
+        /// </summary>
+        /// <param name="button">Number of mouse button to emulate.</param>
+        public static void SendMouseDownEvent(int button, PointContainer pos) => Native.API.SendMouseDown(button, pos);
+
+        /// <summary>
+        /// Emulate mouse button release.
+        /// </summary>
+        /// <param name="button">Number of mouse button to emulate.</param>
+        public static void SendMouseUpEvent(int button, PointContainer pos) => Native.API.SendMouseUp(button, pos);
     }
 }
