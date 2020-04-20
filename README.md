@@ -147,6 +147,7 @@ Some functions that weren't listed below can be found [here](http://www.moonshar
 | `webelement.location` | Get location of the element | - | Point pos |
 | `webelement.size` | Get size of the element | - | Size size |
 | `webelement.text` | Get text inside the element | - | string text |
+| `webelement.getAttribute` | Get value of an attribute | string attribute | string value |
 
 <p align="center">
 	<i>README last updated with upload of Release-0.73b</i>
