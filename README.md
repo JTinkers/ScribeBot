@@ -26,8 +26,6 @@ With a little knowledge of Lua, you can automate mundane tasks, create macros or
 	<img src="https://i.imgur.com/rDgWKLF.png" />
 </p>
 
-### Join our discord server if you have questions/suggestions or a cool script to share: <a href=https://discord.gg/7GAs53p><img src="https://discordapp.com/assets/fc0b01fe10a0b8c602fb0106d8189d9b.png" width="100"></a>
-
 ## Important Notice
 This program uses unmanaged code ([msdn topic](https://msdn.microsoft.com/en-us/library/ms973872.aspx#manunman_topic6)) and provides low-level functionality that if used improperly (intentionally or not) could affect system's security and reliability.
 It's possible to write a malicious script - it's **highly advised** to open packages with package editor and read code before executing it, especially if it comes from untrusted sources.
